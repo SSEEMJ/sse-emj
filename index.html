@@ -326,25 +326,307 @@ textarea{resize:vertical;line-height:1.5}
     </div>
   </div>
 
-  <!-- PERSONNEL -->
+  <!-- PERSONNEL & PASSEPORT SSE -->
   <div class="page" id="page-personnel">
-    <div class="kpi-grid g4">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Effectif total</div><div class="kv" style="color:#2D6A4F">6</div><div class="ks">CDI + CDD</div><span class="kt" style="background:#EAF3DE;color:#27500A">Stable</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Habilitations expir&eacute;es</div><div class="kv" style="color:#E63946">3</div><div class="ks">BLONDEL S. &mdash; urgent</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Action urgente</span></div>
+
+    <div class="g4" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Effectif total</div><div class="kv" style="color:#2D6A4F">6</div><div class="ks">CDI &bull; CDD &bull; Int&eacute;rimaire</div><span class="kt" style="background:#EAF3DE;color:#27500A">Stable</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Passeports avec alertes</div><div class="kv" style="color:#E63946">3</div><div class="ks">Habilitations expir&eacute;es</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Action urgente</span></div>
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Visites m&eacute;dicales</div><div class="kv" style="color:#F4A261">5/6</div><div class="ks">1 &agrave; planifier</div><span class="kt" style="background:#FAEEDA;color:#633806">83% &agrave; jour</span></div>
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Entr&eacute;es 2026</div><div class="kv" style="color:#378ADD">1</div><div class="ks">MOREAU J. &mdash; M&eacute;canicien</div><span class="kt" style="background:#E6F1FB;color:#185FA5">0 d&eacute;part</span></div>
     </div>
-    <div class="tw">
-      <table>
-        <tr><th>Salari&eacute;</th><th>Fonction</th><th>Contrat</th><th>Anciennet&eacute;</th><th>Habilitations</th><th>VM</th><th>Entretien</th><th>Statut</th></tr>
-        <tr><td style="font-weight:600">BLONDEL St&eacute;phane</td><td>Conducteur PL &mdash; Levageur</td><td><span class="pill pg">CDI</span></td><td>5 ans</td><td><span class="pill pr">3 expir&eacute;es !</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill pr">Alerte</span></td></tr>
-        <tr><td style="font-weight:600">MARTIN Laurent</td><td>Chef de chantier</td><td><span class="pill pg">CDI</span></td><td>7 ans</td><td><span class="pill po">1 urgente</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill po">Surveiller</span></td></tr>
-        <tr><td style="font-weight:600">RENARD David</td><td>Technicien maintenance</td><td><span class="pill po">CDD</span></td><td>2 ans</td><td><span class="pill po">1 urgente</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill po">Surveiller</span></td></tr>
-        <tr><td style="font-weight:600">GIRARD Pierre</td><td>Op&eacute;rateur</td><td><span class="pill pgr">Int&eacute;rimaire</span></td><td>1 an</td><td><span class="pill po">1 urgente</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill po">Surveiller</span></td></tr>
-        <tr><td style="font-weight:600">DUPONT Alexis</td><td>Soudeur</td><td><span class="pill pg">CDI</span></td><td>3 ans</td><td><span class="pill pg">Tout valide</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill pg">OK ✓</span></td></tr>
-        <tr><td style="font-weight:600">MOREAU Julien</td><td>M&eacute;canicien</td><td><span class="pill pg">CDI</span></td><td>6 mois</td><td><span class="pill pg">Tout valide</span></td><td><span class="pill pg">&Agrave; jour</span></td><td><span class="pill pg">R&eacute;alis&eacute; ✓</span></td><td><span class="pill pg">OK ✓</span></td></tr>
-      </table>
+
+    <div style="display:flex;gap:3px;background:#fff;border:0.5px solid #EBEBEB;border-radius:10px;padding:4px;width:fit-content;margin-bottom:14px">
+      <div class="tab active" id="ptab-liste" onclick="swPerso('liste',this)">Liste du personnel</div>
+      <div class="tab" id="ptab-passeport" onclick="swPerso('passeport',this)">Passeport SSE</div>
+      <div class="tab" id="ptab-nouveau" onclick="swPerso('nouveau',this)">+ Nouveau salari&eacute;</div>
     </div>
+
+    <!-- LISTE -->
+    <div id="perso-liste">
+      <div style="display:grid;grid-template-columns:260px 1fr;gap:14px;align-items:start">
+        <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
+          <div style="padding:10px 12px;border-bottom:0.5px solid #F0F0F0"><input placeholder="Rechercher un salari&eacute;..." style="width:100%;padding:7px 10px;border-radius:7px;border:0.5px solid #E8E8E8;background:#F8F9FA;font-size:12px;outline:none"/></div>
+          <div class="sal-li sel" onclick="selSalarie(this,'SB','BLONDEL','St&eacute;phane','Conducteur PL &mdash; Levageur','CDI','#FCEBEB','#A32D2D','3 habilit. expir&eacute;es','pr')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid #E63946;background:#FFF5F5">
+              <div style="width:36px;height:36px;border-radius:50%;background:#FCEBEB;color:#A32D2D;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">SB</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">BLONDEL St&eacute;phane</div><div style="font-size:10px;color:#aaa">Conducteur PL &mdash; CDI</div></div>
+              <span class="pill pr">3 exp. !</span>
+            </div>
+          </div>
+          <div class="sal-li" onclick="selSalarie(this,'ML','MARTIN','Laurent','Chef de chantier','CDI','#E6F1FB','#185FA5','1 urgente','po')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+              <div style="width:36px;height:36px;border-radius:50%;background:#E6F1FB;color:#185FA5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">ML</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">MARTIN Laurent</div><div style="font-size:10px;color:#aaa">Chef de chantier &mdash; CDI</div></div>
+              <span class="pill po">1 urgente</span>
+            </div>
+          </div>
+          <div class="sal-li" onclick="selSalarie(this,'RD','RENARD','David','Technicien maintenance','CDD','#FAEEDA','#633806','1 urgente','po')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+              <div style="width:36px;height:36px;border-radius:50%;background:#FAEEDA;color:#633806;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">RD</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">RENARD David</div><div style="font-size:10px;color:#aaa">Technicien maintenance &mdash; CDD</div></div>
+              <span class="pill po">1 urgente</span>
+            </div>
+          </div>
+          <div class="sal-li" onclick="selSalarie(this,'GP','GIRARD','Pierre','Op&eacute;rateur','Int&eacute;rimaire','#F1EFE8','#5F5E5A','1 urgente','po')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+              <div style="width:36px;height:36px;border-radius:50%;background:#F1EFE8;color:#5F5E5A;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">GP</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">GIRARD Pierre</div><div style="font-size:10px;color:#aaa">Op&eacute;rateur &mdash; Int&eacute;rimaire</div></div>
+              <span class="pill po">1 urgente</span>
+            </div>
+          </div>
+          <div class="sal-li" onclick="selSalarie(this,'DA','DUPONT','Alexis','Soudeur','CDI','#EAF3DE','#27500A','Tout valide ✓','pg')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+              <div style="width:36px;height:36px;border-radius:50%;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">DA</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">DUPONT Alexis</div><div style="font-size:10px;color:#aaa">Soudeur &mdash; CDI</div></div>
+              <span class="pill pg">Valide ✓</span>
+            </div>
+          </div>
+          <div class="sal-li" onclick="selSalarie(this,'MJ','MOREAU','Julien','M&eacute;canicien','CDI','#EEEDFE','#3C3489','Tout valide ✓','pg')">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;border-left:3px solid transparent">
+              <div style="width:36px;height:36px;border-radius:50%;background:#EEEDFE;color:#3C3489;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0">MJ</div>
+              <div style="flex:1"><div style="font-size:12px;font-weight:600;color:#1A1A2E">MOREAU Julien</div><div style="font-size:10px;color:#aaa">M&eacute;canicien &mdash; CDI &mdash; Arriv&eacute;e 2026</div></div>
+              <span class="pill pg">Valide ✓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apercu rapide -->
+        <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
+          <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:20px 24px">
+            <div style="display:flex;align-items:center;gap:16px">
+              <div id="pav-circle" style="width:64px;height:64px;border-radius:50%;background:#FCEBEB;color:#A32D2D;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0;border:3px solid rgba(255,255,255,0.3)">SB</div>
+              <div>
+                <div id="pav-name" style="font-size:18px;font-weight:700;color:#fff">BLONDEL St&eacute;phane</div>
+                <div id="pav-fn" style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:3px">Conducteur PL &mdash; Levageur &bull; CDI &bull; 5 ans</div>
+                <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap" id="pav-badges">
+                  <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:rgba(230,57,70,0.3);color:#FF8C8C">3 habilitations expir&eacute;es &#9888;</span>
+                  <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:rgba(45,106,79,0.3);color:#74C99A">VM &agrave; jour ✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0.5px solid #F0F0F0">
+            <div style="padding:12px;text-align:center;border-right:0.5px solid #F0F0F0"><div style="font-size:20px;font-weight:700;color:#E63946">3</div><div style="font-size:10px;color:#aaa;margin-top:2px">Habilit. expir&eacute;es</div></div>
+            <div style="padding:12px;text-align:center;border-right:0.5px solid #F0F0F0"><div style="font-size:20px;font-weight:700;color:#2D6A4F">7</div><div style="font-size:10px;color:#aaa;margin-top:2px">Habilit. valides</div></div>
+            <div style="padding:12px;text-align:center;border-right:0.5px solid #F0F0F0"><div style="font-size:20px;font-weight:700;color:#378ADD">11</div><div style="font-size:10px;color:#aaa;margin-top:2px">Caus. sign&eacute;es</div></div>
+            <div style="padding:12px;text-align:center"><div style="font-size:20px;font-weight:700;color:#E63946">1</div><div style="font-size:10px;color:#aaa;margin-top:2px">AT carri&egrave;re</div></div>
+          </div>
+          <div style="padding:14px 20px;border-bottom:0.5px solid #F0F0F0;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Date d&apos;entr&eacute;e</span><span style="font-size:12px;font-weight:500">12/03/2021</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Derni&egrave;re VM</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">15/07/2025 ✓</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Prochaine VM</span><span style="font-size:12px;font-weight:500">15/07/2027</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Aptitude</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">Apte sans restriction</span></div>
+          </div>
+          <div style="padding:12px 20px;background:#F8F9FA;display:flex;gap:8px">
+            <button class="btn-primary" onclick="ouvrirPasseport()">&#128203; Ouvrir le Passeport SSE complet</button>
+            <button class="btn">&#9999; Modifier</button>
+            <button class="btn" style="color:#7F77DD;border-color:#7F77DD">&#128438; Imprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSEPORT SSE -->
+    <div id="perso-passeport" style="display:none">
+      <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:20px 24px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between">
+            <div style="display:flex;align-items:center;gap:16px">
+              <div style="width:72px;height:72px;border-radius:50%;background:#FCEBEB;color:#A32D2D;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;flex-shrink:0;border:3px solid rgba(255,255,255,0.3)">SB</div>
+              <div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px">PASSEPORT SSE &mdash; R&eacute;f. PAS-2026-SB-001 &bull; &sect;2.1 MASE 2024</div>
+                <div style="font-size:18px;font-weight:700;color:#fff">BLONDEL St&eacute;phane</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.55);margin-top:3px">Conducteur PL &mdash; Levageur &bull; CDI &bull; Embauch&eacute; le 12/03/2021</div>
+                <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+                  <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:rgba(230,57,70,0.3);color:#FF8C8C">3 habilitations expir&eacute;es &#9888;</span>
+                  <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:rgba(45,106,79,0.3);color:#74C99A">VM &agrave; jour ✓</span>
+                  <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:rgba(55,138,221,0.3);color:#85B7EB">11 caus. sign&eacute;es ✓</span>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:4px">Derni&egrave;re MAJ</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.7)">03/05/2026 &mdash; AV</div>
+              <div style="margin-top:8px;padding:6px 12px;background:rgba(230,57,70,0.25);border-radius:8px;font-size:11px;color:#FF8C8C;font-weight:500">&#9888; Actions urgentes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs passeport -->
+        <div style="display:flex;border-bottom:0.5px solid #F0F0F0;background:#fff;overflow-x:auto">
+          <div class="ptab2 active" onclick="swPTab(this,'pid-identite')" style="padding:11px 18px;font-size:12px;color:#E63946;cursor:pointer;border-bottom:2px solid #E63946;white-space:nowrap;font-weight:500">Identit&eacute;</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-hab')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Habilitations &amp; Formations</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-caus')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Causeries SSE</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-at')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Accidents &amp; Soins</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-chantiers')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Chantiers</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-sig')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Signature</div>
+        </div>
+
+        <!-- IDENTITE -->
+        <div id="pid-identite" style="padding:16px 20px;border-bottom:0.5px solid #F0F0F0">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+            <div>
+              <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations personnelles</div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Date de naissance</span><span style="font-size:12px;font-weight:500">14/06/1985</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Adresse</span><span style="font-size:12px;font-weight:500">12 rue des Pins, 13240 Sept&egrave;mes</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">T&eacute;l&eacute;phone</span><span style="font-size:12px;font-weight:500">06 XX XX XX XX</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Email</span><span style="font-size:12px;font-weight:500">s.blondel@bmi-fos.fr</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Contact urgence</span><span style="font-size:12px;font-weight:500">BLONDEL Marie &mdash; 06 XX XX XX XX</span></div>
+            </div>
+            <div>
+              <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations professionnelles</div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Fonction</span><span style="font-size:12px;font-weight:500">Conducteur PL &mdash; Levageur</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Contrat</span><span class="pill pg">CDI</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Date d&apos;embauche</span><span style="font-size:12px;font-weight:500">12/03/2021</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Anciennet&eacute;</span><span style="font-size:12px;font-weight:500">5 ans et 2 mois</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Responsable direct</span><span style="font-size:12px;font-weight:500">Tony MARTIN &mdash; Pr&eacute;sident</span></div>
+            </div>
+          </div>
+          <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Suivi m&eacute;dical</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">M&eacute;decin du travail</span><span style="font-size:12px;font-weight:500">Dr MARTIN &mdash; CIISME Fos</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Derni&egrave;re visite</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">15/07/2025 ✓</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Aptitude</span><span class="pill pg">Apte &mdash; Sans restriction</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Prochaine visite</span><span style="font-size:12px;font-weight:500">15/07/2027</span></div>
+          </div>
+        </div>
+
+        <!-- HABILITATIONS -->
+        <div id="pid-hab" style="display:none;padding:16px 20px">
+          <div style="background:#FCEBEB;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:11px;color:#A32D2D;font-weight:500">&#9888; 3 habilitations expir&eacute;es &mdash; Salari&eacute; &agrave; ne pas affecter aux postes concern&eacute;s</div>
+          <div style="font-size:10px;font-weight:600;color:#A32D2D;text-transform:uppercase;margin-bottom:8px">Expir&eacute;es &mdash; Action urgente</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#FFF5F5;border:1px solid #F7C1C1;border-radius:8px;margin-bottom:5px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#E63946;flex-shrink:0"></div><span style="font-weight:500">ARI &mdash; Appareil Respiratoire Isolant</span><span style="font-size:10px;color:#aaa;margin-left:4px">APAVE</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#E63946">Exp. 28/03/2026</span><span class="pill pr">Expir&eacute;e</span></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#FFF5F5;border:1px solid #F7C1C1;border-radius:8px;margin-bottom:5px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#E63946;flex-shrink:0"></div><span style="font-weight:500">Carte conducteur G2</span><span style="font-size:10px;color:#aaa;margin-left:4px">Organisme agr&eacute;&eacute;</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#E63946">Exp. 10/04/2026</span><span class="pill pr">Expir&eacute;e</span></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#FFF5F5;border:1px solid #F7C1C1;border-radius:8px;margin-bottom:12px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#E63946;flex-shrink:0"></div><span style="font-weight:500">Carte qualification C+C2</span><span style="font-size:10px;color:#aaa;margin-left:4px">Organisme agr&eacute;&eacute;</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#E63946">Exp. 18/03/2026</span><span class="pill pr">Expir&eacute;e</span></div></div>
+          <div style="font-size:10px;font-weight:600;color:#27500A;text-transform:uppercase;margin-bottom:8px">Valides</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:5px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div><span style="font-weight:500">CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</span><span style="font-size:10px;color:#aaa;margin-left:4px">BUREAU VERITAS</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#2D6A4F">22/11/2029</span><span class="pill pg">Valide</span></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:5px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div><span style="font-weight:500">CACES R490 &mdash; Grues mobiles</span><span style="font-size:10px;color:#aaa;margin-left:4px">BUREAU VERITAS</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#2D6A4F">14/02/2029</span><span class="pill pg">Valide</span></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:5px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div><span style="font-weight:500">Permis CE &mdash; Poids Lourds</span><span style="font-size:10px;color:#aaa;margin-left:4px">Pr&eacute;fecture</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#2D6A4F">14/06/2030</span><span class="pill pg">Valide</span></div></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#F8F9FA;border-radius:8px;font-size:12px"><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div><span style="font-weight:500">Formation levage &eacute;lingage N2</span><span style="font-size:10px;color:#aaa;margin-left:4px">APAVE</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;font-weight:600;color:#2D6A4F">10/04/2027</span><span class="pill pg">Valide</span></div></div>
+        </div>
+
+        <!-- CAUSERIES -->
+        <div id="pid-caus" style="display:none;padding:16px 20px">
+          <div style="display:flex;gap:10px;margin-bottom:12px">
+            <div style="padding:10px 16px;background:#EAF3DE;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#27500A">11</div><div style="font-size:10px;color:#2D6A4F;margin-top:2px">Causeries sign&eacute;es</div></div>
+            <div style="padding:10px 16px;background:#E6F1FB;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#185FA5">92%</div><div style="font-size:10px;color:#378ADD;margin-top:2px">Taux pr&eacute;sence</div></div>
+            <div style="padding:10px 16px;background:#F8F9FA;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#555">1</div><div style="font-size:10px;color:#aaa;margin-top:2px">Absence</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Chute de plain-pied &mdash; pr&eacute;vention</span><span style="color:#aaa;margin-left:8px;font-size:10px">16/04/2026 &bull; AV</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Chute d&apos;objet en hauteur</span><span style="color:#aaa;margin-left:8px;font-size:10px">16/03/2026 &bull; AV</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Port et v&eacute;rification des EPI</span><span style="color:#aaa;margin-left:8px;font-size:10px">14/02/2026 &bull; TM</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Consignes MASE 2026</span><span style="color:#aaa;margin-left:8px;font-size:10px">15/01/2026 &bull; AV</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#FAEEDA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#FAEEDA;color:#633806;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✗</div><div style="flex:1"><span style="font-weight:500">Risques chimiques et FDS</span><span style="color:#aaa;margin-left:8px;font-size:10px">12/09/2025 &bull; AV</span></div><span class="pill po">Absent</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Secours et premiers soins</span><span style="color:#aaa;margin-left:8px;font-size:10px">11/08/2025 &bull; TM</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:7px 12px;background:#F8F9FA;border-radius:7px;font-size:11px"><div style="width:20px;height:20px;border-radius:5px;background:#EAF3DE;color:#27500A;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0">✓</div><div style="flex:1"><span style="font-weight:500">Levage &mdash; r&egrave;gles de s&eacute;curit&eacute;</span><span style="color:#aaa;margin-left:8px;font-size:10px">10/11/2025 &bull; AV</span></div><span class="pill pg">Sign&eacute; ✓</span></div>
+          </div>
+        </div>
+
+        <!-- ACCIDENTS -->
+        <div id="pid-at" style="display:none;padding:16px 20px">
+          <div style="display:flex;gap:10px;margin-bottom:12px">
+            <div style="padding:10px 16px;background:#FCEBEB;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#A32D2D">1</div><div style="font-size:10px;color:#E63946;margin-top:2px">AT avec arr&ecirc;t</div></div>
+            <div style="padding:10px 16px;background:#EAF3DE;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#27500A">0</div><div style="font-size:10px;color:#2D6A4F;margin-top:2px">AT sans arr&ecirc;t</div></div>
+            <div style="padding:10px 16px;background:#F8F9FA;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#555">0</div><div style="font-size:10px;color:#aaa;margin-top:2px">Soins b&eacute;nins</div></div>
+            <div style="padding:10px 16px;background:#FAEEDA;border-radius:10px;text-align:center"><div style="font-size:20px;font-weight:700;color:#633806">12</div><div style="font-size:10px;color:#F4A261;margin-top:2px">Jours d&apos;arr&ecirc;t</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:12px;background:#FFF5F5;border:1px solid #F7C1C1;border-radius:8px">
+            <div style="width:40px;height:40px;border-radius:10px;background:#FCEBEB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128680;</div>
+            <div style="flex:1">
+              <div style="font-weight:600;color:#1A1A2E;margin-bottom:3px">AT-2026-001 &mdash; Entorse cheville &mdash; chute de plain-pied</div>
+              <div style="font-size:11px;color:#aaa">15/01/2026 &agrave; 07h45 &bull; Atelier d&eacute;p&ocirc;t Fos-sur-Mer</div>
+              <div style="font-size:11px;color:#aaa;margin-top:2px">Arr&ecirc;t : 12 jours (15/01 &rarr; 26/01/2026) &bull; D&eacute;clar&eacute; CPAM ✓ &bull; REX-2026-003 cr&eacute;&eacute;</div>
+            </div>
+            <span class="pill pr">AT avec arr&ecirc;t</span>
+          </div>
+          <div style="padding:10px 14px;background:#EAF3DE;border-radius:8px;margin-top:8px;font-size:11px;color:#27500A">✓ Aucun autre accident ou soin b&eacute;nin sur la carri&egrave;re chez BMI</div>
+        </div>
+
+        <!-- CHANTIERS -->
+        <div id="pid-chantiers" style="display:none;padding:16px 20px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F8F9FA;border-radius:8px;font-size:12px"><span style="font-size:16px">&#127959;</span><div style="flex:1"><div style="font-weight:500">TOTAL Raffinerie &mdash; Levage nacelle</div><div style="font-size:10px;color:#aaa">15/03/2026 &bull; 2 jours &bull; Fos-sur-Mer</div></div><span class="pill pg">OK ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F8F9FA;border-radius:8px;font-size:12px"><span style="font-size:16px">&#128665;</span><div style="flex:1"><div style="font-weight:500">SOLVAY Lav&eacute;ra &mdash; Transport chargement</div><div style="font-size:10px;color:#aaa">10/02/2026 &bull; 3 jours &bull; Lav&eacute;ra</div></div><span class="pill pg">OK ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F8F9FA;border-radius:8px;font-size:12px"><span style="font-size:16px">&#127981;</span><div style="flex:1"><div style="font-weight:500">Air Liquide Fos &mdash; Levage &eacute;quipement</div><div style="font-size:10px;color:#aaa">20/01/2026 &bull; 1 jour &bull; Fos-sur-Mer</div></div><span class="pill pg">OK ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#FFF5F5;border-radius:8px;font-size:12px;border:1px solid #F7C1C1"><span style="font-size:16px">&#9888;</span><div style="flex:1"><div style="font-weight:500">D&eacute;p&ocirc;t BMI &mdash; AT chute plain-pied</div><div style="font-size:10px;color:#aaa">15/01/2026 &bull; Arr&ecirc;t 12 jours</div></div><span class="pill pr">AT d&eacute;clar&eacute;</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F8F9FA;border-radius:8px;font-size:12px"><span style="font-size:16px">&#128295;</span><div style="flex:1"><div style="font-weight:500">GRT Gaz &mdash; Transport tuyauterie</div><div style="font-size:10px;color:#aaa">05/12/2025 &bull; 2 jours &bull; Fos-sur-Mer</div></div><span class="pill pg">OK ✓</span></div>
+          </div>
+        </div>
+
+        <!-- SIGNATURE -->
+        <div id="pid-sig" style="display:none;padding:16px 20px">
+          <div style="padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:12px;color:#185FA5;margin-bottom:14px">Ce passeport SSE atteste de la prise de connaissance des r&egrave;gles SSE et du r&eacute;f&eacute;rentiel MASE. Il doit &ecirc;tre pr&eacute;sent&eacute; &agrave; tout auditeur ou client.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px">
+            <div>
+              <div style="font-size:11px;font-weight:600;margin-bottom:8px">Signature du salari&eacute;</div>
+              <div style="border:1.5px dashed #E8E8E8;border-radius:10px;padding:16px;text-align:center;min-height:70px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px">
+                <div style="font-size:22px;font-style:italic;color:#1A1A2E;font-family:Georgia,serif">S. Blondel</div>
+                <div style="font-size:10px;color:#aaa">Sign&eacute; le 12/03/2021</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:600;margin-bottom:8px">Signature de l&apos;employeur</div>
+              <div style="border:1.5px dashed #E8E8E8;border-radius:10px;padding:16px;text-align:center;min-height:70px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px">
+                <div style="font-size:22px;font-style:italic;color:#1A1A2E;font-family:Georgia,serif">T. Martin</div>
+                <div style="font-size:10px;color:#aaa">Sign&eacute; le 12/03/2021</div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#EAF3DE;border-radius:7px;font-size:11px"><span>Politique SSE 2026 &mdash; lu et approuv&eacute;</span><span class="pill pg">Sign&eacute; 15/01/2026 ✓</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#EAF3DE;border-radius:7px;font-size:11px"><span>Politique SSE 2025 &mdash; lu et approuv&eacute;</span><span class="pill pg">Sign&eacute; 09/01/2025 ✓</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#EAF3DE;border-radius:7px;font-size:11px"><span>R&egrave;glement int&eacute;rieur SSE &mdash; lu et approuv&eacute;</span><span class="pill pg">Sign&eacute; 12/03/2021 ✓</span></div>
+          </div>
+        </div>
+
+        <div style="padding:12px 20px;border-top:0.5px solid #F0F0F0;display:flex;gap:8px;background:#F8F9FA">
+          <button class="btn-primary">&#128438; Imprimer le passeport</button>
+          <button class="btn" style="color:#E63946;border-color:#E63946">&#9888; Planifier renouvellements</button>
+          <button class="btn">&#9999; Modifier</button>
+          <div style="margin-left:auto;font-size:11px;color:#aaa;align-self:center">R&eacute;f. PAS-2026-SB-001 &bull; MAJ : 03/05/2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOUVEAU SALARIE -->
+    <div id="perso-nouveau" style="display:none">
+      <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:16px 20px"><div style="font-size:15px;font-weight:500;color:#fff">Nouveau salari&eacute; &mdash; Cr&eacute;ation du passeport SSE</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px">&sect;2.1 MASE 2024 &bull; Le passeport sera g&eacute;n&eacute;r&eacute; automatiquement</div></div>
+        <div style="padding:16px 20px;border-bottom:0.5px solid #F0F0F0">
+          <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations personnelles</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Nom *</div><input placeholder="Ex: DUPONT" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Pr&eacute;nom *</div><input placeholder="Ex: Jean" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date de naissance</div><input type="date" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">T&eacute;l&eacute;phone</div><input placeholder="06 XX XX XX XX" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Email professionnel</div><input placeholder="prenom.nom@bmi-fos.fr" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Contact urgence</div><input placeholder="Nom &mdash; T&eacute;l&eacute;phone" style="width:100%"/></div>
+          </div>
+          <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations professionnelles</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Fonction *</div><input placeholder="Ex: Conducteur PL" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Type de contrat *</div><select style="width:100%"><option>CDI</option><option>CDD</option><option>Int&eacute;rimaire</option><option>Apprenti</option></select></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date d&apos;entr&eacute;e *</div><input type="date" style="width:100%"/></div>
+          </div>
+        </div>
+        <div style="padding:16px 20px;border-bottom:0.5px solid #F0F0F0">
+          <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Accueil SSE &amp; Passeport</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Cr&eacute;er automatiquement le Passeport SSE</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Diffuser la Politique SSE 2026 &agrave; la signature</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox"/> Planifier la visite m&eacute;dicale d&apos;embauche</label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox"/> Ajouter dans le planning de formation</label>
+          </div>
+        </div>
+        <div style="padding:12px 20px;display:flex;gap:8px;background:#F8F9FA">
+          <button class="btn-primary" onclick="alert('Salarie cree ! Passeport SSE genere automatiquement.')">Cr&eacute;er le salari&eacute; &amp; g&eacute;n&eacute;rer le passeport</button>
+          <button class="btn" onclick="swPerso('liste',document.getElementById('ptab-liste'))">Annuler</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- FORMATION -->
@@ -1273,7 +1555,63 @@ function showRevSec(id, el) {
   if(el) el.classList.add("active");
 }
 
+// Personnel functions
+function swPerso(v, el) {
+  var views = ['liste','passeport','nouveau'];
+  for(var i=0;i<views.length;i++){
+    var d=document.getElementById('perso-'+views[i]);
+    if(d) d.style.display='none';
+  }
+  var tabs = ['ptab-liste','ptab-passeport','ptab-nouveau'];
+  for(var j=0;j<tabs.length;j++){
+    var t=document.getElementById(tabs[j]);
+    if(t){t.classList.remove('active');}
+  }
+  var pg=document.getElementById('perso-'+v);
+  if(pg) pg.style.display='block';
+  if(el) el.classList.add('active');
+}
+
+function swPTab(el, secId) {
+  var allTabs = el.closest('div').querySelectorAll('.ptab2');
+  for(var i=0;i<allTabs.length;i++){
+    allTabs[i].style.color='#aaa';
+    allTabs[i].style.borderBottomColor='transparent';
+    allTabs[i].style.fontWeight='normal';
+  }
+  el.style.color='#E63946';
+  el.style.borderBottomColor='#E63946';
+  el.style.fontWeight='500';
+  var allSecs = ['pid-identite','pid-hab','pid-caus','pid-at','pid-chantiers','pid-sig'];
+  for(var j=0;j<allSecs.length;j++){
+    var s=document.getElementById(allSecs[j]);
+    if(s) s.style.display='none';
+  }
+  var sec=document.getElementById(secId);
+  if(sec) sec.style.display='block';
+}
+
+function selSalarie(el, initials, nom, prenom, fn, contrat, bg, color, statut, statutClass) {
+  var items = document.querySelectorAll('.sal-li > div');
+  for(var i=0;i<items.length;i++){
+    items[i].style.background='';
+    items[i].style.borderLeftColor='transparent';
+  }
+  el.querySelector('div').style.background = bg.replace(')',',0.15)').replace('rgb','rgba') || '#FFF5F5';
+  el.querySelector('div').style.borderLeftColor = color;
+  document.getElementById('pav-circle').textContent = initials;
+  document.getElementById('pav-circle').style.background = bg;
+  document.getElementById('pav-circle').style.color = color;
+  document.getElementById('pav-name').textContent = nom + ' ' + prenom;
+  document.getElementById('pav-fn').textContent = fn + ' • ' + contrat;
+}
+
+function ouvrirPasseport() {
+  swPerso('passeport', document.getElementById('ptab-passeport'));
+}
+
 // Charts
+
 window.addEventListener("load", function(){
   var co = {plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:"rgba(0,0,0,0.04)"},ticks:{font:{size:10}},beginAtZero:true}}};
   var c1 = document.getElementById("c1");
