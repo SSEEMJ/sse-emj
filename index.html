@@ -433,7 +433,7 @@ textarea{resize:vertical;line-height:1.5}
           <div style="padding:12px 20px;background:#F8F9FA;display:flex;gap:8px">
             <button class="btn-primary" onclick="ouvrirPasseport()">&#128203; Ouvrir le Passeport SSE complet</button>
             <button class="btn">&#9999; Modifier</button>
-            <button class="btn" style="color:#7F77DD;border-color:#7F77DD">&#128438; Imprimer</button>
+            <button class="btn" style="color:#7F77DD;border-color:#7F77DD" onclick="printPage()">&#128438; Imprimer</button>
           </div>
         </div>
       </div>
@@ -612,7 +612,7 @@ textarea{resize:vertical;line-height:1.5}
         </div>
 
         <div style="padding:12px 20px;border-top:0.5px solid #F0F0F0;display:flex;gap:8px;background:#F8F9FA">
-          <button class="btn-primary">&#128438; Imprimer le passeport</button>
+          <button class="btn-primary" onclick="printPasseport()">&#128438; Imprimer le passeport</button>
           <button class="btn" style="color:#E63946;border-color:#E63946">&#9888; Planifier renouvellements</button>
           <button class="btn">&#9999; Modifier</button>
           <div style="margin-left:auto;font-size:11px;color:#aaa;align-self:center">R&eacute;f. PAS-2026-SB-001 &bull; MAJ : 03/05/2026</div>
@@ -763,28 +763,28 @@ textarea{resize:vertical;line-height:1.5}
     <div style="display:grid;grid-template-columns:280px 1fr;gap:14px;align-items:start">
       <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
         <div style="padding:10px 12px;border-bottom:0.5px solid #F0F0F0"><input placeholder="Rechercher un sous-traitant..." style="width:100%;padding:7px 10px;border-radius:7px;border:0.5px solid #E8E8E8;background:#F8F9FA;font-size:12px;outline:none"/></div>
-        <div style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid #D85A30;background:#FFF5F5">
+        <div onclick="selST(this,'DUPUIS','DUPUIS Etancheite SARL','valide')" style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid #D85A30;background:#FFF5F5">
           <div style="font-size:12px;font-weight:500;color:#1A1A2E">DUPUIS &Eacute;tanch&eacute;it&eacute;</div><div style="font-size:10px;color:#aaa;margin-top:2px">&Eacute;tanch&eacute;it&eacute; &mdash; toiture et fa&ccedil;ade</div>
           <div style="display:flex;gap:4px;margin-top:5px"><span class="pill pg">Valid&eacute; ✓</span><span class="pill pb">Note 4,2/5</span><span class="pill pg">Docs OK</span></div>
         </div>
-        <div style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+        <div onclick="selST(this,'MARTIN','MARTIN Electricite SARL','surveiller')" style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
           <div style="font-size:12px;font-weight:500;color:#1A1A2E">MARTIN &Eacute;lectricit&eacute;</div><div style="font-size:10px;color:#aaa;margin-top:2px">&Eacute;lectricit&eacute; industrielle</div>
           <div style="display:flex;gap:4px;margin-top:5px"><span class="pill pg">Valid&eacute; ✓</span><span class="pill pb">Note 3,8/5</span><span class="pill po">1 doc manquant</span></div>
         </div>
-        <div style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+        <div onclick="selST(this,'TECHNI','TECHNI Levage SAS','valide')" style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
           <div style="font-size:12px;font-weight:500;color:#1A1A2E">TECHNI Levage</div><div style="font-size:10px;color:#aaa;margin-top:2px">Levage sp&eacute;cialis&eacute;</div>
           <div style="display:flex;gap:4px;margin-top:5px"><span class="pill pg">Valid&eacute; ✓</span><span class="pill pb">Note 4,5/5</span><span class="pill pg">Docs OK</span></div>
         </div>
-        <div style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
+        <div onclick="selST(this,'MOREL','MOREL Soudure SARL','surveiller')" style="padding:12px 14px;border-bottom:0.5px solid #F5F5F5;cursor:pointer;border-left:3px solid transparent">
           <div style="font-size:12px;font-weight:500;color:#1A1A2E">MOREL Soudure</div><div style="font-size:10px;color:#aaa;margin-top:2px">Soudage &mdash; d&eacute;coupe thermique</div>
           <div style="display:flex;gap:4px;margin-top:5px"><span class="pill po">&Agrave; surveiller</span><span class="pill pb">Note 2,8/5</span><span class="pill pr">2 docs manquants</span></div>
         </div>
-        <div style="padding:12px 14px;cursor:pointer;border-left:3px solid transparent">
+        <div onclick="selST(this,'LEONE','LEONE Manutention EURL','suspendu')" style="padding:12px 14px;cursor:pointer;border-left:3px solid transparent">
           <div style="font-size:12px;font-weight:500;color:#1A1A2E">LEONE Manutention</div><div style="font-size:10px;color:#aaa;margin-top:2px">Manutention &mdash; transport</div>
           <div style="display:flex;gap:4px;margin-top:5px"><span class="pill pr">Suspendu &#9888;</span><span class="pill pr">Note 1,5/5</span><span class="pill pr">Incident grave</span></div>
         </div>
       </div>
-      <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden">
+      <div style="background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;overflow:hidden" id="st-detail-panel">
         <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:16px 20px">
           <div style="font-size:15px;font-weight:500;color:#fff">DUPUIS &Eacute;tanch&eacute;it&eacute; SARL</div>
           <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:3px">SIRET 842 156 789 00021 &bull; &Eacute;tanch&eacute;it&eacute; toiture &amp; fa&ccedil;ade &bull; QUALIBAT 3121 &bull; RGE</div>
@@ -817,7 +817,7 @@ textarea{resize:vertical;line-height:1.5}
         </div>
         <div style="padding:12px 20px;background:#F8F9FA;display:flex;gap:8px">
           <button class="btn-primary">+ Nouvelle &eacute;valuation</button>
-          <button class="btn">Imprimer fiche</button>
+          <button class="btn" onclick="printPage()">Imprimer fiche</button>
           <div style="margin-left:auto;display:flex;gap:6px">
             <button class="btn" style="color:#2D6A4F;border-color:#2D6A4F;font-weight:600">✓ Valid&eacute;</button>
             <button class="btn" style="color:#F4A261;border-color:#F4A261">&Agrave; surveiller</button>
@@ -2056,10 +2056,18 @@ function swPTab(el, secId) {
 }
 
 function selSalarie(el, initials, nom, prenom, fn, contrat, bg, color, statut, statutClass) {
-  var items = document.querySelectorAll('.sal-li > div');
-  for(var i=0;i<items.length;i++){
-    items[i].style.background='';
-    items[i].style.borderLeftColor='transparent';
+  // Si deja selectionne, ouvrir le passeport
+  if(el.classList.contains('sal-selected')) {
+    ouvrirPasseport();
+    return;
+  }
+  var items = document.querySelectorAll('.sal-li');
+  items.forEach(function(i){ i.classList.remove('sal-selected'); });
+  el.classList.add('sal-selected');
+  var items2 = document.querySelectorAll('.sal-li > div');
+  for(var i=0;i<items2.length;i++){
+    items2[i].style.background='';
+    items2[i].style.borderLeftColor='transparent';
   }
   el.querySelector('div').style.background = bg.replace(')',',0.15)').replace('rgb','rgba') || '#FFF5F5';
   el.querySelector('div').style.borderLeftColor = color;
