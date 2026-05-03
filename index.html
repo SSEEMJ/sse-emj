@@ -1608,6 +1608,150 @@ textarea{resize:vertical;line-height:1.5}
         <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire la bonne pratique..."></textarea></div>
         <div style="margin-top:8px"><div class="fl">B&eacute;n&eacute;fices observ&eacute;s</div><textarea rows="2" placeholder="Ex: 0 oubli EPI depuis 3 mois..."></textarea></div>
       </div>
+
+      <!-- CAUSERIE -->
+      <div class="modal-section" id="modal-sec-causerie" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Animateur *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+          <div><div class="fl">Lieu</div><select style="width:100%"><option>Atelier d&eacute;p&ocirc;t</option><option>Salle de r&eacute;union</option><option>Chantier</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Th&egrave;me de la causerie *</div><input placeholder="Ex: S&eacute;curit&eacute; levage, Risques chimiques, RPS..." style="width:100%"/></div>
+        <div style="margin-top:10px"><div class="fl">Participants pr&eacute;vus</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> MARTIN L.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> RENARD D.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> GIRARD P.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> DUPONT A.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> MOREAU J.</label>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Source / Lien</div><select style="width:100%"><option>Planifi&eacute;e (annuelle)</option><option>Suite &agrave; un accident</option><option>Suite &agrave; une SD</option><option>Suite &agrave; un audit</option><option>Suite &agrave; un REX</option></select></div>
+      </div>
+
+      <!-- COMITE -->
+      <div class="modal-section" id="modal-sec-comite" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Num&eacute;ro du comit&eacute;</div><select style="width:100%"><option>Comit&eacute; SSE n&deg;2 &mdash; T2 2026</option><option>Comit&eacute; SSE n&deg;3 &mdash; T3 2026</option><option>Revue de direction &mdash; D&eacute;c. 2026</option></select></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Lieu</div><input placeholder="Ex: Si&egrave;ge BMI Fos-sur-Mer" style="width:100%" value="Si&egrave;ge BMI Fos-sur-Mer"/></div>
+          <div><div class="fl">Dur&eacute;e pr&eacute;vue</div><input placeholder="Ex: 2h" style="width:100%" value="2h"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Participants pr&eacute;vus</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> Tony MARTIN</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> Alexandra Valentin</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S. (repr. sal.)</label>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Points &agrave; l&apos;ordre du jour</div><textarea rows="3" placeholder="Ex: Bilan accidentologie T2, Avancement plan d'actions, Alertes habilitations..."></textarea></div>
+      </div>
+
+      <!-- OBJECTIF -->
+      <div class="modal-section" id="modal-sec-objectif" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Axe MASE *</div><select style="width:100%"><option>Axe 1 &mdash; Direction</option><option>Axe 2 &mdash; Comp&eacute;tences</option><option>Axe 3 &mdash; Organisation</option><option>Axe 4 &mdash; Efficacit&eacute;</option><option>Axe 5 &mdash; Am&eacute;lioration</option></select></div>
+          <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>S&eacute;curit&eacute;</option><option>Sant&eacute;</option><option>Environnement</option><option>Syst&egrave;me MASE</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Intitul&eacute; de l&apos;objectif *</div><input placeholder="Ex: R&eacute;aliser 12 causeries SSE sur l'ann&eacute;e" style="width:100%"/></div>
+        <div style="margin-top:10px" class="fg3">
+          <div><div class="fl">Valeur cible *</div><input placeholder="Ex: 12, 0, 100%" style="width:100%"/></div>
+          <div><div class="fl">Unit&eacute;</div><input placeholder="Ex: caus., AT, %" style="width:100%"/></div>
+          <div><div class="fl">Valeur N-1</div><input placeholder="Ex: 10" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Responsable du suivi</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+      </div>
+
+      <!-- INDICATEURS - saisie mensuelle -->
+      <div class="modal-section" id="modal-sec-indicateurs" style="display:none">
+        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">Saisie des donn&eacute;es du mois de <strong>Mai 2026</strong> &mdash; Les indicateurs TF1, TF2, TG seront recalcul&eacute;s automatiquement</div>
+        <div class="fg2">
+          <div><div class="fl">Heures travaill&eacute;es *</div><input type="number" placeholder="Ex: 850" style="width:100%"/></div>
+          <div><div class="fl">AT avec arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">AT sans arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">Jours d&apos;arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">Soins b&eacute;nins (PSI)</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">Situations dangereuses</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">Causeries r&eacute;alis&eacute;es</div><input type="number" value="1" style="width:100%"/></div>
+          <div><div class="fl">Audits terrain r&eacute;alis&eacute;s</div><input type="number" value="0" style="width:100%"/></div>
+        </div>
+      </div>
+
+      <!-- REX -->
+      <div class="modal-section" id="modal-sec-rex" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Type *</div><select style="width:100%"><option>N&eacute;gatif &mdash; Incident / presqu&apos;accident</option><option>Positif &mdash; Bonne pratique</option><option>Neutre &mdash; Observation</option></select></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Raffinerie" style="width:100%"/></div>
+          <div><div class="fl">Rapporteur *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
+          <div><div class="fl">Domaine</div><select style="width:100%"><option>Levage</option><option>Transport</option><option>Hauteur</option><option>EPI</option><option>Environnement</option><option>Organisation</option></select></div>
+          <div><div class="fl">Liaison</div><select style="width:100%"><option>Aucune</option><option>Depuis SD</option><option>Depuis AT</option><option>Depuis audit</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description de l&apos;&eacute;v&eacute;nement *</div><textarea rows="3" placeholder="D&eacute;crire pr&eacute;cis&eacute;ment ce qui s&apos;est pass&eacute;, les circonstances..."></textarea></div>
+        <div style="margin-top:8px"><div class="fl">Causes identifi&eacute;es</div><textarea rows="2" placeholder="Cause directe, indirecte, racine..."></textarea></div>
+        <div style="margin-top:8px"><div class="fl">Le&ccedil;on apprise / Action</div><textarea rows="2" placeholder="Qu&apos;est-ce qu&apos;on retient ? Quelle action prendre ?"></textarea></div>
+      </div>
+
+      <!-- FORMATION -->
+      <div class="modal-section" id="modal-sec-formation" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Salari&eacute; concern&eacute; *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
+          <div><div class="fl">Type de formation *</div><input placeholder="Ex: Recyclage SST, CACES R490..." style="width:100%"/></div>
+          <div><div class="fl">Organisme *</div><input placeholder="Ex: APAVE, SOCOTEC..." style="width:100%"/></div>
+          <div><div class="fl">Date pr&eacute;vue *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 2 jours" style="width:100%"/></div>
+          <div><div class="fl">Co&ucirc;t estim&eacute; (&euro;)</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Habilitation li&eacute;e</div><select style="width:100%"><option>-- Aucune --</option><option>ARI</option><option>CACES R489</option><option>CACES R490</option><option>SST</option><option>ATEX</option><option>Habilitation &eacute;lectrique</option><option>Autre</option></select></div>
+      </div>
+
+      <!-- SOUS-TRAITANT -->
+      <div class="modal-section" id="modal-sec-st" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Raison sociale *</div><input placeholder="Ex: DUPUIS &Eacute;tanch&eacute;it&eacute; SARL" style="width:100%"/></div>
+          <div><div class="fl">SIRET *</div><input placeholder="Ex: 842 156 789 00021" style="width:100%"/></div>
+          <div><div class="fl">Activit&eacute; / M&eacute;tier *</div><input placeholder="Ex: &Eacute;tanch&eacute;it&eacute; toiture et fa&ccedil;ade" style="width:100%"/></div>
+          <div><div class="fl">Contact principal</div><input placeholder="Nom &mdash; T&eacute;l &mdash; Email" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Documents &agrave; demander</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Attestation URSSAF (trimestrielle)</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Assurance RC Pro</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Extrait KBIS (&lt; 3 mois)</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Liste nominative du personnel</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Attestations visites m&eacute;dicales</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- DUER - UNITE DE TRAVAIL -->
+      <div class="modal-section" id="modal-sec-duer" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Nom de l&apos;unit&eacute; de travail *</div><input placeholder="Ex: Conduite camion-grue" style="width:100%"/></div>
+          <div><div class="fl">Secteur</div><select style="width:100%"><option>Transport &amp; Conduite</option><option>Levage &amp; Manutention</option><option>Travail en hauteur</option><option>Atelier d&eacute;p&ocirc;t</option><option>Chantier ext&eacute;rieur</option><option>Bureau</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Risque principal identifi&eacute; *</div><input placeholder="Ex: Chute de charge, Accident circulation..." style="width:100%"/></div>
+        <div style="margin-top:10px" class="fg3">
+          <div><div class="fl">Probabilit&eacute; (1-4)</div><select style="width:100%"><option>1 &mdash; Tr&egrave;s improbable</option><option>2 &mdash; Improbable</option><option>3 &mdash; Probable</option><option>4 &mdash; Tr&egrave;s probable</option></select></div>
+          <div><div class="fl">Gravit&eacute; (1-5)</div><select style="width:100%"><option>1 &mdash; Blessure l&eacute;g&egrave;re</option><option>2 &mdash; AT sans arr&ecirc;t</option><option>3 &mdash; AT avec arr&ecirc;t</option><option>4 &mdash; Incapacit&eacute; permanente</option><option>5 &mdash; D&eacute;c&egrave;s</option></select></div>
+          <div><div class="fl">Cotation (auto)</div><input value="8" readonly style="width:100%;background:#F8F9FA;color:#1A1A2E;font-weight:600"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Mesures de pr&eacute;vention</div><textarea rows="2" placeholder="EPI, formation, proc&eacute;dure, contr&ocirc;le..."></textarea></div>
+      </div>
+
+      <!-- MODE OPERATOIRE -->
+      <div class="modal-section" id="modal-sec-mo" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">R&eacute;f&eacute;rence</div><input placeholder="Ex: MO-009" style="width:100%"/></div>
+          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Op&eacute;ration soudage inox..." style="width:100%"/></div>
+          <div><div class="fl">Activit&eacute;</div><select style="width:100%"><option>Levage</option><option>Transport</option><option>Manutention</option><option>Travail en hauteur</option><option>Soudage</option><option>Nettoyage HP</option><option>Montage industriel</option></select></div>
+          <div><div class="fl">Version</div><input value="A" style="width:100%"/></div>
+          <div><div class="fl">Date de validation</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Valid&eacute; par</div><select style="width:100%"><option>AV + TM</option><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Points d&apos;arr&ecirc;t obligatoires</div><textarea rows="2" placeholder="Ex: V&eacute;rification &eacute;lingues avant levage, Controle balisage..."></textarea></div>
+      </div>
       <div class="modal-section" id="modal-sec-audit" style="display:none">
         <div class="fg3">
           <div><div class="fl">Date de l&apos;audit *</div><input type="date" style="width:100%" value="2026-05-03"/></div>
@@ -1622,6 +1766,77 @@ textarea{resize:vertical;line-height:1.5}
     <div class="modal-footer">
       <button onclick="closeModal()" style="font-size:12px;padding:7px 16px;border-radius:8px;border:1px solid #E8E8E8;background:#fff;color:#555;cursor:pointer">Annuler</button>
       <button onclick="saveModal()" class="btn-primary">Enregistrer</button>
+      <!-- DIFFUSION POLITIQUE -->
+      <div class="modal-section" id="modal-sec-diffusion" style="display:none">
+        <div style="padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:12px;color:#185FA5;margin-bottom:12px">
+          Diffuser la Politique SSE 2026 sign&eacute;e &agrave; tous les salari&eacute;s. Chaque salari&eacute; devra signer la fiche de diffusion.
+        </div>
+        <div><div class="fl">Salari&eacute;s destinataires</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S. &mdash; Conducteur PL</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MARTIN L. &mdash; Chef de chantier</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> RENARD D. &mdash; Technicien</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> GIRARD P. &mdash; Op&eacute;rateur</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> DUPONT A. &mdash; Soudeur</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MOREAU J. &mdash; M&eacute;canicien</label>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Mode de diffusion</div><select style="width:100%"><option>Signature en main propre lors d&apos;une causerie</option><option>Remise lors d&apos;une r&eacute;union</option><option>Envoi par email + signature &agrave; retourner</option></select></div>
+      </div>
+
+      <!-- EPI -->
+      <div class="modal-section" id="modal-sec-epi" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>EPI individuel</option><option>Carburant v&eacute;hicule</option><option>Consommable atelier</option><option>Eau</option><option>D&eacute;chet</option></select></div>
+          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Gants anti-coupure T10" style="width:100%"/></div>
+          <div><div class="fl">Quantit&eacute; *</div><input type="number" placeholder="Ex: 12" style="width:100%"/></div>
+          <div><div class="fl">Unit&eacute;</div><select style="width:100%"><option>paires</option><option>unit&eacute;s</option><option>litres</option><option>kg</option><option>bo&icirc;tes</option></select></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Co&ucirc;t (&euro;)</div><input type="number" placeholder="Ex: 48" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Affect&eacute; &agrave;</div><select style="width:100%"><option>Tous les salari&eacute;s</option><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Stock g&eacute;n&eacute;ral</option></select></div>
+      </div>
+
+      <!-- CARBONE -->
+      <div class="modal-section" id="modal-sec-carbone" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Type de consommation</div><select style="width:100%"><option>Carburant GNR (litres)</option><option>Carburant SP95 (litres)</option><option>Carburant SP98 (litres)</option><option>Electricit&eacute; (kWh)</option><option>Gaz (m3)</option><option>Eau (m3)</option></select></div>
+          <div><div class="fl">V&eacute;hicule / Source</div><select style="width:100%"><option>Camion PL 1 &mdash; AB-123-CD</option><option>Camion PL 2 &mdash; EF-456-GH</option><option>Nacelle &mdash; IJ-789-KL</option><option>Atelier d&eacute;p&ocirc;t</option></select></div>
+          <div><div class="fl">Mois *</div><input type="month" style="width:100%"/></div>
+          <div><div class="fl">Quantit&eacute; *</div><input type="number" placeholder="Ex: 450" style="width:100%"/></div>
+          <div><div class="fl">CO2 &eacute;quivalent (kg)</div><input type="number" placeholder="Calcul auto..." style="width:100%;background:#F8F9FA" readonly/></div>
+          <div><div class="fl">Montant (&euro;)</div><input type="number" placeholder="Ex: 780" style="width:100%"/></div>
+        </div>
+      </div>
+
+      <!-- DEPENSE -->
+      <div class="modal-section" id="modal-sec-depense" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>EPI &amp; &eacute;quipements</option><option>Formation</option><option>Organismes contr&ocirc;le (VGP)</option><option>M&eacute;decine du travail</option><option>Audit &amp; certification</option><option>Mat&eacute;riel SSE</option><option>Prestation SSE</option></select></div>
+          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Formation SST PREVENTIEL" style="width:100%"/></div>
+          <div><div class="fl">Montant HT (&euro;) *</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Fournisseur</div><input placeholder="Ex: APAVE, PREVENTIEL..." style="width:100%"/></div>
+          <div><div class="fl">Axe MASE</div><select style="width:100%"><option>Axe 1 &mdash; Direction</option><option>Axe 2 &mdash; Comp&eacute;tences</option><option>Axe 3 &mdash; Organisation</option><option>Axe 4 &mdash; Efficacit&eacute;</option><option>Axe 5 &mdash; Am&eacute;lioration</option></select></div>
+        </div>
+        <div style="margin-top:8px"><div class="fl">Commentaire</div><input placeholder="Ex: Renouvellement SST BLONDEL S." style="width:100%"/></div>
+      </div>
+
+      <!-- PERSONNEL - handled by swPerso redirect -->
+      <div class="modal-section" id="modal-sec-personnel" style="display:none"></div>
+      <!-- REVUE SAVE - handled by JS notification -->
+      <div class="modal-section" id="modal-sec-revue_save" style="display:none"></div>
+
+      <!-- RESSOURCE -->
+      <div class="modal-section" id="modal-sec-ressource" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Type de document</div><select style="width:100%"><option>Proc&eacute;dure</option><option>Formulaire / Fiche</option><option>Document MASE</option><option>R&eacute;glementation</option><option>Mode op&eacute;ratoire</option><option>Fiche de s&eacute;curit&eacute; (FDS)</option><option>Autre</option></select></div>
+          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Proc&eacute;dure levage nacelle" style="width:100%"/></div>
+          <div><div class="fl">R&eacute;f&eacute;rence</div><input placeholder="Ex: PRO-LEV-001" style="width:100%"/></div>
+          <div><div class="fl">Version</div><input value="A" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description / Objet du document</div><textarea rows="2" placeholder="D&eacute;crire le contenu ou l&apos;utilisation de ce document..."></textarea></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1641,30 +1856,30 @@ textarea{resize:vertical;line-height:1.5}
 var currentPage = "dashboard";
 
 var pagesMeta = {
-  dashboard:{t:"Tableau de bord",s:"Vue générale 2026",btn:"+ Nouvelle action",modal:"action"},
-  politique:{t:"Politique SSE",s:"Axe 1 — §1.2 MASE 2024",btn:"Diffuser au personnel",modal:null},
-  objectifs:{t:"Objectifs SSE & Plan management",s:"Axe 1 — §1.3 MASE 2024",btn:"+ Ajouter un objectif",modal:null},
-  indicateurs:{t:"Indicateurs SSE",s:"Axe 1 — §1.4 MASE 2024",btn:"Saisir données du mois",modal:null},
+  dashboard:{t:"Tableau de bord",s:"Vue générale 2026",btn:"+ Nouvelle action SSE",modal:"action"},
+  politique:{t:"Politique SSE",s:"Axe 1 — §1.2 MASE 2024",btn:"Diffuser au personnel",modal:"diffusion"},
+  objectifs:{t:"Objectifs SSE & Plan management",s:"Axe 1 — §1.3 MASE 2024",btn:"+ Ajouter un objectif",modal:"objectif"},
+  indicateurs:{t:"Indicateurs SSE",s:"Axe 1 — §1.4 MASE 2024",btn:"Saisir données du mois",modal:"indicateurs"},
   plan_actions:{t:"Plan d’actions SSE — 2026",s:"Axe 1 — Engagement Direction",btn:"+ Nouvelle action",modal:"action"},
-  causeries:{t:"Causeries SSE",s:"Axe 1 — Animation SSE",btn:"+ Nouvelle causerie",modal:null},
-  comite:{t:"Comité de pilotage",s:"Axe 1 — Pilotage système",btn:"+ Nouveau comité",modal:null},
-  personnel:{t:"Personnel",s:"Axe 2 — Compétences & RH",btn:"+ Ajouter un salarié",modal:null},
+  causeries:{t:"Causeries SSE",s:"Axe 1 — Animation SSE",btn:"+ Nouvelle causerie",modal:"causerie"},
+  comite:{t:"Comité de pilotage",s:"Axe 1 — Pilotage système",btn:"+ Planifier un comité",modal:"comite"},
+  personnel:{t:"Personnel",s:"Axe 2 — Compétences & RH",btn:"+ Ajouter un salarié",modal:"personnel"},
   habilitations:{t:"Habilitations — Vue transversale",s:"Axe 2 — Conformité MASE",btn:"+ Ajouter habilitation",modal:"habilitation"},
-  formation:{t:"Planning de formation",s:"Axe 2 — §2.3 MASE 2024",btn:"+ Planifier une formation",modal:null},
-  duer:{t:"Document Unique (DUER)",s:"Axe 3 — §3.1 MASE 2024",btn:"+ Nouvelle unité de travail",modal:null},
-  modes_op:{t:"Modes opératoires",s:"Axe 3 — Organisation du travail",btn:"+ Nouveau mode opératoire",modal:null},
+  formation:{t:"Planning de formation",s:"Axe 2 — §2.3 MASE 2024",btn:"+ Planifier une formation",modal:"formation"},
+  duer:{t:"Document Unique (DUER)",s:"Axe 3 — §3.1 MASE 2024",btn:"+ Nouvelle unité de travail",modal:"duer"},
+  modes_op:{t:"Modes opératoires",s:"Axe 3 — Organisation du travail",btn:"+ Nouveau mode opératoire",modal:"mo"},
   vgp:{t:"VGP & Matériels",s:"Axe 3 — Contrôles réglementaires",btn:"+ Ajouter équipement",modal:"vgp"},
-  sous_traitants:{t:"Sous-traitants & Évaluation SSE",s:"Axe 3 — Maîtrise sous-traitance",btn:"+ Nouveau sous-traitant",modal:null},
-  rex:{t:"REX Chantier",s:"Axe 3 & 5 — Capitalisation",btn:"+ Nouveau REX",modal:null},
+  sous_traitants:{t:"Sous-traitants & Évaluation SSE",s:"Axe 3 — Maîtrise sous-traitance",btn:"+ Nouveau sous-traitant",modal:"st"},
+  rex:{t:"REX Chantier",s:"Axe 3 & 5 — Capitalisation",btn:"+ Nouveau REX",modal:"rex"},
   audits:{t:"Audits terrain — Grille SSE-043",s:"Axe 4 — Efficacité · MASE §4",btn:"+ Nouvel audit",modal:"audit"},
   situations:{t:"Situations dangereuses",s:"Axe 4 — Efficacité",btn:"+ Signaler une situation",modal:"sd"},
   bonnes_pratiques:{t:"Bonnes pratiques — Catalogue",s:"Axe 4 — Capitalisation",btn:"+ Ajouter une BP",modal:"bp"},
   accidents:{t:"Accidents & Soins",s:"Axe 4 — Registre réglementaire",btn:"+ Déclarer un accident",modal:"accident"},
-  revue:{t:"Revue de direction — Axe 5",s:"Axe 5 — Amélioration continue · MASE 2024",btn:"Enregistrer la revue",modal:null},
-  epi:{t:"EPI & Consommables",s:"Autres suivis",btn:"+ Ajouter",modal:null},
-  carbone:{t:"Empreinte carbone",s:"Autres suivis",btn:"+ Saisir",modal:null},
-  depenses:{t:"Dépenses sécurité",s:"Autres suivis",btn:"+ Ajouter dépense",modal:null},
-  ressources:{t:"Ressources documentaires",s:"Autres suivis",btn:"+ Ajouter document",modal:null}
+  revue:{t:"Revue de direction — Axe 5",s:"Axe 5 — Amélioration continue · MASE 2024",btn:"Enregistrer la revue",modal:"revue_save"},
+  epi:{t:"EPI & Consommables",s:"Autres suivis",btn:"+ Ajouter EPI",modal:"epi"},
+  carbone:{t:"Empreinte carbone",s:"Autres suivis",btn:"+ Saisir consommation",modal:"carbone"},
+  depenses:{t:"Dépenses sécurité",s:"Autres suivis",btn:"+ Ajouter dépense",modal:"depense"},
+  ressources:{t:"Ressources documentaires",s:"Autres suivis",btn:"+ Ajouter document",modal:"ressource"}
 };
 
 function go(id, el) {
@@ -1683,26 +1898,51 @@ function go(id, el) {
 
 function mainAction() {
   var m = pagesMeta[currentPage];
-  if(m && m.modal) {
+  if(!m) return;
+  if(currentPage === "personnel") {
+    swPerso("nouveau", document.getElementById("ptab-nouveau"));
+    return;
+  }
+  if(currentPage === "revue") {
+    showNotif("Revue de direction enregistree avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
+    return;
+  }
+  if(m.modal) {
     openModal(m.modal);
   } else {
-    showNotif("Disponible dans la version complete.", "#185FA5", "#E6F1FB", "#B5D4F4");
+    showNotif("Fonctionnalite disponible dans la prochaine version.", "#185FA5", "#E6F1FB", "#B5D4F4");
   }
 }
 
 function openModal(type) {
+  if(type === "personnel") { swPerso("nouveau", document.getElementById("ptab-nouveau")); return; }
+  if(type === "revue_save") { showNotif("Revue de direction enregistree !", "#27500A", "#EAF3DE", "#C0DD97"); return; }
   document.querySelectorAll(".modal-section").forEach(function(s){s.style.display="none";});
   var sec = document.getElementById("modal-sec-"+type);
   if(sec) sec.style.display="block";
   var titles = {
     action:"Nouvelle action SSE",habilitation:"Ajouter une habilitation",
     vgp:"Ajouter un equipement VGP",sd:"Signaler une situation dangereuse",
-    accident:"Declarer un accident / soin",bp:"Nouvelle bonne pratique",audit:"Nouvel audit terrain"
+    accident:"Declarer un accident / soin",bp:"Nouvelle bonne pratique",audit:"Nouvel audit terrain",
+    causerie:"Planifier une causerie SSE",comite:"Planifier un comite SSE",
+    objectif:"Ajouter un objectif SSE",indicateurs:"Saisie mensuelle des indicateurs",
+    rex:"Nouveau retour d experience",formation:"Planifier une formation",
+    st:"Nouveau sous-traitant",duer:"Nouvelle unite de travail (DUER)",
+    mo:"Nouveau mode operatoire",diffusion:"Diffuser la Politique SSE",
+    epi:"Ajouter EPI ou consommable",carbone:"Saisir une consommation",
+    depense:"Ajouter une depense SSE",ressource:"Ajouter un document"
   };
   var subs = {
     action:"Plan d'actions - Axe 1",habilitation:"Habilitations - Axe 2",
     vgp:"VGP & Materiels - Axe 3",sd:"Situations dangereuses - Axe 4",
-    accident:"Accidents & Soins - Axe 4",bp:"Bonnes pratiques - Axe 4",audit:"Audits terrain - SSE-043"
+    accident:"Accidents & Soins - Axe 4",bp:"Bonnes pratiques - Axe 4",audit:"Audits terrain - SSE-043",
+    causerie:"Axe 1 - Animation SSE",comite:"Axe 1 - Pilotage systeme",
+    objectif:"Axe 1 - Objectifs MASE 2024",indicateurs:"Axe 1 - Mise a jour auto TF1/TF2/TG",
+    rex:"Axe 3 & 5 - Capitalisation",formation:"Axe 2 - Plan de formation",
+    st:"Axe 3 - Maitrise sous-traitance",duer:"Axe 3 - Document Unique",
+    mo:"Axe 3 - Organisation du travail",diffusion:"Axe 1 - Communication SSE",
+    epi:"Autres suivis",carbone:"Autres suivis - Empreinte carbone",
+    depense:"Autres suivis - Budget SSE",ressource:"Autres suivis - Documentation"
   };
   document.getElementById("modal-title").textContent = titles[type] || "Formulaire";
   document.getElementById("modal-sub").textContent = subs[type] || "";
