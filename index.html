@@ -634,5 +634,193 @@ new Chart(document.getElementById('c3'), {
   options: co
 });
 </script>
+
+<!-- MODAL NOUVELLE ACTION -->
+<div id="modal-overlay" onclick="closeModal()" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:16px;width:620px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.2)">
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:18px 22px;display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <div style="font-size:15px;font-weight:600;color:#fff">Nouvelle action SSE</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">Plan d'actions — Axe 1 · MASE 2024</div>
+      </div>
+      <span onclick="closeModal()" style="font-size:22px;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;padding:4px 8px">×</span>
+    </div>
+    <!-- Body -->
+    <div style="padding:20px 22px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:14px">
+
+      <!-- Référence auto -->
+      <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px">
+        <span style="font-weight:600">Réf. générée automatiquement :</span> PA-2026-020
+        <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 — AV</span>
+      </div>
+
+      <!-- Ligne 1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Origine de l'action *</div>
+          <select style="width:100%">
+            <option>-- Sélectionner --</option>
+            <option>DUER (risque fort)</option>
+            <option>Audit terrain</option>
+            <option>Situation dangereuse</option>
+            <option>REX chantier</option>
+            <option>Accident & Soins</option>
+            <option>VGP expirée</option>
+            <option>Habilitation expirée</option>
+            <option>Causerie SSE</option>
+            <option>Comité de pilotage</option>
+            <option>Indicateurs SSE</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Priorité *</div>
+          <select style="width:100%" id="modal-prior" onchange="updatePriorBadge()">
+            <option>-- Sélectionner --</option>
+            <option value="imm">Immédiate — Risque fort / Urgence</option>
+            <option value="ct">Court terme — Dans le mois</option>
+            <option value="mt">Moyen terme — Dans l'année</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div>
+        <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Description de l'action *</div>
+        <textarea rows="3" placeholder="Décrire précisément l'action à mener..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid #E8E8E8;font-size:12px;font-family:inherit;resize:vertical;outline:none"></textarea>
+      </div>
+
+      <!-- Ligne 2 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Responsable *</div>
+          <select style="width:100%">
+            <option>-- Sélectionner --</option>
+            <option>AV — Alexandra Valentin</option>
+            <option>TM — Tony Martin</option>
+            <option>SP — Sonia Poulingue</option>
+            <option>LM — Laurent Martin</option>
+            <option>SB — Stéphane Blondel</option>
+            <option>DR — David Renard</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Date limite *</div>
+          <input type="date" style="width:100%" value="2026-06-30"/>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Avancement initial</div>
+          <select style="width:100%">
+            <option value="0">0% — Non démarré</option>
+            <option value="25">25% — Démarré</option>
+            <option value="50">50% — En cours</option>
+            <option value="75">75% — Presque terminé</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Budget et lien -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Budget estimé (€)</div>
+          <input type="number" placeholder="Ex: 500" style="width:100%"/>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Lien avec un module</div>
+          <select style="width:100%">
+            <option>-- Aucun --</option>
+            <option>DUER — Unité 2 Chantier</option>
+            <option>VGP — Nacelle</option>
+            <option>Habilitations — BLONDEL S.</option>
+            <option>REX — Chute outil nacelle</option>
+            <option>Situation dangereuse n°4</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Commentaire -->
+      <div>
+        <div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px">Commentaire / Contexte</div>
+        <textarea rows="2" placeholder="Contexte, précisions, observations..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid #E8E8E8;font-size:12px;font-family:inherit;resize:vertical;outline:none"></textarea>
+      </div>
+
+      <!-- Alerte priorité -->
+      <div id="prior-alert" style="display:none;padding:10px 14px;border-radius:8px;font-size:11px;font-weight:500"></div>
+
+    </div>
+    <!-- Footer -->
+    <div style="padding:14px 22px;border-top:1px solid #F0F0F0;display:flex;gap:8px;justify-content:flex-end;background:#F8F9FA">
+      <button onclick="closeModal()" style="font-size:12px;padding:7px 16px;border-radius:8px;border:1px solid #E8E8E8;background:#fff;color:#555;cursor:pointer;font-weight:500">Annuler</button>
+      <button onclick="saveAction()" style="font-size:12px;padding:7px 18px;border-radius:8px;border:none;background:linear-gradient(135deg,#E63946,#F4A261);color:#fff;cursor:pointer;font-weight:600">Enregistrer l'action</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SUCCÈS -->
+<div id="modal-success" style="display:none;position:fixed;top:20px;right:20px;z-index:2000;background:#fff;border:1px solid #C0DD97;border-left:4px solid #2D6A4F;border-radius:12px;padding:16px 20px;box-shadow:0 8px 24px rgba(0,0,0,0.12);max-width:320px">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div style="width:32px;height:32px;border-radius:50%;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">✅</div>
+    <div>
+      <div style="font-size:13px;font-weight:600;color:#27500A">Action créée avec succès !</div>
+      <div style="font-size:11px;color:#aaa;margin-top:2px">PA-2026-020 ajoutée au plan d'actions</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  var overlay = document.getElementById('modal-overlay');
+  overlay.style.display = 'flex';
+}
+
+function closeModal() {
+  var overlay = document.getElementById('modal-overlay');
+  overlay.style.display = 'none';
+  document.getElementById('prior-alert').style.display = 'none';
+}
+
+function updatePriorBadge() {
+  var sel = document.getElementById('modal-prior');
+  var alert = document.getElementById('prior-alert');
+  var val = sel.value;
+  if (val === 'imm') {
+    alert.style.display = 'block';
+    alert.style.background = '#FCEBEB';
+    alert.style.color = '#A32D2D';
+    alert.style.border = '1px solid #F7C1C1';
+    alert.textContent = '⚠ Priorité Immédiate — Cette action sera mise en évidence dans le tableau de bord et signalée lors du prochain Comité SSE.';
+  } else if (val === 'ct') {
+    alert.style.display = 'block';
+    alert.style.background = '#FAEEDA';
+    alert.style.color = '#633806';
+    alert.style.border = '1px solid #FAC775';
+    alert.textContent = '📅 Court terme — Un rappel sera envoyé 7 jours avant la date limite.';
+  } else if (val === 'mt') {
+    alert.style.display = 'block';
+    alert.style.background = '#E6F1FB';
+    alert.style.color = '#185FA5';
+    alert.style.border = '1px solid #B5D4F4';
+    alert.textContent = '📋 Moyen terme — L\'action sera suivie lors des Comités SSE trimestriels.';
+  } else {
+    alert.style.display = 'none';
+  }
+}
+
+function saveAction() {
+  closeModal();
+  var success = document.getElementById('modal-success');
+  success.style.display = 'block';
+  setTimeout(function() {
+    success.style.display = 'none';
+  }, 4000);
+}
+
+// Attach to button
+var btn = document.querySelector('.btn-primary');
+if (btn) {
+  btn.onclick = openModal;
+}
+</script>
 </body>
 </html>
