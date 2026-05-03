@@ -595,19 +595,21 @@ function go(id, el) {
 
 function mainAction() {
   if (currentPage === 'dashboard' || currentPage === 'plan_actions') {
-    openModal();
+    openModal('action');
+  } else if (currentPage === 'habilitations') {
+    openModal('habilitation');
+  } else if (currentPage === 'vgp') {
+    openModal('vgp');
+  } else if (currentPage === 'duer') {
+    openModal('duer');
+  } else if (currentPage === 'indicateurs') {
+    openModal('indicateurs');
+  } else if (currentPage === 'objectifs') {
+    openModal('objectif');
+  } else if (currentPage === 'politique') {
+    openModal('diffusion');
   } else {
-    var msgs = {
-      politique: "Diffusion de la politique SSE - disponible dans la version complete.",
-      objectifs: "Ajout objectif SSE - disponible dans la version complete.",
-      indicateurs: "Saisie donnees du mois - disponible dans la version complete.",
-      habilitations: "Ajout habilitation - disponible dans la version complete.",
-      duer: "Nouvelle unite de travail - disponible dans la version complete.",
-      vgp: "Ajout equipement - disponible dans la version complete.",
-      bientot: "Fonctionnalite disponible dans la version complete."
-    };
-    var msg = msgs[currentPage] || "Disponible dans la version complete.";
-    showNotif(msg, '#185FA5', '#E6F1FB', '#B5D4F4');
+    showNotif("Disponible dans la version complete.", '#185FA5', '#E6F1FB', '#B5D4F4');
   }
 }
 
@@ -676,18 +678,19 @@ new Chart(document.getElementById('c3'), {
     <!-- Header -->
     <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:18px 22px;display:flex;align-items:center;justify-content:space-between">
       <div>
-        <div style="font-size:15px;font-weight:600;color:#fff">Nouvelle action SSE</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">Plan d'actions — Axe 1 · MASE 2024</div>
+        <div id="modal-title" style="font-size:15px;font-weight:600;color:#fff">Nouvelle action SSE</div>
+        <div id="modal-sub" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">Plan d'actions - Axe 1 - MASE 2024</div>
       </div>
-      <span onclick="closeModal()" style="font-size:22px;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;padding:4px 8px">×</span>
+      <span onclick="closeModal()" style="font-size:22px;color:rgba(255,255,255,0.5);cursor:pointer;line-height:1;padding:4px 8px">x</span>
     </div>
     <!-- Body -->
     <div style="padding:20px 22px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:14px">
 
-      <!-- Référence auto -->
+      <!-- SECTION ACTION -->
+      <div class="modal-section" id="modal-sec-action">
       <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px">
-        <span style="font-weight:600">Réf. générée automatiquement :</span> PA-2026-020
-        <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 — AV</span>
+        <span style="font-weight:600">Ref. generee automatiquement :</span> PA-2026-020
+        <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 - AV</span>
       </div>
 
       <!-- Ligne 1 -->
@@ -780,8 +783,144 @@ new Chart(document.getElementById('c3'), {
         <textarea rows="2" placeholder="Contexte, précisions, observations..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid #E8E8E8;font-size:12px;font-family:inherit;resize:vertical;outline:none"></textarea>
       </div>
 
-      <!-- Alerte priorité -->
+      <!-- Alerte priorite -->
       <div id="prior-alert" style="display:none;padding:10px 14px;border-radius:8px;font-size:11px;font-weight:500"></div>
+      </div><!-- end modal-sec-action -->
+
+      <!-- SECTION HABILITATION -->
+      <div class="modal-section" id="modal-sec-habilitation" style="display:none">
+        <div style="padding:8px 12px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A;margin-bottom:4px">
+          Ref. generee : HAB-2026-031 &mdash; 03/05/2026 &mdash; AV
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Salarie concerne *</div>
+          <select style="width:100%"><option>-- Selectionner --</option><option>BLONDEL Stephane</option><option>MARTIN Laurent</option><option>RENARD David</option><option>GIRARD Pierre</option><option>DUPONT Alexis</option><option>MOREAU Julien</option></select></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Type d'habilitation *</div>
+          <select style="width:100%"><option>-- Selectionner --</option><option>CACES R372</option><option>CACES R489</option><option>CACES R490</option><option>SST - Sauveteur Secouriste</option><option>Habilitation electrique B0</option><option>Habilitation electrique B1</option><option>ATEX</option><option>Travail en hauteur</option><option>ARI</option><option>Autorisation de conduite</option><option>Carte conducteur G2</option><option>Visite medicale</option><option>AIPR</option><option>Autre</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date obtention *</div><input type="date" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date expiration *</div><input type="date" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Organisme</div><input type="text" placeholder="Ex: SOCOTEC, APAVE..." style="width:100%"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">N° certificat / carte</div><input type="text" placeholder="Ex: CACES-2025-0089" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Alerte avant expiration</div>
+          <select style="width:100%"><option>30 jours avant</option><option>60 jours avant</option><option>90 jours avant</option></select></div>
+        </div>
+        <div style="margin-top:12px"><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Observations</div>
+        <textarea rows="2" placeholder="Ex: Recyclage effectue, nouvelle categorie obtenue..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid #E8E8E8;font-size:12px;font-family:inherit;resize:vertical;outline:none"></textarea></div>
+        <div style="margin-top:10px;padding:10px 14px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          Une alerte automatique sera generee dans le tableau de bord et dans le planning de formation avant l'expiration.
+        </div>
+      </div><!-- end habilitation -->
+
+      <!-- SECTION VGP -->
+      <div class="modal-section" id="modal-sec-vgp" style="display:none">
+        <div style="padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806;margin-bottom:4px">
+          Ref. generee : VGP-2026-036 &mdash; 03/05/2026 &mdash; AV
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Categorie *</div>
+          <select style="width:100%"><option>-- Selectionner --</option><option>Vehicules et Engins</option><option>Levage et Manutention</option><option>Electricite</option><option>Appareils sous pression</option><option>EPI a verification periodique</option><option>Incendie</option><option>Protection collective</option></select></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Designation *</div><input type="text" placeholder="Ex: Nacelle elevatrice, Elingues lot 5..." style="width:100%"/></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">N° serie / Immatriculation</div><input type="text" placeholder="Ex: NAC-2026-001" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Frequence legale</div>
+          <select style="width:100%"><option>6 mois</option><option>1 an</option><option>2 ans</option><option>5 ans</option><option>Avant chaque utilisation</option></select></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Organisme verificateur</div>
+          <select style="width:100%"><option>APAVE</option><option>Bureau Veritas</option><option>SOCOTEC</option><option>DEKRA</option><option>DREAL</option><option>Interne</option><option>Autre</option></select></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Derniere VGP</div><input type="date" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Prochaine VGP</div><input type="date" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:#FCEBEB;border-radius:8px;font-size:11px;color:#A32D2D">
+          Une alerte automatique sera generee 30, 60 et 90 jours avant l'expiration. Si la VGP expire, l'equipement sera marque comme immobilise.
+        </div>
+      </div><!-- end vgp -->
+
+      <!-- SECTION DUER -->
+      <div class="modal-section" id="modal-sec-duer" style="display:none">
+        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:4px">
+          Ref. generee : DUER-2026-006 &mdash; 03/05/2026 &mdash; AV
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Nom de l'unite de travail *</div><input type="text" placeholder="Ex: Chantier manutention, Atelier soudure..." style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Personnes concernees *</div><input type="text" placeholder="Ex: Conducteurs PL, Soudeurs..." style="width:100%"/></div>
+        </div>
+        <div style="margin-top:12px"><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Description de l'unite de travail</div>
+        <textarea rows="2" placeholder="Decrire les activites principales de cette unite de travail..." style="width:100%;padding:9px 12px;border-radius:8px;border:1px solid #E8E8E8;font-size:12px;font-family:inherit;resize:vertical;outline:none"></textarea></div>
+        <div style="margin-top:10px;padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5">
+          La base de donnees des 45 classes de dangers sera proposee automatiquement pour cette nouvelle unite de travail.
+        </div>
+      </div><!-- end duer -->
+
+      <!-- SECTION INDICATEURS -->
+      <div class="modal-section" id="modal-sec-indicateurs" style="display:none">
+        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">
+          Saisie des indicateurs SSE &mdash; Mois de Mai 2026
+        </div>
+        <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Systeme SSE</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">Causeries realisees</div><input type="number" placeholder="0" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">Visites terrain</div><input type="number" placeholder="0" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">Situations dang. remontees</div><input type="number" placeholder="0" style="width:100%"/></div>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Accidentologie</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">Heures travaillees</div><input type="number" placeholder="0" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">AT avec arret</div><input type="number" placeholder="0" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px">AT sans arret</div><input type="number" placeholder="0" style="width:100%"/></div>
+        </div>
+        <div style="padding:10px 14px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A">
+          TF1, TF2 et TG seront calcules automatiquement apres validation. Les donnees alimenteront aussi les graphiques du tableau de bord.
+        </div>
+      </div><!-- end indicateurs -->
+
+      <!-- SECTION OBJECTIF -->
+      <div class="modal-section" id="modal-sec-objectif" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Domaine *</div>
+          <select style="width:100%"><option>Securite</option><option>Sante</option><option>Environnement</option><option>Pilotage systeme</option></select></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Type d'indicateur</div>
+          <select style="width:100%"><option>Resultat</option><option>Suivi</option><option>Systeme</option></select></div>
+        </div>
+        <div style="margin-top:12px"><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Objectif *</div>
+        <input type="text" placeholder="Ex: 100% du personnel aux causeries mensuelles" style="width:100%"/></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px">
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Valeur depart N-1</div><input type="text" placeholder="Ex: 73%" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Cible chiffree *</div><input type="text" placeholder="Ex: 100%" style="width:100%"/></div>
+          <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date echeance *</div><input type="date" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px;padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5">
+          Les badges SMART seront verifies automatiquement. L'objectif sera relie a la politique SSE.
+        </div>
+      </div><!-- end objectif -->
+
+      <!-- SECTION DIFFUSION -->
+      <div class="modal-section" id="modal-sec-diffusion" style="display:none">
+        <div style="padding:12px 14px;background:#F8F9FA;border-radius:10px;font-size:12px;color:#555;line-height:1.6;margin-bottom:14px">
+          Diffuser la politique SSE 2026 a l'ensemble du personnel conform&eacute;ment &agrave; l'exigence §1.2.3 du r&eacute;f&eacute;rentiel MASE 2024.
+        </div>
+        <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">Destinataires *</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+          <label style="display:flex;align-items:center;gap:10px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Personnel organique (CDI/CDD) — 6 salaries</label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Personnel temporaire / Interimaires</label>
+          <label style="display:flex;align-items:center;gap:10px;font-size:12px;padding:8px 12px;background:#F8F9FA;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Sous-traitants</label>
+        </div>
+        <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Mode de diffusion</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 12px;border:1px solid #E8E8E8;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Causerie SSE</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 12px;border:1px solid #E8E8E8;border-radius:8px;cursor:pointer"><input type="checkbox" checked/> Affichage atelier</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 12px;border:1px solid #E8E8E8;border-radius:8px;cursor:pointer"><input type="checkbox"/> Email</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 12px;border:1px solid #E8E8E8;border-radius:8px;cursor:pointer"><input type="checkbox"/> Remise en main propre</label>
+        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A">
+          La diffusion sera tracee automatiquement et le statut §1.2.3 sera mis a jour dans la fiche de conformite MASE.
+        </div>
+      </div><!-- end diffusion -->
 
     </div>
     <!-- Footer -->
@@ -804,7 +943,37 @@ new Chart(document.getElementById('c3'), {
 </div>
 
 <script>
-function openModal() {
+function openModal(type) {
+  var type = type || 'action';
+  // Hide all form sections
+  var sections = document.querySelectorAll('.modal-section');
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].style.display = 'none';
+  }
+  // Show correct section
+  var sec = document.getElementById('modal-sec-' + type);
+  if (sec) sec.style.display = 'block';
+  // Update title
+  var titles = {
+    action: 'Nouvelle action SSE',
+    habilitation: 'Ajouter une habilitation',
+    vgp: 'Ajouter un equipement VGP',
+    duer: 'Nouvelle unite de travail',
+    indicateurs: 'Saisir les donnees du mois',
+    objectif: 'Ajouter un objectif SSE',
+    diffusion: 'Diffuser la politique SSE'
+  };
+  var subs = {
+    action: "Plan d'actions - Axe 1 - MASE 2024",
+    habilitation: "Habilitations - Axe 2 - MASE 2024",
+    vgp: "VGP & Materiels - Axe 3 - MASE 2024",
+    duer: "Document Unique - Axe 3 - MASE 2024",
+    indicateurs: "Indicateurs SSE - Axe 1 - MASE 2024",
+    objectif: "Objectifs SSE - Axe 1 - MASE 2024",
+    diffusion: "Politique SSE - Axe 1 - MASE 2024"
+  };
+  document.getElementById('modal-title').textContent = titles[type] || 'Formulaire';
+  document.getElementById('modal-sub').textContent = subs[type] || '';
   var overlay = document.getElementById('modal-overlay');
   overlay.style.display = 'flex';
 }
