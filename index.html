@@ -3355,4 +3355,47 @@ function printQR() {
   win.document.write("<div class='hab ko'><strong>ARI</strong> - EXPIREE 28/03/2026 - Non autorise</div>");
   win.document.write("<div class='qr'><img src='"+canvas.toDataURL()+"' style='width:150px;height:150px'/><div style='font-size:11px;color:#aaa;margin-top:8px'>Scannez pour verifier</div></div>");
   win.document.write("<div class='footer'>PAS-2026-SB-001 - SSE EMJ - "+new Date().toLocaleDateString("fr-FR")+"</div>");
-  win.document.write("</body></html>
+  win.document.write("</body></html>");
+  win.document.close();
+  setTimeout(function(){ win.print(); }, 500);
+}
+
+function printPage() { window.print(); }
+
+function selST(el, key, nom, statut) {
+  document.querySelectorAll("#page-sous_traitants div[onclick]").forEach(function(i){ i.style.borderLeftColor="transparent"; i.style.background=""; });
+  var colors = {valide:"#2D6A4F", surveiller:"#F4A261", suspendu:"#E63946"};
+  el.style.borderLeftColor = colors[statut] || "#E63946";
+  el.style.background = statut==="suspendu" ? "#FFF5F5" : "#F5FFF8";
+}
+
+function setEPIMode(btn, mode) {
+  btn.parentNode.querySelectorAll("button").forEach(function(b){ b.style.borderColor="#E8E8E8"; b.style.background="#fff"; b.style.color="#555"; });
+  var colors = {stock:["#E63946","#FCEBEB","#A32D2D"], remise:["#2D6A4F","#EAF3DE","#27500A"], retrait:["#F4A261","#FAEEDA","#633806"]};
+  var c = colors[mode];
+  if(c){ btn.style.borderColor=c[0]; btn.style.background=c[1]; btn.style.color=c[2]; }
+}
+
+function swEPI(tab, el) {
+  ["stock","dotation","conso","alertes"].forEach(function(t){ var d=document.getElementById("epi-"+t); if(d) d.style.display="none"; });
+  document.querySelectorAll("#page-epi .tab").forEach(function(t){ t.classList.remove("active"); });
+  var sec = document.getElementById("epi-"+tab);
+  if(sec) sec.style.display="block";
+  if(el) el.classList.add("active");
+}
+
+function selEPISal(el, nom, initials, bg, color) {
+  el.parentNode.querySelectorAll("div[onclick]").forEach(function(d){ d.style.borderLeftColor="transparent"; d.style.background=""; });
+  el.style.borderLeftColor = color;
+  el.style.background = "#F5FFF8";
+  var av=document.getElementById("epi-sal-av"); var name=document.getElementById("epi-sal-name");
+  if(av){ av.textContent=initials; av.style.background=bg; av.style.color=color; }
+  if(name) name.textContent=nom;
+}
+
+window.addEventListener("load", function(){
+  initCharts("indicateurs");
+});
+</script>
+</body>
+</html>
