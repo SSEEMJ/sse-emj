@@ -5,6 +5,7 @@ r">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSE EMJ - Votre Solution Logiciel SSE</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -4875,6 +4876,241 @@ Maîtriser notre impact environnemental</textarea>
 </div>
 
 <script>
+// ============================================================
+// SUPABASE CONFIG
+// ============================================================
+var SUPABASE_URL = "https://uveulvfgnzwihvsrgknn.supabase.co";
+var SUPABASE_KEY = "sb_publishable_yXmPC9Rbet_1hGG4lQl5nw_9T5vSqBQ";
+var ENTREPRISE_ID = "00000000-0000-0000-0000-000000000001";
+var sb = null;
+
+// Init Supabase
+function initSupabase() {
+  try {
+    sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    console.log("Supabase connecte !");
+    loadAllData();
+  } catch(e) {
+    console.warn("Supabase non disponible:", e);
+  }
+}
+
+// ============================================================
+// CHARGEMENT DES DONNEES
+// ============================================================
+async function loadAllData() {
+  if(!sb) return;
+  try {
+    await loadActions();
+    await loadSalaries();
+    await loadHabilitations();
+    await loadCauseries();
+    await loadAccidents();
+    await loadSD();
+    await loadAudits();
+    await loadVGP();
+    await loadIndicateurs();
+    console.log("Donnees chargees !");
+  } catch(e) {
+    console.warn("Erreur chargement:", e);
+  }
+}
+
+// ============================================================
+// ACTIONS
+// ============================================================
+async function loadActions() {
+  if(!sb) return;
+  var res = await sb.from("actions").select("*").eq("entreprise_id", ENTREPRISE_ID).order("created_at", {ascending: false});
+  if(res.error) { console.warn("Actions:", res.error); return; }
+  window._actions = res.data || [];
+  renderActions();
+}
+
+async function saveAction(data) {
+  if(!sb) { showNotif("Mode demo - Supabase non connecte", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  data.reference = "PA-2026-" + String(Date.now()).slice(-3);
+  var res = await sb.from("actions").insert([data]);
+  if(res.error) { showNotif("Erreur sauvegarde action", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Action enregistree dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadActions();
+}
+
+function renderActions() {
+  // Mettre a jour les KPI plan d actions
+  var total = window._actions ? window._actions.length : 0;
+  var enRetard = window._actions ? window._actions.filter(function(a){ return a.avancement === "0" && a.delai && new Date(a.delai) < new Date(); }).length : 0;
+  var cloturees = window._actions ? window._actions.filter(function(a){ return a.avancement === "cloturee" || a.avancement === "1"; }).length : 0;
+  // Update KPI displays if on plan_actions page
+  console.log("Actions:", total, "total,", enRetard, "en retard,", cloturees, "cloturees");
+}
+
+// ============================================================
+// SALARIES
+// ============================================================
+async function loadSalaries() {
+  if(!sb) return;
+  var res = await sb.from("salaries").select("*").eq("entreprise_id", ENTREPRISE_ID).eq("actif", true).order("nom");
+  if(res.error) { console.warn("Salaries:", res.error); return; }
+  window._salaries = res.data || [];
+  console.log("Salaries charges:", window._salaries.length);
+}
+
+async function saveSalarie(data) {
+  if(!sb) { showNotif("Mode demo - Supabase non connecte", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  var res = await sb.from("salaries").insert([data]);
+  if(res.error) { showNotif("Erreur sauvegarde salarie", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Salarie enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadSalaries();
+}
+
+// ============================================================
+// HABILITATIONS
+// ============================================================
+async function loadHabilitations() {
+  if(!sb) return;
+  var res = await sb.from("habilitations").select("*, salaries(nom, prenom)").order("date_expiration");
+  if(res.error) { console.warn("Habilitations:", res.error); return; }
+  window._habilitations = res.data || [];
+  var expir = window._habilitations.filter(function(h){ return h.date_expiration && new Date(h.date_expiration) < new Date(); }).length;
+  console.log("Habilitations chargees:", window._habilitations.length, "dont", expir, "expirees");
+}
+
+async function saveHabilitation(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  var res = await sb.from("habilitations").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Habilitation enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadHabilitations();
+}
+
+// ============================================================
+// CAUSERIES
+// ============================================================
+async function loadCauseries() {
+  if(!sb) return;
+  var res = await sb.from("causeries").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_causerie", {ascending: false});
+  if(res.error) { console.warn("Causeries:", res.error); return; }
+  window._causeries = res.data || [];
+  console.log("Causeries chargees:", window._causeries.length);
+}
+
+async function saveCauserie(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  var res = await sb.from("causeries").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Causerie enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadCauseries();
+}
+
+// ============================================================
+// ACCIDENTS
+// ============================================================
+async function loadAccidents() {
+  if(!sb) return;
+  var res = await sb.from("accidents").select("*, salaries(nom, prenom)").eq("entreprise_id", ENTREPRISE_ID).order("date_acc", {ascending: false});
+  if(res.error) { console.warn("Accidents:", res.error); return; }
+  window._accidents = res.data || [];
+  console.log("Accidents charges:", window._accidents.length);
+}
+
+async function saveAccident(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  var res = await sb.from("accidents").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Accident declare dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadAccidents();
+}
+
+// ============================================================
+// SITUATIONS DANGEREUSES
+// ============================================================
+async function loadSD() {
+  if(!sb) return;
+  var res = await sb.from("situations_dangereuses").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_sd", {ascending: false});
+  if(res.error) { console.warn("SD:", res.error); return; }
+  window._sd = res.data || [];
+  console.log("SD chargees:", window._sd.length);
+}
+
+async function saveSD(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  data.reference = "SD-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-3);
+  var res = await sb.from("situations_dangereuses").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Situation dangereuse enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadSD();
+}
+
+// ============================================================
+// AUDITS
+// ============================================================
+async function loadAudits() {
+  if(!sb) return;
+  var res = await sb.from("audits").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_audit", {ascending: false});
+  if(res.error) { console.warn("Audits:", res.error); return; }
+  window._audits = res.data || [];
+  console.log("Audits charges:", window._audits.length);
+}
+
+async function saveAudit(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  data.reference = "AUD-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-3);
+  var res = await sb.from("audits").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Audit enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadAudits();
+}
+
+// ============================================================
+// VGP
+// ============================================================
+async function loadVGP() {
+  if(!sb) return;
+  var res = await sb.from("vgp").select("*").eq("entreprise_id", ENTREPRISE_ID).order("prochaine_vgp");
+  if(res.error) { console.warn("VGP:", res.error); return; }
+  window._vgp = res.data || [];
+  console.log("VGP charges:", window._vgp.length);
+}
+
+async function saveVGP(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  var res = await sb.from("vgp").insert([data]);
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Equipement enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadVGP();
+}
+
+// ============================================================
+// INDICATEURS
+// ============================================================
+async function loadIndicateurs() {
+  if(!sb) return;
+  var res = await sb.from("indicateurs").select("*").eq("entreprise_id", ENTREPRISE_ID).order("mois");
+  if(res.error) { console.warn("Indicateurs:", res.error); return; }
+  window._indicateurs = res.data || [];
+  console.log("Indicateurs charges:", window._indicateurs.length, "mois");
+}
+
+async function saveIndicateur(data) {
+  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
+  data.entreprise_id = ENTREPRISE_ID;
+  var res = await sb.from("indicateurs").upsert([data], {onConflict: "entreprise_id,mois"});
+  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  showNotif("Indicateurs sauvegardes dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
+  await loadIndicateurs();
+}
+
+// ============================================================
+// SAVE MODAL - connecte a Supabase
+// ============================================================
 var currentPage = "dashboard";
 
 function handleAutre(sel, inputId) {
@@ -4980,8 +5216,75 @@ function openModal(type) {
 function closeModal() { document.getElementById("modal-overlay").style.display = "none"; }
 
 function saveModal() {
+  var sec = document.querySelector(".modal-section[style*='block']");
+  if(!sec) sec = document.querySelector(".modal-section[style*='display: block']");
+  var type = sec ? sec.id.replace("modal-sec-","") : "";
+
+  // Collect form data
+  var inputs = sec ? sec.querySelectorAll("input:not([type=checkbox]):not([type=radio]), select, textarea") : [];
+  var data = {};
+  inputs.forEach(function(inp) {
+    if(inp.id) data[inp.id] = inp.value;
+  });
+
+  // Route to correct save function
+  if(type === "action") {
+    saveAction({
+      description: data[""] || sec.querySelector("textarea") ? sec.querySelectorAll("textarea")[0].value : "",
+      type_action: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      domaine: sec.querySelectorAll("select")[1] ? sec.querySelectorAll("select")[1].value : "",
+      origine: sec.querySelectorAll("select")[2] ? sec.querySelectorAll("select")[2].value : "",
+      pilote: sec.querySelectorAll("select")[6] ? sec.querySelectorAll("select")[6].value : "",
+      avancement: sec.querySelectorAll("select")[7] ? sec.querySelectorAll("select")[7].value : "0",
+    });
+  } else if(type === "sd") {
+    saveSD({
+      signalant: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      domaine: sec.querySelectorAll("select")[1] ? sec.querySelectorAll("select")[1].value : "",
+      description: sec.querySelector("textarea") ? sec.querySelector("textarea").value : "",
+      lieu: sec.querySelectorAll("input[type=text]")[0] ? sec.querySelectorAll("input")[1].value : "",
+    });
+  } else if(type === "accident") {
+    saveAccident({
+      type_acc: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      salarie_id: null,
+      lieu: sec.querySelectorAll("input")[1] ? sec.querySelectorAll("input")[1].value : "",
+      nature: sec.querySelectorAll("select")[2] ? sec.querySelectorAll("select")[2].value : "",
+      description: sec.querySelector("textarea") ? sec.querySelector("textarea").value : "",
+    });
+  } else if(type === "causerie") {
+    saveCauserie({
+      theme: sec.querySelectorAll("input")[0] ? sec.querySelectorAll("input")[0].value : "",
+      type_causerie: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      animateur: sec.querySelectorAll("select")[1] ? sec.querySelectorAll("select")[1].value : "",
+    });
+  } else if(type === "audit") {
+    saveAudit({
+      chantier: sec.querySelectorAll("input")[1] ? sec.querySelectorAll("input")[1].value : "",
+      auditeur: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      score: sec.querySelectorAll("input[type=number]")[0] ? parseInt(sec.querySelectorAll("input[type=number]")[0].value) : 0,
+      nc_observees: sec.querySelectorAll("textarea")[1] ? sec.querySelectorAll("textarea")[1].value : "",
+    });
+  } else if(type === "vgp") {
+    saveVGP({
+      designation: sec.querySelectorAll("input")[0] ? sec.querySelectorAll("input")[0].value : "",
+      type_mat: sec.querySelectorAll("select")[0] ? sec.querySelectorAll("select")[0].value : "",
+      organisme: sec.querySelectorAll("select")[1] ? sec.querySelectorAll("select")[1].value : "",
+      prochaine_vgp: sec.querySelectorAll("input[type=date]")[1] ? sec.querySelectorAll("input[type=date]")[1].value : null,
+    });
+  } else if(type === "habilitation") {
+    saveHabilitation({
+      type_hab: sec.querySelectorAll("select")[1] ? sec.querySelectorAll("select")[1].value : "",
+      organisme: sec.querySelectorAll("input")[0] ? sec.querySelectorAll("input")[0].value : "",
+      date_expiration: sec.querySelectorAll("input[type=date]")[1] ? sec.querySelectorAll("input[type=date]")[1].value : null,
+    });
+  } else {
+    // Pour les autres types : notification simple
+    closeModal();
+    showNotif("Enregistre avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
+    return;
+  }
   closeModal();
-  showNotif("Enregistre avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
 }
 
 function showNotif(msg, color, bg, border) {
@@ -5613,6 +5916,7 @@ function initCarboneCharts() {
 }
 
 window.addEventListener("load", function(){
+  initSupabase();
   initCharts("indicateurs");
   initCarboneCharts();
   initDepensesChart();
