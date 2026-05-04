@@ -266,6 +266,8 @@ textarea{resize:vertical;line-height:1.5}
 
   <!-- PLAN D'ACTIONS -->
   <div class="page" id="page-plan_actions">
+
+    <!-- KPI -->
     <div class="g5" style="margin-bottom:12px">
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Actions Imm&eacute;diates</div><div class="kv" style="color:#E63946">7</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Urgentes</span></div>
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Actions Correctives</div><div class="kv" style="color:#378ADD">12</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Causes trait&eacute;es</span></div>
@@ -274,17 +276,93 @@ textarea{resize:vertical;line-height:1.5}
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Cl&ocirc;tur&eacute;es</div><div class="kv" style="color:#2D6A4F">8</div><span class="kt" style="background:#EAF3DE;color:#27500A">42% ✓</span></div>
     </div>
 
-    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center">
-      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les types</option><option>Actions Imm&eacute;diates</option><option>Actions Correctives</option><option>Actions Pr&eacute;ventives</option><option>Actions Diff&eacute;r&eacute;es</option></select>
-      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Toutes les origines</option><option>Politique SSE</option><option>Objectifs SSE</option><option>Indicateurs</option><option>Visite &amp; Audit Terrain</option><option>Causerie &amp; 1/4h s&eacute;curit&eacute;</option><option>Communication et Affichage</option><option>Accident &amp; Incident</option><option>Bilan Pilotage &amp; Comit&eacute; SSE &amp; RD</option><option>R&eacute;glementation &amp; Conformit&eacute;</option><option>Audit Syst&egrave;me</option><option>Non-Conformit&eacute;</option><option>Contr&ocirc;le Mat&eacute;riels &amp; VGP</option><option>R&eacute;clamations Client</option><option>Retours Exp&eacute;riences</option><option>Ressources Humaines</option><option>Sous-traitants</option><option>Situation Dangereuse</option><option>Autres</option></select>
-      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les avancements</option><option>0%</option><option>25%</option><option>50%</option><option>75%</option><option>100%</option><option>Cl&ocirc;tur&eacute;e</option><option>Efficace</option><option>Abandonn&eacute;</option></select>
-      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les pilotes</option><option>AV</option><option>SP</option><option>LD</option></select>
-      <button class="btn-primary" onclick="openModal('action')" style="margin-left:auto;font-size:11px">+ Saisir une action</button>
+    <!-- Filtres enrichis -->
+    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 14px;margin-bottom:12px">
+      <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px">Filtres &amp; Recherche</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Tous les types</option>
+          <option>Actions Imm&eacute;diates</option>
+          <option>Actions Correctives</option>
+          <option>Actions Pr&eacute;ventives</option>
+          <option>Actions Diff&eacute;r&eacute;es</option>
+        </select>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Toutes les origines</option>
+          <option>Politique SSE</option>
+          <option>Objectifs SSE</option>
+          <option>Indicateurs</option>
+          <option>Visite &amp; Audit Terrain</option>
+          <option>Causerie &amp; 1/4h s&eacute;curit&eacute;</option>
+          <option>Communication et Affichage</option>
+          <option>Accident &amp; Incident</option>
+          <option>Bilan Pilotage &amp; Comit&eacute; SSE &amp; RD</option>
+          <option>R&eacute;glementation &amp; Conformit&eacute;</option>
+          <option>Audit Syst&egrave;me</option>
+          <option>Non-Conformit&eacute;</option>
+          <option>Contr&ocirc;le Mat&eacute;riels &amp; VGP</option>
+          <option>R&eacute;clamations Client</option>
+          <option>Retours Exp&eacute;riences</option>
+          <option>Ressources Humaines</option>
+          <option>Sous-traitants</option>
+          <option>Situation Dangereuse</option>
+          <option>Autres</option>
+        </select>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Tous les avancements</option>
+          <option>0%</option>
+          <option>25%</option>
+          <option>50%</option>
+          <option>75%</option>
+          <option>100%</option>
+          <option>Cl&ocirc;tur&eacute;e</option>
+          <option>Efficace</option>
+          <option>Abandonn&eacute;</option>
+        </select>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Tous les domaines</option>
+          <option>S&eacute;curit&eacute;</option>
+          <option>Sant&eacute;</option>
+          <option>Environnement</option>
+          <option>Qualit&eacute;</option>
+          <option>S&eacute;curit&eacute; et Sant&eacute;</option>
+          <option>Sant&eacute; Environnement</option>
+          <option>Syst&egrave;me</option>
+        </select>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Tous les pilotes</option>
+          <option>AV</option>
+          <option>SP</option>
+          <option>LD</option>
+          <option>SP/LR</option>
+        </select>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Toutes les ressources</option>
+          <option>Humains</option>
+          <option>Organisationnels</option>
+          <option>Techniques</option>
+          <option>Humains et Organisationnels</option>
+          <option>Organisationnels et Techniques</option>
+          <option>Techniques et Humains</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input placeholder="&#128269; Rechercher dans les actions, moyens, commentaires..." style="font-size:11px;padding:6px 12px;border-radius:7px;border:1px solid #E8E8E8;width:340px"/>
+        <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+          <option>Toute l&apos;efficacit&eacute;</option>
+          <option>Oui</option>
+          <option>Partielle</option>
+          <option>Non</option>
+          <option>Non &eacute;valu&eacute;e</option>
+        </select>
+        <div style="font-size:10px;color:#aaa;margin-left:4px">26 actions &mdash; TS-02 V5</div>
+        <button onclick="openModal('action')" class="btn-primary" style="margin-left:auto;font-size:11px;padding:7px 16px">+ Saisir une action</button>
+      </div>
     </div>
 
     <div style="overflow-x:auto;border-radius:12px;border:1px solid #EBEBEB;background:#fff">
       <table style="width:100%;border-collapse:collapse;font-size:11px;min-width:1400px">
-        <tr style="background:#1A1A2E">
+        <tr style="background:#1A1A2E;color:#fff">
           <th style="padding:9px 8px;color:#fff;font-size:10px;font-weight:600;text-align:center;white-space:nowrap">Auteur</th>
           <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;white-space:nowrap">Donn&eacute;es d&apos;entr&eacute;es</th>
           <th style="padding:9px 6px;color:#fff;font-size:10px;font-weight:600;text-align:center">N&deg;</th>
