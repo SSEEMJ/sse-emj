@@ -863,7 +863,108 @@ textarea{resize:vertical;line-height:1.5}
     </div>
   </div>
 
-  <!-- COMITE -->
+  <!-- DEPENSE -->
+      <div class="modal-section" id="modal-sec-depense" style="display:none">
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-dep-cat')">
+              <option>-- S&eacute;lectionner --</option>
+              <option>EPI &amp; &Eacute;quipements</option>
+              <option>Formations &amp; Habilitations</option>
+              <option>Contr&ocirc;les &amp; VGP</option>
+              <option>Audit MASE</option>
+              <option>Signalisation &amp; Balisage</option>
+              <option>Mat&eacute;riel SSE</option>
+              <option>Sous-traitance SSE</option>
+              <option>Logiciel SSE</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-dep-cat"><input placeholder="Pr&eacute;ciser la cat&eacute;gorie..."/></div>
+          </div>
+          <div><div class="fl">Fournisseur</div><input placeholder="Ex: APAVE, DELTA PLUS..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description *</div><input placeholder="Ex: Formation travail en hauteur &mdash; 3 salari&eacute;s" style="width:100%"/></div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Montant HT (&euro;) *</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+          <div><div class="fl">TVA (%)</div><select style="width:100%"><option>20%</option><option>10%</option><option>5,5%</option><option>0%</option></select></div>
+          <div><div class="fl">Li&eacute; &agrave; (r&eacute;f&eacute;rence)</div><input placeholder="Ex: PA-002, HAB-2026..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">N&deg; facture / bon de commande</div><input placeholder="Ex: FAC-2026-0042" style="width:100%"/></div>
+        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5">
+          La d&eacute;pense sera ajout&eacute;e au tableau et au graphique de r&eacute;partition automatiquement.
+        </div>
+      </div>
+
+      <!-- RESSOURCE -->
+      <div class="modal-section" id="modal-sec-ressource" style="display:none">
+        <div class="fg2" style="margin-bottom:10px">
+          <div><div class="fl">Titre du document *</div><input placeholder="Ex: Proc&eacute;dure levage grue auxiliaire" style="width:100%"/></div>
+          <div><div class="fl">R&eacute;f&eacute;rence *</div><input placeholder="Ex: MO-LEV-2026-001" style="width:100%"/></div>
+        </div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%">
+              <option>Politique &amp; Objectifs SSE</option>
+              <option>Formulaires MASE</option>
+              <option>Proc&eacute;dures &amp; Modes op&eacute;ratoires</option>
+              <option>Grilles d&apos;audit</option>
+              <option>Passeports &amp; Habilitations</option>
+              <option>Causeries</option>
+              <option>Accidents &amp; Soins</option>
+              <option>Sous-traitants</option>
+              <option>Indicateurs &amp; Rapports</option>
+            </select>
+          </div>
+          <div><div class="fl">Format</div>
+            <select style="width:100%">
+              <option>Word (.docx) &mdash; modifiable</option>
+              <option>Excel (.xlsx) &mdash; modifiable</option>
+              <option>PDF &mdash; lecture seule</option>
+            </select>
+          </div>
+          <div><div class="fl">Version</div><input placeholder="Ex: V1, V2..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description courte</div><input placeholder="Ex: Formulaire &eacute;margement avec signature" style="width:100%"/></div>
+        <div style="padding:12px;background:#F8F9FA;border-radius:8px;border:2px dashed #E8E8E8;text-align:center;cursor:pointer;margin-bottom:10px" onclick="alert('Upload de fichiers disponible dans la version avec Supabase. Notez ici la r&eacute;f&eacute;rence du document.')">
+          <div style="font-size:24px;margin-bottom:4px">&#128196;</div>
+          <div style="font-size:12px;color:#aaa;font-weight:500">Glisser-d&eacute;poser ou cliquer pour uploader</div>
+          <div style="font-size:10px;color:#ccc;margin-top:2px">Upload disponible avec base de donn&eacute;es Supabase</div>
+        </div>
+        <div style="padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          &#128161; Dans la version compl&egrave;te, les clients pourront t&eacute;l&eacute;charger le document Word avec leur logo automatiquement ins&eacute;r&eacute;.
+        </div>
+      </div>
+
+      <!-- CARBONE -->
+      <div class="modal-section" id="modal-sec-carbone" style="display:none">
+        <div style="padding:8px 12px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A;margin-bottom:12px">
+          Saisie des consommations &mdash; <strong>Mai 2026</strong> &mdash; CO2 calcul&eacute; automatiquement selon facteurs ADEME 2024
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#E63946;text-transform:uppercase;margin-bottom:8px;padding:5px 10px;background:#FFF5F5;border-radius:6px;border-left:3px solid #E63946">Energie &amp; Transport</div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">Gasoil camions PL (L)</div><input type="number" placeholder="Ex: 510" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+          <div><div class="fl">Gasoil VL / utilitaires (L)</div><input type="number" placeholder="Ex: 95" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+          <div><div class="fl">Essence v&eacute;hicules (L)</div><input type="number" placeholder="Ex: 45 &mdash; 0 si aucun" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,35 kg CO2/L</div></div>
+          <div><div class="fl">GPL (L)</div><input type="number" placeholder="Ex: 0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">1,86 kg CO2/L</div></div>
+          <div><div class="fl">Electricit&eacute; atelier + bureau (kWh)</div><input type="number" placeholder="Ex: 710" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,052 kg CO2/kWh</div></div>
+          <div><div class="fl">Gasoil engins / groupe &eacute;lectrog&egrave;ne (L)</div><input type="number" placeholder="Ex: 0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#2D6A4F;text-transform:uppercase;margin-bottom:8px;padding:5px 10px;background:#EAF3DE;border-radius:6px;border-left:3px solid #2D6A4F">D&eacute;chets &amp; Consommables</div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">D&eacute;chets industriels banals &mdash; DIB (kg)</div><input type="number" placeholder="Ex: 62 &mdash; 0 si peu" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,449 kg CO2/kg</div></div>
+          <div><div class="fl">D&eacute;chets dangereux (kg)</div><input type="number" placeholder="Ex: 13 &mdash; 0 si aucun" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,606 kg CO2/kg</div></div>
+          <div><div class="fl">Huiles usag&eacute;es (L)</div><input type="number" placeholder="Ex: 20" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,76 kg CO2/L</div></div>
+          <div><div class="fl">Ferraille / m&eacute;taux valoris&eacute;s (kg)</div><input type="number" placeholder="Ex: 0 &mdash; n&eacute;gatif = valoris&eacute;" style="width:100%"/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">-0,74 kg CO2/kg &#128293; bonus!</div></div>
+          <div><div class="fl">Eau (m&sup3;)</div><input type="number" placeholder="Ex: 12" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">Impact faible</div></div>
+          <div><div class="fl">Autre consommation</div><input placeholder="Libell&eacute; + quantit&eacute;" style="width:100%"/></div>
+        </div>
+        <div style="padding:10px 12px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A">
+          Les cases laiss&eacute;es &agrave; 0 ne sont pas comptabilis&eacute;es &mdash; <strong>seules vos consommations r&eacute;elles impactent le bilan</strong>
+        </div>
+      </div>
+
+      <!-- COMITE -->
   <div class="page" id="page-comite">
     <div class="kpi-grid g4">
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Comit&eacute;s r&eacute;alis&eacute;s</div><div class="kv" style="color:#2D6A4F">1</div><div class="ks">Sur 3 planifi&eacute;s</div><span class="kt" style="background:#EAF3DE;color:#27500A">T1 ✓</span></div>
@@ -2217,19 +2318,757 @@ textarea{resize:vertical;line-height:1.5}
 
   </div>
 
-  <!-- CARBONE -->
+  <!-- DEPENSE -->
+      <div class="modal-section" id="modal-sec-depense" style="display:none">
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-dep-cat')">
+              <option>-- S&eacute;lectionner --</option>
+              <option>EPI &amp; &Eacute;quipements</option>
+              <option>Formations &amp; Habilitations</option>
+              <option>Contr&ocirc;les &amp; VGP</option>
+              <option>Audit MASE</option>
+              <option>Signalisation &amp; Balisage</option>
+              <option>Mat&eacute;riel SSE</option>
+              <option>Sous-traitance SSE</option>
+              <option>Logiciel SSE</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-dep-cat"><input placeholder="Pr&eacute;ciser la cat&eacute;gorie..."/></div>
+          </div>
+          <div><div class="fl">Fournisseur</div><input placeholder="Ex: APAVE, DELTA PLUS..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description *</div><input placeholder="Ex: Formation travail en hauteur &mdash; 3 salari&eacute;s" style="width:100%"/></div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Montant HT (&euro;) *</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+          <div><div class="fl">TVA (%)</div><select style="width:100%"><option>20%</option><option>10%</option><option>5,5%</option><option>0%</option></select></div>
+          <div><div class="fl">Li&eacute; &agrave; (r&eacute;f&eacute;rence)</div><input placeholder="Ex: PA-002, HAB-2026..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">N&deg; facture / bon de commande</div><input placeholder="Ex: FAC-2026-0042" style="width:100%"/></div>
+        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5">
+          La d&eacute;pense sera ajout&eacute;e au tableau et au graphique de r&eacute;partition automatiquement.
+        </div>
+      </div>
+
+      <!-- RESSOURCE -->
+      <div class="modal-section" id="modal-sec-ressource" style="display:none">
+        <div class="fg2" style="margin-bottom:10px">
+          <div><div class="fl">Titre du document *</div><input placeholder="Ex: Proc&eacute;dure levage grue auxiliaire" style="width:100%"/></div>
+          <div><div class="fl">R&eacute;f&eacute;rence *</div><input placeholder="Ex: MO-LEV-2026-001" style="width:100%"/></div>
+        </div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%">
+              <option>Politique &amp; Objectifs SSE</option>
+              <option>Formulaires MASE</option>
+              <option>Proc&eacute;dures &amp; Modes op&eacute;ratoires</option>
+              <option>Grilles d&apos;audit</option>
+              <option>Passeports &amp; Habilitations</option>
+              <option>Causeries</option>
+              <option>Accidents &amp; Soins</option>
+              <option>Sous-traitants</option>
+              <option>Indicateurs &amp; Rapports</option>
+            </select>
+          </div>
+          <div><div class="fl">Format</div>
+            <select style="width:100%">
+              <option>Word (.docx) &mdash; modifiable</option>
+              <option>Excel (.xlsx) &mdash; modifiable</option>
+              <option>PDF &mdash; lecture seule</option>
+            </select>
+          </div>
+          <div><div class="fl">Version</div><input placeholder="Ex: V1, V2..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description courte</div><input placeholder="Ex: Formulaire &eacute;margement avec signature" style="width:100%"/></div>
+        <div style="padding:12px;background:#F8F9FA;border-radius:8px;border:2px dashed #E8E8E8;text-align:center;cursor:pointer;margin-bottom:10px" onclick="alert('Upload de fichiers disponible dans la version avec Supabase. Notez ici la r&eacute;f&eacute;rence du document.')">
+          <div style="font-size:24px;margin-bottom:4px">&#128196;</div>
+          <div style="font-size:12px;color:#aaa;font-weight:500">Glisser-d&eacute;poser ou cliquer pour uploader</div>
+          <div style="font-size:10px;color:#ccc;margin-top:2px">Upload disponible avec base de donn&eacute;es Supabase</div>
+        </div>
+        <div style="padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          &#128161; Dans la version compl&egrave;te, les clients pourront t&eacute;l&eacute;charger le document Word avec leur logo automatiquement ins&eacute;r&eacute;.
+        </div>
+      </div>
+
+      <!-- CARBONE -->
   <div class="page" id="page-carbone">
-    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:48px;text-align:center"><div style="font-size:48px;margin-bottom:16px">&#9843;</div><div style="font-size:18px;font-weight:600;color:#1A1A2E;margin-bottom:8px">Empreinte carbone</div><div style="font-size:13px;color:#aaa;margin-bottom:20px">CO&#8322; calcul&eacute; automatiquement depuis les consommations carburant</div><button class="btn-primary" onclick="go('dashboard',null)">&#8592; Tableau de bord</button></div>
+
+    <!-- Bandeau info ADEME -->
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:#EAF3DE;border:1px solid #C0DD97;border-radius:10px;margin-bottom:14px;font-size:11px;color:#27500A">
+      <span style="font-size:16px">&#127807;</span>
+      <span><strong>Bilan carbone BMI &mdash; Ann&eacute;e 2026</strong> &bull; Facteurs d&apos;&eacute;mission ADEME 2024 &bull; Gasoil : 2,65 kg CO2/L &bull; &Eacute;lectricit&eacute; : 0,052 kg CO2/kWh</span>
+      <button onclick="openModal('carbone')" class="btn-primary" style="margin-left:auto;font-size:11px;white-space:nowrap">+ Saisir une consommation</button>
+    </div>
+
+    <!-- KPI -->
+    <div class="g5" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Total CO2e annuel</div><div class="kv" style="color:#2D6A4F">17,4</div><div class="ks">tonnes CO2e</div><span class="kt" style="background:#EAF3DE;color:#27500A">Ann&eacute;e 2026</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Gasoil &mdash; PL + VL</div><div class="kv" style="color:#E63946">90,7%</div><div class="ks">15,8 tCO2e</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">1&egrave;re source</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">&Eacute;lectricit&eacute;</div><div class="kv" style="color:#378ADD">2,2%</div><div class="ks">0,4 tCO2e</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Atelier + bureau</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">D&eacute;chets</div><div class="kv" style="color:#F4A261">1,1%</div><div class="ks">0,2 tCO2e</div><span class="kt" style="background:#FAEEDA;color:#633806">DIB + dangereux</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Huiles usag&eacute;es</div><div class="kv" style="color:#7F77DD">3,0%</div><div class="ks">0,5 tCO2e</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Lubrifiants</span></div>
+    </div>
+
+    <!-- Graphiques -->
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px">
+      <!-- Evolution mensuelle -->
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:16px 18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:600;color:#1A1A2E">Evolution CO2 mensuelle &mdash; tCO2e</div>
+          <span style="font-size:10px;color:#aaa">Janvier 2026 &rarr; D&eacute;cembre 2026</span>
+        </div>
+        <div style="height:180px"><canvas id="c-carbone-mois"></canvas></div>
+        <div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:#aaa">
+          <span>&#9650; Max : 1,89 tCO2e (Mars 2026) &bull; Min : 0,64 tCO2e (D&eacute;c 2025) &bull; Ann&eacute;e 2026 : Janvier 2026 &rarr; D&eacute;cembre 2026</span>
+          <span>Moyenne : 1,45 tCO2e/mois</span>
+        </div>
+      </div>
+      <!-- Répartition donut -->
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:16px 18px">
+        <div style="font-size:13px;font-weight:600;color:#1A1A2E;margin-bottom:12px">R&eacute;partition par source</div>
+        <div style="height:140px"><canvas id="c-carbone-donut"></canvas></div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-top:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#E63946"></div>Gasoil PL + VL</div>
+            <strong>90,7%</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#F4A261"></div>Huiles usag&eacute;es</div>
+            <strong>3,0%</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#BA7517"></div>Essence</div>
+            <strong>3,0%</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#378ADD"></div>&Eacute;lectricit&eacute;</div>
+            <strong>2,2%</strong>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px">
+            <div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#2D6A4F"></div>D&eacute;chets</div>
+            <strong>1,1%</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tableau de saisie mensuelle -->
+    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden;margin-bottom:14px">
+      <div style="padding:12px 16px;background:#F8F9FA;border-bottom:1px solid #F0F0F0;display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:12px;font-weight:600;color:#1A1A2E">D&eacute;tail des consommations &mdash; Ann&eacute;e 2026</div>
+        <div style="font-size:10px;color:#aaa">Unit&eacute;s : litres / kWh / kg / m&sup3; &mdash; CO2e en kg</div>
+      </div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;min-width:900px">
+          <tr style="background:#F0F4FF">
+            <th style="padding:8px 12px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8;white-space:nowrap">Source d&apos;&eacute;mission</th>
+            <th style="padding:8px 8px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Unit&eacute;</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">janv-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">f&eacute;vr-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">mars-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">avr-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">mai-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">juin-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">juil-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">ao&ucirc;t-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">sept-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">oct-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">nov-26</th>
+            <th style="padding:8px 6px;text-align:center;font-size:9px;font-weight:600;color:#555;border-bottom:1px solid #E8E8E8;white-space:nowrap">d&eacute;c-26</th>
+            <th style="padding:8px 10px;text-align:center;font-size:10px;font-weight:700;color:#2D6A4F;border-bottom:1px solid #E8E8E8;background:#EAF3DE">Total</th>
+            <th style="padding:8px 8px;text-align:center;font-size:9px;font-weight:600;color:#7F77DD;border-bottom:1px solid #E8E8E8;background:#EEEDFE">CO2e kg</th>
+          </tr>
+          <tr style="background:#FCEBEB;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#A32D2D;white-space:nowrap">Gasoil — Camions PL
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(2.65 kg CO2/L)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">L</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">380</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">420</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">195</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">450</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">460</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">380</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">180</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">510</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">480</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">520</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">495</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">510</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">4980</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#E63946;background:#EEEDFE">13197</td>
+          </tr>
+          <tr style="background:#FFF5F5;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#E63946;white-space:nowrap">Gasoil — VL / utilitaires
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(2.65 kg CO2/L)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">L</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">85</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">90</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">45</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">95</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">88</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">80</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">40</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">92</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">87</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">98</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">90</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">95</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">985</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#E63946;background:#EEEDFE">2610</td>
+          </tr>
+          <tr style="background:#FFFDF5;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#BA7517;white-space:nowrap">Essence — véhicules légers
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(2.35 kg CO2/L)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">L</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">45</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">40</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">48</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">42</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">45</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">220</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#F4A261;background:#EEEDFE">517</td>
+          </tr>
+          <tr style="background:#F0F7FF;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#185FA5;white-space:nowrap">Électricité atelier + bureau
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(0.052 kg CO2/kWh)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">kWh</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">620</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">580</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">290</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">640</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">660</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">700</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">340</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">720</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">690</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">750</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">680</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">710</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">7380</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#F4A261;background:#EEEDFE">384</td>
+          </tr>
+          <tr style="background:#F8F5F0;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#7F77DD;white-space:nowrap">Huiles usagées
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(2.76 kg CO2/L)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">L</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">12</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">15</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">8</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">18</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">14</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">16</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">8</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">20</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">16</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">22</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">18</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">20</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">187</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#F4A261;background:#EEEDFE">516</td>
+          </tr>
+          <tr style="background:#F5FFF8;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#2D6A4F;white-space:nowrap">Déchets industriels banals
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(0.449 kg CO2/kg)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">kg</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">45</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">50</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">25</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">55</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">48</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">52</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">28</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">60</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">55</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">65</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">58</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">62</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">603</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#F4A261;background:#EEEDFE">271</td>
+          </tr>
+          <tr style="background:#FFFDF5;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#633806;white-space:nowrap">Déchets dangereux
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(0.606 kg CO2/kg)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">kg</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">8</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">10</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">5</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">12</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">9</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">11</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">6</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">14</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">11</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">15</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">12</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">13</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">126</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#aaa;background:#EEEDFE">76</td>
+          </tr>
+          <tr style="background:#F8F9FA;border-bottom:0.5px solid #F0F0F0">
+            <td style="padding:8px 12px;font-weight:500;color:#555;white-space:nowrap">Ferraille / métaux valorisés
+              <span style="font-size:9px;color:#aaa;font-weight:400;margin-left:4px">(-0.74 kg CO2/kg)</span>
+            </td>
+            <td style="padding:8px 8px;text-align:center;font-size:10px;color:#aaa">kg</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">80</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;font-weight:600;color:#1A1A2E">120</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 6px;text-align:center;font-size:11px;color:#ddd">—</td><td style="padding:8px 10px;text-align:center;font-size:11px;font-weight:700;color:#1A1A2E;background:#EAF3DE">200</td>
+            <td style="padding:8px 8px;text-align:center;font-size:11px;font-weight:700;color:#2D6A4F;background:#EEEDFE">-148</td>
+          </tr>
+          <tr style="background:#1A1A2E">
+            <td colspan="14" style="padding:10px 12px;font-size:12px;font-weight:700;color:#fff">TOTAL CO2 &eacute;quivalent &mdash; Ann&eacute;e 2026</td>
+            <td style="padding:10px 10px;text-align:center;font-size:13px;font-weight:800;color:#74C99A;background:#0D1117">17,423 kg</td>
+            <td style="padding:10px 8px;text-align:center;font-size:12px;font-weight:700;color:#74C99A;background:#0D1117">17.4 tCO2e</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Actions de réduction + objectifs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:16px 18px">
+        <div style="font-size:12px;font-weight:600;color:#1A1A2E;margin-bottom:12px">&#127919; Objectifs de r&eacute;duction 2026</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="padding:10px 12px;background:#EAF3DE;border-radius:8px;border-left:3px solid #2D6A4F">
+            <div style="font-size:12px;font-weight:500">R&eacute;duire conso gasoil PL de 5%</div>
+            <div style="font-size:10px;color:#aaa;margin-top:2px">Objectif : &lt; 4 800 L/an &bull; Actuel : 5 285 L/an</div>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:6px">
+              <div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946;border-radius:3px"></div></div>
+              <span style="font-size:10px;color:#E63946;font-weight:600">Non atteint</span>
+            </div>
+          </div>
+          <div style="padding:10px 12px;background:#EAF3DE;border-radius:8px;border-left:3px solid #2D6A4F">
+            <div style="font-size:12px;font-weight:500">Kit antipollution 100% des v&eacute;hicules</div>
+            <div style="font-size:10px;color:#aaa;margin-top:2px">Pr&eacute;venir d&eacute;versements accidentels &bull; R&eacute;alis&eacute; ✓</div>
+          </div>
+          <div style="padding:10px 12px;background:#F8F9FA;border-radius:8px;border-left:3px solid #E8E8E8">
+            <div style="font-size:12px;font-weight:500">Valoriser 100% de la ferraille</div>
+            <div style="font-size:10px;color:#aaa;margin-top:2px">Filière valorisation &bull; En cours</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:16px 18px">
+        <div style="font-size:12px;font-weight:600;color:#1A1A2E;margin-bottom:12px">&#128161; Points cl&eacute;s &amp; Conseils r&eacute;duction</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:11px">
+          <div style="padding:8px 10px;background:#FCEBEB;border-radius:7px;display:flex;gap:8px">
+            <span style="color:#E63946;font-weight:700;flex-shrink:0">90,7%</span>
+            <span>du CO2 vient du <strong>gasoil</strong> &mdash; optimiser les tourn&eacute;es, &eacute;co-conduite, v&eacute;rifier la pression des pneus</span>
+          </div>
+          <div style="padding:8px 10px;background:#FAEEDA;border-radius:7px;display:flex;gap:8px">
+            <span style="color:#BA7517;font-weight:700;flex-shrink:0">+28%</span>
+            <span>de consommation en hiver (jan-mars) vs &eacute;t&eacute; &mdash; anticiper les besoins</span>
+          </div>
+          <div style="padding:8px 10px;background:#EAF3DE;border-radius:7px;display:flex;gap:8px">
+            <span style="color:#2D6A4F;font-weight:700;flex-shrink:0">-0,7</span>
+            <span>kg CO2/kg de ferraille valoris&eacute;e &mdash; encourager la collecte s&eacute;lective</span>
+          </div>
+          <div style="padding:8px 10px;background:#E6F1FB;border-radius:7px;display:flex;gap:8px">
+            <span style="color:#185FA5;font-weight:700;flex-shrink:0">LED</span>
+            <span>&Eacute;clairage LED atelier &mdash; r&eacute;duction estim&eacute;e 30% conso &eacute;lectrique</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- DEPENSES -->
   <div class="page" id="page-depenses">
-    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:48px;text-align:center"><div style="font-size:48px;margin-bottom:16px">&#8364;</div><div style="font-size:18px;font-weight:600;color:#1A1A2E;margin-bottom:8px">D&eacute;penses s&eacute;curit&eacute;</div><div style="font-size:13px;color:#aaa;margin-bottom:20px">Suivi budget SSE &bull; EPI &bull; Formations &bull; Organismes de contr&ocirc;le &bull; VGP</div><button class="btn-primary" onclick="go('dashboard',null)">&#8592; Tableau de bord</button></div>
+
+    <!-- KPI -->
+    <div class="g5" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Budget engag&eacute; 2026</div><div class="kv" style="color:#E63946">8 240</div><div class="ks">Euros HT</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">vs 10 000&euro; budget</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Budget restant</div><div class="kv" style="color:#2D6A4F">1 760</div><div class="ks">Euros HT</div><span class="kt" style="background:#EAF3DE;color:#27500A">17,6% restant</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Nb d&eacute;penses</div><div class="kv" style="color:#378ADD">14</div><div class="ks">Factures 2026</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Toutes cat&eacute;gories</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">+ grosse cat&eacute;gorie</div><div class="kv" style="color:#F4A261">3 200</div><div class="ks">Formations</div><span class="kt" style="background:#FAEEDA;color:#633806">38,8%</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">vs N-1 (2025)</div><div class="kv" style="color:#7F77DD">+12%</div><div class="ks">6 940&euro; en 2025</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Hausse formations</span></div>
+    </div>
+
+    <!-- Filtres + bouton -->
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Toutes les cat&eacute;gories</option>
+        <option>EPI &amp; &Eacute;quipements</option>
+        <option>Formations &amp; Habilitations</option>
+        <option>Contr&ocirc;les &amp; VGP</option>
+        <option>Audit MASE</option>
+        <option>Signalisation &amp; Balisage</option>
+        <option>Mat&eacute;riel SSE</option>
+        <option>Sous-traitance SSE</option>
+        <option>Logiciel SSE</option>
+        <option>Autre</option>
+      </select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Toute l&apos;ann&eacute;e 2026</option>
+        <option>T1 (Janv-Mars)</option>
+        <option>T2 (Avr-Juin)</option>
+        <option>T3 (Juil-Sept)</option>
+        <option>T4 (Oct-D&eacute;c)</option>
+      </select>
+      <input placeholder="&#128269; Rechercher une d&eacute;pense..." style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;width:220px"/>
+      <div style="margin-left:auto;font-size:11px;color:#aaa">Total 2026 : <strong style="color:#1A1A2E">8 240 &euro; HT</strong></div>
+      <button onclick="openModal('depense')" class="btn-primary" style="font-size:11px">+ Ajouter une d&eacute;pense</button>
+    </div>
+
+    <!-- Graphique + Tableau -->
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-bottom:14px">
+
+      <!-- Donut par catégorie -->
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:16px 18px">
+        <div style="font-size:12px;font-weight:600;color:#1A1A2E;margin-bottom:12px">R&eacute;partition par cat&eacute;gorie</div>
+        <div style="height:160px"><canvas id="c-dep-donut"></canvas></div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-top:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#378ADD"></div>Formations</div><strong>3 200 &euro; (38,8%)</strong></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#E63946"></div>EPI &amp; &Eacute;quipements</div><strong>1 840 &euro; (22,3%)</strong></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#BA7517"></div>Contr&ocirc;les &amp; VGP</div><strong>1 560 &euro; (18,9%)</strong></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#7F77DD"></div>Logiciel SSE</div><strong>900 &euro; (10,9%)</strong></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px"><div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:10px;border-radius:2px;background:#2D6A4F"></div>Autres</div><strong>740 &euro; (9,0%)</strong></div>
+        </div>
+      </div>
+
+      <!-- Tableau des dépenses -->
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:11px">
+            <tr style="background:#F0F4FF">
+              <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Date</th>
+              <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Cat&eacute;gorie</th>
+              <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8;min-width:160px">Description</th>
+              <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Fournisseur</th>
+              <th style="padding:9px 10px;text-align:right;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Montant HT</th>
+              <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Li&eacute; &agrave;</th>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">12/01/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Formations</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Formation travail en hauteur nacelle &mdash; 3 salari&eacute;s</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">1 200 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-002</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">15/01/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:500;white-space:nowrap">EPI</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Harnais antichute x2 + longes</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">DELTA PLUS</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">480 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-006</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">20/01/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EEEDFE;color:#3C3489;font-weight:500;white-space:nowrap">Logiciel SSE</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Logiciel SSE EMJ &mdash; abonnement annuel</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">SSE EMJ</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">900 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-004</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">28/01/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FAEEDA;color:#633806;font-weight:500;white-space:nowrap">Contr&ocirc;les VGP</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">VGP nacelle &amp; &eacute;lingues &mdash; APAVE</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">580 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-003</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">10/02/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:500;white-space:nowrap">EPI</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Gants anti-coupure x12 paires &mdash; T.10</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">SINGER</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">144 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">Stock EPI</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">15/02/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:500;white-space:nowrap">Signalisation</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Plots balisage x10 + rubans</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">CATU</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">95 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-005</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">20/02/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Formations</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Recyclage SST &mdash; MARTIN L. + RENARD D.</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">SST Sauveteur</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">480 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-010</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">05/03/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FAEEDA;color:#633806;font-weight:500;white-space:nowrap">Contr&ocirc;les VGP</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">VGP &eacute;lectrique b&acirc;timent</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">CR Normandie</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">980 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-002</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">10/03/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:500;white-space:nowrap">EPI</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Casques x6 + lunettes x8</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">3M</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">312 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">Stock EPI</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">15/03/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Formations</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Formation &eacute;lingage &mdash; 2 salari&eacute;s</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">640 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">HAB-2026</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">20/03/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#F0F4FF;color:#185FA5;font-weight:500;white-space:nowrap">Mat&eacute;riel SSE</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Kit antipollution x6 &mdash; 1 par camion</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">DENIOS</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">180 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">PA-009</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">01/04/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FFF5F5;color:#7F77DD;font-weight:500;white-space:nowrap">Audit MASE</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Audit blanc interne &mdash; pr&eacute;paration MASE</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">Cabinet conseil</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">560 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">OBJ-008</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">10/04/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:500;white-space:nowrap">EPI</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Gilets HV classe 2 x10</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">DELTA PLUS</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">210 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">Stock EPI</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid #F5F5F5">
+              <td style="padding:8px 12px;font-size:10px;color:#aaa;white-space:nowrap">20/04/2026</td>
+              <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Formations</span></td>
+              <td style="padding:8px 10px;font-weight:500;color:#1A1A2E">Formation ATEX &mdash; GIRARD P.</td>
+              <td style="padding:8px 10px;font-size:11px;color:#555">INERIS</td>
+              <td style="padding:8px 10px;text-align:right;font-weight:700;color:#1A1A2E">880 &euro;</td>
+              <td style="padding:8px 10px;font-size:10px;color:#378ADD">HAB-2026</td>
+            </tr>
+            <tr style="background:#1A1A2E">
+              <td colspan="4" style="padding:10px 12px;font-size:12px;font-weight:700;color:#fff">TOTAL 2026</td>
+              <td style="padding:10px 10px;text-align:right;font-size:13px;font-weight:800;color:#74C99A">8 240 &euro;</td>
+              <td style="padding:10px 10px;font-size:11px;color:#aaa">Budget : 10 000 &euro;</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- RESSOURCES -->
   <div class="page" id="page-ressources">
-    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:48px;text-align:center"><div style="font-size:48px;margin-bottom:16px">&#128194;</div><div style="font-size:18px;font-weight:600;color:#1A1A2E;margin-bottom:8px">Ressources documentaires</div><div style="font-size:13px;color:#aaa;margin-bottom:20px">Proc&eacute;dures &bull; Documents MASE &bull; Formulaires &bull; Archives</div><button class="btn-primary" onclick="go('dashboard',null)">&#8592; Tableau de bord</button></div>
+
+    <!-- Bandeau info -->
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:#E6F1FB;border:1px solid #B5D4F4;border-radius:10px;margin-bottom:14px;font-size:11px;color:#185FA5">
+      <span style="font-size:16px">&#128193;</span>
+      <span><strong>Ressources documentaires BMI</strong> &bull; Documents MASE 2024 &bull; Proc&eacute;dures &bull; Formulaires &bull; T&eacute;l&eacute;chargement Word modifiable</span>
+      <button onclick="openModal('ressource')" class="btn-primary" style="margin-left:auto;font-size:11px">+ Ajouter un document</button>
+    </div>
+
+    <!-- KPI -->
+    <div class="g4" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Documents disponibles</div><div class="kv" style="color:#378ADD">18</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Tous modules</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Formulaires MASE</div><div class="kv" style="color:#2D6A4F">8</div><span class="kt" style="background:#EAF3DE;color:#27500A">Word modifiable</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Proc&eacute;dures</div><div class="kv" style="color:#7F77DD">6</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Modes op&eacute;ratoires</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Mis &agrave; jour 2026</div><div class="kv" style="color:#F4A261">14</div><span class="kt" style="background:#FAEEDA;color:#633806">Version en cours</span></div>
+    </div>
+
+    <!-- Filtres -->
+    <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center">
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Toutes les cat&eacute;gories</option>
+        <option>Politique &amp; Objectifs SSE</option>
+        <option>Formulaires MASE</option>
+        <option>Proc&eacute;dures &amp; MO</option>
+        <option>Grilles d&apos;audit</option>
+        <option>Passeports &amp; Habilitations</option>
+        <option>Causeries</option>
+        <option>Accidents &amp; Soins</option>
+        <option>Sous-traitants</option>
+      </select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Tous les formats</option>
+        <option>Word (.docx)</option>
+        <option>Excel (.xlsx)</option>
+        <option>PDF</option>
+      </select>
+      <input placeholder="&#128269; Rechercher un document..." style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;width:220px"/>
+    </div>
+
+    <!-- Documents par catégorie -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="padding:10px 16px;background:#E6F1FB;border-bottom:1px solid #E8E8E8;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#185FA5">&#128196; Politique &amp; Objectifs SSE</div>
+          <span style="font-size:10px;color:#185FA5;opacity:0.7">2 documents</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0">
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Politique SSE 2026 &mdash; BMI</div>
+              <div style="font-size:10px;color:#aaa">POL-MASE-2026-001 &bull; V2 &bull; Janv 2026 &bull; Signature T. MARTIN</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128202;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Objectifs SSE 2026 &mdash; Tableau SMART</div>
+              <div style="font-size:10px;color:#aaa">OBJ-MASE-2026-001 &bull; V1 &bull; Janv 2026 &bull; Plan management</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;font-weight:600;text-align:center">.xlsx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="padding:10px 16px;background:#EAF3DE;border-bottom:1px solid #E8E8E8;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#27500A">&#128203; Formulaires MASE</div>
+          <span style="font-size:10px;color:#27500A;opacity:0.7">6 documents</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0">
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Fiche Situation Dangereuse &mdash; SD</div>
+              <div style="font-size:10px;color:#aaa">FOR-SD-2026-001 &bull; V3 &bull; F&eacute;vr 2026 &bull; Signalement terrain</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Fiche Accident du Travail &mdash; AT</div>
+              <div style="font-size:10px;color:#aaa">FOR-AT-2026-001 &bull; V2 &bull; Mars 2026 &bull; D&eacute;claration CPAM</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Fiche Causerie SSE &mdash; &Eacute;margement</div>
+              <div style="font-size:10px;color:#aaa">FOR-CAU-2026-001 &bull; V4 &bull; Janv 2026 &bull; Animation SSE</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Passeport SSE salari&eacute;</div>
+              <div style="font-size:10px;color:#aaa">FOR-PAS-2026-001 &bull; V5 &bull; Mars 2026 &bull; Habilitations + signature</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128202;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Plan d&apos;actions SSE &mdash; TS-02</div>
+              <div style="font-size:10px;color:#aaa">FOR-PA-2026-001 &bull; V5 &bull; Avr 2026 &bull; Suivi actions MASE</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;font-weight:600;text-align:center">.xlsx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128202;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Grille audit terrain SSE-043</div>
+              <div style="font-size:10px;color:#aaa">FOR-AUD-2026-001 &bull; V3 &bull; F&eacute;vr 2026 &bull; Axe 4 MASE</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;font-weight:600;text-align:center">.xlsx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="padding:10px 16px;background:#EEEDFE;border-bottom:1px solid #E8E8E8;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#3C3489">&#128196; Proc&eacute;dures &amp; Modes op&eacute;ratoires</div>
+          <span style="font-size:10px;color:#3C3489;opacity:0.7">4 documents</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0">
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Proc&eacute;dure levage &agrave; la grue auxiliaire</div>
+              <div style="font-size:10px;color:#aaa">MO-LEV-2026-001 &bull; V4 &bull; Mars 2026 &bull; CACES R490</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Proc&eacute;dure travail en hauteur &mdash; nacelle</div>
+              <div style="font-size:10px;color:#aaa">MO-HAU-2026-001 &bull; V3 &bull; F&eacute;vr 2026 &bull; CACES R486</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Plan de pr&eacute;vention type &mdash; chantier</div>
+              <div style="font-size:10px;color:#aaa">MO-PDP-2026-001 &bull; V2 &bull; Janv 2026 &bull; Sous-traitants</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Proc&eacute;dure urgence &amp; premiers secours</div>
+              <div style="font-size:10px;color:#aaa">MO-URG-2026-001 &bull; V1 &bull; Mars 2026 &bull; SST &amp; secours</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="padding:10px 16px;background:#FAEEDA;border-bottom:1px solid #E8E8E8;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#633806">&#128101; Sous-traitants</div>
+          <span style="font-size:10px;color:#633806;opacity:0.7">3 documents</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0">
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Cahier des charges SSE sous-traitants</div>
+              <div style="font-size:10px;color:#aaa">ST-CDC-2026-001 &bull; V2 &bull; Janv 2026 &bull; Axe 3 MASE &sect;3.4</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128202;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Grille &eacute;valuation SSE sous-traitant</div>
+              <div style="font-size:10px;color:#aaa">ST-EVAL-2026-001 &bull; V3 &bull; F&eacute;vr 2026 &bull; Notation 1-5</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;font-weight:600;text-align:center">.xlsx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Liste documents obligatoires ST</div>
+              <div style="font-size:10px;color:#aaa">ST-DOC-2026-001 &bull; V1 &bull; Janv 2026 &bull; URSSAF, RC Pro...</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden">
+        <div style="padding:10px 16px;background:#F0F4FF;border-bottom:1px solid #E8E8E8;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;font-weight:600;color:#1A1A2E">&#128202; Indicateurs &amp; Rapports</div>
+          <span style="font-size:10px;color:#1A1A2E;opacity:0.7">3 documents</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:0">
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128202;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Indicateurs SSE &mdash; IND-MASE-2026-001</div>
+              <div style="font-size:10px;color:#aaa">IND-MASE-2026-001 &bull; V1 &bull; Mai 2026 &bull; TF1 TF2 TG mensuel</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;font-weight:600;text-align:center">.xlsx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#FCEBEB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Revue de direction 2025 &mdash; Bilan</div>
+              <div style="font-size:10px;color:#aaa">REV-2025-001 &bull; V1 &bull; D&eacute;c 2025 &bull; Axe 5 MASE</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#FCEBEB;color:#A32D2D;font-weight:600;text-align:center">.pdf</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+          <div style="padding:12px 16px;border-bottom:0.5px solid #F5F5F5;border-right:0.5px solid #F5F5F5;display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">&#128196;</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:12px;font-weight:500;color:#1A1A2E;margin-bottom:2px">Bilan comit&eacute; SSE T1 2026</div>
+              <div style="font-size:10px;color:#aaa">COM-T1-2026-001 &bull; V1 &bull; Mars 2026 &bull; Compte-rendu</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+              <span style="font-size:9px;padding:2px 7px;border-radius:4px;background:#E6F1FB;color:#185FA5;font-weight:600;text-align:center">.docx</span>
+              <button onclick="alert('T&eacute;l&eacute;chargement disponible avec base de donn&eacute;es &mdash; version d&eacute;mo')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E8E8E8;background:#fff;cursor:pointer;white-space:nowrap;color:#378ADD">&#11123; T&eacute;l&eacute;charger</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info version future -->
+    <div style="margin-top:14px;padding:12px 16px;background:#FAEEDA;border:1px solid #FAC775;border-radius:10px;font-size:11px;color:#633806;display:flex;align-items:center;gap:10px">
+      <span style="font-size:18px">&#128161;</span>
+      <span><strong>Version avec base de donn&eacute;es (Supabase)</strong> &mdash; Upload de vos propres documents Word, personnalisation automatique avec votre logo client, acc&egrave;s s&eacute;curis&eacute; par entreprise, t&eacute;l&eacute;chargement en un clic.</span>
+    </div>
+
   </div>
 
 <!-- DASHBOARD -->
@@ -2868,7 +3707,7 @@ textarea{resize:vertical;line-height:1.5}
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
       <div style="display:flex;align-items:center;gap:10px">
         <div style="padding:6px 14px;background:#1A1A2E;border-radius:8px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.5px">IND-MASE-2026-001-R0</div>
-        <div style="font-size:11px;color:#aaa">Indicateurs SSE &mdash; 12 mois glissants &bull; Juin 2025 &rarr; Mai 2026</div>
+        <div style="font-size:11px;color:#aaa">Indicateurs SSE &mdash; 12 mois glissants &bull; Mai 2025 &rarr; Avril 2026</div>
       </div>
       <div style="display:flex;gap:8px">
         <button class="btn" onclick="window.print()" style="font-size:11px">&#128438; Exporter</button>
@@ -3109,7 +3948,7 @@ textarea{resize:vertical;line-height:1.5}
       <span><strong style="color:#E63946">TF1</strong> = AAA &times; 1 000 000 / heures travaill&eacute;es</span>
       <span><strong style="color:#F4A261">TF2</strong> = (AAA + ASA) &times; 1 000 000 / heures travaill&eacute;es</span>
       <span><strong style="color:#7F77DD">TG</strong> = Nb journaux perdus &times; 1 000 / heures travaill&eacute;es</span>
-      <span style="margin-left:auto"><strong>12 mois glissants</strong> : Juin 2025 &rarr; Mai 2026</span>
+      <span style="margin-left:auto"><strong>12 mois glissants</strong> : Mai 2025 &rarr; Avril 2026</span>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:10px">
       <span style="padding:4px 10px;background:#F0FFF5;border-radius:6px;color:#2D6A4F;border:1px solid #C0DD97">&#10003; Fond vert = donn&eacute;e AUTO depuis module</span>
@@ -3458,7 +4297,108 @@ textarea{resize:vertical;line-height:1.5}
         <div style="margin-top:10px"><div class="fl">Observations</div><textarea rows="2" placeholder="Points positifs, &agrave; am&eacute;liorer..."></textarea></div>
       </div>
 
-<!-- COMITE -->
+<!-- DEPENSE -->
+      <div class="modal-section" id="modal-sec-depense" style="display:none">
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-dep-cat')">
+              <option>-- S&eacute;lectionner --</option>
+              <option>EPI &amp; &Eacute;quipements</option>
+              <option>Formations &amp; Habilitations</option>
+              <option>Contr&ocirc;les &amp; VGP</option>
+              <option>Audit MASE</option>
+              <option>Signalisation &amp; Balisage</option>
+              <option>Mat&eacute;riel SSE</option>
+              <option>Sous-traitance SSE</option>
+              <option>Logiciel SSE</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-dep-cat"><input placeholder="Pr&eacute;ciser la cat&eacute;gorie..."/></div>
+          </div>
+          <div><div class="fl">Fournisseur</div><input placeholder="Ex: APAVE, DELTA PLUS..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description *</div><input placeholder="Ex: Formation travail en hauteur &mdash; 3 salari&eacute;s" style="width:100%"/></div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Montant HT (&euro;) *</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+          <div><div class="fl">TVA (%)</div><select style="width:100%"><option>20%</option><option>10%</option><option>5,5%</option><option>0%</option></select></div>
+          <div><div class="fl">Li&eacute; &agrave; (r&eacute;f&eacute;rence)</div><input placeholder="Ex: PA-002, HAB-2026..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">N&deg; facture / bon de commande</div><input placeholder="Ex: FAC-2026-0042" style="width:100%"/></div>
+        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5">
+          La d&eacute;pense sera ajout&eacute;e au tableau et au graphique de r&eacute;partition automatiquement.
+        </div>
+      </div>
+
+      <!-- RESSOURCE -->
+      <div class="modal-section" id="modal-sec-ressource" style="display:none">
+        <div class="fg2" style="margin-bottom:10px">
+          <div><div class="fl">Titre du document *</div><input placeholder="Ex: Proc&eacute;dure levage grue auxiliaire" style="width:100%"/></div>
+          <div><div class="fl">R&eacute;f&eacute;rence *</div><input placeholder="Ex: MO-LEV-2026-001" style="width:100%"/></div>
+        </div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%">
+              <option>Politique &amp; Objectifs SSE</option>
+              <option>Formulaires MASE</option>
+              <option>Proc&eacute;dures &amp; Modes op&eacute;ratoires</option>
+              <option>Grilles d&apos;audit</option>
+              <option>Passeports &amp; Habilitations</option>
+              <option>Causeries</option>
+              <option>Accidents &amp; Soins</option>
+              <option>Sous-traitants</option>
+              <option>Indicateurs &amp; Rapports</option>
+            </select>
+          </div>
+          <div><div class="fl">Format</div>
+            <select style="width:100%">
+              <option>Word (.docx) &mdash; modifiable</option>
+              <option>Excel (.xlsx) &mdash; modifiable</option>
+              <option>PDF &mdash; lecture seule</option>
+            </select>
+          </div>
+          <div><div class="fl">Version</div><input placeholder="Ex: V1, V2..." style="width:100%"/></div>
+        </div>
+        <div style="margin-bottom:10px"><div class="fl">Description courte</div><input placeholder="Ex: Formulaire &eacute;margement avec signature" style="width:100%"/></div>
+        <div style="padding:12px;background:#F8F9FA;border-radius:8px;border:2px dashed #E8E8E8;text-align:center;cursor:pointer;margin-bottom:10px" onclick="alert('Upload de fichiers disponible dans la version avec Supabase. Notez ici la r&eacute;f&eacute;rence du document.')">
+          <div style="font-size:24px;margin-bottom:4px">&#128196;</div>
+          <div style="font-size:12px;color:#aaa;font-weight:500">Glisser-d&eacute;poser ou cliquer pour uploader</div>
+          <div style="font-size:10px;color:#ccc;margin-top:2px">Upload disponible avec base de donn&eacute;es Supabase</div>
+        </div>
+        <div style="padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          &#128161; Dans la version compl&egrave;te, les clients pourront t&eacute;l&eacute;charger le document Word avec leur logo automatiquement ins&eacute;r&eacute;.
+        </div>
+      </div>
+
+      <!-- CARBONE -->
+      <div class="modal-section" id="modal-sec-carbone" style="display:none">
+        <div style="padding:8px 12px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A;margin-bottom:12px">
+          Saisie des consommations &mdash; <strong>Mai 2026</strong> &mdash; CO2 calcul&eacute; automatiquement selon facteurs ADEME 2024
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#E63946;text-transform:uppercase;margin-bottom:8px;padding:5px 10px;background:#FFF5F5;border-radius:6px;border-left:3px solid #E63946">Energie &amp; Transport</div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">Gasoil camions PL (L)</div><input type="number" placeholder="Ex: 510" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+          <div><div class="fl">Gasoil VL / utilitaires (L)</div><input type="number" placeholder="Ex: 95" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+          <div><div class="fl">Essence v&eacute;hicules (L)</div><input type="number" placeholder="Ex: 45 &mdash; 0 si aucun" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,35 kg CO2/L</div></div>
+          <div><div class="fl">GPL (L)</div><input type="number" placeholder="Ex: 0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">1,86 kg CO2/L</div></div>
+          <div><div class="fl">Electricit&eacute; atelier + bureau (kWh)</div><input type="number" placeholder="Ex: 710" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,052 kg CO2/kWh</div></div>
+          <div><div class="fl">Gasoil engins / groupe &eacute;lectrog&egrave;ne (L)</div><input type="number" placeholder="Ex: 0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,65 kg CO2/L</div></div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#2D6A4F;text-transform:uppercase;margin-bottom:8px;padding:5px 10px;background:#EAF3DE;border-radius:6px;border-left:3px solid #2D6A4F">D&eacute;chets &amp; Consommables</div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">D&eacute;chets industriels banals &mdash; DIB (kg)</div><input type="number" placeholder="Ex: 62 &mdash; 0 si peu" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,449 kg CO2/kg</div></div>
+          <div><div class="fl">D&eacute;chets dangereux (kg)</div><input type="number" placeholder="Ex: 13 &mdash; 0 si aucun" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">0,606 kg CO2/kg</div></div>
+          <div><div class="fl">Huiles usag&eacute;es (L)</div><input type="number" placeholder="Ex: 20" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">2,76 kg CO2/L</div></div>
+          <div><div class="fl">Ferraille / m&eacute;taux valoris&eacute;s (kg)</div><input type="number" placeholder="Ex: 0 &mdash; n&eacute;gatif = valoris&eacute;" style="width:100%"/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">-0,74 kg CO2/kg &#128293; bonus!</div></div>
+          <div><div class="fl">Eau (m&sup3;)</div><input type="number" placeholder="Ex: 12" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">Impact faible</div></div>
+          <div><div class="fl">Autre consommation</div><input placeholder="Libell&eacute; + quantit&eacute;" style="width:100%"/></div>
+        </div>
+        <div style="padding:10px 12px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A">
+          Les cases laiss&eacute;es &agrave; 0 ne sont pas comptabilis&eacute;es &mdash; <strong>seules vos consommations r&eacute;elles impactent le bilan</strong>
+        </div>
+      </div>
+
+      <!-- COMITE -->
       <div class="modal-section" id="modal-sec-comite" style="display:none">
         <div class="fg2">
           <div><div class="fl">Num&eacute;ro du comit&eacute;</div><select style="width:100%"><option>Comit&eacute; SSE n&deg;2 &mdash; T2 2026</option><option>Comit&eacute; SSE n&deg;3 &mdash; T3 2026</option><option>Revue de direction &mdash; D&eacute;c. 2026</option></select></div>
@@ -3602,7 +4542,7 @@ var pagesMeta = {
   accidents:{t:"Accidents & Soins",s:"Axe 4 \u2014 Registre r\u00e9glementaire",btn:"+ D\u00e9clarer un accident",modal:"accident"},
   revue:{t:"Revue de direction \u2014 Axe 5",s:"Axe 5 \u2014 Am\u00e9lioration continue",btn:"Enregistrer la revue",modal:"revue_save"},
   epi:{t:"EPI & Consommables",s:"Autres suivis \u2014 Stock & Dotations & Alertes",btn:"+ Ajouter / Remettre un EPI",modal:"epi"},
-  carbone:{t:"Empreinte carbone",s:"Autres suivis",btn:"+ Saisir consommation",modal:"carbone"},
+  carbone:{t:"Empreinte carbone &mdash; Bilan CO2",s:"Autres suivis &mdash; Facteurs ADEME 2024 &bull; Ann&eacute;e civile 2026",btn:"+ Saisir une consommation",modal:"carbone"},
   depenses:{t:"D\u00e9penses s\u00e9curit\u00e9",s:"Autres suivis",btn:"+ Ajouter d\u00e9pense",modal:"depense"},
   ressources:{t:"Ressources documentaires",s:"Autres suivis",btn:"+ Ajouter document",modal:"ressource"}
 };
@@ -3975,8 +4915,32 @@ function selEPISal(el, nom, initials, bg, color) {
   if(name) name.textContent=nom;
 }
 
+function initDepensesChart() {
+  var cd = document.getElementById("c-dep-donut");
+  if(cd && !cd.dataset.inited) {
+    cd.dataset.inited = "1";
+    new Chart(cd,{type:"doughnut",data:{labels:["Formations","EPI","Contr\u00f4les VGP","Logiciel SSE","Autres"],datasets:[{data:[3200,1840,1560,900,740],backgroundColor:["#378ADD","#E63946","#BA7517","#7F77DD","#2D6A4F"],borderWidth:3,borderColor:"#fff"}]},options:{plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,cutout:"60%"}});
+  }
+}
+
+function initCarboneCharts() {
+  var co = {plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,scales:{x:{grid:{display:false},ticks:{font:{size:9}}},y:{grid:{color:"rgba(0,0,0,0.04)"},ticks:{font:{size:9}},beginAtZero:true}}};
+  var cm = document.getElementById("c-carbone-mois");
+  if(cm && !cm.dataset.inited) {
+    cm.dataset.inited = "1";
+    new Chart(cm,{type:"bar",data:{labels:["mai-25","juin-25","juil-25","aout-25","sept-25","oct-25","nov-25","dec-25","janv-26","fevr-26","mars-26","avr-26"],datasets:[{label:"tCO2e",data:[1.32,1.45,0.69,1.5,1.55,1.33,0.64,1.83,1.62,1.89,1.77,1.84],backgroundColor:["#2D6A4F","#2D6A4F","#74C99A","#2D6A4F","#F4A261","#2D6A4F","#74C99A","#E63946","#F4A261","#E63946","#F4A261","#E63946"],borderRadius:5}]},options:co});
+  }
+  var cd = document.getElementById("c-carbone-donut");
+  if(cd && !cd.dataset.inited) {
+    cd.dataset.inited = "1";
+    new Chart(cd,{type:"doughnut",data:{labels:["Gasoil","Huiles","Essence","Electricite","Dechets"],datasets:[{data:[90.7,3.0,3.0,2.2,1.1],backgroundColor:["#E63946","#F4A261","#BA7517","#378ADD","#2D6A4F"],borderWidth:3,borderColor:"#fff"}]},options:{plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,cutout:"60%"}});
+  }
+}
+
 window.addEventListener("load", function(){
   initCharts("indicateurs");
+  initCarboneCharts();
+  initDepensesChart();
 });
 </script>
 </body>
