@@ -1495,6 +1495,242 @@ textarea{resize:vertical;line-height:1.5}
     </div>
   </div>
 
+  <!-- VGP & MATERIELS -->
+  <div class="page" id="page-vgp">
+
+    <!-- KPI -->
+    <div class="g4" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">VGP expir&eacute;es</div><div class="kv" style="color:#E63946">3</div><div class="ks">Action imm&eacute;diate</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Hors service !</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Expirent &lt; 30j</div><div class="kv" style="color:#F4A261">2</div><div class="ks">&Agrave; planifier</div><span class="kt" style="background:#FAEEDA;color:#633806">Urgent</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Conformes</div><div class="kv" style="color:#2D6A4F">8</div><div class="ks">VGP &agrave; jour</div><span class="kt" style="background:#EAF3DE;color:#27500A">OK ✓</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Total mat&eacute;riels</div><div class="kv" style="color:#378ADD">13</div><div class="ks">Tous types</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Suivi complet</span></div>
+    </div>
+
+    <!-- Alertes -->
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+      <div style="padding:10px 16px;background:#FCEBEB;border:1px solid #F7C1C1;border-left:4px solid #E63946;border-radius:10px;display:flex;align-items:center;justify-content:space-between">
+        <div><div style="font-size:12px;font-weight:600;color:#A32D2D">&#128680; VGP EXPIR&Eacute;E &mdash; Hors service imm&eacute;diat</div><div style="font-size:11px;color:#555;margin-top:2px">Nacelle &eacute;l&eacute;vatrice HAULOTTE H12 &mdash; Expir&eacute;e le 10/04/2026 &bull; APAVE</div></div>
+        <button onclick="openModal('vgp')" style="font-size:11px;padding:5px 12px;border-radius:7px;border:1px solid #E63946;background:#FCEBEB;color:#A32D2D;cursor:pointer;white-space:nowrap">Planifier VGP</button>
+      </div>
+      <div style="padding:10px 16px;background:#FCEBEB;border:1px solid #F7C1C1;border-left:4px solid #E63946;border-radius:10px;display:flex;align-items:center;justify-content:space-between">
+        <div><div style="font-size:12px;font-weight:600;color:#A32D2D">&#128680; VGP EXPIR&Eacute;E &mdash; Hors service imm&eacute;diat</div><div style="font-size:11px;color:#555;margin-top:2px">Ensemble &eacute;lingues + crochets &mdash; Expir&eacute;es le 10/04/2026 &bull; APAVE</div></div>
+        <button onclick="openModal('vgp')" style="font-size:11px;padding:5px 12px;border-radius:7px;border:1px solid #E63946;background:#FCEBEB;color:#A32D2D;cursor:pointer;white-space:nowrap">Planifier VGP</button>
+      </div>
+      <div style="padding:10px 16px;background:#FFF8F0;border:1px solid #FAC775;border-left:4px solid #F4A261;border-radius:10px;display:flex;align-items:center;justify-content:space-between">
+        <div><div style="font-size:12px;font-weight:600;color:#633806">&#9888; VGP &agrave; planifier &mdash; Expire dans 18 jours</div><div style="font-size:11px;color:#555;margin-top:2px">Grue auxiliaire FASSI F110 &mdash; Expire le 22/05/2026 &bull; APAVE</div></div>
+        <button onclick="openModal('vgp')" style="font-size:11px;padding:5px 12px;border-radius:7px;border:1px solid #F4A261;background:#FAEEDA;color:#633806;cursor:pointer;white-space:nowrap">Planifier VGP</button>
+      </div>
+    </div>
+
+    <!-- Filtres + bouton -->
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center">
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Tous les types</option>
+        <option>Appareils de levage</option>
+        <option>Engins de chantier</option>
+        <option>V&eacute;hicules PL</option>
+        <option>V&eacute;hicules l&eacute;gers</option>
+        <option>Outillage &eacute;lectrique</option>
+        <option>Installations &eacute;lectriques</option>
+        <option>EPI anti-chute</option>
+      </select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:1px solid #E8E8E8;background:#fff">
+        <option>Tous les statuts</option>
+        <option>Conforme ✓</option>
+        <option>Expir&eacute; !</option>
+        <option>&lt; 30 jours</option>
+        <option>&lt; 90 jours</option>
+      </select>
+      <button onclick="openModal('vgp')" class="btn-primary" style="margin-left:auto;font-size:11px">+ Ajouter un &eacute;quipement</button>
+    </div>
+
+    <!-- Tableau VGP -->
+    <div style="overflow-x:auto;border-radius:12px;border:1px solid #EBEBEB;background:#fff">
+      <table style="width:100%;border-collapse:collapse;font-size:11px">
+        <tr style="background:#F0F4FF">
+          <th style="padding:9px 12px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Mat&eacute;riel / &Eacute;quipement</th>
+          <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Type</th>
+          <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">N&deg; s&eacute;rie / Immat.</th>
+          <th style="padding:9px 10px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Derni&egrave;re VGP</th>
+          <th style="padding:9px 10px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Prochaine VGP</th>
+          <th style="padding:9px 10px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">P&eacute;riodicit&eacute;</th>
+          <th style="padding:9px 10px;text-align:left;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Organisme</th>
+          <th style="padding:9px 10px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Statut</th>
+          <th style="padding:9px 10px;text-align:center;font-size:10px;font-weight:600;color:#1A1A2E;border-bottom:1px solid #E8E8E8">Actions</th>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFF5F5;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Nacelle &eacute;l&eacute;vatrice HAULOTTE H12SX</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Appareil de levage</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">HAU-H12-2019-042</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">10/04/2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#E63946;font-weight:700">10/04/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pr">Expir&eacute;e !</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFF5F5;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Ensemble &eacute;lingues + crochets (lot)</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Accessoire levage</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">ELING-BMI-2024</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">10/04/2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#E63946;font-weight:700">10/04/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pr">Expir&eacute;e !</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Grue auxiliaire FASSI F110B</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Appareil de levage</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">FA-F110-PL1-2018</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">22/05/2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#F4A261;font-weight:700">22/05/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill po">&lt; 30 jours</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Camion PL 1 &mdash; RENAULT T480</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">V&eacute;hicule PL</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">AB-123-CD</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">15/01/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">15/01/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">DREAL</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Camion PL 2 &mdash; VOLVO FH</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">V&eacute;hicule PL</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">EF-456-GH</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">20/02/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">20/02/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">DREAL</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Chariot &eacute;l&eacute;vateur TOYOTA 2.5T</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Engin de chantier</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">TOY-25-BMI-2020</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">10/03/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">10/03/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Installation &eacute;lectrique atelier</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Installation &eacute;lec.</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">ELEC-BMI-2024</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">15/04/2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#F4A261;font-weight:700">15/04/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">VERITAS</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill po">&lt; 30 jours</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Extincteurs x4 (lot atelier)</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">S&eacute;curit&eacute; incendie</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">EXT-BMI-2024</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">10/01/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">10/01/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">SOCOTEC</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFF5F5;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Harnais antichute x2</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">EPI anti-chute</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">HARN-2023-001</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">15/01/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#E63946;font-weight:700">15/01/2028</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Tous les 2 ans</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pr">Expir&eacute;e !</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Outillage &eacute;lectrique (lot)</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Outillage</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">OUTL-BMI-2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">20/11/2025</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">20/11/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">Interne</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Compresseur 50L</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">Mat&eacute;riel atelier</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">COMP-BMI-2020</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">05/03/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">05/03/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">APAVE</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">Remorque plateau</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">V&eacute;hicule</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">IJ-789-KL</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">10/02/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">10/02/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">DREAL</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:8px 12px;font-weight:500;color:#1A1A2E">D&eacute;tecteur gaz portable</td>
+          <td style="padding:8px 10px;font-size:10px;color:#555">S&eacute;curit&eacute;</td>
+          <td style="padding:8px 10px;font-size:10px;font-family:monospace;color:#aaa">DETGAZ-2024</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px">15/03/2026</td>
+          <td style="padding:8px 10px;text-align:center;font-size:11px;color:#2D6A4F">15/03/2027</td>
+          <td style="padding:8px 10px;text-align:center;font-size:10px;color:#aaa">Annuelle</td>
+          <td style="padding:8px 10px;font-size:11px;color:#555">Interne</td>
+          <td style="padding:8px 10px;text-align:center"><span class="pill pg">Conforme ✓</span></td>
+          <td style="padding:8px 10px;text-align:center">
+            <button onclick="openModal('vgp')" style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#378ADD">&#9998; Modifier</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
   <!-- SOUS-TRAITANTS COMPLET -->
   <div class="page" id="page-sous_traitants">
     <div class="g5" style="margin-bottom:14px">
@@ -3180,7 +3416,55 @@ textarea{resize:vertical;line-height:1.5}
             <polygon points="55,133 285,133 315,170 25,170" fill="#378ADD"/>
             <text x="170" y="157" text-anchor="middle" fill="white" font-size="10" font-weight="700">Presqu&apos;accidents</text>
             <text x="320" y="157" fill="#378ADD" font-size="10" font-weight="600">0</text>
-            <!-- SD -->
+            <!-- VGP -->
+      <div class="modal-section" id="modal-sec-vgp" style="display:none">
+        <div class="fg2" style="margin-bottom:10px">
+          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Nacelle HAULOTTE H12SX" style="width:100%"/></div>
+          <div><div class="fl">Type *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-vgp-type')">
+              <option>Appareil de levage</option>
+              <option>Accessoire de levage</option>
+              <option>Engin de chantier</option>
+              <option>V&eacute;hicule PL</option>
+              <option>V&eacute;hicule l&eacute;ger</option>
+              <option>Installation &eacute;lectrique</option>
+              <option>EPI anti-chute</option>
+              <option>S&eacute;curit&eacute; incendie</option>
+              <option>Outillage</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-vgp-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">N&deg; de s&eacute;rie / Immatriculation</div><input placeholder="Ex: HAU-H12-2019-042" style="width:100%"/></div>
+          <div><div class="fl">Organisme contr&ocirc;leur</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-vgp-org')">
+              <option>APAVE</option><option>VERITAS</option><option>SOCOTEC</option>
+              <option>DREAL</option><option>Interne</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-vgp-org"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+        </div>
+        <div class="fg3">
+          <div><div class="fl">Date derni&egrave;re VGP</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Date prochaine VGP *</div><input type="date" style="width:100%;border-color:#E63946"/></div>
+          <div><div class="fl">P&eacute;riodicit&eacute;</div>
+            <select style="width:100%">
+              <option>Annuelle</option><option>Semestrielle</option>
+              <option>Tous les 2 ans</option><option>Tous les 3 ans</option>
+              <option>Tous les 5 ans</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Observations / Restrictions</div>
+          <input placeholder="Ex: Apte sans restriction, charge max 12T..." style="width:100%"/>
+        </div>
+        <div style="margin-top:8px;padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          &#9888; Un &eacute;quipement dont la VGP est expir&eacute;e ne doit pas &ecirc;tre utilis&eacute; jusqu&apos;au passage du contr&ocirc;le.
+        </div>
+      </div>
+
+      <!-- SD -->
             <polygon points="25,173 315,173 335,205 5,205" fill="#2D6A4F"/>
             <text x="170" y="194" text-anchor="middle" fill="white" font-size="11" font-weight="700">Situations dangereuses</text>
             <text x="335" y="194" fill="#2D6A4F" font-size="10" font-weight="600">4</text>
@@ -4047,6 +4331,54 @@ textarea{resize:vertical;line-height:1.5}
           <div><div class="fl">V&eacute;rifi&eacute; le</div><input type="date" style="width:100%"/></div>
         </div>
         <div style="margin-top:10px"><div class="fl">Commentaires</div><input placeholder="Remarques, suite &agrave; donner..." style="width:100%"/></div>
+      </div>
+
+      <!-- VGP -->
+      <div class="modal-section" id="modal-sec-vgp" style="display:none">
+        <div class="fg2" style="margin-bottom:10px">
+          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Nacelle HAULOTTE H12SX" style="width:100%"/></div>
+          <div><div class="fl">Type *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-vgp-type')">
+              <option>Appareil de levage</option>
+              <option>Accessoire de levage</option>
+              <option>Engin de chantier</option>
+              <option>V&eacute;hicule PL</option>
+              <option>V&eacute;hicule l&eacute;ger</option>
+              <option>Installation &eacute;lectrique</option>
+              <option>EPI anti-chute</option>
+              <option>S&eacute;curit&eacute; incendie</option>
+              <option>Outillage</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-vgp-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">N&deg; de s&eacute;rie / Immatriculation</div><input placeholder="Ex: HAU-H12-2019-042" style="width:100%"/></div>
+          <div><div class="fl">Organisme contr&ocirc;leur</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-vgp-org')">
+              <option>APAVE</option><option>VERITAS</option><option>SOCOTEC</option>
+              <option>DREAL</option><option>Interne</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-vgp-org"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+        </div>
+        <div class="fg3">
+          <div><div class="fl">Date derni&egrave;re VGP</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Date prochaine VGP *</div><input type="date" style="width:100%;border-color:#E63946"/></div>
+          <div><div class="fl">P&eacute;riodicit&eacute;</div>
+            <select style="width:100%">
+              <option>Annuelle</option><option>Semestrielle</option>
+              <option>Tous les 2 ans</option><option>Tous les 3 ans</option>
+              <option>Tous les 5 ans</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Observations / Restrictions</div>
+          <input placeholder="Ex: Apte sans restriction, charge max 12T..." style="width:100%"/>
+        </div>
+        <div style="margin-top:8px;padding:8px 12px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806">
+          &#9888; Un &eacute;quipement dont la VGP est expir&eacute;e ne doit pas &ecirc;tre utilis&eacute; jusqu&apos;au passage du contr&ocirc;le.
+        </div>
       </div>
 
       <!-- SD -->
