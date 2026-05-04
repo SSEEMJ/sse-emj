@@ -2958,7 +2958,339 @@ textarea{resize:vertical;line-height:1.5}
       <span style="padding:4px 10px;background:#FAEEDA;border-radius:6px;color:#633806;border:1px solid #FAC775">&#9998; Fond blanc = saisie MANUELLE requise</span>
       <span style="padding:4px 10px;background:#FCEBEB;border-radius:6px;color:#A32D2D;border:1px solid #F7C1C1">&#9888; Jours arr&ecirc;t = toujours saisie manuelle (fix&eacute;s par le m&eacute;decin)</span>
     </div>
-  </div><!-- COMITE -->
+  </div><!-- ACTION -->
+      <div class="modal-section" id="modal-sec-action" style="display:none">
+        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px;margin-bottom:12px">
+          <span style="font-weight:600">R&eacute;f. auto :</span> PA-2026-027
+          <span style="margin-left:auto;font-size:10px;color:#aaa">Aujourd&apos;hui &bull; AV</span>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">1 &mdash; Identification</div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Type d&apos;action *</div>
+            <select style="width:100%" onchange="updateActionType(this)">
+              <option value="">-- S&eacute;lectionner --</option>
+              <option value="imm">Actions Imm&eacute;diates</option>
+              <option value="cor">Actions Correctives</option>
+              <option value="prev">Actions Pr&eacute;ventives</option>
+              <option value="dif">Actions Diff&eacute;r&eacute;es</option>
+            </select>
+            <div id="action-type-badge" style="display:none;margin-top:5px;padding:6px 10px;border-radius:7px;font-size:11px"></div>
+          </div>
+          <div><div class="fl">Domaine *</div>
+            <select style="width:100%">
+              <option>S&eacute;curit&eacute;</option><option>Sant&eacute;</option><option>Environnement</option>
+              <option>Qualit&eacute;</option><option>S&eacute;curit&eacute; et Sant&eacute;</option>
+              <option>Sant&eacute; Environnement</option><option>Syst&egrave;me</option>
+            </select>
+          </div>
+          <div><div class="fl">Origine *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-action-origine')">
+              <option>-- S&eacute;lectionner --</option>
+              <option>Politique SSE</option><option>Objectifs SSE</option><option>Indicateurs</option>
+              <option>Visite &amp; Audit Terrain</option><option>Causerie &amp; 1/4h s&eacute;curit&eacute;</option>
+              <option>Communication et Affichage</option><option>Accident &amp; Incident</option>
+              <option>Bilan Pilotage &amp; Comit&eacute; SSE &amp; RD</option>
+              <option>R&eacute;glementation &amp; Conformit&eacute;</option><option>Audit Syst&egrave;me</option>
+              <option>Non-Conformit&eacute;</option><option>Contr&ocirc;le Mat&eacute;riels &amp; VGP</option>
+              <option>R&eacute;clamations Client</option><option>Retours Exp&eacute;riences</option>
+              <option>Ressources Humaines</option><option>Sous-traitants</option>
+              <option>Situation Dangereuse</option><option value="autre">Autres (pr&eacute;ciser)</option>
+            </select>
+            <div class="autre-field" id="autre-action-origine"><input placeholder="Pr&eacute;ciser l&apos;origine..."/></div>
+          </div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">2 &mdash; Description &amp; Analyse</div>
+        <div style="margin-bottom:8px"><div class="fl">Description de l&apos;action *</div><textarea rows="2" placeholder="D&eacute;crire l&apos;action pr&eacute;cis&eacute;ment..." style="width:100%"></textarea></div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div><div class="fl">Pourquoi est-ce arriv&eacute; ?</div><textarea rows="2" placeholder="Cause identifi&eacute;e..." style="width:100%"></textarea></div>
+          <div><div class="fl">Objectif final</div><textarea rows="2" placeholder="R&eacute;sultat attendu..." style="width:100%"></textarea></div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">3 &mdash; Ressources &amp; Moyens</div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div><div class="fl">Ressources / Facteurs *</div>
+            <select style="width:100%">
+              <option>-- S&eacute;lectionner --</option>
+              <option>Humains</option><option>Organisationnels</option><option>Techniques</option>
+              <option>Humains et Organisationnels</option><option>Organisationnels et Techniques</option>
+              <option>Techniques et Humains</option>
+            </select>
+          </div>
+          <div><div class="fl">Co&ucirc;t estim&eacute; (k&euro;)</div><input type="number" placeholder="Ex: 0.5" style="width:100%"/></div>
+        </div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div><div class="fl">Moyens &agrave; mettre en oeuvre</div><textarea rows="2" placeholder="Mat&eacute;riel, organisation, documentation..." style="width:100%"></textarea></div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">4 &mdash; Pilotage</div>
+        <div class="fg3">
+          <div><div class="fl">Auteur</div><select style="width:100%"><option>AV &mdash; Alexandra Valentin</option><option>SP</option><option>LD</option><option>TM &mdash; Tony Martin</option></select></div>
+          <div><div class="fl">Pilote *</div><select style="width:100%"><option>AV &mdash; Alexandra Valentin</option><option>SP</option><option>LD</option><option>TM &mdash; Tony Martin</option></select></div>
+          <div><div class="fl">D&eacute;lai *</div><input type="date" style="width:100%"/></div>
+        </div>
+        <div class="fg3" style="margin-top:10px">
+          <div><div class="fl">Etat d&apos;avancement</div>
+            <select style="width:100%">
+              <option value="0">0%</option><option value="0.25">25%</option><option value="0.5">50%</option>
+              <option value="0.75">75%</option><option value="1">100%</option>
+              <option value="cloturee">Cl&ocirc;tur&eacute;e</option><option value="efficace">Efficace</option><option value="abandonne">Abandonn&eacute;</option>
+            </select>
+          </div>
+          <div><div class="fl">Efficacit&eacute;</div>
+            <select style="width:100%"><option>&mdash;</option><option>Oui</option><option>Partielle</option><option>Non</option></select>
+          </div>
+          <div><div class="fl">V&eacute;rifi&eacute; le</div><input type="date" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Commentaires</div><input placeholder="Remarques, suite &agrave; donner..." style="width:100%"/></div>
+      </div>
+
+      <!-- SD -->
+      <div class="modal-section" id="modal-sec-sd" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Date *</div><input type="datetime-local" style="width:100%"/></div>
+          <div><div class="fl">Signalant *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
+          <div><div class="fl">Lieu *</div><input placeholder="Ex: Chantier TOTAL Fos" style="width:100%"/></div>
+          <div><div class="fl">Domaine *</div><select style="width:100%" onchange="handleAutre(this,'autre-sd-dom')"><option>Levage &amp; Manutention</option><option>Transport &amp; Conduite</option><option>Travail en hauteur</option><option>EPI</option><option>Environnement</option><option>Organisation chantier</option><option>Incendie / Explosion</option><option>Risque chimique</option><option value="autre">Autre</option></select><div class="autre-field" id="autre-sd-dom"><input placeholder="Pr&eacute;ciser..."/></div></div>
+          <div><div class="fl">Chantier / Lieu</div><input placeholder="Ex: TOTAL Fos, Atelier..." style="width:100%"/></div>
+          <div><div class="fl">Cause imm&eacute;diate</div><input placeholder="Ex: Sol glissant..." style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire la situation dangereuse..."></textarea></div>
+      </div>
+
+      <!-- ACCIDENT -->
+      <div class="modal-section" id="modal-sec-accident" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Type *</div>
+            <select style="width:100%" id="modal-acc-type" onchange="document.getElementById('arret-zone').style.display=this.value==='aaa'?'block':'none'">
+              <option value="">-- S&eacute;lectionner --</option>
+              <option value="aaa">AT avec arr&ecirc;t (AAA)</option>
+              <option value="asa">AT sans arr&ecirc;t (ASA)</option>
+              <option value="soin">Soin b&eacute;nin &mdash; infirmerie</option>
+              <option value="trajet">Accident de trajet</option>
+            </select>
+          </div>
+          <div><div class="fl">Date &amp; heure *</div><input type="datetime-local" style="width:100%"/></div>
+          <div><div class="fl">Victime *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
+          <div><div class="fl">Lieu *</div><input placeholder="Ex: Atelier d&eacute;p&ocirc;t" style="width:100%"/></div>
+          <div><div class="fl">Nature *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-acc-nature')">
+              <option>Coupure / Plaie</option><option>Contusion</option><option>Entorse</option>
+              <option>Fracture</option><option>Br&ucirc;lure</option><option>Projection</option>
+              <option>Choc / Traumatisme</option><option>Lombalgies</option><option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-acc-nature"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Si&egrave;ge l&eacute;sion *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-acc-siege')">
+              <option>T&ecirc;te / Cr&acirc;ne</option><option>Oeil</option><option>Main / Doigt</option>
+              <option>Poignet / Avant-bras</option><option>Bras / &Eacute;paule</option>
+              <option>Dos / Colonne</option><option>Jambe / Genou</option><option>Cheville / Pied</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-acc-siege"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+        </div>
+        <div id="arret-zone" style="display:none;margin-top:10px">
+          <div style="padding:10px 14px;background:#FCEBEB;border-radius:8px;border:1px solid #F7C1C1">
+            <div style="font-size:11px;font-weight:600;color:#A32D2D;margin-bottom:6px">&#9888; Journ&eacute;es perdues &mdash; SAISIE MANUELLE &mdash; impact sur TG</div>
+            <div class="fg3">
+              <div><div class="fl">Date d&eacute;but arr&ecirc;t *</div><input type="date" style="width:100%"/></div>
+              <div><div class="fl">Nb jours arr&ecirc;t *</div><input type="number" placeholder="Fix&eacute; par le m&eacute;decin" style="width:100%;border:2px solid #E63946"/></div>
+              <div><div class="fl">Date reprise pr&eacute;vue</div><input type="date" style="width:100%"/></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description</div><textarea rows="2" placeholder="Circonstances de l&apos;accident..."></textarea></div>
+        <div style="margin-top:8px"><label style="display:flex;align-items:center;gap:8px;font-size:12px;padding:8px 12px;background:#EAF3DE;border-radius:8px;cursor:pointer;border:1px solid #C0DD97"><input type="checkbox" checked/> <strong>Mettre &agrave; jour les indicateurs SSE</strong> &mdash; AAA, ASA, soins et jours perdus</label></div>
+      </div>
+
+      <!-- CAUSERIE -->
+      <div class="modal-section" id="modal-sec-causerie" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Th&egrave;me *</div><input placeholder="Ex: Travail en hauteur, EPI..." style="width:100%"/></div>
+          <div><div class="fl">Type</div><select style="width:100%"><option>S&eacute;curit&eacute;</option><option>Sant&eacute;</option><option>Environnement</option></select></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Animateur</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+          <div><div class="fl">Dur&eacute;e (min)</div><input type="number" value="15" style="width:100%"/></div>
+          <div><div class="fl">Lieu</div><input placeholder="Ex: Atelier, Chantier..." style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Participants (cocher)</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MARTIN L.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> RENARD D.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> GIRARD P.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> DUPONT A.</label>
+            <label style="display:flex;align-items:center;gap:5px;font-size:12px;padding:5px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MOREAU J.</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- HABILITATION -->
+      <div class="modal-section" id="modal-sec-habilitation" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Salari&eacute; *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
+          <div><div class="fl">Type d&apos;habilitation *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-hab-type')">
+              <option>CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</option><option>CACES R490 &mdash; Grues mobiles</option>
+              <option>CACES R486 &mdash; Nacelles</option><option>SST &mdash; Sauveteur Secouriste</option>
+              <option>Habilitation &eacute;lec. B1</option><option>ATEX</option><option>ARI</option>
+              <option>Travail en hauteur</option><option>Permis CE</option><option>Visite m&eacute;dicale</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-hab-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Date obtention</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Date expiration *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Organisme</div><input placeholder="Ex: APAVE, INRS..." style="width:100%"/></div>
+          <div><div class="fl">N&deg; de certificat</div><input placeholder="Ex: CERT-2026-001" style="width:100%"/></div>
+        </div>
+      </div>
+
+      <!-- AUDIT -->
+      <div class="modal-section" id="modal-sec-audit" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">R&eacute;f. audit</div><input value="AUD-2026-004" style="width:100%;background:#F8F9FA" readonly/></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Raffinerie Fos" style="width:100%"/></div>
+          <div><div class="fl">Auditeur *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+          <div><div class="fl">Type de travaux</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-aud-type')">
+              <option>Levage camion-grue</option><option>Transport PL</option><option>Manutention</option>
+              <option>Travail en hauteur &mdash; nacelle</option><option>Montage industriel</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-aud-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Score conformit&eacute;</div><input type="number" placeholder="Ex: 85" min="0" max="100" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Observations principales</div><textarea rows="2" placeholder="Points positifs, non-conformit&eacute;s..."></textarea></div>
+      </div>
+
+      <!-- BP -->
+      <div class="modal-section" id="modal-sec-bp" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Titre *</div><input placeholder="Ex: Longes outils en nacelle" style="width:100%"/></div>
+          <div><div class="fl">Domaine *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-bp-dom')">
+              <option>Levage &amp; Manutention</option><option>EPI</option><option>Organisation chantier</option>
+              <option>Environnement</option><option>Transport</option><option>Travail en hauteur</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-bp-dom"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Identifi&eacute; par</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
+          <div><div class="fl">Date</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier / Lieu</div><input placeholder="Ex: TOTAL Fos" style="width:100%"/></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire la bonne pratique en d&eacute;tail..."></textarea></div>
+      </div>
+
+      <!-- REX -->
+      <div class="modal-section" id="modal-sec-rex" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Type *</div><select style="width:100%"><option>N&eacute;gatif &mdash; Incident</option><option>Positif &mdash; Bonne pratique</option><option>Neutre &mdash; Observation</option></select></div>
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Raffinerie" style="width:100%"/></div>
+          <div><div class="fl">Rapporteur *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
+          <div><div class="fl">Domaine</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-rex-dom')">
+              <option>Levage &amp; Manutention</option><option>Transport</option><option>Hauteur</option>
+              <option>EPI</option><option>Environnement</option><option>Organisation</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-rex-dom"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Liaison</div><select style="width:100%"><option>Aucune</option><option>Depuis SD</option><option>Depuis AT</option><option>Depuis audit</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire le retour d&apos;exp&eacute;rience..."></textarea></div>
+      </div>
+
+      <!-- FORMATION -->
+      <div class="modal-section" id="modal-sec-formation" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Salari&eacute;(s) *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Plusieurs salari&eacute;s</option></select></div>
+          <div><div class="fl">Type de formation *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-form-type')">
+              <option>Recyclage SST</option><option>CACES R489</option><option>CACES R490</option>
+              <option>Habilitation &eacute;lectrique</option><option>Formation ATEX</option><option>Renouvellement ARI</option>
+              <option>Formation levage/&eacute;lingage</option><option>Visite m&eacute;dicale</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-form-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Date pr&eacute;vue *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Organisme</div><input placeholder="Ex: APAVE, INRS, SST..." style="width:100%"/></div>
+          <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 1 jour, 3,5h..." style="width:100%"/></div>
+          <div><div class="fl">Co&ucirc;t estim&eacute; (&euro;)</div><input type="number" placeholder="Ex: 350" style="width:100%"/></div>
+        </div>
+      </div>
+
+      <!-- EPI -->
+      <div class="modal-section" id="modal-sec-epi" style="display:none">
+        <div style="display:flex;gap:6px;margin-bottom:10px">
+          <button onclick="setEPIMode(this,'stock')" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid #E63946;background:#FCEBEB;color:#A32D2D;cursor:pointer;font-size:12px;font-weight:500">Ajouter au stock</button>
+          <button onclick="setEPIMode(this,'remise')" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid #E8E8E8;background:#fff;color:#555;cursor:pointer;font-size:12px">Remettre &agrave; un salari&eacute;</button>
+          <button onclick="setEPIMode(this,'retrait')" style="flex:1;padding:8px;border-radius:8px;border:1.5px solid #E8E8E8;background:#fff;color:#555;cursor:pointer;font-size:12px">Retirer du stock</button>
+        </div>
+        <div class="fg3">
+          <div><div class="fl">Cat&eacute;gorie *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-epi-cat')">
+              <option>Protection t&ecirc;te (casque)</option><option>Protection yeux (lunettes)</option>
+              <option>Protection mains (gants)</option><option>Protection pieds (chaussures)</option>
+              <option>Protection hauteur (harnais, longe)</option><option>Protection respiratoire</option>
+              <option>Signalisation (gilet, plots)</option><option>Kit antipollution</option>
+              <option>Premiers secours</option><option>Incendie (extincteur)</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-epi-cat"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Harnais antichute EN 361 T.L" style="width:100%"/></div>
+          <div><div class="fl">Norme</div><input placeholder="Ex: EN 361, EN 166..." style="width:100%"/></div>
+          <div><div class="fl">Quantit&eacute; *</div><input type="number" placeholder="Ex: 2" style="width:100%"/></div>
+          <div><div class="fl">Taille / R&eacute;f.</div><input placeholder="Ex: T.43, T.L..." style="width:100%"/></div>
+          <div><div class="fl">Date p&eacute;remption</div><input type="date" style="width:100%"/></div>
+        </div>
+        <div class="fg2" style="margin-top:8px">
+          <div><div class="fl">Affect&eacute; &agrave;</div><select style="width:100%"><option>Stock g&eacute;n&eacute;ral</option><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
+          <div><div class="fl">Co&ucirc;t unitaire HT (&euro;)</div><input type="number" placeholder="Ex: 85" style="width:100%"/></div>
+        </div>
+      </div>
+
+      <!-- ST_DOC -->
+      <div class="modal-section" id="modal-sec-st_doc" style="display:none">
+        <div class="fg2">
+          <div><div class="fl">Type de document *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-stdoc-type')">
+              <option>Attestation URSSAF</option><option>Assurance RC Pro</option><option>Extrait KBIS</option>
+              <option>Plan de pr&eacute;vention</option><option>Liste nominative</option>
+              <option>Attestations visites m&eacute;dicales</option><option>Habilitations salari&eacute;s ST</option>
+              <option value="autre">Autre</option>
+            </select>
+            <div class="autre-field" id="autre-stdoc-type"><input placeholder="Pr&eacute;ciser..."/></div>
+          </div>
+          <div><div class="fl">Date expiration</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Statut</div><select style="width:100%"><option>Valide ✓</option><option>En attente</option><option>Expir&eacute;</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Commentaire</div><input placeholder="Ex: Document recu par email le..." style="width:100%"/></div>
+      </div>
+
+      <!-- ST_EVAL -->
+      <div class="modal-section" id="modal-sec-st_eval" style="display:none">
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier *</div><input placeholder="Ex: TOTAL Raffinerie" style="width:100%"/></div>
+          <div><div class="fl">&Eacute;valuateur</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;font-weight:500">Port des EPI</span><select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;font-weight:500">Respect mode op&eacute;ratoire</span><select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;font-weight:500">Propret&eacute; du chantier</span><select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;font-weight:500">Balisage et signalisation</span><select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;font-weight:500">Respect consignes SSE site</span><select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Observations</div><textarea rows="2" placeholder="Points positifs, &agrave; am&eacute;liorer..."></textarea></div>
+      </div>
+
+<!-- COMITE -->
       <div class="modal-section" id="modal-sec-comite" style="display:none">
         <div class="fg2">
           <div><div class="fl">Num&eacute;ro du comit&eacute;</div><select style="width:100%"><option>Comit&eacute; SSE n&deg;2 &mdash; T2 2026</option><option>Comit&eacute; SSE n&deg;3 &mdash; T3 2026</option><option>Revue de direction &mdash; D&eacute;c. 2026</option></select></div>
