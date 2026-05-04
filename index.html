@@ -2937,89 +2937,505 @@ textarea{resize:vertical;line-height:1.5}
 
       <!-- INDICATEURS - saisie mensuelle -->
       <div class="modal-section" id="modal-sec-indicateurs" style="display:none">
-
-        <!-- Bandeau mois -->
         <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">
           <span>Saisie des donn&eacute;es &mdash; <strong>Mai 2026</strong></span>
           <span style="font-size:10px;color:#aaa">TF1, TF2, TG recalcul&eacute;s automatiquement</span>
         </div>
-
-        <!-- SECTION 1 : Effectif organique -->
-        <div style="font-size:10px;font-weight:600;color:#E63946;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FFF5F5;border-radius:6px;border-left:3px solid #E63946">
-          1 &mdash; Effectif organique (CDI, CDD, CDC...)
-          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Renseign&eacute; automatiquement depuis Personnel</span>
-        </div>
-        <div class="fg3" style="margin-bottom:12px">
-          <div><div class="fl">Effectif organique du mois</div><input type="number" value="6" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis module Personnel</div></div>
-          <div><div class="fl">Heures travaill&eacute;es &mdash; ORGANIQUE *</div><input type="number" placeholder="Ex: 860" style="width:100%;border-color:#E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; saisir les heures r&eacute;elles</div></div>
-          <div><div class="fl">Acc. de trajet</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; non saisi ailleurs</div></div>
-        </div>
-
-        <!-- AT remontés auto depuis Accidents & Soins -->
-        <div style="padding:8px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:10px;font-size:11px">
-          <div style="font-weight:600;color:#1A1A2E;margin-bottom:6px">Accidents &mdash; remont&eacute;s depuis module Accidents &amp; Soins</div>
-          <div class="fg3">
-            <div style="padding:8px 10px;background:#FFF5F5;border-radius:7px;text-align:center">
-              <div style="font-size:18px;font-weight:700;color:#E63946">1</div>
-              <div style="font-size:10px;color:#aaa;margin-top:2px">AT avec arr&ecirc;t (AAA)</div>
-              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; AT-2026-001</div>
-            </div>
-            <div style="padding:8px 10px;background:#FFF8F0;border-radius:7px;text-align:center">
-              <div style="font-size:18px;font-weight:700;color:#F4A261">0</div>
-              <div style="font-size:10px;color:#aaa;margin-top:2px">AT sans arr&ecirc;t (ASA)</div>
-              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; Accidents &amp; Soins</div>
-            </div>
-            <div style="padding:8px 10px;background:#FFF8F0;border-radius:7px;text-align:center">
-              <div style="font-size:18px;font-weight:700;color:#BA7517">3</div>
-              <div style="font-size:10px;color:#aaa;margin-top:2px">Soins b&eacute;nins (infirmerie)</div>
-              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; Accidents &amp; Soins</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Jours d'arrêt - SAISIE MANUELLE OBLIGATOIRE -->
-        <div style="padding:10px 14px;background:#FCEBEB;border-radius:8px;border:1px solid #F7C1C1;margin-bottom:12px">
-          <div style="font-size:11px;font-weight:600;color:#A32D2D;margin-bottom:8px">&#9888; Journ&eacute;es perdues &mdash; Saisie manuelle obligatoire</div>
-          <div style="font-size:11px;color:#555;margin-bottom:8px">Le nombre de jours d&apos;arr&ecirc;t est fix&eacute; par le m&eacute;decin. Il est indispensable pour calculer le TG.</div>
-          <div class="fg2">
-            <div><div class="fl">Nb jours d&apos;arr&ecirc;t (organique) *</div><input type="number" value="12" style="width:100%;border:2px solid #E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">Ex : 12 jours pour AT-2026-001 BLONDEL</div></div>
-            <div><div class="fl">Calcul TG organique (auto)</div><input value="1,4" style="width:100%;background:#F0F0F0;font-weight:700;color:#7F77DD" readonly/><div style="font-size:9px;color:#7F77DD;margin-top:2px">= 12 &times; 1000 / heures travaill&eacute;es</div></div>
-          </div>
-        </div>
-
-        <!-- SECTION 2 : Intérimaires -->
-        <div style="font-size:10px;font-weight:600;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#E6F1FB;border-radius:6px;border-left:3px solid #378ADD">
-          2 &mdash; Personnel temporaire (int&eacute;rimaires)
-          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Remont&eacute; depuis Personnel &mdash; contrat Int&eacute;rimaire</span>
-        </div>
-        <div class="fg3" style="margin-bottom:12px">
-          <div><div class="fl">Nb int&eacute;rimaires ce mois</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; GIRARD P. (Int&eacute;rimaire)</div></div>
-          <div><div class="fl">Heures travaill&eacute;es &mdash; INT&Eacute;RIMAIRES *</div><input type="number" placeholder="Ex: 160" style="width:100%;border-color:#378ADD"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; heures int&eacute;rimaires</div></div>
-          <div><div class="fl">AT int&eacute;rimaires (AAA)</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL si non saisi dans Accidents</div></div>
-        </div>
-        <div class="fg2" style="margin-bottom:12px">
-          <div><div class="fl">ASA int&eacute;rimaires</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">Jours arr&ecirc;t int&eacute;rimaires</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; fix&eacute; par le m&eacute;decin</div></div>
-        </div>
-
-        <!-- SECTION 3 : Causeries -->
-        <div style="font-size:10px;font-weight:600;color:#BA7517;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FAEEDA;border-radius:6px;border-left:3px solid #BA7517">
-          3 &mdash; Causeries SSE
-          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Remont&eacute; depuis module Causeries</span>
-        </div>
+        <div style="font-size:10px;font-weight:600;color:#E63946;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FFF5F5;border-radius:6px;border-left:3px solid #E63946">1 &mdash; Effectif organique (CDI, CDD, CDC...)</div>
         <div class="fg3" style="margin-bottom:10px">
-          <div><div class="fl">Causeries S&eacute;curit&eacute;</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
-          <div><div class="fl">Causeries Sant&eacute;</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
-          <div><div class="fl">Causeries Environnement</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
+          <div><div class="fl">Effectif organique</div><input type="number" value="6" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Personnel</div></div>
+          <div><div class="fl">Heures travaill&eacute;es organique *</div><input type="number" placeholder="Ex: 860" style="width:100%;border-color:#E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL obligatoire</div></div>
+          <div><div class="fl">Accidents de trajet</div><input type="number" value="0" style="width:100%"/></div>
         </div>
-
-        <!-- Résultat calculé -->
-        <div style="padding:10px 14px;background:linear-gradient(135deg,#EAF3DE,#F5FFF8);border-radius:8px;border:1px solid #C0DD97;font-size:11px">
-          <div style="font-weight:600;color:#27500A;margin-bottom:6px">R&eacute;sultats calcul&eacute;s pour Mai 2026</div>
-          <div style="display:flex;gap:16px;flex-wrap:wrap">
-            <span><strong style="color:#E63946">TF1</strong> = sera calcul&eacute; apr&egrave;s saisie des heures</span>
-            <span><strong style="color:#F4A261">TF2</strong> = sera calcul&eacute; apr&egrave;s saisie des heures</span>
-            <span><strong style="color:#7F77DD">TG</strong> = sera calcul&eacute; apr&egrave;s saisie des jours arr&ecirc;t</span>
+        <div style="padding:8px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:10px;font-size:11px">
+          <div style="font-weight:600;color:#1A1A2E;margin-bottom:6px">Accidents &mdash; AUTO depuis Accidents &amp; Soins</div>
+          <div class="fg3">
+            <div style="padding:8px;background:#FFF5F5;border-radius:7px;text-align:center"><div style="font-size:18px;font-weight:700;color:#E63946">1</div><div style="font-size:10px;color:#aaa">AAA (avec arr&ecirc;t)</div><div style="font-size:9px;color:#2D6A4F">AUTO</div></div>
+            <div style="padding:8px;background:#FFF8F0;border-radius:7px;text-align:center"><div style="font-size:18px;font-weight:700;color:#F4A261">0</div><div style="font-size:10px;color:#aaa">ASA (sans arr&ecirc;t)</div><div style="font-size:9px;color:#2D6A4F">AUTO</div></div>
+            <div style="padding:8px;background:#FFF8F0;border-radius:7px;text-align:center"><div style="font-size:18px;font-weight:700;color:#BA7517">3</div><div style="font-size:10px;color:#aaa">Soins b&eacute;nins</div><div style="font-size:9px;color:#2D6A4F">AUTO</div></div>
           </div>
         </div>
-      >
+        <div style="padding:10px 14px;background:#FCEBEB;border-radius:8px;border:1px solid #F7C1C1;margin-bottom:10px">
+          <div style="font-size:11px;font-weight:600;color:#A32D2D;margin-bottom:6px">&#9888; Journ&eacute;es perdues &mdash; SAISIE MANUELLE obligatoire</div>
+          <div class="fg2">
+            <div><div class="fl">Nb jours d&apos;arr&ecirc;t *</div><input type="number" value="12" style="width:100%;border:2px solid #E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">Fix&eacute; par le m&eacute;decin &mdash; indispensable pour TG</div></div>
+            <div><div class="fl">TG calcul&eacute; (auto)</div><input value="1,4" style="width:100%;background:#F0F0F0;font-weight:700;color:#7F77DD" readonly/></div>
+          </div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#E6F1FB;border-radius:6px;border-left:3px solid #378ADD">2 &mdash; Int&eacute;rimaires</div>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Nb int&eacute;rimaires</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/></div>
+          <div><div class="fl">Heures int&eacute;rimaires *</div><input type="number" placeholder="Ex: 160" style="width:100%;border-color:#378ADD"/></div>
+          <div><div class="fl">Jours arr&ecirc;t int&eacute;rimaires</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; m&eacute;decin</div></div>
+        </div>
+        <div style="font-size:10px;font-weight:600;color:#BA7517;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FAEEDA;border-radius:6px;border-left:3px solid #BA7517">3 &mdash; Causeries SSE</div>
+        <div class="fg3">
+          <div><div class="fl">Causeries S&eacute;curit&eacute;</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/></div>
+          <div><div class="fl">Causeries Sant&eacute;</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/></div>
+          <div><div class="fl">Causeries Environnement</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/></div>
+        </div>
+      </div>
+
+      <!-- PERSONNEL -->
+      <div class="modal-section" id="modal-sec-personnel" style="display:none"></div>
+      <!-- REVUE SAVE -->
+      <div class="modal-section" id="modal-sec-revue_save" style="display:none"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notif" id="notif">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div style="width:30px;height:30px;border-radius:50%;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">&#10003;</div>
+    <div>
+      <div id="notif-title" style="font-size:13px;font-weight:600;color:#27500A">Enregistr&eacute; avec succ&egrave;s</div>
+      <div id="notif-sub" style="font-size:11px;color:#aaa;margin-top:1px">Op&eacute;ration r&eacute;alis&eacute;e</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var currentPage = "dashboard";
+
+function handleAutre(sel, inputId) {
+  var inp = document.getElementById(inputId);
+  if(!inp) return;
+  if(sel.value === "autre" || sel.value === "Autre") {
+    inp.style.display = "block";
+    inp.querySelector("input").focus();
+  } else {
+    inp.style.display = "none";
+  }
+}
+
+var pagesMeta = {
+  dashboard:{t:"Tableau de bord",s:"Vue g\u00e9n\u00e9rale 2026",btn:"+ Signaler / D\u00e9clarer",modal:"sd"},
+  politique:{t:"Politique SSE",s:"Axe 1 \u2014 \u00a71.2 MASE 2024",btn:"Diffuser au personnel",modal:"diffusion"},
+  objectifs:{t:"Objectifs SSE & Plan management",s:"Axe 1 \u2014 \u00a71.3 MASE 2024",btn:"+ Ajouter un objectif",modal:"objectif"},
+  indicateurs:{t:"Indicateurs SSE \u2014 12 mois glissants",s:"Axe 1 \u2014 TF1, TF2, TG calcul\u00e9s automatiquement",btn:"+ Saisir donn\u00e9es du mois",modal:"indicateurs"},
+  plan_actions:{t:"Plan d\u2019actions SSE \u2014 2026",s:"Axe 1 \u2014 Engagement Direction",btn:"+ Nouvelle action",modal:"action"},
+  causeries:{t:"Causeries SSE",s:"Axe 1 \u2014 Animation SSE",btn:"+ Nouvelle causerie",modal:"causerie"},
+  comite:{t:"Comit\u00e9 de pilotage",s:"Axe 1 \u2014 Pilotage syst\u00e8me",btn:"+ Planifier un comit\u00e9",modal:"comite"},
+  personnel:{t:"Personnel",s:"Axe 2 \u2014 Comp\u00e9tences & RH",btn:"+ Ajouter un salari\u00e9",modal:"personnel"},
+  habilitations:{t:"Habilitations \u2014 Vue transversale",s:"Axe 2 \u2014 Conformit\u00e9 MASE",btn:"+ Ajouter habilitation",modal:"habilitation"},
+  formation:{t:"Planning de formation",s:"Axe 2 \u2014 \u00a72.3 MASE 2024",btn:"+ Planifier une formation",modal:"formation"},
+  duer:{t:"Document Unique (DUER)",s:"Axe 3 \u2014 \u00a73.1 MASE 2024",btn:"+ Nouvelle unit\u00e9 de travail",modal:"duer"},
+  modes_op:{t:"Modes op\u00e9ratoires",s:"Axe 3 \u2014 Organisation du travail",btn:"+ Nouveau mode op\u00e9ratoire",modal:"mo"},
+  vgp:{t:"VGP & Mat\u00e9riels",s:"Axe 3 \u2014 Contr\u00f4les r\u00e9glementaires",btn:"+ Ajouter \u00e9quipement",modal:"vgp"},
+  sous_traitants:{t:"Sous-traitants & \u00c9valuation SSE",s:"Axe 3 \u2014 Ma\u00eetrise sous-traitance",btn:"+ Nouveau sous-traitant",modal:"st"},
+  rex:{t:"REX Chantier",s:"Axe 3 & 5 \u2014 Capitalisation",btn:"+ Nouveau REX",modal:"rex"},
+  audits:{t:"Audits terrain \u2014 Grille SSE-043",s:"Axe 4 \u2014 Efficacit\u00e9",btn:"+ Nouvel audit",modal:"audit"},
+  situations:{t:"Situations dangereuses",s:"Axe 4 \u2014 Efficacit\u00e9",btn:"+ Signaler une situation",modal:"sd"},
+  bonnes_pratiques:{t:"Bonnes pratiques \u2014 Catalogue",s:"Axe 4 \u2014 Capitalisation",btn:"+ Ajouter une BP",modal:"bp"},
+  accidents:{t:"Accidents & Soins",s:"Axe 4 \u2014 Registre r\u00e9glementaire",btn:"+ D\u00e9clarer un accident",modal:"accident"},
+  revue:{t:"Revue de direction \u2014 Axe 5",s:"Axe 5 \u2014 Am\u00e9lioration continue",btn:"Enregistrer la revue",modal:"revue_save"},
+  epi:{t:"EPI & Consommables",s:"Autres suivis \u2014 Stock & Dotations & Alertes",btn:"+ Ajouter / Remettre un EPI",modal:"epi"},
+  carbone:{t:"Empreinte carbone",s:"Autres suivis",btn:"+ Saisir consommation",modal:"carbone"},
+  depenses:{t:"D\u00e9penses s\u00e9curit\u00e9",s:"Autres suivis",btn:"+ Ajouter d\u00e9pense",modal:"depense"},
+  ressources:{t:"Ressources documentaires",s:"Autres suivis",btn:"+ Ajouter document",modal:"ressource"}
+};
+
+function go(id, el) {
+  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
+  document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});
+  var pg = document.getElementById("page-"+id);
+  if(pg) pg.classList.add("active");
+  if(el) el.classList.add("active");
+  var m = pagesMeta[id] || {t:id,s:"",btn:"+ Ajouter",modal:null};
+  var pt = document.getElementById("pt");
+  var ps = document.getElementById("ps");
+  var bm = document.getElementById("btn-main");
+  if(pt) pt.textContent = m.t;
+  if(ps) ps.textContent = m.s;
+  if(bm) bm.textContent = m.btn || "+ Ajouter";
+  currentPage = id;
+  window.scrollTo(0,0);
+}
+
+function mainAction() {
+  var m = pagesMeta[currentPage];
+  if(!m) return;
+  if(currentPage === "personnel") { swPerso("nouveau", document.getElementById("ptab-nouveau")); return; }
+  if(currentPage === "revue") { showNotif("Revue enregistree !", "#27500A", "#EAF3DE", "#C0DD97"); return; }
+  if(m.modal) { openModal(m.modal); }
+  else { showNotif("Disponible dans la prochaine version.", "#185FA5", "#E6F1FB", "#B5D4F4"); }
+}
+
+function openModal(type) {
+  // Handle element passed instead of string (from data-m attribute)
+  if(type && typeof type === "object" && type.dataset) {
+    type = type.dataset.m || "action";
+  }
+  if(type === "personnel") { swPerso("nouveau", document.getElementById("ptab-nouveau")); return; }
+  if(type === "revue_save") { showNotif("Revue de direction enregistree !", "#27500A", "#EAF3DE", "#C0DD97"); return; }
+  document.querySelectorAll(".modal-section").forEach(function(s){s.style.display="none";});
+  var sec = document.getElementById("modal-sec-"+type);
+  if(sec) sec.style.display="block";
+  var titles = {
+    action:"Nouvelle action SSE",habilitation:"Ajouter une habilitation",vgp:"Ajouter un equipement VGP",
+    sd:"Signaler une situation dangereuse",accident:"Declarer un accident / soin",bp:"Nouvelle bonne pratique",
+    audit:"Nouvel audit terrain",causerie:"Planifier une causerie SSE",comite:"Planifier un comite SSE",
+    objectif:"Ajouter un objectif SSE",indicateurs:"Saisie mensuelle Mai 2026",rex:"Nouveau REX",
+    formation:"Planifier une formation",st:"Nouveau sous-traitant",duer:"Nouvelle unite de travail",
+    mo:"Nouveau mode operatoire",diffusion:"Diffuser la Politique SSE",epi:"Ajouter / Remettre un EPI",
+    carbone:"Saisir une consommation",depense:"Ajouter une depense SSE",ressource:"Ajouter un document",
+    st_doc:"Ajouter un document sous-traitant",st_eval:"Nouvelle evaluation SSE"
+  };
+  var subs = {
+    action:"Plan d'actions - Axe 1",habilitation:"Habilitations - Axe 2",vgp:"VGP & Materiels - Axe 3",
+    sd:"Situations dangereuses - Axe 4",accident:"Accidents & Soins - Axe 4",bp:"Bonnes pratiques - Axe 4",
+    audit:"Audits terrain - SSE-043",causerie:"Axe 1 - Animation SSE",comite:"Axe 1 - Pilotage systeme",
+    objectif:"Axe 1 - Objectifs MASE 2024",indicateurs:"Axe 1 - TF1/TF2/TG auto - Jours arret MANUEL",
+    rex:"Axe 3 & 5 - Capitalisation",formation:"Axe 2 - Plan de formation",st:"Axe 3 - Sous-traitance",
+    duer:"Axe 3 - Document Unique",mo:"Axe 3 - Organisation",diffusion:"Axe 1 - Communication SSE",
+    epi:"EPI & Consommables - Dotations",carbone:"Empreinte carbone",depense:"Budget SSE",ressource:"Documentation"
+  };
+  var mt = document.getElementById("modal-title");
+  var ms = document.getElementById("modal-sub");
+  if(mt) mt.textContent = titles[type] || "Formulaire";
+  if(ms) ms.textContent = subs[type] || "";
+  document.getElementById("modal-overlay").style.display = "flex";
+}
+
+function closeModal() { document.getElementById("modal-overlay").style.display = "none"; }
+
+function saveModal() {
+  closeModal();
+  showNotif("Enregistre avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
+}
+
+function showNotif(msg, color, bg, border) {
+  var n = document.getElementById("notif");
+  n.style.display = "block";
+  n.style.borderColor = border;
+  n.style.borderLeftColor = color;
+  document.getElementById("notif-title").style.color = color;
+  document.getElementById("notif-title").textContent = msg;
+  document.getElementById("notif-sub").textContent = "";
+  setTimeout(function(){n.style.display="none";}, 4000);
+}
+
+function updatePrior() {
+  var sel = document.getElementById("modal-prior");
+  var alert = document.getElementById("prior-alert");
+  if(!sel || !alert) return;
+  var msgs = {
+    imm:{bg:"#FCEBEB",color:"#A32D2D",text:"Priorite Immediate - Action urgente requise."},
+    ct:{bg:"#FAEEDA",color:"#633806",text:"Court terme - A realiser dans le mois."},
+    mt:{bg:"#E6F1FB",color:"#185FA5",text:"Moyen terme - A realiser dans l'annee."},
+    lt:{bg:"#EEEDFE",color:"#3C3489",text:"Long terme - Annee suivante."}
+  };
+  var m = msgs[sel.value];
+  if(m){
+    alert.style.display="block";
+    alert.style.background=m.bg;
+    alert.style.color=m.color;
+    alert.style.border="1px solid "+m.color;
+    alert.style.padding="8px 12px";
+    alert.style.borderRadius="8px";
+    alert.style.fontSize="11px";
+    alert.textContent=m.text;
+  } else { alert.style.display="none"; }
+}
+
+function updateActionType(sel) {
+  var badge = document.getElementById("action-type-badge");
+  if(!badge) return;
+  var configs = {
+    imm:{bg:"#FCEBEB",color:"#A32D2D",border:"#F7C1C1",text:"Action immediate - a realiser dans les 24h."},
+    cor:{bg:"#E6F1FB",color:"#185FA5",border:"#B5D4F4",text:"Action corrective - corrige la cause."},
+    prev:{bg:"#EAF3DE",color:"#27500A",border:"#C0DD97",text:"Action preventive - anticipe un risque."},
+    dif:{bg:"#EEEDFE",color:"#3C3489",border:"#C8C5F0",text:"Action differee - planifiee sur le long terme."}
+  };
+  var cfg = configs[sel.value];
+  if(cfg){
+    badge.style.display="block";
+    badge.style.background=cfg.bg;
+    badge.style.color=cfg.color;
+    badge.style.border="1px solid "+cfg.border;
+    badge.style.padding="6px 10px";
+    badge.style.borderRadius="7px";
+    badge.style.fontSize="11px";
+    badge.innerHTML=cfg.text;
+  } else { badge.style.display="none"; }
+}
+
+function setGrav(el, n) {
+  el.closest(".modal-section").querySelectorAll(".grav-btn").forEach(function(b){
+    b.classList.remove("active-1","active-2","active-3","active-4");
+  });
+  el.classList.add("active-"+n);
+}
+
+function toggleON(btn, type) {
+  var group = btn.closest(".oui-non");
+  group.querySelectorAll(".on-btn").forEach(function(b){
+    b.classList.remove("active-oui","active-non","active-part");
+  });
+  btn.classList.add("active-"+type);
+}
+
+function showRevSec(id, el) {
+  ["faits","accidento","outils_sys","outils_rh","outils_prod","amelioration","concl","nouveaux_obj"].forEach(function(s){
+    var d = document.getElementById("rev-"+s);
+    if(d) d.style.display="none";
+  });
+  document.querySelectorAll(".rev-nav-item").forEach(function(n){n.classList.remove("active");});
+  var sec = document.getElementById("rev-"+id);
+  if(sec) sec.style.display="block";
+  if(el) el.classList.add("active");
+}
+
+function swDBTab(id, el) {
+  ["indicateurs","accidents","actions","causeries","habilitations","audits","comites"].forEach(function(t){
+    var d = document.getElementById("dbs-"+t);
+    if(d) d.style.display="none";
+    var btn = document.getElementById("dbt-"+t);
+    if(btn){ btn.style.background="transparent"; btn.style.color="#888"; }
+  });
+  var sec = document.getElementById("dbs-"+id);
+  if(sec) sec.style.display="block";
+  if(el){ el.style.background="linear-gradient(135deg,#E63946,#F4A261)"; el.style.color="#fff"; }
+  initCharts(id);
+}
+
+var chartsInited = {};
+function initCharts(tab) {
+  if(chartsInited[tab]) return;
+  chartsInited[tab] = true;
+  var co = {plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,
+    scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:"rgba(0,0,0,0.04)"},ticks:{font:{size:10}},beginAtZero:true}}};
+  if(tab==="indicateurs"){
+    var c1=document.getElementById("c1");
+    if(c1) new Chart(c1,{type:"line",data:{labels:["2023","2024","2025","2026"],datasets:[
+      {label:"TF1",data:[0,6.8,5.1,4.2],borderColor:"#E63946",backgroundColor:"rgba(230,57,70,0.08)",tension:0.4,fill:true,pointRadius:5,pointBackgroundColor:"#E63946"},
+      {label:"TF2",data:[0,10.2,8.4,4.2],borderColor:"#F4A261",tension:0.4,fill:false,pointRadius:4,pointBackgroundColor:"#F4A261"}
+    ]},options:co});
+    var c3=document.getElementById("c3");
+    if(c3) new Chart(c3,{type:"bar",data:{labels:["Jan","Fev","Mar","Avr","Mai","Jun","Jul","Aou","Sep","Oct","Nov","Dec"],datasets:[
+      {label:"Causeries",data:[2,1,1,1,0,0,0,0,0,0,0,0],backgroundColor:"#378ADD",borderRadius:4},
+      {label:"Audits",data:[1,1,1,0,0,0,0,0,0,0,0,0],backgroundColor:"#BA7517",borderRadius:4},
+      {label:"SD",data:[1,1,0,1,0,0,0,0,0,0,0,0],backgroundColor:"#E63946",borderRadius:4}
+    ]},options:co});
+  }
+  if(tab==="actions"){
+    var c2=document.getElementById("c2");
+    if(c2) new Chart(c2,{type:"doughnut",data:{labels:["Cloturees","En cours","En retard"],datasets:[{data:[8,9,2],backgroundColor:["#2D6A4F","#378ADD","#E63946"],borderWidth:3,borderColor:"#fff"}]},options:{plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,cutout:"65%"}});
+  }
+  if(tab==="causeries"){
+    var cc=document.getElementById("c-caus");
+    if(cc) new Chart(cc,{type:"bar",data:{labels:["Jan","Fev","Mar","Avr","Mai","Jun","Jul","Aou","Sep","Oct","Nov","Dec"],datasets:[{label:"Presents",data:[6,5,6,6,0,0,0,0,0,0,0,0],backgroundColor:"#2D6A4F",borderRadius:4}]},options:co});
+  }
+  if(tab==="habilitations"){
+    var ch=document.getElementById("c-hab");
+    if(ch) new Chart(ch,{type:"bar",data:{labels:["BLONDEL","MARTIN","RENARD","GIRARD","DUPONT","MOREAU"],datasets:[
+      {label:"Valides",data:[7,8,9,8,10,10],backgroundColor:"#2D6A4F",borderRadius:4},
+      {label:"Expirees",data:[5,1,1,1,0,0],backgroundColor:"#E63946",borderRadius:4}
+    ]},options:co});
+  }
+  if(tab==="audits"){
+    var ca=document.getElementById("c-aud");
+    if(ca) new Chart(ca,{type:"bar",data:{labels:["AUD-001 SOLVAY","AUD-002 Mairie","AUD-003 TOTAL"],datasets:[{label:"Score %",data:[85,71,82],backgroundColor:["#2D6A4F","#F4A261","#2D6A4F"],borderRadius:6}]},options:co});
+  }
+}
+
+function expandAction(row) {
+  var next = row.nextElementSibling;
+  if(next && next.classList.contains("detail-row")) {
+    next.style.display = next.style.display === "none" ? "table-row" : "none";
+    return;
+  }
+  var cells = row.querySelectorAll("td");
+  var action = cells[4] ? cells[4].textContent : "";
+  var pourquoi = cells[5] ? cells[5].textContent : "";
+  var objectif = cells[6] ? cells[6].textContent : "";
+  var ressources = cells[7] ? cells[7].textContent : "";
+  var detail = document.createElement("tr");
+  detail.className = "detail-row";
+  detail.style.background = "#F8F9FA";
+  var html = "<td colspan='13' style='padding:12px 16px;border-bottom:2px solid #EBEBEB'>";
+  html += "<div style='display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;font-size:11px;margin-bottom:10px'>";
+  html += "<div><div style='font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:4px'>Description</div><div style='color:#1A1A2E'>" + action + "</div></div>";
+  html += "<div><div style='font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:4px'>Pourquoi ?</div><div style='color:#555'>" + pourquoi + "</div></div>";
+  html += "<div><div style='font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:4px'>Objectif final</div><div style='color:#2D6A4F;font-weight:500'>" + objectif + "</div></div>";
+  html += "<div><div style='font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:4px'>Ressources</div><div style='color:#7F77DD'>" + ressources + "</div></div>";
+  html += "</div><div style='display:flex;gap:8px'>";
+  html += "<button class='btn' onclick='openModal(this.dataset.m)' style='font-size:11px'>&#9999; Modifier</button>";
+  html += "<button class='btn' style='font-size:11px;color:#2D6A4F;border-color:#2D6A4F'>&#10003; Cl&#244;turer</button>";
+  html += "</div></td>";
+  detail.innerHTML = html;
+  row.parentNode.insertBefore(detail, row.nextSibling);
+}
+
+function expandObj(row) {
+  var next = row.nextElementSibling;
+  if(next && next.classList.contains("detail-row")) {
+    next.style.display = next.style.display === "none" ? "table-row" : "none";
+    return;
+  }
+  var cells = row.querySelectorAll("td");
+  var tech = cells[6] ? cells[6].textContent : "";
+  var humains = cells[7] ? cells[7].textContent : "";
+  var orga = cells[8] ? cells[8].textContent : "";
+  var eco = cells[9] ? cells[9].textContent : "";
+  var detail = document.createElement("tr");
+  detail.className = "detail-row";
+  detail.style.background = "#F8F9FA";
+  var html = "<td colspan='13' style='padding:12px 16px;border-bottom:2px solid #EBEBEB'>";
+  html += "<div style='display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;font-size:11px;margin-bottom:10px'>";
+  html += "<div style='padding:8px;background:#E6F1FB;border-radius:8px'><div style='font-size:10px;font-weight:600;color:#185FA5;margin-bottom:4px'>Moyens techniques</div><div>" + tech + "</div></div>";
+  html += "<div style='padding:8px;background:#EAF3DE;border-radius:8px'><div style='font-size:10px;font-weight:600;color:#27500A;margin-bottom:4px'>Moyens humains</div><div>" + humains + "</div></div>";
+  html += "<div style='padding:8px;background:#EEEDFE;border-radius:8px'><div style='font-size:10px;font-weight:600;color:#3C3489;margin-bottom:4px'>Moyens organisationnels</div><div>" + orga + "</div></div>";
+  html += "<div style='padding:8px;background:#FAEEDA;border-radius:8px'><div style='font-size:10px;font-weight:600;color:#633806;margin-bottom:4px'>Moyens economiques</div><div>" + eco + "</div></div>";
+  html += "</div>";
+  html += "<button class='btn' onclick='openModal(this.dataset.m)' style='font-size:11px'>&#9999; Modifier</button>";
+  html += "</td>";
+  detail.innerHTML = html;
+  row.parentNode.insertBefore(detail, row.nextSibling);
+}
+
+function swPerso(v, el) {
+  ["liste","passeport","nouveau"].forEach(function(x){
+    var d=document.getElementById("perso-"+x);
+    if(d) d.style.display="none";
+  });
+  ["ptab-liste","ptab-passeport","ptab-nouveau"].forEach(function(t){
+    var tab=document.getElementById(t);
+    if(tab) tab.classList.remove("active");
+  });
+  var pg=document.getElementById("perso-"+v);
+  if(pg) pg.style.display="block";
+  if(el) el.classList.add("active");
+}
+
+function swPTab(el, secId) {
+  var allTabs = el.closest("div").querySelectorAll(".ptab2");
+  allTabs.forEach(function(t){ t.style.color="#aaa"; t.style.borderBottomColor="transparent"; t.style.fontWeight="normal"; });
+  el.style.color="#E63946"; el.style.borderBottomColor="#E63946"; el.style.fontWeight="500";
+  ["pid-identite","pid-hab","pid-caus","pid-at","pid-chantiers","pid-sig"].forEach(function(s){
+    var sec=document.getElementById(s);
+    if(sec) sec.style.display="none";
+  });
+  var sec=document.getElementById(secId);
+  if(sec) sec.style.display="block";
+}
+
+function selSalarie(el, initials, nom, prenom, fn, contrat, bg, color, statut, statutClass) {
+  if(el.classList.contains("sal-selected")) { ouvrirPasseport(); return; }
+  document.querySelectorAll(".sal-li").forEach(function(i){ i.classList.remove("sal-selected"); });
+  el.classList.add("sal-selected");
+  document.querySelectorAll(".sal-li > div").forEach(function(i){ i.style.background=""; i.style.borderLeftColor="transparent"; });
+  var inner = el.querySelector("div");
+  if(inner){ inner.style.background="#FFF5F5"; inner.style.borderLeftColor=color; }
+  var av=document.getElementById("pav-circle"); var nm=document.getElementById("pav-name"); var fn2=document.getElementById("pav-fn");
+  if(av){ av.textContent=initials; av.style.background=bg; av.style.color=color; }
+  if(nm) nm.textContent=nom+" "+prenom;
+  if(fn2) fn2.textContent=fn+" \u2022 "+contrat;
+}
+
+function ouvrirPasseport() { swPerso("passeport", document.getElementById("ptab-passeport")); }
+
+function showQRZone() { var q=document.getElementById("pid-sig"); if(q) q.style.display="block"; }
+
+function genQR() {
+  var container = document.getElementById("qr-container");
+  if(!container) return;
+  container.innerHTML = "";
+  var qrText = "SSE-EMJ | BLONDEL Stephane | CDI | 12/03/2021 | CACES-R489 OK 22/11/2029 | CACES-R490 OK 14/02/2029 | Permis-CE OK 14/06/2030 | ARI EXPIREE | VM OK 15/07/2025";
+  try {
+    new QRCode(container, {text:qrText, width:136, height:136, colorDark:"#1A1A2E", colorLight:"#ffffff", correctLevel:QRCode.CorrectLevel.L});
+    container.style.border = "2px solid #2D6A4F";
+  } catch(e) {
+    container.innerHTML = "<div style='padding:10px;text-align:center;color:#2D6A4F;font-size:24px'>&#9638;</div>";
+  }
+}
+
+function printQR() {
+  var qr = document.getElementById("qr-container");
+  if(!qr) return;
+  var canvas = qr.querySelector("canvas");
+  if(!canvas) { genQR(); setTimeout(printQR, 600); return; }
+  var win = window.open("","_blank");
+  win.document.write("<!DOCTYPE html><html><head><title>Habilitations - BLONDEL</title><style>body{font-family:Arial,sans-serif;padding:24px;max-width:500px;margin:0 auto}.header{background:#1A1A2E;color:#fff;padding:16px 20px;border-radius:10px;margin-bottom:16px}.hab{padding:9px 12px;border-radius:8px;margin-bottom:6px;font-size:12px}.ok{background:#EAF3DE;border-left:4px solid #2D6A4F}.ko{background:#FFF5F5;border-left:4px solid #E63946}.qr{text-align:center;padding:16px;border:2px dashed #E8E8E8;border-radius:10px;margin:16px 0}.footer{font-size:10px;color:#aaa;text-align:center;margin-top:16px;border-top:1px solid #F0F0F0;padding-top:12px}</style></head><body>");
+  win.document.write("<div class='header'><strong style='font-size:16px'>BLONDEL Stephane</strong><br><span style='opacity:0.6;font-size:12px'>Conducteur PL - CDI - Berre Maintenance Industrielle</span></div>");
+  win.document.write("<div class='hab ok'><strong>CACES R489</strong> - Valide 22/11/2029</div>");
+  win.document.write("<div class='hab ok'><strong>CACES R490</strong> - Valide 14/02/2029</div>");
+  win.document.write("<div class='hab ok'><strong>Permis CE</strong> - Valide 14/06/2030</div>");
+  win.document.write("<div class='hab ok'><strong>VM</strong> - Apte 15/07/2027</div>");
+  win.document.write("<div class='hab ko'><strong>ARI</strong> - EXPIREE 28/03/2026 - Non autorise</div>");
+  win.document.write("<div class='qr'><img src='"+canvas.toDataURL()+"' style='width:150px;height:150px'/><div style='font-size:11px;color:#aaa;margin-top:8px'>Scannez pour verifier</div></div>");
+  win.document.write("<div class='footer'>PAS-2026-SB-001 - SSE EMJ - "+new Date().toLocaleDateString("fr-FR")+"</div>");
+  win.document.write("</body></html>");
+  win.document.close();
+  setTimeout(function(){ win.print(); }, 500);
+}
+
+function printPage() { window.print(); }
+
+function printPasseport() {
+  var win = window.open("","_blank");
+  win.document.write("<!DOCTYPE html><html><head><title>Passeport SSE - BLONDEL</title><style>body{font-family:Arial,sans-serif;padding:24px;color:#1A1A2E}.header{background:#1A1A2E;color:#fff;padding:16px 20px;border-radius:10px;margin-bottom:16px}.section{margin-bottom:14px;padding:12px;border:1px solid #E8E8E8;border-radius:8px}.stitle{font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px}.row{display:flex;gap:6px;margin-bottom:5px;font-size:12px}.lbl{color:#aaa;width:150px;flex-shrink:0}</style></head><body>");
+  win.document.write("<div class='header'><div style='font-size:16px;font-weight:700'>BLONDEL Stephane</div><div style='font-size:12px;opacity:0.6'>Conducteur PL - CDI - Embauche 12/03/2021 - BMI</div></div>");
+  win.document.write("<div class='section'><div class='stitle'>Habilitations valides</div>");
+  win.document.write("<div class='row'><div class='lbl'>CACES R489</div><div>Valide jusqu&apos;au 22/11/2029</div></div>");
+  win.document.write("<div class='row'><div class='lbl'>CACES R490</div><div>Valide jusqu&apos;au 14/02/2029</div></div>");
+  win.document.write("<div class='row'><div class='lbl'>Permis CE</div><div>Valide jusqu&apos;au 14/06/2030</div></div>");
+  win.document.write("</div><div class='section'><div class='stitle'>Signatures</div>");
+  win.document.write("<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>");
+  win.document.write("<div><div style='font-size:11px;font-weight:600;margin-bottom:8px'>Salarie</div><div style='border:1.5px dashed #E8E8E8;border-radius:8px;padding:16px;text-align:center'><div style='font-size:20px;font-style:italic;font-family:Georgia'>S. Blondel</div></div></div>");
+  win.document.write("<div><div style='font-size:11px;font-weight:600;margin-bottom:8px'>Employeur</div><div style='border:1.5px dashed #E8E8E8;border-radius:8px;padding:16px;text-align:center'><div style='font-size:20px;font-style:italic;font-family:Georgia'>T. Martin</div></div></div>");
+  win.document.write("</div></div></body></html>");
+  win.document.close();
+  setTimeout(function(){ win.print(); }, 300);
+}
+
+function selST(el, key, nom, statut) {
+  document.querySelectorAll("#page-sous_traitants [onclick^=\"selST\"]").forEach(function(i){ i.style.borderLeftColor="transparent"; i.style.background=""; });
+  var colors = {valide:"#2D6A4F", surveiller:"#F4A261", suspendu:"#E63946"};
+  el.style.borderLeftColor = colors[statut] || "#E63946";
+  el.style.background = statut==="suspendu" ? "#FFF5F5" : "#F5FFF8";
+  var panel = document.getElementById("st-detail-panel");
+  if(panel) { panel.style.opacity="0.7"; setTimeout(function(){ panel.style.opacity="1"; }, 200); }
+}
+
+function setEPIMode(btn, mode) {
+  btn.parentNode.querySelectorAll("button").forEach(function(b){ b.style.borderColor="#E8E8E8"; b.style.background="#fff"; b.style.color="#555"; });
+  var colors = {stock:["#E63946","#FCEBEB","#A32D2D"], remise:["#2D6A4F","#EAF3DE","#27500A"], retrait:["#F4A261","#FAEEDA","#633806"]};
+  var c = colors[mode];
+  if(c){ btn.style.borderColor=c[0]; btn.style.background=c[1]; btn.style.color=c[2]; }
+}
+
+function swEPI(tab, el) {
+  ["stock","dotation","conso","alertes"].forEach(function(t){ var d=document.getElementById("epi-"+t); if(d) d.style.display="none"; });
+  document.querySelectorAll("#page-epi .tab").forEach(function(t){ t.classList.remove("active"); });
+  var sec = document.getElementById("epi-"+tab);
+  if(sec) sec.style.display="block";
+  if(el) el.classList.add("active");
+}
+
+function selEPISal(el, nom, initials, bg, color) {
+  el.parentNode.querySelectorAll("div[onclick]").forEach(function(d){ d.style.borderLeftColor="transparent"; d.style.background=""; });
+  el.style.borderLeftColor = color;
+  el.style.background = "#F5FFF8";
+  var av=document.getElementById("epi-sal-av"); var name=document.getElementById("epi-sal-name");
+  if(av){ av.textContent=initials; av.style.background=bg; av.style.color=color; }
+  if(name) name.textContent=nom;
+}
+
+function swDBTab_old(v, el) {
+  document.querySelectorAll(".db-tab").forEach(function(t){ t.classList.remove("active"); t.style.background="transparent"; t.style.color="#888"; });
+  var sec = document.getElementById("dbs-"+v);
+  ["indicateurs","accidents","actions","causeries","habilitations","audits","comites"].forEach(function(s){ var d=document.getElementById("dbs-"+s); if(d) d.style.display="none"; });
+  if(sec) sec.style.display="block";
+  if(el){ el.style.background="linear-gradient(135deg,#E63946,#F4A261)"; el.style.color="#fff"; }
+  initCharts(v);
+}
+
+window.addEventListener("load", function(){
+  initCharts("indicateurs");
+});
+</script>
+</body>
+</html>
