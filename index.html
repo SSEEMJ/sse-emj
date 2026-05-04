@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+r">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -262,7 +262,499 @@ textarea{resize:vertical;line-height:1.5}
     </div>
   </div>
 
-  <!-- CAUSERIES COMPLET -->
+  
+
+  <!-- PLAN D'ACTIONS -->
+  <div class="page" id="page-plan_actions">
+    <div class="g5" style="margin-bottom:12px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Actions Imm&eacute;diates</div><div class="kv" style="color:#E63946">7</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Urgentes</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Actions Correctives</div><div class="kv" style="color:#378ADD">12</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Causes trait&eacute;es</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Actions Pr&eacute;ventives</div><div class="kv" style="color:#2D6A4F">6</div><span class="kt" style="background:#EAF3DE;color:#27500A">Anticipation</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Actions Diff&eacute;r&eacute;es</div><div class="kv" style="color:#7F77DD">1</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Long terme</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Cl&ocirc;tur&eacute;es</div><div class="kv" style="color:#2D6A4F">8</div><span class="kt" style="background:#EAF3DE;color:#27500A">42% ✓</span></div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center">
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les types</option><option>Actions Imm&eacute;diates</option><option>Actions Correctives</option><option>Actions Pr&eacute;ventives</option><option>Actions Diff&eacute;r&eacute;es</option></select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Toutes les origines</option><option>Politique SSE</option><option>Objectifs SSE</option><option>Indicateurs</option><option>Visite &amp; Audit Terrain</option><option>Causerie &amp; 1/4h s&eacute;curit&eacute;</option><option>Communication et Affichage</option><option>Accident &amp; Incident</option><option>Bilan Pilotage &amp; Comit&eacute; SSE &amp; RD</option><option>R&eacute;glementation &amp; Conformit&eacute;</option><option>Audit Syst&egrave;me</option><option>Non-Conformit&eacute;</option><option>Contr&ocirc;le Mat&eacute;riels &amp; VGP</option><option>R&eacute;clamations Client</option><option>Retours Exp&eacute;riences</option><option>Ressources Humaines</option><option>Sous-traitants</option><option>Situation Dangereuse</option><option>Autres</option></select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les avancements</option><option>0%</option><option>25%</option><option>50%</option><option>75%</option><option>100%</option><option>Cl&ocirc;tur&eacute;e</option><option>Efficace</option><option>Abandonn&eacute;</option></select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les pilotes</option><option>AV</option><option>SP</option><option>LD</option></select>
+      <button class="btn-primary" onclick="openModal('action')" style="margin-left:auto;font-size:11px">+ Saisir une action</button>
+    </div>
+
+    <div style="overflow-x:auto;border-radius:12px;border:1px solid #EBEBEB;background:#fff">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;min-width:1400px">
+        <tr style="background:#1A1A2E">
+          <th style="padding:9px 8px;color:#fff;font-size:10px;font-weight:600;text-align:center;white-space:nowrap">Auteur</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;white-space:nowrap">Donn&eacute;es d&apos;entr&eacute;es</th>
+          <th style="padding:9px 6px;color:#fff;font-size:10px;font-weight:600;text-align:center">N&deg;</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;min-width:160px">Action</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;min-width:120px">Moyens</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;min-width:120px">Pourquoi ?</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;text-align:left;min-width:120px">Objectif final</th>
+          <th style="padding:9px 6px;color:#fff;font-size:10px;font-weight:600;text-align:center">Co&ucirc;t k&euro;</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;white-space:nowrap">Domaine</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;white-space:nowrap">Ressources / Facteurs</th>
+          <th style="padding:9px 6px;color:#fff;font-size:10px;font-weight:600;text-align:center">Pilote</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;white-space:nowrap">Type d&apos;action</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600;min-width:100px">Avancement</th>
+          <th style="padding:9px 8px;color:#fff;font-size:10px;font-weight:600;text-align:center">Efficacit&eacute;</th>
+          <th style="padding:9px 10px;color:#fff;font-size:10px;font-weight:600">Commentaires</th>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Visite &amp; Audit Terrain</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">1</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Voiture &mdash; extincteur, lave-glace, huile, triangle, vidange, klaxon, essuie-glaces</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Audit terrain</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Suivi des v&eacute;hicules</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500"></td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">80</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Techniques</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:75%;height:100%;background:#378ADD"></div></div><span style="font-size:10px;color:#378ADD;font-weight:600;white-space:nowrap">75%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">En attente fournisseur</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">R&eacute;glementation &amp; Conformit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">2</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">R&eacute;aliser la VGP &eacute;lectrique du b&acirc;timent</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Contacter CR Normandie ou APAVE</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Locaux neufs</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Local conforme</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Techniques</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">En attente propri&eacute;taire</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">3</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">A&eacute;ration des camions &mdash; ventilation</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Produit</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Pr&eacute;vention intoxication</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Pr&eacute;voir ventilateurs ext.</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Sant&eacute; Environnement</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Techniques</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:50%;height:100%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600;white-space:nowrap">50%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">RDV d&eacute;but f&eacute;vrier</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">4</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Logiciel QHSE</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Location du logiciel</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Dates p&eacute;remption, pollution v&eacute;hicule</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Meilleure organisation MASE</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Syst&egrave;me</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EEEDFE;color:#3C3489;font-weight:600;white-space:nowrap">Actions Diff&eacute;r&eacute;es</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:25%;height:100%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600;white-space:nowrap">25%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">En r&eacute;flexion</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Audit Syst&egrave;me</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">5</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Causerie stop chantier &agrave; tout le personnel</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentation</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Rapport audit blanc</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">S&eacute;curit&eacute; salari&eacute; et bonne pratique</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Techniques et Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">Pr&eacute;vu f&eacute;vrier 2026</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">6</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Affichage Politique SSE dans vestiaire intervenants</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentation</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Pr&eacute;sentation Politique SSE 2026</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Tout le personnel inform&eacute; objectifs 2026</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:25%;height:100%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600;white-space:nowrap">25%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">7</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Achat marteau anti-glace vestiaire intervenants</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Commande fournisseur</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Suite audit blanc</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500"></td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">LD</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">8</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Achat support pour pose de papier</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Commande fournisseur</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Demand&eacute; par Laurent</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500"></td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">9</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Comptoir &agrave; acheter</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Commande fournisseur</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Causerie organisation stand salon</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Bonne image et pr&eacute;sentation</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">10</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">G&eacute;rer et acheter les goodies styles</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Devis fournisseurs</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Causerie stand salon</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Faire de la pub et nouveaux clients</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">11</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Faire une pr&eacute;sentation vid&eacute;o de l&apos;entreprise</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Organisation et documentation</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Causerie stand salon habitat</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Bonne image et pr&eacute;sentation</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">12</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Achat d&eacute;coration pour le salon</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Devis fournisseurs</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Causerie stand salon</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Bonne image et pr&eacute;sentation</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Oui ✓</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP/LR</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Visite &amp; Audit Terrain</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">13</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Organisation du chantier &agrave; revoir</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Causerie ordre et propret&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Suite audit &mdash; acc&egrave;s et encombrement &agrave; am&eacute;liorer</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">&Eacute;viter accident chute plain-pied</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#FFFDF5;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Situation Dangereuse</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">14</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Support adapt&eacute; sur marches escalier</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Ruban anti-glissant + rev&ecirc;tement</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Escaliers glissants apr&egrave;s neige</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">&Eacute;viter accident chute</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:25%;height:100%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600;white-space:nowrap">25%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Autres</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">15</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">R&eacute;organiser les fiches de fonction</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Ressources humaines</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555"></td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Fiches coh&eacute;rentes avec le poste</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">SP</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Visite &amp; Audit Terrain</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">16</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Causerie sur la pr&eacute;paration du chantier</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentaire et &eacute;change</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Salari&eacute; sur escabeau non adapt&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser moyen acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Oui ✓</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">Intervenants ont compris</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">SP</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Visite &amp; Audit Terrain</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">17</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Causerie moyens d&apos;acc&egrave;s adapt&eacute;s</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentaire et &eacute;change</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Salari&eacute; sur escabeau non adapt&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser moyen acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Oui ✓</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">Intervenants ont compris</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Situation Dangereuse</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">18</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Moyens d&apos;acc&egrave;s adapt&eacute;s &agrave; disposition</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Mat&eacute;riel d&eacute;j&agrave; disponible</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Salari&eacute; sur escabeau non adapt&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser moyen acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Oui ✓</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Situation Dangereuse</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">19</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">V&eacute;rification syst&eacute;matique mat&eacute;riel avant intervention</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Fiche mise au travail avant chantier</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Salari&eacute; sur escabeau non adapt&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser moyen acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FAEEDA;color:#633806;font-weight:600">Partielle</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Situation Dangereuse</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">20</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Causerie risques travail en hauteur</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentaire et &eacute;change</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Salari&eacute; sur escabeau non adapt&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser moyen acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Oui ✓</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">21</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Mise en circulation fiches SD et audit chantier</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Fiches dans les bannettes</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Donner objectifs s&eacute;curit&eacute; aux chefs d&apos;&eacute;quipe</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Am&eacute;liorer le syst&egrave;me</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Organisationnels et Techniques</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600;white-space:nowrap">Actions Imm&eacute;diates</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#2D6A4F;font-weight:600;white-space:nowrap">100%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">Attendre trimestre</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Causerie &amp; 1/4h s&eacute;curit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">22</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Affichage consignes travail en hauteur</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Documentation</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Suite causerie moyens d&apos;acc&egrave;s</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Utiliser le moyen d&apos;acc&egrave;s adapt&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Ressources Humaines</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">23</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Cr&eacute;er les QR code pour les passeports SSE</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Mettre &agrave; jour les passeports SSE</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Passeports papier &eacute;parpill&eacute;s</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Visualisation formations en quelques secondes</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">Qualit&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains et Organisationnels</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600;white-space:nowrap">Actions Pr&eacute;ventives</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;background:#F5FFF8;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">R&eacute;glementation &amp; Conformit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">24</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Cartographie du bruit</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Intervention prestataire sp&eacute;cialis&eacute;</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Absence de cartographie bruit</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Identifier et ma&icirc;triser risques bruit</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 8px;border-radius:5px;background:#EAF3DE;color:#27500A;font-weight:600">Cl&ocirc;tur&eacute;e ✓</span></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">R&eacute;glementation &amp; Conformit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">25</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Mesures exposition produits chimiques</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Organisme m&eacute;trologie chimique</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Utilisation produits chimiques sans mesures</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">&Eacute;valuer et ma&icirc;triser risques chimiques</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa"></td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic">Mail envoy&eacute; m&eacute;decine travail</td>
+        </tr>
+        <tr style="border-bottom:0.5px solid #F0F0F0;">
+          <td style="padding:7px 8px;text-align:center;font-weight:700;color:#378ADD;font-size:11px">AV</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">R&eacute;glementation &amp; Conformit&eacute;</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa;font-weight:600">26</td>
+          <td style="padding:7px 10px;font-weight:500;color:#1A1A2E">Protocole s&eacute;curit&eacute; pour les transporteurs</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">D&eacute;finir consignes circulation et stationnement</td>
+          <td style="padding:7px 10px;font-size:10px;color:#555">Absence de protocole chargement/d&eacute;chargement</td>
+          <td style="padding:7px 10px;font-size:10px;color:#2D6A4F;font-weight:500">Protocole pour &eacute;viter risques produits chimiques</td>
+          <td style="padding:7px 6px;text-align:center;font-size:10px;color:#aaa">0</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:500;white-space:nowrap">S&eacute;curit&eacute; et Sant&eacute;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#555;white-space:nowrap">Techniques et Humains</td>
+          <td style="padding:7px 6px;text-align:center;font-weight:700;color:#1A1A2E;font-size:11px">AV</td>
+          <td style="padding:7px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:5px;background:#E6F1FB;color:#185FA5;font-weight:600;white-space:nowrap">Actions Correctives</span></td>
+          <td style="padding:7px 10px"><div style="display:flex;align-items:center;gap:4px;min-width:80px"><div style="flex:1;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:0%;height:100%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600;white-space:nowrap">0%</span></div></td>
+          <td style="padding:7px 8px;text-align:center"><span style="font-size:9px;color:#ddd">&mdash;</span></td>
+          <td style="padding:7px 10px;font-size:10px;color:#888;font-style:italic"></td>
+        </tr>
+      </table>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;font-size:10px;align-items:center">
+      <span style="padding:3px 10px;background:#FCEBEB;color:#A32D2D;border-radius:5px;font-weight:500">Actions Imm&eacute;diates</span>
+      <span style="padding:3px 10px;background:#E6F1FB;color:#185FA5;border-radius:5px;font-weight:500">Actions Correctives</span>
+      <span style="padding:3px 10px;background:#EAF3DE;color:#27500A;border-radius:5px;font-weight:500">Actions Pr&eacute;ventives</span>
+      <span style="padding:3px 10px;background:#EEEDFE;color:#3C3489;border-radius:5px;font-weight:500">Actions Diff&eacute;r&eacute;es</span>
+      <span style="margin-left:auto;color:#aaa">26 actions &mdash; Source : TS-02 Plan d&apos;action SSE 2026 V5</span>
+    </div>
+  </div>
+
+<!-- CAUSERIES COMPLET -->
   <div class="page" id="page-causeries">
     <div class="g4" style="margin-bottom:14px">
       <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Causeries r&eacute;alis&eacute;es</div><div class="kv" style="color:#2D6A4F">11</div><div class="ks">Objectif : 12/an</div><span class="kt" style="background:#EAF3DE;color:#27500A">92% atteint</span></div>
@@ -2388,511 +2880,7 @@ textarea{resize:vertical;line-height:1.5}
       <span style="padding:4px 10px;background:#FAEEDA;border-radius:6px;color:#633806;border:1px solid #FAC775">&#9998; Fond blanc = saisie MANUELLE requise</span>
       <span style="padding:4px 10px;background:#FCEBEB;border-radius:6px;color:#A32D2D;border:1px solid #F7C1C1">&#9888; Jours arr&ecirc;t = toujours saisie manuelle (fix&eacute;s par le m&eacute;decin)</span>
     </div>
-  </div>
-
-  <!-- PLAN D'ACTIONS -->
-  <div class="page" id="page-plan_actions">
-    <div class="g4">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">En retard</div><div class="kv" style="color:#E63946">2</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Action immédiate</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">En cours</div><div class="kv" style="color:#F4A261">9</div><span class="kt" style="background:#FAEEDA;color:#633806">À suivre</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Clôturées</div><div class="kv" style="color:#2D6A4F">8</div><span class="kt" style="background:#EAF3DE;color:#27500A">47% avancement</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Total 2026</div><div class="kv" style="color:#378ADD">19</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Toutes origines</span></div>
-    </div>
-    <div class="tw">
-      <table>
-        <tr><th>N°</th><th>Origine</th><th>Action</th><th>Priorité</th><th>Responsable</th><th>Délai</th><th>Avancement</th><th>Statut</th></tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#E63946;font-weight:600">PA-005</td>
-          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
-          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
-          <td><span class="pill pr" style="font-size:9px">Habilitation expir&eacute;e</span></td>
-          <td style="font-weight:500;min-width:150px;color:#A32D2D">Renouvellement ARI BLONDEL S. &mdash; APAVE</td>
-          <td style="font-size:11px;color:#555;min-width:110px">ARI expir&eacute;e depuis 28/03/2026</td>
-          <td style="font-size:11px;color:#555;min-width:110px">BLONDEL habilit&eacute; ARI &mdash; 0 intervention sans habilitation</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
-          <td style="font-weight:600;color:#378ADD">AV</td>
-          <td style="font-size:11px">30/04/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600">0%</span></div></td>
-          <td><span class="pill pr">En retard !</span></td>
-        </tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#aaa;font-weight:600">PA-006</td>
-          <td><span class="pill pg" style="font-size:9px">Pr&eacute;ventive</span></td>
-          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
-          <td><span class="pill pr" style="font-size:9px">Habilitation expir&eacute;e</span></td>
-          <td style="font-weight:500;min-width:150px">Renouvellement ARI BLONDEL S. &mdash; APAVE</td>
-          <td style="font-size:11px;color:#555;min-width:110px">Habilitation ARI expir&eacute;e depuis 28/03/2026</td>
-          <td style="font-size:11px;color:#555;min-width:110px">BLONDEL habilit&eacute; ARI avant toute intervention concern&eacute;e</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
-          <td style="font-weight:600;color:#378ADD">AV</td>
-          <td style="font-size:11px">31/05/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600">0%</span></div></td>
-          <td><span class="pill pr">En retard !</span></td>
-        </tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#aaa;font-weight:600">PA-007</td>
-          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
-          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
-          <td><span class="pill pr" style="font-size:9px">SD</span></td>
-          <td style="font-weight:500;min-width:150px">Contr&ocirc;le syst&eacute;matique &eacute;lingues avant levage</td>
-          <td style="font-size:11px;color:#555;min-width:110px">Elingue d&eacute;fectueuse identifi&eacute;e tardivement &mdash; SD-001</td>
-          <td style="font-size:11px;color:#555;min-width:110px">0 utilisation mat&eacute;riel d&eacute;fectueux &mdash; contr&ocirc;le 100%</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Orga.</span></td>
-          <td style="font-weight:600;color:#378ADD">BLONDEL S.</td>
-          <td style="font-size:11px">15/03/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#2D6A4F;font-weight:600">100%</span></div></td>
-          <td><span class="pill pg">Cl&ocirc;tur&eacute;e ✓</span></td>
-        </tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#aaa;font-weight:600">PA-008</td>
-          <td><span class="pill pg" style="font-size:9px">Pr&eacute;ventive</span></td>
-          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
-          <td><span class="pill pp" style="font-size:9px">REX chantier</span></td>
-          <td style="font-weight:500;min-width:150px">Longes outils obligatoires en nacelle</td>
-          <td style="font-size:11px;color:#555;min-width:110px">Chute cl&eacute; &agrave; molette 8m &mdash; REX-2026-001</td>
-          <td style="font-size:11px;color:#555;min-width:110px">0 chute d&apos;outil depuis nacelle &mdash; 0 accident</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Tech.</span></td>
-          <td style="font-weight:600;color:#378ADD">AV</td>
-          <td style="font-size:11px">20/03/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#2D6A4F;font-weight:600">100%</span></div></td>
-          <td><span class="pill pg">Cl&ocirc;tur&eacute;e ✓</span></td>
-        </tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#aaa;font-weight:600">PA-009</td>
-          <td><span class="pill pgr" style="font-size:9px">Diff&eacute;r&eacute;e</span></td>
-          <td><span class="pill pb" style="font-size:9px">Environnement</span></td>
-          <td><span class="pill po" style="font-size:9px">Audit terrain</span></td>
-          <td style="font-weight:500;min-width:150px">Kit antipollution dans chaque v&eacute;hicule</td>
-          <td style="font-size:11px;color:#555;min-width:110px">D&eacute;versement carburant sans r&eacute;tention &mdash; REX-001</td>
-          <td style="font-size:11px;color:#555;min-width:110px">0 pollution lors d&apos;incident carburant</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Tech. &amp; Eco.</span></td>
-          <td style="font-weight:600;color:#378ADD">TM</td>
-          <td style="font-size:11px">30/06/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:50%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600">50%</span></div></td>
-          <td><span class="pill po">En cours</span></td>
-        </tr>
-        <tr onclick="expandAction(this)" style="cursor:pointer">
-          <td style="font-size:10px;color:#aaa;font-weight:600">PA-010</td>
-          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
-          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute; &amp; Sant&eacute;</span></td>
-          <td><span class="pill pb" style="font-size:9px">Comit&eacute; SSE</span></td>
-          <td style="font-weight:500;min-width:150px">Planifier formation SST MARTIN L. et RENARD D.</td>
-          <td style="font-size:11px;color:#555;min-width:110px">SST expir&eacute;e le 01/06/2026 &mdash; 2 salari&eacute;s impact&eacute;s</td>
-          <td style="font-size:11px;color:#555;min-width:110px">100% SST &agrave; jour avant expiration</td>
-          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
-          <td style="font-weight:600;color:#378ADD">AV</td>
-          <td style="font-size:11px">01/06/2026</td>
-          <td><div class="prog"><div class="pt"><div class="pf" style="width:25%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600">25%</span></div></td>
-          <td><span class="pill po">En cours</span></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- HABILITATIONS -->
-  <div class="page" id="page-habilitations">
-    <div class="g5">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Expirées</div><div class="kv" style="color:#E63946">3</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Immobilisation</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Expirent &lt;30j</div><div class="kv" style="color:#F4A261">3</div><span class="kt" style="background:#FAEEDA;color:#633806">Planifier recyclage</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#BA7517,#EF9F27)"></div><div class="kl">Expirent 30-90j</div><div class="kv" style="color:#BA7517">2</div><span class="kt" style="background:#FAEEDA;color:#633806">À anticiper</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Valides &gt;90j</div><div class="kv" style="color:#2D6A4F">22</div><span class="kt" style="background:#EAF3DE;color:#27500A">73% conformes</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Salariés suivis</div><div class="kv" style="color:#378ADD">6</div><span class="kt" style="background:#E6F1FB;color:#185FA5">4 avec alerte</span></div>
-    </div>
-    <div class="hab-grid">
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#FCEBEB;color:#A32D2D">SB</div><div><div style="font-size:12px;font-weight:600">BLONDEL Stéphane</div><div style="font-size:10px;color:#aaa">Conducteur PL — Levageur · CDI</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill pr" style="font-size:9px">3 expirées</span><span class="pill po" style="font-size:9px">2 urgentes</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#E63946"></div>ARI</div><span style="font-size:10px;font-weight:600;color:#E63946">28/03/2026 ⚠</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#E63946"></div>Carte conducteur G2</div><span style="font-size:10px;font-weight:600;color:#E63946">10/04/2026 ⚠</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#E63946"></div>Carte qualification C+C2</div><span style="font-size:10px;font-weight:600;color:#E63946">18/03/2026 ⚠</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#F4A261"></div>CACES R372</div><span style="font-size:10px;font-weight:600;color:#F4A261">05/05/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#F4A261"></div>Autorisation de conduite</div><span style="font-size:10px;font-weight:600;color:#F4A261">02/04/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R489</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">22/11/2029</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R490</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">14/02/2029</span></div>
-      </div>
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#E6F1FB;color:#185FA5">ML</div><div><div style="font-size:12px;font-weight:600">MARTIN Laurent</div><div style="font-size:10px;color:#aaa">Chef de chantier · CDI</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill po" style="font-size:9px">1 urgente</span><span class="pill pg" style="font-size:9px">5 valides</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#F4A261"></div>SST — Sauveteur Secouriste</div><span style="font-size:10px;font-weight:600;color:#F4A261">01/06/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#BA7517"></div>Visite médicale</div><span style="font-size:10px;font-weight:600;color:#BA7517">15/07/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R489</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">10/03/2028</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Habilit. élec. B1</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">28/05/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>AIPR</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">30/01/2028</span></div>
-      </div>
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#FAEEDA;color:#633806">RD</div><div><div style="font-size:12px;font-weight:600">RENARD David</div><div style="font-size:10px;color:#aaa">Technicien maintenance · CDD</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill po" style="font-size:9px">1 urgente</span><span class="pill pg" style="font-size:9px">4 valides</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#F4A261"></div>SST — Sauveteur Secouriste</div><span style="font-size:10px;font-weight:600;color:#F4A261">01/06/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Habilit. élec. B1</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">14/09/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>ATEX</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">12/09/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R489</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">08/11/2028</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Visite médicale</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">22/03/2028</span></div>
-      </div>
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#F1EFE8;color:#5F5E5A">GP</div><div><div style="font-size:12px;font-weight:600">GIRARD Pierre</div><div style="font-size:10px;color:#aaa">Opérateur · Intérimaire</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill po" style="font-size:9px">1 urgente</span><span class="pill pg" style="font-size:9px">3 valides</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#BA7517"></div>ATEX</div><span style="font-size:10px;font-weight:600;color:#BA7517">15/07/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R372</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">18/06/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Travail en hauteur</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">15/07/2026</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Visite médicale</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">08/01/2028</span></div>
-      </div>
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#EAF3DE;color:#27500A">DA</div><div><div style="font-size:12px;font-weight:600">DUPONT Alexis</div><div style="font-size:10px;color:#aaa">Soudeur · CDI</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill pg" style="font-size:9px">Tout valide ✓</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Habilit. soudage N1</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">12/04/2028</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>SST</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">20/09/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>ATEX</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">05/11/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Visite médicale</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">14/06/2027</span></div>
-      </div>
-      <div class="hab-card">
-        <div class="hab-hdr"><div class="hab-av" style="background:#EEEDFE;color:#3C3489">MJ</div><div><div style="font-size:12px;font-weight:600">MOREAU Julien</div><div style="font-size:10px;color:#aaa">Mécanicien · CDI</div><div style="display:flex;gap:4px;margin-top:4px"><span class="pill pg" style="font-size:9px">Tout valide ✓</span></div></div></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>CACES R489</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">30/08/2028</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Habilit. élec. B0</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">15/03/2028</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>SST</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">11/07/2027</span></div>
-        <div class="hab-row"><div style="display:flex;align-items:center"><div class="hdot" style="background:#2D6A4F"></div>Visite médicale</div><span style="font-size:10px;font-weight:600;color:#2D6A4F">20/02/2028</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DUER -->
-  <div class="page" id="page-duer">
-    <div class="g5">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#1A1A2E,#378ADD)"></div><div class="kl">Unités de travail</div><div class="kv" style="color:#1A1A2E">5</div><span class="kt" style="background:#E6F1FB;color:#185FA5">12 dans votre modèle</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Risques faibles (1-5)</div><div class="kv" style="color:#2D6A4F">38</div><span class="kt" style="background:#EAF3DE;color:#27500A">76%</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Risques moyens (6-10)</div><div class="kv" style="color:#F4A261">9</div><span class="kt" style="background:#FAEEDA;color:#633806">18%</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Risques forts (11-16)</div><div class="kv" style="color:#E63946">3</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">→ Plan d'actions AUTO</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Facteurs pénibilité</div><div class="kv" style="color:#7F77DD">4</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Bruit · Vibr. · Postures · Chimique</span></div>
-    </div>
-    <div class="alert-b ab">Liaison automatique avec les Modes opératoires — les mesures de prévention du DUER sont proposées dans les MO · Les risques forts génèrent automatiquement des actions dans le plan d'actions</div>
-    <div class="tw">
-      <table>
-        <tr><th>Unité de travail</th><th>Nb risques</th><th>Faibles (1-5)</th><th>Moyens (6-10)</th><th>Forts (11-16)</th><th>% Conformité</th><th>Pénibilité</th><th>Actions générées</th></tr>
-        <tr><td style="font-weight:500">Unité 1 — Administratif</td><td style="text-align:center;font-weight:600">18</td><td style="text-align:center;color:#2D6A4F;font-weight:600">18</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center"><span class="pill pg">100%</span></td><td style="font-size:10px;color:#7F77DD">Gestes répétitifs · Bruit</td><td style="text-align:center;color:#aaa">0</td></tr>
-        <tr style="background:#FFF8F5"><td style="font-weight:500">Unité 2 — Chantier BTP</td><td style="text-align:center;font-weight:600">22</td><td style="text-align:center;color:#2D6A4F;font-weight:600">12</td><td style="text-align:center;color:#F4A261;font-weight:600">7</td><td style="text-align:center;color:#E63946;font-weight:600">3 ⚠</td><td style="text-align:center"><span class="pill pr">55%</span></td><td style="font-size:10px;color:#7F77DD">Bruit · Vibr. · Hauteur · Chimique</td><td style="text-align:center;color:#E63946;font-weight:600">3</td></tr>
-        <tr><td style="font-weight:500">Unité 3 — Conduite PL</td><td style="text-align:center;font-weight:600">14</td><td style="text-align:center;color:#2D6A4F;font-weight:600">12</td><td style="text-align:center;color:#F4A261;font-weight:600">2</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center"><span class="pill po">86%</span></td><td style="font-size:10px;color:#7F77DD">Vibrations · Bruit</td><td style="text-align:center;color:#aaa">0</td></tr>
-        <tr><td style="font-weight:500">Unité 4 — Atelier / Dépôt</td><td style="text-align:center;font-weight:600">8</td><td style="text-align:center;color:#2D6A4F;font-weight:600">8</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center"><span class="pill pg">100%</span></td><td style="font-size:10px;color:#7F77DD">Chimique</td><td style="text-align:center;color:#aaa">0</td></tr>
-        <tr><td style="font-weight:500">Unité 5 — Bureau d'étude</td><td style="text-align:center;font-weight:600">8</td><td style="text-align:center;color:#2D6A4F;font-weight:600">8</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center;color:#aaa">0</td><td style="text-align:center"><span class="pill pg">100%</span></td><td style="font-size:10px;color:#7F77DD">Travail écran · Stress</td><td style="text-align:center;color:#aaa">0</td></tr>
-      </table>
-    </div>
-    <div style="margin-top:14px;padding:12px 16px;background:#FCEBEB;border-radius:10px;display:flex;align-items:center;gap:10px;font-size:12px;color:#A32D2D;font-weight:500">
-      ⚠ <strong>3 risques forts — Unité 2 Chantier BTP</strong> — 3 actions ont été automatiquement créées dans le plan d'actions SSE avec priorité Immédiate.
-    </div>
-  </div>
-
-  <!-- VGP -->
-  <div class="page" id="page-vgp">
-    <div class="g5">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">VGP expirées</div><div class="kv" style="color:#E63946">2</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Immobilisation requise</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Expirent &lt;30j</div><div class="kv" style="color:#F4A261">4</div><span class="kt" style="background:#FAEEDA;color:#633806">À planifier d'urgence</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#BA7517,#EF9F27)"></div><div class="kl">Expirent 30-90j</div><div class="kv" style="color:#BA7517">5</div><span class="kt" style="background:#FAEEDA;color:#633806">Prévoir organisme</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">VGP valides</div><div class="kv" style="color:#2D6A4F">24</div><span class="kt" style="background:#EAF3DE;color:#27500A">69% conformes</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Équipements suivis</div><div class="kv" style="color:#7F77DD">35</div><span class="kt" style="background:#EEEDFE;color:#3C3489">7 catégories</span></div>
-    </div>
-    <div class="tw">
-      <table>
-        <tr><th></th><th>Désignation</th><th>N° série / Immat.</th><th>Fréquence</th><th>Dernière VGP</th><th>Prochaine VGP</th><th>Organisme</th><th>Statut</th><th>Délai restant</th></tr>
-        <tr><td colspan="9" style="background:linear-gradient(135deg,#1A1A2E,#16213E);color:#fff;font-weight:500;padding:8px 14px">🚛 Véhicules &amp; Engins</td></tr>
-        <tr><td><div class="adot" style="background:#E63946"></div></td><td style="font-weight:500">Camion PL — LAURENT<br><span style="font-size:10px;color:#aaa;font-weight:400">FC 060 JI</span></td><td style="font-size:10px;color:#555">FC 060 JI</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">15/10/2024</td><td style="color:#E63946;font-weight:600;font-size:11px">15/10/2025 ⚠</td><td style="font-size:11px">DREAL</td><td><span class="pill pr">Expirée</span></td><td><span class="days" style="background:#FCEBEB;color:#A32D2D">Exp. 199j</span></td></tr>
-        <tr><td><div class="adot" style="background:#2D6A4F"></div></td><td style="font-weight:500">Camion PL — NICOLAS</td><td style="font-size:10px;color:#555">EJ 978 YD</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">20/03/2025</td><td style="color:#2D6A4F;font-weight:600;font-size:11px">20/03/2026</td><td style="font-size:11px">DREAL</td><td><span class="pill pg">Valide</span></td><td><span class="days" style="background:#EAF3DE;color:#27500A">322 jours</span></td></tr>
-        <tr><td><div class="adot" style="background:#F4A261"></div></td><td style="font-weight:500">Camion PL — CHRIS</td><td style="font-size:10px;color:#555">AE 785 JR</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">05/05/2025</td><td style="color:#F4A261;font-weight:600;font-size:11px">05/05/2026</td><td style="font-size:11px">DREAL</td><td><span class="pill po">Urgente</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">2 jours</span></td></tr>
-        <tr><td><div class="adot" style="background:#E63946"></div></td><td style="font-weight:500">Nacelle élévatrice</td><td style="font-size:10px;color:#555">NAC-2025-001</td><td style="font-size:10px;color:#aaa">6 mois</td><td style="font-size:11px">10/01/2025</td><td style="color:#E63946;font-weight:600;font-size:11px">10/07/2025 ⚠</td><td style="font-size:11px">APAVE</td><td><span class="pill pr">Expirée</span></td><td><span class="days" style="background:#FCEBEB;color:#A32D2D">Exp. 297j</span></td></tr>
-        <tr><td><div class="adot" style="background:#F4A261"></div></td><td style="font-weight:500">Karcher HP 250 bars</td><td style="font-size:10px;color:#555">KAR-2024-012</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">15/04/2025</td><td style="color:#F4A261;font-weight:600;font-size:11px">15/04/2026</td><td style="font-size:11px">Bureau Veritas</td><td><span class="pill po">Urgente</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">12 jours</span></td></tr>
-        <tr><td colspan="9" style="background:linear-gradient(135deg,#1A1A2E,#16213E);color:#fff;font-weight:500;padding:8px 14px">🏗️ Levage &amp; Manutention</td></tr>
-        <tr><td><div class="adot" style="background:#E63946"></div></td><td style="font-weight:500">Élingues textiles — lot 12</td><td style="font-size:10px;color:#555">ELING-2024-001</td><td style="font-size:10px;color:#aaa">6 mois</td><td style="font-size:11px">01/11/2024</td><td style="color:#E63946;font-weight:600;font-size:11px">01/05/2025 ⚠</td><td style="font-size:11px">APAVE</td><td><span class="pill pr">Expirée</span></td><td><span class="days" style="background:#FCEBEB;color:#A32D2D">Exp. 367j</span></td></tr>
-        <tr><td><div class="adot" style="background:#F4A261"></div></td><td style="font-weight:500">Manilles vissées — lot 8</td><td style="font-size:10px;color:#555">MANI-2025-008</td><td style="font-size:10px;color:#aaa">6 mois</td><td style="font-size:11px">15/10/2025</td><td style="color:#F4A261;font-weight:600;font-size:11px">15/04/2026</td><td style="font-size:11px">SOCOTEC</td><td><span class="pill po">Urgente</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">12 jours</span></td></tr>
-        <tr><td><div class="adot" style="background:#2D6A4F"></div></td><td style="font-weight:500">Palan électrique 2T</td><td style="font-size:10px;color:#555">PALAN-2024-001</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">10/08/2025</td><td style="color:#2D6A4F;font-weight:600;font-size:11px">10/08/2026</td><td style="font-size:11px">Bureau Veritas</td><td><span class="pill pg">Valide</span></td><td><span class="days" style="background:#EAF3DE;color:#27500A">99 jours</span></td></tr>
-        <tr><td colspan="9" style="background:linear-gradient(135deg,#1A1A2E,#16213E);color:#fff;font-weight:500;padding:8px 14px">⚡ Installations électriques</td></tr>
-        <tr><td><div class="adot" style="background:#F4A261"></div></td><td style="font-weight:500">Tableau général — Atelier</td><td style="font-size:10px;color:#555">TGE-ATELIER-001</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">12/03/2025</td><td style="color:#F4A261;font-weight:600;font-size:11px">12/03/2026</td><td style="font-size:11px">DEKRA</td><td><span class="pill po">Urgente</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">22 jours</span></td></tr>
-        <tr><td><div class="adot" style="background:#2D6A4F"></div></td><td style="font-weight:500">Tableau électrique — Bureaux</td><td style="font-size:10px;color:#555">TGE-BUREAU-001</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">18/06/2025</td><td style="color:#2D6A4F;font-weight:600;font-size:11px">18/06/2026</td><td style="font-size:11px">DEKRA</td><td><span class="pill pg">Valide</span></td><td><span class="days" style="background:#EAF3DE;color:#27500A">46 jours</span></td></tr>
-        <tr><td colspan="9" style="background:linear-gradient(135deg,#1A1A2E,#16213E);color:#fff;font-weight:500;padding:8px 14px">🦺 EPI à vérification périodique</td></tr>
-        <tr><td><div class="adot" style="background:#BA7517"></div></td><td style="font-weight:500">Harnais antichute — lot 4</td><td style="font-size:10px;color:#555">HAR-2025-004</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">15/02/2025</td><td style="color:#BA7517;font-weight:600;font-size:11px">15/02/2026</td><td style="font-size:11px">Interne</td><td><span class="pill po">À surveiller</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">Passé ⚠</span></td></tr>
-        <tr><td><div class="adot" style="background:#2D6A4F"></div></td><td style="font-weight:500">Longes double — lot 6</td><td style="font-size:10px;color:#555">LONG-2025-006</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">10/10/2025</td><td style="color:#2D6A4F;font-weight:600;font-size:11px">10/10/2026</td><td style="font-size:11px">Interne</td><td><span class="pill pg">Valide</span></td><td><span class="days" style="background:#EAF3DE;color:#27500A">160 jours</span></td></tr>
-        <tr><td colspan="9" style="background:linear-gradient(135deg,#1A1A2E,#16213E);color:#fff;font-weight:500;padding:8px 14px">🔥 Incendie</td></tr>
-        <tr><td><div class="adot" style="background:#BA7517"></div></td><td style="font-weight:500">Extincteurs — lot 8</td><td style="font-size:10px;color:#555">EXT-2025-008</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">15/01/2025</td><td style="color:#BA7517;font-weight:600;font-size:11px">15/01/2026</td><td style="font-size:11px">APAVE</td><td><span class="pill po">À surveiller</span></td><td><span class="days" style="background:#FAEEDA;color:#633806">Passé ⚠</span></td></tr>
-        <tr><td><div class="adot" style="background:#2D6A4F"></div></td><td style="font-weight:500">Robinets incendie armés x2</td><td style="font-size:10px;color:#555">RIA-2025-001</td><td style="font-size:10px;color:#aaa">1 an</td><td style="font-size:11px">20/09/2025</td><td style="color:#2D6A4F;font-weight:600;font-size:11px">20/09/2026</td><td style="font-size:11px">Bureau Veritas</td><td><span class="pill pg">Valide</span></td><td><span class="days" style="background:#EAF3DE;color:#27500A">140 jours</span></td></tr>
-      </table>
-    </div>
-  </div>
-
-  <!-- BIENTOT -->
-  <div class="page" id="page-bientot">
-    <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden">
-      <div style="background:linear-gradient(135deg,#1A1A2E,#16213E);padding:48px;text-align:center">
-        <div style="font-size:56px;margin-bottom:16px">🚧</div>
-        <div style="font-size:22px;font-weight:700;color:#fff;margin-bottom:8px">Module en cours de développement</div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5)">Ce module sera disponible dans la prochaine version du logiciel SSE EMJ</div>
-      </div>
-      <div style="padding:40px;text-align:center">
-        <div style="font-size:14px;color:#555;line-height:1.8;max-width:500px;margin:0 auto">
-          Les modules Axe 4 (Audits, Situations dangereuses, Accidents) et Axe 5 (Revue de direction) sont en cours de conception avec Alexandra Valentin.
-        </div>
-        <div style="margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <button class="btn-primary" onclick="go('dashboard',null)">Tableau de bord</button>
-          <button class="btn" onclick="go('plan_actions',null)">Plan d'actions</button>
-          <button class="btn" onclick="go('habilitations',null)">Habilitations</button>
-        </div>
-        <div style="margin-top:24px;padding:16px;background:#F8F9FA;border-radius:12px;font-size:12px;color:#888;max-width:400px;margin-left:auto;margin-right:auto">
-          Logiciel SSE EMJ — Alexandra Valentin<br>
-          <span style="color:#378ADD">contact@sse-emj.fr</span> · Version demo 2026
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-
-</div><!-- main -->
-</div><!-- app -->
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
-  <div class="modal-box" onclick="event.stopPropagation()">
-    <div class="modal-hdr">
-      <div>
-        <div id="modal-title" style="font-size:15px;font-weight:600;color:#fff">Nouvelle action SSE</div>
-        <div id="modal-sub" style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px">Plan d&apos;actions &mdash; Axe 1 &mdash; MASE 2024</div>
-      </div>
-      <div class="modal-close" onclick="closeModal()">&#215;</div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-section" id="modal-sec-action">
-
-        <!-- Référence auto -->
-        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px;margin-bottom:10px">
-          <span style="font-weight:600">R&eacute;f. auto :</span> PA-2026-020
-          <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 &bull; AV</span>
-        </div>
-
-        <!-- SECTION 1 : Identification -->
-        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">1 &mdash; Identification de l&apos;action</div>
-        <div class="fg2" style="margin-bottom:10px">
-          <div>
-            <div class="fl">Type d&apos;action *</div>
-            <select style="width:100%" onchange="updateActionType(this)">
-              <option value="">-- S&eacute;lectionner --</option>
-              <option value="imm" style="color:#E63946">Action imm&eacute;diate &mdash; Dans les 24h</option>
-              <option value="cor">Action corrective &mdash; Corrige une cause</option>
-              <option value="prev">Action pr&eacute;ventive &mdash; Evite la r&eacute;currence</option>
-              <option value="dif">Action diff&eacute;r&eacute;e &mdash; Planifi&eacute;e &agrave; terme</option>
-            </select>
-            <div id="action-type-badge" style="margin-top:5px;display:none;padding:6px 10px;border-radius:7px;font-size:11px;font-weight:500"></div>
-          </div>
-          <div>
-            <div class="fl">Domaine *</div>
-            <select style="width:100%">
-              <option>S&eacute;curit&eacute;</option>
-              <option>Sant&eacute;</option>
-              <option>Environnement</option>
-              <option>Qualit&eacute;</option>
-              <option>S&eacute;curit&eacute; &amp; Sant&eacute;</option>
-              <option>S&eacute;curit&eacute; &amp; Environnement</option>
-              <option>Sant&eacute; &amp; Environnement</option>
-              <option>S&eacute;curit&eacute;, Sant&eacute; &amp; Environnement</option>
-            </select>
-          </div>
-          <div>
-            <div class="fl">Origine *</div>
-            <select style="width:100%" onchange="handleAutre(this,'autre-action-origine')">
-              <option>-- S&eacute;lectionner --</option>
-              <option>DUER (risque fort)</option>
-              <option>Audit terrain</option>
-              <option>Situation dangereuse</option>
-              <option>REX chantier</option>
-              <option>Accident &amp; Soins</option>
-              <option>VGP expir&eacute;e</option>
-              <option>Habilitation expir&eacute;e</option>
-              <option>Causerie SSE</option>
-              <option>Comit&eacute; SSE</option>
-              <option>Visite m&eacute;dicale</option>
-              <option>Client / Externe</option>
-              <option>Audit MASE</option>
-              <option>Veille r&eacute;glementaire</option>
-              <option value="autre">Autre (pr&eacute;ciser)</option>
-            </select>
-            <div class="autre-field" id="autre-action-origine"><input placeholder="Pr&eacute;ciser l&apos;origine..."/></div>
-          </div>
-          <div>
-            <div class="fl">Priorit&eacute; *</div>
-            <select style="width:100%" id="modal-prior" onchange="updatePrior()">
-              <option>-- S&eacute;lectionner --</option>
-              <option value="imm">Imm&eacute;diate &mdash; Urgence</option>
-              <option value="ct">Court terme &mdash; Ce mois</option>
-              <option value="mt">Moyen terme &mdash; Cette ann&eacute;e</option>
-              <option value="lt">Long terme &mdash; Ann&eacute;e suivante</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- SECTION 2 : Description -->
-        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">2 &mdash; Description &amp; Analyse</div>
-        <div style="margin-bottom:8px">
-          <div class="fl">Description pr&eacute;cise de l&apos;action *</div>
-          <textarea rows="2" placeholder="D&eacute;crire l&apos;action &agrave; mener de fa&ccedil;on pr&eacute;cise et actionnable..." style="width:100%"></textarea>
-        </div>
-        <div class="fg2" style="margin-bottom:8px">
-          <div>
-            <div class="fl">Pourquoi est-ce arriv&eacute; ? (cause identifi&eacute;e)</div>
-            <textarea rows="2" placeholder="Ex: Sol mouill&eacute; non signal&eacute;, absence de proc&eacute;dure, formation insuffisante..." style="width:100%"></textarea>
-          </div>
-          <div>
-            <div class="fl">Objectif final vis&eacute;</div>
-            <textarea rows="2" placeholder="Ex: Eliminer le risque de chute, mettre en conformit&eacute; le mat&eacute;riel, former 100% du personnel..." style="width:100%"></textarea>
-          </div>
-        </div>
-
-        <!-- SECTION 3 : Ressources -->
-        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">3 &mdash; Ressources &amp; Moyens de mise en oeuvre</div>
-        <div class="fg2" style="margin-bottom:8px">
-          <div>
-            <div class="fl">Facteurs de ressources *</div>
-            <select style="width:100%">
-              <option>-- S&eacute;lectionner --</option>
-              <option>Humains</option>
-              <option>Techniques</option>
-              <option>Organisationnels</option>
-              <option>Economiques / Financiers</option>
-              <option>Humains &amp; Organisationnels</option>
-              <option>Humains &amp; Techniques</option>
-              <option>Techniques &amp; Organisationnels</option>
-              <option>Techniques &amp; Economiques</option>
-              <option>Humains, Techniques &amp; Organisationnels</option>
-              <option>Tous les facteurs</option>
-            </select>
-          </div>
-          <div>
-            <div class="fl">Co&ucirc;t estim&eacute; (&euro;)</div>
-            <input type="number" placeholder="Ex: 500 &mdash; 0 si sans co&ucirc;t" style="width:100%"/>
-          </div>
-        </div>
-        <div class="fg2" style="margin-bottom:8px">
-          <div>
-            <div class="fl">&#128100; Moyens humains</div>
-            <textarea rows="2" placeholder="Ex: Alexandra Valentin HSE, chef de chantier, prestataire externe..." style="width:100%"></textarea>
-          </div>
-          <div>
-            <div class="fl">&#128295; Moyens techniques</div>
-            <textarea rows="2" placeholder="Ex: Bandes antid&eacute;rapantes, panneau signalisation, mat&eacute;riel de protection..." style="width:100%"></textarea>
-          </div>
-          <div>
-            <div class="fl">&#9881; Moyens organisationnels</div>
-            <textarea rows="2" placeholder="Ex: Mise &agrave; jour proc&eacute;dure, planification formation, r&eacute;vision DUER..." style="width:100%"></textarea>
-          </div>
-          <div>
-            <div class="fl">&#8364; Moyens &eacute;conomiques</div>
-            <textarea rows="2" placeholder="Ex: Budget SSE 2026, plan de formation, devis prestataire..." style="width:100%"></textarea>
-          </div>
-        </div>
-
-        <!-- SECTION 4 : Pilotage -->
-        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">4 &mdash; Pilotage &amp; Suivi</div>
-        <div class="fg3">
-          <div>
-            <div class="fl">Responsable *</div>
-            <select style="width:100%">
-              <option>AV &mdash; Alexandra Valentin</option>
-              <option>TM &mdash; Tony Martin</option>
-              <option>BLONDEL S.</option>
-              <option>MARTIN L.</option>
-              <option>RENARD D.</option>
-              <option>DUPONT A.</option>
-              <option>MOREAU J.</option>
-            </select>
-          </div>
-          <div>
-            <div class="fl">Date limite *</div>
-            <input type="date" style="width:100%"/>
-          </div>
-          <div>
-            <div class="fl">Avancement</div>
-            <select style="width:100%">
-              <option value="0">0% &mdash; Non d&eacute;marr&eacute;</option>
-              <option value="25">25% &mdash; D&eacute;marr&eacute;</option>
-              <option value="50">50% &mdash; En cours</option>
-              <option value="75">75% &mdash; Presque termin&eacute;</option>
-              <option value="100">100% &mdash; Cl&ocirc;tur&eacute;</option>
-            </select>
-          </div>
-        </div>
-        <div id="prior-alert" style="display:none;margin-top:8px;padding:8px 12px;border-radius:8px;font-size:11px;font-weight:500"></div>
-      </div>
-      <div class="modal-section" id="modal-sec-habilitation" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Salari&eacute; concern&eacute; *</div><select style="width:100%"><option>BLONDEL St&eacute;phane</option><option>MARTIN Laurent</option><option>RENARD David</option><option>GIRARD Pierre</option><option>DUPONT Alexis</option><option>MOREAU Julien</option></select></div>
-          <div><div class="fl">Type d&apos;habilitation *</div><select style="width:100%" onchange="handleAutre(this,'autre-hab-type')"><option>CACES R372 &mdash; Grue auxiliaire</option><option>CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</option><option>CACES R490 &mdash; Grues mobiles</option><option>CACES R486 &mdash; Nacelles</option><option>SST &mdash; Sauveteur Secouriste</option><option>Habilitation &eacute;lec. B1</option><option>Habilitation &eacute;lec. B2V</option><option>ATEX &mdash; Zone explosible</option><option>ARI &mdash; App. Resp. Isolant</option><option>Travail en hauteur</option><option>Permis CE &mdash; PL</option><option>Autorisation de conduite interne</option><option>Visite m&eacute;dicale</option><option>Formation levage/&eacute;lingage</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-hab-type"><input placeholder="Pr&eacute;ciser le type d&apos;habilitation..."/></div></div>
-          <div><div class="fl">Date obtention *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Date expiration *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Organisme</div><input placeholder="APAVE, SOCOTEC..." style="width:100%"/></div>
-          <div><div class="fl">Alerte avant expiration</div><select style="width:100%"><option>30 jours</option><option>60 jours</option><option>90 jours</option></select></div>
-        </div>
-      </div>
-      <div class="modal-section" id="modal-sec-vgp" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Cat&eacute;gorie *</div><select style="width:100%"><option>V&eacute;hicules &amp; Engins</option><option>Levage &amp; Manutention</option><option>Electricit&eacute;</option><option>Appareils pression</option><option>EPI v&eacute;rification</option><option>Incendie</option></select></div>
-          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Nacelle &eacute;l&eacute;vatrice..." style="width:100%"/></div>
-          <div><div class="fl">N&deg; s&eacute;rie</div><input placeholder="Ex: NAC-2026-001" style="width:100%"/></div>
-          <div><div class="fl">Fr&eacute;quence l&eacute;gale</div><select style="width:100%"><option>6 mois</option><option>1 an</option><option>2 ans</option><option>Avant utilisation</option></select></div>
-          <div><div class="fl">Organisme</div><select style="width:100%"><option>APAVE</option><option>Bureau Veritas</option><option>SOCOTEC</option><option>DEKRA</option><option>DREAL</option><option>Interne</option></select></div>
-          <div><div class="fl">Prochaine VGP</div><input type="date" style="width:100%"/></div>
-        </div>
-      </div>
-      <div class="modal-section" id="modal-sec-sd" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Date &amp; heure *</div><input type="datetime-local" style="width:100%"/></div>
-          <div><div class="fl">Signalant *</div><select style="width:100%"><option>BLONDEL St&eacute;phane</option><option>MARTIN Laurent</option><option>RENARD David</option><option>DUPONT Alexis</option><option>MOREAU Julien</option></select></div>
-          <div><div class="fl">Lieu *</div><input placeholder="Ex: Chantier TOTAL Fos" style="width:100%"/></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire la situation dangereuse..."></textarea></div>
-        <div style="margin-top:10px">
-          <div class="fl">Gravit&eacute; potentielle</div>
-          <div style="display:flex;gap:8px">
-            <div class="grav-btn" onclick="setGrav(this,1)"><div style="font-size:18px;font-weight:700;color:#2D6A4F">1</div><div style="font-size:10px;color:#2D6A4F">Faible</div></div>
-            <div class="grav-btn" onclick="setGrav(this,2)"><div style="font-size:18px;font-weight:700;color:#F4A261">2</div><div style="font-size:10px;color:#F4A261">Mod&eacute;r&eacute;e</div></div>
-            <div class="grav-btn" onclick="setGrav(this,3)"><div style="font-size:18px;font-weight:700;color:#E63946">3</div><div style="font-size:10px;color:#E63946">&Eacute;lev&eacute;e</div></div>
-            <div class="grav-btn" onclick="setGrav(this,4)"><div style="font-size:18px;font-weight:700;color:#FF8C8C">4</div><div style="font-size:10px;color:#FF8C8C">Critique</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-section" id="modal-sec-accident" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Type *</div><select style="width:100%"><option>AT avec arr&ecirc;t</option><option>AT sans arr&ecirc;t</option><option>Soin b&eacute;nin</option></select></div>
-          <div><div class="fl">Salari&eacute; *</div><select style="width:100%"><option>BLONDEL St&eacute;phane</option><option>MARTIN Laurent</option><option>RENARD David</option><option>DUPONT Alexis</option><option>MOREAU Julien</option></select></div>
-          <div><div class="fl">Date &amp; heure *</div><input type="datetime-local" style="width:100%"/></div>
-          <div><div class="fl">Lieu *</div><input placeholder="Ex: Atelier d&eacute;p&ocirc;t" style="width:100%"/></div>
-          <div><div class="fl">Nature de la l&eacute;sion</div><select style="width:100%"><option>Coupure</option><option>Contusion</option><option>Entorse</option><option>Fracture</option><option>Br&ucirc;lure</option><option>Projection</option><option>Autre</option></select></div>
-          <div><div class="fl">Si&egrave;ge</div><select style="width:100%"><option>Main / Doigt</option><option>Oeil</option><option>Cheville / Pied</option><option>Bras / &Eacute;paule</option><option>Dos</option><option>T&ecirc;te</option><option>Autre</option></select></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Description</div><textarea rows="2" placeholder="D&eacute;crire l&apos;accident..."></textarea></div>
-      </div>
-      <div class="modal-section" id="modal-sec-bp" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Titre *</div><input placeholder="Ex: V&eacute;rification harnais avant mont&eacute;e..." style="width:100%"/></div>
-          <div><div class="fl">Domaine *</div><select style="width:100%" onchange="handleAutre(this,'autre-bp-dom')"><option>Levage &amp; Manutention</option><option>EPI</option><option>Organisation chantier</option><option>Environnement</option><option>Communication</option><option>Transport &amp; Conduite</option><option>Travail en hauteur</option><option>Management SSE</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-bp-dom"><input placeholder="Pr&eacute;ciser le domaine..."/></div></div>
-          <div><div class="fl">Source *</div><select style="width:100%"><option>Observation terrain</option><option>REX chantier</option><option>Audit terrain</option><option>Initiative salari&eacute;</option></select></div>
-          <div><div class="fl">Identifi&eacute; par</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option></select></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Description *</div><textarea rows="3" placeholder="D&eacute;crire la bonne pratique..."></textarea></div>
-        <div style="margin-top:8px"><div class="fl">B&eacute;n&eacute;fices observ&eacute;s</div><textarea rows="2" placeholder="Ex: 0 oubli EPI depuis 3 mois..."></textarea></div>
-      </div>
-
-      <!-- CAUSERIE -->
-      <div class="modal-section" id="modal-sec-causerie" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Animateur *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
-          <div><div class="fl">Lieu</div><select style="width:100%"><option>Atelier d&eacute;p&ocirc;t</option><option>Salle de r&eacute;union</option><option>Chantier</option></select></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Th&egrave;me de la causerie *</div><input placeholder="Ex: S&eacute;curit&eacute; levage, Risques chimiques, RPS..." style="width:100%"/></div>
-        <div style="margin-top:10px"><div class="fl">Participants pr&eacute;vus</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S.</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> MARTIN L.</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> RENARD D.</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> GIRARD P.</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> DUPONT A.</label>
-            <label style="display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer"><input type="checkbox" checked/> MOREAU J.</label>
-          </div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Source / Lien</div><select style="width:100%"><option>Planifi&eacute;e (annuelle)</option><option>Suite &agrave; un accident</option><option>Suite &agrave; une SD</option><option>Suite &agrave; un audit</option><option>Suite &agrave; un REX</option></select></div>
-      </div>
-
-      <!-- COMITE -->
+  </div><!-- COMITE -->
       <div class="modal-section" id="modal-sec-comite" style="display:none">
         <div class="fg2">
           <div><div class="fl">Num&eacute;ro du comit&eacute;</div><select style="width:100%"><option>Comit&eacute; SSE n&deg;2 &mdash; T2 2026</option><option>Comit&eacute; SSE n&deg;3 &mdash; T3 2026</option><option>Revue de direction &mdash; D&eacute;c. 2026</option></select></div>
@@ -3367,75 +3355,4 @@ function printQR() {
   win.document.write("<div class='hab ko'><strong>ARI</strong> - EXPIREE 28/03/2026 - Non autorise</div>");
   win.document.write("<div class='qr'><img src='"+canvas.toDataURL()+"' style='width:150px;height:150px'/><div style='font-size:11px;color:#aaa;margin-top:8px'>Scannez pour verifier</div></div>");
   win.document.write("<div class='footer'>PAS-2026-SB-001 - SSE EMJ - "+new Date().toLocaleDateString("fr-FR")+"</div>");
-  win.document.write("</body></html>");
-  win.document.close();
-  setTimeout(function(){ win.print(); }, 500);
-}
-
-function printPage() { window.print(); }
-
-function printPasseport() {
-  var win = window.open("","_blank");
-  win.document.write("<!DOCTYPE html><html><head><title>Passeport SSE - BLONDEL</title><style>body{font-family:Arial,sans-serif;padding:24px;color:#1A1A2E}.header{background:#1A1A2E;color:#fff;padding:16px 20px;border-radius:10px;margin-bottom:16px}.section{margin-bottom:14px;padding:12px;border:1px solid #E8E8E8;border-radius:8px}.stitle{font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:8px}.row{display:flex;gap:6px;margin-bottom:5px;font-size:12px}.lbl{color:#aaa;width:150px;flex-shrink:0}</style></head><body>");
-  win.document.write("<div class='header'><div style='font-size:16px;font-weight:700'>BLONDEL Stephane</div><div style='font-size:12px;opacity:0.6'>Conducteur PL - CDI - Embauche 12/03/2021 - BMI</div></div>");
-  win.document.write("<div class='section'><div class='stitle'>Habilitations valides</div>");
-  win.document.write("<div class='row'><div class='lbl'>CACES R489</div><div>Valide jusqu&apos;au 22/11/2029</div></div>");
-  win.document.write("<div class='row'><div class='lbl'>CACES R490</div><div>Valide jusqu&apos;au 14/02/2029</div></div>");
-  win.document.write("<div class='row'><div class='lbl'>Permis CE</div><div>Valide jusqu&apos;au 14/06/2030</div></div>");
-  win.document.write("</div><div class='section'><div class='stitle'>Signatures</div>");
-  win.document.write("<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>");
-  win.document.write("<div><div style='font-size:11px;font-weight:600;margin-bottom:8px'>Salarie</div><div style='border:1.5px dashed #E8E8E8;border-radius:8px;padding:16px;text-align:center'><div style='font-size:20px;font-style:italic;font-family:Georgia'>S. Blondel</div></div></div>");
-  win.document.write("<div><div style='font-size:11px;font-weight:600;margin-bottom:8px'>Employeur</div><div style='border:1.5px dashed #E8E8E8;border-radius:8px;padding:16px;text-align:center'><div style='font-size:20px;font-style:italic;font-family:Georgia'>T. Martin</div></div></div>");
-  win.document.write("</div></div></body></html>");
-  win.document.close();
-  setTimeout(function(){ win.print(); }, 300);
-}
-
-function selST(el, key, nom, statut) {
-  document.querySelectorAll("#page-sous_traitants [onclick^=\"selST\"]").forEach(function(i){ i.style.borderLeftColor="transparent"; i.style.background=""; });
-  var colors = {valide:"#2D6A4F", surveiller:"#F4A261", suspendu:"#E63946"};
-  el.style.borderLeftColor = colors[statut] || "#E63946";
-  el.style.background = statut==="suspendu" ? "#FFF5F5" : "#F5FFF8";
-  var panel = document.getElementById("st-detail-panel");
-  if(panel) { panel.style.opacity="0.7"; setTimeout(function(){ panel.style.opacity="1"; }, 200); }
-}
-
-function setEPIMode(btn, mode) {
-  btn.parentNode.querySelectorAll("button").forEach(function(b){ b.style.borderColor="#E8E8E8"; b.style.background="#fff"; b.style.color="#555"; });
-  var colors = {stock:["#E63946","#FCEBEB","#A32D2D"], remise:["#2D6A4F","#EAF3DE","#27500A"], retrait:["#F4A261","#FAEEDA","#633806"]};
-  var c = colors[mode];
-  if(c){ btn.style.borderColor=c[0]; btn.style.background=c[1]; btn.style.color=c[2]; }
-}
-
-function swEPI(tab, el) {
-  ["stock","dotation","conso","alertes"].forEach(function(t){ var d=document.getElementById("epi-"+t); if(d) d.style.display="none"; });
-  document.querySelectorAll("#page-epi .tab").forEach(function(t){ t.classList.remove("active"); });
-  var sec = document.getElementById("epi-"+tab);
-  if(sec) sec.style.display="block";
-  if(el) el.classList.add("active");
-}
-
-function selEPISal(el, nom, initials, bg, color) {
-  el.parentNode.querySelectorAll("div[onclick]").forEach(function(d){ d.style.borderLeftColor="transparent"; d.style.background=""; });
-  el.style.borderLeftColor = color;
-  el.style.background = "#F5FFF8";
-  var av=document.getElementById("epi-sal-av"); var name=document.getElementById("epi-sal-name");
-  if(av){ av.textContent=initials; av.style.background=bg; av.style.color=color; }
-  if(name) name.textContent=nom;
-}
-
-function swDBTab_old(v, el) {
-  document.querySelectorAll(".db-tab").forEach(function(t){ t.classList.remove("active"); t.style.background="transparent"; t.style.color="#888"; });
-  var sec = document.getElementById("dbs-"+v);
-  ["indicateurs","accidents","actions","causeries","habilitations","audits","comites"].forEach(function(s){ var d=document.getElementById("dbs-"+s); if(d) d.style.display="none"; });
-  if(sec) sec.style.display="block";
-  if(el){ el.style.background="linear-gradient(135deg,#E63946,#F4A261)"; el.style.color="#fff"; }
-  initCharts(v);
-}
-
-window.addEventListener("load", function(){
-  initCharts("indicateurs");
-});
-</script>
-</body>
-</html>
+  win.document.write("</body></html>
