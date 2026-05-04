@@ -5,7 +5,6 @@ r">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSE EMJ - Votre Solution Logiciel SSE</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -4877,22 +4876,93 @@ Maîtriser notre impact environnemental</textarea>
 
 <script>
 // ============================================================
-// SUPABASE CONFIG
+// SUPABASE CONFIG - API REST directe (fetch)
 // ============================================================
 var SUPABASE_URL = "https://uveulvfgnzwihvsrgknn.supabase.co";
-var SUPABASE_KEY = "sb_publishable_yXmPC9Rbet_1hGG4lQl5nw_9T5vSqBQ";
+var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV2ZXVsdmZnbnp3aWh2c3Jna25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4ODk5NzIsImV4cCI6MjA5MzQ2NTk3Mn0.oWCn8pchbNFoekoPEFHIX0TzXOl-evkagy4FTs_iuAc";
 var ENTREPRISE_ID = "00000000-0000-0000-0000-000000000001";
-var sb = null;
 
-// Init Supabase
-function initSupabase() {
+// Fonction generique GET
+async function sbGet(table, params) {
+  var url = SUPABASE_URL + "/rest/v1/" + table + "?";
+  if(params) url += params;
   try {
-    sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    console.log("Supabase connecte !");
-    loadAllData();
+    var res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Content-Type": "application/json"
+      }
+    });
+    if(!res.ok) {
+      var err = await res.text();
+      console.error("GET " + table + " erreur:", err);
+      return null;
+    }
+    return await res.json();
   } catch(e) {
-    console.warn("Supabase non disponible:", e);
+    console.error("GET " + table + " fetch erreur:", e.message);
+    return null;
   }
+}
+
+// Fonction generique POST (insert)
+async function sbPost(table, data) {
+  var url = SUPABASE_URL + "/rest/v1/" + table;
+  try {
+    var res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Content-Type": "application/json",
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(data)
+    });
+    if(!res.ok) {
+      var err = await res.text();
+      console.error("POST " + table + " erreur:", err);
+      return false;
+    }
+    return true;
+  } catch(e) {
+    console.error("POST " + table + " fetch erreur:", e.message);
+    return false;
+  }
+}
+
+// Fonction generique UPSERT
+async function sbUpsert(table, data, onConflict) {
+  var url = SUPABASE_URL + "/rest/v1/" + table;
+  try {
+    var res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY,
+        "Content-Type": "application/json",
+        "Prefer": "resolution=merge-duplicates,return=minimal"
+      },
+      body: JSON.stringify(data)
+    });
+    if(!res.ok) {
+      var err = await res.text();
+      console.error("UPSERT " + table + " erreur:", err);
+      return false;
+    }
+    return true;
+  } catch(e) {
+    console.error("UPSERT " + table + " fetch erreur:", e.message);
+    return false;
+  }
+}
+
+// Init
+function initSupabase() {
+  console.log("Supabase connecte !");
+  loadAllData();
 }
 
 // ============================================================
@@ -4920,48 +4990,155 @@ async function loadAllData() {
 // ACTIONS
 // ============================================================
 async function loadActions() {
-  if(!sb) return;
-  var res = await sb.from("actions").select("*").eq("entreprise_id", ENTREPRISE_ID).order("created_at", {ascending: false});
-  if(res.error) { console.warn("Actions:", res.error); return; }
-  window._actions = res.data || [];
+  var data = await sbGet("actions", "entreprise_id=eq." + ENTREPRISE_ID + "&order=created_at.desc");
+  if(data === null) return;
+  window._actions = data;
+  console.log("Actions chargees:", data.length);
   renderActions();
 }
 
 async function saveAction(data) {
-  if(!sb) { showNotif("Mode demo - Supabase non connecte", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  data.reference = "PA-2026-" + String(Date.now()).slice(-3);
-  var res = await sb.from("actions").insert([data]);
-  if(res.error) { showNotif("Erreur sauvegarde action", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  data.reference = "PA-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-3);
+  var ok = await sbPost("actions", data);
+  if(!ok) { showNotif("Erreur sauvegarde action", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Action enregistree dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadActions();
 }
 
+function renderCauseries() {
+  var causeries = window._causeries || [];
+  console.log("Causeries a afficher:", causeries.length);
+  // TODO: render causeries table
+}
+
+function renderAccidents() {
+  var accidents = window._accidents || [];
+  console.log("Accidents a afficher:", accidents.length);
+  // TODO: render accidents table
+}
+
+function renderAudits() {
+  var audits = window._audits || [];
+  console.log("Audits a afficher:", audits.length);
+  // TODO: render audits table
+}
+
+function renderSD() {
+  var sd = window._sd || [];
+  console.log("SD a afficher:", sd.length);
+  // TODO: render SD table
+}
+
+function renderVGP() {
+  var vgp = window._vgp || [];
+  console.log("VGP a afficher:", vgp.length);
+  // TODO: render VGP table
+}
+
 function renderActions() {
-  // Mettre a jour les KPI plan d actions
-  var total = window._actions ? window._actions.length : 0;
-  var enRetard = window._actions ? window._actions.filter(function(a){ return a.avancement === "0" && a.delai && new Date(a.delai) < new Date(); }).length : 0;
-  var cloturees = window._actions ? window._actions.filter(function(a){ return a.avancement === "cloturee" || a.avancement === "1"; }).length : 0;
-  // Update KPI displays if on plan_actions page
-  console.log("Actions:", total, "total,", enRetard, "en retard,", cloturees, "cloturees");
+  var actions = window._actions || [];
+  var total = actions.length;
+  var imm = actions.filter(function(a){ return a.type_action && a.type_action.indexOf("Imm") !== -1; }).length;
+  var cor = actions.filter(function(a){ return a.type_action && a.type_action.indexOf("Cor") !== -1; }).length;
+  var prev = actions.filter(function(a){ return a.type_action && a.type_action.indexOf("Prev") !== -1; }).length;
+  var cloturees = actions.filter(function(a){ return a.avancement === "cloturee" || a.avancement === "efficace"; }).length;
+  var pct = total > 0 ? Math.round(cloturees/total*100) : 0;
+
+  // Update KPI cards
+  var kpis = document.querySelectorAll("#page-plan_actions .kv");
+  if(kpis[0]) kpis[0].textContent = imm;
+  if(kpis[1]) kpis[1].textContent = cor;
+  if(kpis[2]) kpis[2].textContent = prev;
+  if(kpis[4]) kpis[4].textContent = cloturees;
+  var kt = document.querySelectorAll("#page-plan_actions .kt");
+  if(kt[4]) kt[4].textContent = pct + "% cloturees";
+
+  // Find the table body
+  var table = document.querySelector("#page-plan_actions table");
+  if(!table) return;
+
+  // Remove existing data rows (keep header)
+  var rows = table.querySelectorAll("tr:not(:first-child)");
+  rows.forEach(function(r){ r.remove(); });
+
+  if(actions.length === 0) {
+    var empty = document.createElement("tr");
+    empty.innerHTML = "<td colspan='12' style='padding:32px;text-align:center;color:#aaa'>" +
+      "<div style='font-size:28px;margin-bottom:8px'>&#128203;</div>" +
+      "<div style='font-size:13px;font-weight:500;margin-bottom:4px'>Aucune action pour l\'instant</div>" +
+      "<div style='font-size:11px'>Cliquez sur &quot;+ Saisir une action&quot; pour commencer</div>" +
+      "</td>";
+    table.appendChild(empty);
+    return;
+  }
+
+  // Color map
+  var typeColors = {
+    "Immediates": ["#FCEBEB","#A32D2D"],
+    "Correctives": ["#E6F1FB","#185FA5"],
+    "Preventives": ["#EAF3DE","#27500A"],
+    "Differees": ["#EEEDFE","#3C3489"]
+  };
+  var avColors = {
+    "0": "#E63946", "0.25": "#F4A261", "0.5": "#F4A261",
+    "0.75": "#378ADD", "1": "#2D6A4F",
+    "cloturee": "#2D6A4F", "efficace": "#2D6A4F", "abandonne": "#aaa"
+  };
+
+  actions.forEach(function(a) {
+    var typeKey = "";
+    if(a.type_action) {
+      if(a.type_action.indexOf("Imm") !== -1) typeKey = "Immediates";
+      else if(a.type_action.indexOf("Cor") !== -1) typeKey = "Correctives";
+      else if(a.type_action.indexOf("Prev") !== -1) typeKey = "Preventives";
+      else if(a.type_action.indexOf("Diff") !== -1) typeKey = "Differees";
+    }
+    var tc = typeColors[typeKey] || ["#F8F9FA","#555"];
+    var av = a.avancement || "0";
+    var avColor = avColors[av] || "#aaa";
+    var avPct = av === "cloturee" || av === "efficace" ? "100" :
+                av === "abandonne" ? "0" :
+                av === "1" ? "100" : Math.round(parseFloat(av)*100) || 0;
+    var delai = a.delai ? new Date(a.delai).toLocaleDateString("fr-FR") : "&mdash;";
+    var isLate = a.delai && new Date(a.delai) < new Date() && av !== "cloturee" && av !== "efficace";
+    var ref = a.reference || "PA-???";
+
+    var tr = document.createElement("tr");
+    tr.style.borderBottom = "0.5px solid #F5F5F5";
+    tr.style.cursor = "pointer";
+    tr.innerHTML =
+      "<td style='padding:8px 10px;font-size:10px;color:#aaa;white-space:nowrap'>" + ref + "</td>" +
+      "<td style='padding:8px 10px;font-size:11px;font-weight:500;color:#1A1A2E'>" + (a.auteur || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px;font-size:11px'>" + (a.origine || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px;font-size:12px;font-weight:500;color:#1A1A2E'>" + (a.description || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px'><span style='font-size:10px;padding:2px 8px;border-radius:5px;background:" + tc[0] + ";color:" + tc[1] + ";font-weight:500;white-space:nowrap'>" + (a.type_action || "&mdash;") + "</span></td>" +
+      "<td style='padding:8px 10px;font-size:11px'>" + (a.ressources || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px;font-size:11px;font-weight:600'>" + (a.pilote || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px;font-size:11px;color:" + (isLate ? "#E63946" : "#555") + ";font-weight:" + (isLate ? "700" : "400") + "'>" + delai + "</td>" +
+      "<td style='padding:8px 10px'><div style='display:flex;align-items:center;gap:6px'><div style='width:60px;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden'><div style='width:" + avPct + "%;height:100%;background:" + avColor + ";border-radius:3px'></div></div><span style='font-size:11px;color:" + avColor + ";font-weight:600'>" + avPct + "%</span></div></td>" +
+      "<td style='padding:8px 10px;font-size:11px;color:#aaa'>" + (a.efficacite || "&mdash;") + "</td>" +
+      "<td style='padding:8px 10px;font-size:11px;color:#aaa;font-style:italic'>" + (a.commentaire || "") + "</td>";
+    table.appendChild(tr);
+  });
+
+  console.log("Plan actions rendu:", actions.length, "lignes");
 }
 
 // ============================================================
 // SALARIES
 // ============================================================
 async function loadSalaries() {
-  if(!sb) return;
-  var res = await sb.from("salaries").select("*").eq("entreprise_id", ENTREPRISE_ID).eq("actif", true).order("nom");
-  if(res.error) { console.warn("Salaries:", res.error); return; }
-  window._salaries = res.data || [];
-  console.log("Salaries charges:", window._salaries.length);
+  var data = await sbGet("salaries", "entreprise_id=eq." + ENTREPRISE_ID + "&actif=eq.true&order=nom.asc");
+  if(data === null) return;
+  window._salaries = data;
+  console.log("Salaries charges:", data.length);
 }
 
 async function saveSalarie(data) {
-  if(!sb) { showNotif("Mode demo - Supabase non connecte", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  var res = await sb.from("salaries").insert([data]);
-  if(res.error) { showNotif("Erreur sauvegarde salarie", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("salaries", data);
+  if(!ok) { showNotif("Erreur sauvegarde salarie", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Salarie enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadSalaries();
 }
@@ -4970,18 +5147,16 @@ async function saveSalarie(data) {
 // HABILITATIONS
 // ============================================================
 async function loadHabilitations() {
-  if(!sb) return;
-  var res = await sb.from("habilitations").select("*, salaries(nom, prenom)").order("date_expiration");
-  if(res.error) { console.warn("Habilitations:", res.error); return; }
-  window._habilitations = res.data || [];
-  var expir = window._habilitations.filter(function(h){ return h.date_expiration && new Date(h.date_expiration) < new Date(); }).length;
-  console.log("Habilitations chargees:", window._habilitations.length, "dont", expir, "expirees");
+  var data = await sbGet("habilitations", "order=date_expiration.asc");
+  if(data === null) return;
+  window._habilitations = data;
+  var expir = data.filter(function(h){ return h.date_expiration && new Date(h.date_expiration) < new Date(); }).length;
+  console.log("Habilitations chargees:", data.length, "dont", expir, "expirees");
 }
 
 async function saveHabilitation(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
-  var res = await sb.from("habilitations").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("habilitations", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Habilitation enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadHabilitations();
 }
@@ -4990,18 +5165,16 @@ async function saveHabilitation(data) {
 // CAUSERIES
 // ============================================================
 async function loadCauseries() {
-  if(!sb) return;
-  var res = await sb.from("causeries").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_causerie", {ascending: false});
-  if(res.error) { console.warn("Causeries:", res.error); return; }
-  window._causeries = res.data || [];
-  console.log("Causeries chargees:", window._causeries.length);
+  var data = await sbGet("causeries", "entreprise_id=eq." + ENTREPRISE_ID + "&order=date_causerie.desc");
+  if(data === null) return;
+  window._causeries = data;
+  console.log("Causeries chargees:", data.length);
 }
 
 async function saveCauserie(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  var res = await sb.from("causeries").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("causeries", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Causerie enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadCauseries();
 }
@@ -5010,18 +5183,16 @@ async function saveCauserie(data) {
 // ACCIDENTS
 // ============================================================
 async function loadAccidents() {
-  if(!sb) return;
-  var res = await sb.from("accidents").select("*, salaries(nom, prenom)").eq("entreprise_id", ENTREPRISE_ID).order("date_acc", {ascending: false});
-  if(res.error) { console.warn("Accidents:", res.error); return; }
-  window._accidents = res.data || [];
-  console.log("Accidents charges:", window._accidents.length);
+  var data = await sbGet("accidents", "entreprise_id=eq." + ENTREPRISE_ID + "&order=date_acc.desc");
+  if(data === null) return;
+  window._accidents = data;
+  console.log("Accidents charges:", data.length);
 }
 
 async function saveAccident(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  var res = await sb.from("accidents").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("accidents", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Accident declare dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadAccidents();
 }
@@ -5030,19 +5201,17 @@ async function saveAccident(data) {
 // SITUATIONS DANGEREUSES
 // ============================================================
 async function loadSD() {
-  if(!sb) return;
-  var res = await sb.from("situations_dangereuses").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_sd", {ascending: false});
-  if(res.error) { console.warn("SD:", res.error); return; }
-  window._sd = res.data || [];
-  console.log("SD chargees:", window._sd.length);
+  var data = await sbGet("situations_dangereuses", "entreprise_id=eq." + ENTREPRISE_ID + "&order=date_sd.desc");
+  if(data === null) return;
+  window._sd = data;
+  console.log("SD chargees:", data.length);
 }
 
 async function saveSD(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
   data.reference = "SD-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-3);
-  var res = await sb.from("situations_dangereuses").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("situations_dangereuses", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Situation dangereuse enregistree !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadSD();
 }
@@ -5051,19 +5220,17 @@ async function saveSD(data) {
 // AUDITS
 // ============================================================
 async function loadAudits() {
-  if(!sb) return;
-  var res = await sb.from("audits").select("*").eq("entreprise_id", ENTREPRISE_ID).order("date_audit", {ascending: false});
-  if(res.error) { console.warn("Audits:", res.error); return; }
-  window._audits = res.data || [];
-  console.log("Audits charges:", window._audits.length);
+  var data = await sbGet("audits", "entreprise_id=eq." + ENTREPRISE_ID + "&order=date_audit.desc");
+  if(data === null) return;
+  window._audits = data;
+  console.log("Audits charges:", data.length);
 }
 
 async function saveAudit(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
   data.reference = "AUD-" + new Date().getFullYear() + "-" + String(Date.now()).slice(-3);
-  var res = await sb.from("audits").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("audits", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Audit enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadAudits();
 }
@@ -5072,18 +5239,16 @@ async function saveAudit(data) {
 // VGP
 // ============================================================
 async function loadVGP() {
-  if(!sb) return;
-  var res = await sb.from("vgp").select("*").eq("entreprise_id", ENTREPRISE_ID).order("prochaine_vgp");
-  if(res.error) { console.warn("VGP:", res.error); return; }
-  window._vgp = res.data || [];
-  console.log("VGP charges:", window._vgp.length);
+  var data = await sbGet("vgp", "entreprise_id=eq." + ENTREPRISE_ID + "&order=prochaine_vgp.asc");
+  if(data === null) return;
+  window._vgp = data;
+  console.log("VGP charges:", data.length);
 }
 
 async function saveVGP(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  var res = await sb.from("vgp").insert([data]);
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbPost("vgp", data);
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Equipement enregistre dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadVGP();
 }
@@ -5092,18 +5257,16 @@ async function saveVGP(data) {
 // INDICATEURS
 // ============================================================
 async function loadIndicateurs() {
-  if(!sb) return;
-  var res = await sb.from("indicateurs").select("*").eq("entreprise_id", ENTREPRISE_ID).order("mois");
-  if(res.error) { console.warn("Indicateurs:", res.error); return; }
-  window._indicateurs = res.data || [];
-  console.log("Indicateurs charges:", window._indicateurs.length, "mois");
+  var data = await sbGet("indicateurs", "entreprise_id=eq." + ENTREPRISE_ID + "&order=mois.asc");
+  if(data === null) return;
+  window._indicateurs = data;
+  console.log("Indicateurs charges:", data.length, "mois");
 }
 
 async function saveIndicateur(data) {
-  if(!sb) { showNotif("Mode demo", "#BA7517", "#FAEEDA", "#FAC775"); return; }
   data.entreprise_id = ENTREPRISE_ID;
-  var res = await sb.from("indicateurs").upsert([data], {onConflict: "entreprise_id,mois"});
-  if(res.error) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
+  var ok = await sbUpsert("indicateurs", data, "entreprise_id,mois");
+  if(!ok) { showNotif("Erreur", "#A32D2D", "#FCEBEB", "#F7C1C1"); return; }
   showNotif("Indicateurs sauvegardes dans Supabase !", "#27500A", "#EAF3DE", "#C0DD97");
   await loadIndicateurs();
 }
