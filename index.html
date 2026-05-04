@@ -184,13 +184,15 @@ textarea{resize:vertical;line-height:1.5}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
-.modal-box{background:#fff;border-radius:16px;width:620px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+.modal-box{background:#fff;border-radius:16px;width:780px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
 .modal-hdr{background:linear-gradient(135deg,#1A1A2E,#16213E);padding:16px 22px;display:flex;align-items:center;justify-content:space-between}
 .modal-body{padding:20px 22px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:12px}
 .modal-footer{padding:12px 22px;border-top:1px solid #F0F0F0;display:flex;gap:8px;justify-content:flex-end;background:#F8F9FA}
 .modal-close{font-size:20px;color:rgba(255,255,255,0.5);cursor:pointer;padding:4px 8px;line-height:1}
 .notif{display:none;position:fixed;top:20px;right:20px;z-index:2000;background:#fff;border:1px solid #C0DD97;border-left:4px solid #2D6A4F;border-radius:12px;padding:14px 18px;box-shadow:0 8px 24px rgba(0,0,0,0.12);max-width:320px}
 
+.autre-field{display:none;margin-top:6px}
+.autre-field input{width:100%;padding:7px 10px;border:1px solid #E63946;border-radius:8px;font-size:12px;background:#FFF5F5}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-thumb{background:#DDD;border-radius:3px}
 </style>
@@ -480,27 +482,43 @@ textarea{resize:vertical;line-height:1.5}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
             <div>
               <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations personnelles</div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Date de naissance</span><span style="font-size:12px;font-weight:500">14/06/1985</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Adresse</span><span style="font-size:12px;font-weight:500">12 rue des Pins, 13240 Sept&egrave;mes</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">T&eacute;l&eacute;phone</span><span style="font-size:12px;font-weight:500">06 XX XX XX XX</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Email</span><span style="font-size:12px;font-weight:500">s.blondel@bmi-fos.fr</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Contact urgence</span><span style="font-size:12px;font-weight:500">BLONDEL Marie &mdash; 06 XX XX XX XX</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Date de naissance</span><span style="font-size:12px;font-weight:500">14/06/1985</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">N&deg; s&eacute;curit&eacute; sociale</span><span style="font-size:12px;font-weight:500;font-family:monospace;background:#F8F9FA;padding:2px 8px;border-radius:5px">1 85 06 13 XXX XXX XX</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Adresse</span><span style="font-size:12px;font-weight:500">12 rue des Pins, 13240 Sept&egrave;mes-les-Vallons</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">T&eacute;l&eacute;phone personnel</span><span style="font-size:12px;font-weight:500">06 XX XX XX XX</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Email personnel</span><span style="font-size:12px;font-weight:500">stephane.blondel@gmail.com</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Email professionnel</span><span style="font-size:12px;font-weight:500">s.blondel@bmi-fos.fr</span></div>
             </div>
             <div>
               <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations professionnelles</div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Fonction</span><span style="font-size:12px;font-weight:500">Conducteur PL &mdash; Levageur</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Contrat</span><span class="pill pg">CDI</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Date d&apos;embauche</span><span style="font-size:12px;font-weight:500">12/03/2021</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Anciennet&eacute;</span><span style="font-size:12px;font-weight:500">5 ans et 2 mois</span></div>
-              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Responsable direct</span><span style="font-size:12px;font-weight:500">Tony MARTIN &mdash; Pr&eacute;sident</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Fonction</span><span style="font-size:12px;font-weight:500">Conducteur PL &mdash; Levageur</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Contrat</span><span class="pill pg">CDI</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Date d&apos;embauche</span><span style="font-size:12px;font-weight:500">12/03/2021</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Anciennet&eacute;</span><span style="font-size:12px;font-weight:500">5 ans et 2 mois</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Responsable direct</span><span style="font-size:12px;font-weight:500">Tony MARTIN &mdash; Pr&eacute;sident</span></div>
+              <div style="display:flex;gap:6px;margin-bottom:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Service</span><span style="font-size:12px;font-weight:500">Transport &amp; Levage</span></div>
             </div>
           </div>
+
+          <!-- Contact urgence -->
+          <div style="background:#FFF5F5;border:1px solid #F7C1C1;border-radius:10px;padding:12px 14px;margin-bottom:14px">
+            <div style="font-size:10px;font-weight:600;color:#A32D2D;text-transform:uppercase;margin-bottom:8px">&#128680; Contact en cas d&apos;urgence</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+              <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:100px;flex-shrink:0">Nom &amp; Pr&eacute;nom</span><span style="font-size:12px;font-weight:500">BLONDEL Marie</span></div>
+              <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:80px;flex-shrink:0">Lien</span><span style="font-size:12px;font-weight:500">Conjoint(e)</span></div>
+              <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:80px;flex-shrink:0">T&eacute;l&eacute;phone</span><span style="font-size:12px;font-weight:500">06 XX XX XX XX</span></div>
+            </div>
+          </div>
+
+          <!-- Suivi médical -->
           <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Suivi m&eacute;dical</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">M&eacute;decin du travail</span><span style="font-size:12px;font-weight:500">Dr MARTIN &mdash; CIISME Fos</span></div>
-            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Derni&egrave;re visite</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">15/07/2025 ✓</span></div>
-            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Aptitude</span><span class="pill pg">Apte &mdash; Sans restriction</span></div>
-            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:140px;flex-shrink:0">Prochaine visite</span><span style="font-size:12px;font-weight:500">15/07/2027</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">M&eacute;decin du travail</span><span style="font-size:12px;font-weight:500">Dr MARTIN &mdash; CIISME Fos</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Derni&egrave;re visite</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">15/07/2025 ✓</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Aptitude m&eacute;dicale</span><span class="pill pg">Apte &mdash; Sans restriction</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Prochaine visite</span><span style="font-size:12px;font-weight:500">15/07/2027</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Poste &agrave; risque</span><span class="pill po">Oui &mdash; Levage &amp; Conduite</span></div>
+            <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:160px;flex-shrink:0">Suivi renforc&eacute;</span><span style="font-size:12px;font-weight:500">Non</span></div>
           </div>
         </div>
 
@@ -630,15 +648,26 @@ textarea{resize:vertical;line-height:1.5}
             <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Nom *</div><input placeholder="Ex: DUPONT" style="width:100%"/></div>
             <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Pr&eacute;nom *</div><input placeholder="Ex: Jean" style="width:100%"/></div>
             <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date de naissance</div><input type="date" style="width:100%"/></div>
-            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">T&eacute;l&eacute;phone</div><input placeholder="06 XX XX XX XX" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">N&deg; S&eacute;curit&eacute; sociale</div><input placeholder="1 XX XX XX XXX XXX XX" style="width:100%;font-family:monospace"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">T&eacute;l&eacute;phone personnel</div><input placeholder="06 XX XX XX XX" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Email personnel</div><input placeholder="prenom.nom@email.fr" style="width:100%"/></div>
             <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Email professionnel</div><input placeholder="prenom.nom@bmi-fos.fr" style="width:100%"/></div>
-            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Contact urgence</div><input placeholder="Nom &mdash; T&eacute;l&eacute;phone" style="width:100%"/></div>
+            <div style="grid-column:span 2"><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Adresse compl&egrave;te</div><input placeholder="N&deg;, rue, code postal, ville" style="width:100%"/></div>
+          </div>
+          <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px;margin-top:4px">Contact en cas d&apos;urgence</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;padding:12px;background:#FFF5F5;border-radius:10px;border:1px solid #F7C1C1">
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Nom &amp; Pr&eacute;nom *</div><input placeholder="Ex: DUPONT Marie" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Lien de parent&eacute;</div><select style="width:100%"><option>Conjoint(e)</option><option>Parent</option><option>Enfant</option><option>Fr&egrave;re / Soeur</option><option>Ami(e)</option><option>Autre</option></select></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">T&eacute;l&eacute;phone *</div><input placeholder="06 XX XX XX XX" style="width:100%"/></div>
           </div>
           <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Informations professionnelles</div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
-            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Fonction *</div><input placeholder="Ex: Conducteur PL" style="width:100%"/></div>
-            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Type de contrat *</div><select style="width:100%"><option>CDI</option><option>CDD</option><option>Int&eacute;rimaire</option><option>Apprenti</option></select></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Fonction *</div><select style="width:100%" onchange="handleAutre(this,'autre-sal-fn')"><option>Conducteur PL</option><option>Chef de chantier</option><option>Technicien maintenance</option><option>Op&eacute;rateur</option><option>Soudeur</option><option>M&eacute;canicien</option><option>Cariste</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-sal-fn"><input placeholder="Pr&eacute;ciser la fonction..."/></div></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Type de contrat *</div><select style="width:100%"><option>CDI</option><option>CDD</option><option>Int&eacute;rimaire</option><option>Apprenti</option><option>Stagiaire</option></select></div>
             <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Date d&apos;entr&eacute;e *</div><input type="date" style="width:100%"/></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Service</div><select style="width:100%"><option>Transport &amp; Levage</option><option>Maintenance</option><option>Administration</option><option>Polyvalent</option></select></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Responsable direct</div><select style="width:100%"><option>Tony MARTIN &mdash; Pr&eacute;sident</option><option>Alexandra Valentin &mdash; HSE</option></select></div>
+            <div><div style="font-size:10px;color:#aaa;margin-bottom:4px;text-transform:uppercase">Poste &agrave; risque</div><select style="width:100%"><option>Oui &mdash; Surveillance m&eacute;dicale renforc&eacute;e</option><option>Non &mdash; Suivi standard</option></select></div>
           </div>
         </div>
         <div style="padding:16px 20px;border-bottom:0.5px solid #F0F0F0">
@@ -795,14 +824,35 @@ textarea{resize:vertical;line-height:1.5}
           </div>
         </div>
         <div style="padding:14px 20px;border-bottom:0.5px solid #F0F0F0">
-          <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:10px">Documents obligatoires &mdash; &sect;3.4 MASE 2024</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Attestation URSSAF</div><div style="font-size:10px;color:#aaa">Valide jusqu&apos;au 30/06/2026</div><div style="margin-top:6px"><span class="pill pg">Valide ✓</span></div></div>
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Assurance RC Pro</div><div style="font-size:10px;color:#aaa">Valide jusqu&apos;au 31/12/2026</div><div style="margin-top:6px"><span class="pill pg">Valide ✓</span></div></div>
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Extrait KBIS</div><div style="font-size:10px;color:#aaa">Moins de 3 mois</div><div style="margin-top:6px"><span class="pill pg">Valide ✓</span></div></div>
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Plan de pr&eacute;vention</div><div style="font-size:10px;color:#aaa">Sign&eacute; avant derni&egrave;re intervention</div><div style="margin-top:6px"><span class="pill pg">Sign&eacute; ✓</span></div></div>
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Liste nominative</div><div style="font-size:10px;color:#aaa">8 salari&eacute;s &mdash; MAJ 02/01/2026</div><div style="margin-top:6px"><span class="pill pg">Valide ✓</span></div></div>
-            <div style="border:0.5px solid #C0DD97;border-radius:10px;padding:10px"><div style="font-size:12px;font-weight:500">Visite m&eacute;dicale personnel</div><div style="font-size:10px;color:#aaa">Attestation m&eacute;decin travail 2026</div><div style="margin-top:6px"><span class="pill pg">Valide ✓</span></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase">Documents obligatoires &mdash; &sect;3.4 MASE 2024</div>
+            <button onclick="openModal('st_doc')" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #378ADD;background:#E6F1FB;color:#185FA5;cursor:pointer;font-weight:500">+ Ajouter un document</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Attestation URSSAF</div><div style="font-size:10px;color:#aaa">Valide jusqu&apos;au 30/06/2026</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Valide ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Assurance RC Pro</div><div style="font-size:10px;color:#aaa">Valide jusqu&apos;au 31/12/2026</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Valide ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Extrait KBIS</div><div style="font-size:10px;color:#aaa">Moins de 3 mois &mdash; MAJ 15/02/2026</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Valide ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Plan de pr&eacute;vention</div><div style="font-size:10px;color:#aaa">Sign&eacute; le 10/03/2026 &mdash; Chantier TOTAL</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Sign&eacute; ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Liste nominative du personnel</div><div style="font-size:10px;color:#aaa">8 salari&eacute;s &mdash; MAJ 02/01/2026</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Valide ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:0.5px solid #C0DD97;border-radius:9px;background:#F5FFF8">
+              <div><div style="font-size:12px;font-weight:500">Attestations visites m&eacute;dicales</div><div style="font-size:10px;color:#aaa">Attestation m&eacute;decin travail 2026</div></div>
+              <div style="display:flex;align-items:center;gap:6px"><span class="pill pg">Valide ✓</span><button style="font-size:10px;padding:3px 8px;border-radius:5px;border:0.5px solid #E8E8E8;background:#fff;cursor:pointer;color:#555">&#128065; Voir</button></div>
+            </div>
           </div>
         </div>
         <div style="padding:14px 20px;border-bottom:0.5px solid #F0F0F0">
@@ -967,6 +1017,75 @@ textarea{resize:vertical;line-height:1.5}
       <div class="bp-card"><div class="bp-top" style="background:#7F77DD"></div><div class="bp-body"><div class="bp-icon" style="background:#EEEDFE">&#128203;</div><div style="font-size:13px;font-weight:500;color:#1A1A2E;margin-bottom:5px">Check-list d&eacute;part chantier plastifi&eacute;e</div><div style="font-size:11px;color:#777;line-height:1.5;margin-bottom:8px">En cabine de chaque camion. Initiative RENARD D.</div><div style="display:flex;gap:4px;flex-wrap:wrap"><span class="pill pp">Organisation</span><span class="pill pb">Manuelle</span><span class="pill po">&Agrave; diffuser</span></div></div><div class="bp-footer"><span>RENARD D. &bull; 28/04/2026</span><span style="color:#2D6A4F;font-weight:500">Voir &rarr;</span></div></div>
       <div class="bp-card" style="border:2px dashed #E8E8E8;display:flex;align-items:center;justify-content:center;min-height:180px;cursor:pointer" onclick="openModal('bp')"><div style="text-align:center;color:#ccc"><div style="font-size:32px;margin-bottom:8px">+</div><div style="font-size:12px;font-weight:500">Ajouter une BP</div></div></div>
     </div>
+
+    <!-- Stats BP par salarié -->
+    <div style="margin-top:14px;background:#fff;border:0.5px solid #EBEBEB;border-radius:12px;padding:14px 18px">
+      <div style="font-size:12px;font-weight:600;color:#1A1A2E;margin-bottom:4px">Bonnes pratiques identifi&eacute;es par salari&eacute; &mdash; Objectif 1 BP/an/salari&eacute;</div>
+      <div style="font-size:11px;color:#aaa;margin-bottom:12px">Encourage chaque salari&eacute; &agrave; remonter au moins une bonne pratique par an &mdash; culture d&apos;am&eacute;lioration continue</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">BLONDEL S.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#2D6A4F;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700" title="Longes outils nacelle">✓</div>
+          </div>
+          <span style="color:#2D6A4F;font-weight:600;margin-left:8px">1 BP</span>
+          <span style="font-size:10px;color:#aaa;margin-left:4px">Longes outils nacelle</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">MARTIN L.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#2D6A4F;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700" title="Kit antipollution">✓</div>
+          </div>
+          <span style="color:#2D6A4F;font-weight:600;margin-left:8px">1 BP</span>
+          <span style="font-size:10px;color:#aaa;margin-left:4px">Kit antipollution v&eacute;hicules</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">RENARD D.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#2D6A4F;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700" title="Check-list cabine">✓</div>
+          </div>
+          <span style="color:#2D6A4F;font-weight:600;margin-left:8px">1 BP</span>
+          <span style="font-size:10px;color:#aaa;margin-left:4px">Check-list d&eacute;part cabine</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">GIRARD P.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#ccc"></div>
+          </div>
+          <span style="color:#aaa;margin-left:8px">0 BP &mdash; encourager</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">DUPONT A.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#2D6A4F;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:700" title="Photo EPI avant départ">✓</div>
+          </div>
+          <span style="color:#2D6A4F;font-weight:600;margin-left:8px">1 BP</span>
+          <span style="font-size:10px;color:#aaa;margin-left:4px">Photo v&eacute;rif. EPI avant d&eacute;part</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px">
+          <div style="font-weight:500;width:160px;color:#1A1A2E">MOREAU J.</div>
+          <div style="display:flex;gap:4px">
+            <div style="width:22px;height:22px;border-radius:6px;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#ccc"></div>
+          </div>
+          <span style="color:#aaa;margin-left:8px">0 BP &mdash; encourager</span>
+        </div>
+
+      </div>
+
+      <!-- Résumé -->
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <div style="padding:8px 14px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A;font-weight:500">4/6 salari&eacute;s ont identifi&eacute; au moins 1 BP ✓</div>
+        <div style="padding:8px 14px;background:#FAEEDA;border-radius:8px;font-size:11px;color:#633806;font-weight:500">2 salari&eacute;s &agrave; encourager &mdash; GIRARD P. &amp; MOREAU J.</div>
+        <div style="padding:8px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;font-weight:500">Total : 5 BP identifi&eacute;es en 2026</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ACCIDENTS & SOINS -->
@@ -1120,76 +1239,388 @@ textarea{resize:vertical;line-height:1.5}
 
 <!-- DASHBOARD -->
   <div class="page active" id="page-dashboard">
-    <div class="welcome">
+
+    <!-- Bandeau de bienvenue -->
+    <div class="welcome" style="margin-bottom:16px">
       <div>
-        <div style="font-size:18px;font-weight:600;color:#fff;margin-bottom:5px">Bonjour Alexandra — Bilan SSE du jour</div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.5)">Berre Maintenance Industrielle · Année 2026 · Référentiel MASE 2024</div>
-        <div style="display:flex;gap:8px;margin-top:12px">
-          <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(230,57,70,0.25);color:#FF8C8C">Sécurité</span>
-          <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(244,162,97,0.25);color:#F4A261">Santé</span>
-          <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(45,106,79,0.25);color:#74C99A">Environnement</span>
-          <span style="font-size:11px;padding:4px 12px;border-radius:20px;background:rgba(55,138,221,0.25);color:#85B7EB">MASE 2024</span>
+        <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:4px">Bonjour Alexandra &#128075; &mdash; Bilan SSE du jour</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5)">Berre Maintenance Industrielle &bull; Ann&eacute;e 2026 &bull; R&eacute;f&eacute;rentiel MASE 2024</div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <span style="font-size:11px;padding:3px 12px;border-radius:20px;background:rgba(230,57,70,0.25);color:#FF8C8C">S&eacute;curit&eacute;</span>
+          <span style="font-size:11px;padding:3px 12px;border-radius:20px;background:rgba(244,162,97,0.25);color:#F4A261">Sant&eacute;</span>
+          <span style="font-size:11px;padding:3px 12px;border-radius:20px;background:rgba(45,106,79,0.25);color:#74C99A">Environnement</span>
+          <span style="font-size:11px;padding:3px 12px;border-radius:20px;background:rgba(55,138,221,0.25);color:#85B7EB">MASE 2024</span>
         </div>
       </div>
-      <div style="display:flex;gap:10px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
         <div class="wstat"><div class="wv" style="color:#FF8C8C">4,2</div><div class="wl">TF1</div></div>
         <div class="wstat"><div class="wv" style="color:#F4A261">9</div><div class="wl">Actions</div></div>
-        <div class="wstat"><div class="wv" style="color:#74C99A">87%</div><div class="wl">Causeries</div></div>
+        <div class="wstat"><div class="wv" style="color:#74C99A">92%</div><div class="wl">Causeries</div></div>
         <div class="wstat"><div class="wv">0</div><div class="wl">AT ce mois</div></div>
       </div>
     </div>
 
-    <div class="g4">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">TF1 — Accidents avec arrêt</div><div class="kv" style="color:#E63946">4,2</div><div class="ks">Cible ≤ 5,0 · N-1 : 5,1</div><span class="kt" style="background:#EAF3DE;color:#27500A">↘ -0,9 vs 2025</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Actions en cours</div><div class="kv" style="color:#F4A261">9</div><div class="ks">8 clôturées · 2 en retard</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">2 en retard ⚠</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Causeries réalisées</div><div class="kv" style="color:#2D6A4F">11</div><div class="ks">Taux couverture 87%</div><span class="kt" style="background:#EAF3DE;color:#27500A">↑ +20% vs 2025</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#F4A261)"></div><div class="kl">Situations dangereuses</div><div class="kv" style="color:#E63946">4</div><div class="ks">2 traitées · 2 en cours</div><span class="kt" style="background:#FAEEDA;color:#633806">2 en cours</span></div>
-    </div>
-
-    <div class="g4">
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Audits terrain réalisés</div><div class="kv" style="color:#378ADD">3</div><div class="ks">5 planifiés sur 2026</div><span class="kt" style="background:#E6F1FB;color:#185FA5">En cours</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Accidents du travail</div><div class="kv" style="color:#378ADD">1</div><div class="ks">Avec arrêt · 12 jours perdus</div><span class="kt" style="background:#EAF3DE;color:#27500A">0 ce mois ✓</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Habilitations — alertes</div><div class="kv" style="color:#7F77DD">3</div><div class="ks">Expirent dans 30 jours</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Urgent !</span></div>
-      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">VGP expirées</div><div class="kv" style="color:#E63946">2</div><div class="ks">Nacelle · Élingues</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Immobilisation !</span></div>
-    </div>
-
-    <div class="sec">Alertes du jour</div>
-    <div class="g4">
-      <div style="background:#fff;border:1px solid #F7C1C1;border-left:4px solid #E63946;border-radius:12px;padding:14px;display:flex;gap:10px"><div style="width:32px;height:32px;border-radius:8px;background:#FCEBEB;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🔴</div><div><div style="font-size:12px;font-weight:600;color:#A32D2D">3 habilitations &lt; 30 jours</div><div style="font-size:11px;color:#aaa;margin-top:3px">Martin · Dupont · Renard</div></div></div>
-      <div style="background:#fff;border:1px solid #FAC775;border-left:4px solid #F4A261;border-radius:12px;padding:14px;display:flex;gap:10px"><div style="width:32px;height:32px;border-radius:8px;background:#FAEEDA;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🟠</div><div><div style="font-size:12px;font-weight:600;color:#633806">2 actions en retard</div><div style="font-size:11px;color:#aaa;margin-top:3px">Actions n°14 et n°22</div></div></div>
-      <div style="background:#fff;border:1px solid #FAC775;border-left:4px solid #F4A261;border-radius:12px;padding:14px;display:flex;gap:10px"><div style="width:32px;height:32px;border-radius:8px;background:#FAEEDA;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📅</div><div><div style="font-size:12px;font-weight:600;color:#633806">Audit terrain cette semaine</div><div style="font-size:11px;color:#aaa;margin-top:3px">Chantier Dupuis — 05/05</div></div></div>
-      <div style="background:#fff;border:1px solid #C0DD97;border-left:4px solid #2D6A4F;border-radius:12px;padding:14px;display:flex;gap:10px"><div style="width:32px;height:32px;border-radius:8px;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">✅</div><div><div style="font-size:12px;font-weight:600;color:#27500A">Comite SSE n°2 planifie</div><div style="font-size:11px;color:#aaa;margin-top:3px">Fin juin 2026</div></div></div>
-    </div>
-
-    <div class="sec">Graphiques</div>
-    <div class="g3">
-      <div class="chart-card"><div class="ct">TF1 — Évolution pluriannuelle</div><div class="cw"><canvas id="c1"></canvas></div></div>
-      <div class="chart-card"><div class="ct">Plan d'actions — Avancement</div><div class="cw"><canvas id="c2"></canvas></div></div>
-      <div class="chart-card"><div class="ct">Système SSE — Mensuel 2026</div><div class="cw"><canvas id="c3"></canvas></div></div>
-    </div>
-
-    <div class="g2">
-      <div class="card" style="padding:16px">
-        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Comités de pilotage 2026</div>
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;color:#555">Comite SSE n°1 — fin mars 2026</span><span class="pill pg">Realise ✓</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;color:#555">Comite SSE n°2 — fin juin 2026</span><span class="pill po">Planifie 30/06</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#F8F9FA;border-radius:8px"><span style="font-size:12px;color:#555">Comite SSE n°3 — fin septembre 2026</span><span class="pill pgr">A planifier</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:linear-gradient(135deg,#EEEDFE,#F5F4FF);border-radius:8px;border:1px solid #C9C5F5"><span style="font-size:12px;color:#3C3489;font-weight:500">Revue de direction — decembre 2026</span><span class="pill pgr">A planifier</span></div>
-        </div>
+    <!-- Boutons d'action rapide (style Qualishare) -->
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px">
+      <div onclick="go('situations',null);openModal('sd')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#E63946';this.style.boxShadow='0 4px 12px rgba(230,57,70,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#9888;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Signaler une SD</div>
       </div>
-      <div class="card" style="padding:16px">
-        <div style="font-size:13px;font-weight:600;margin-bottom:12px">Habilitations — Alertes 30 jours</div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F5F5F5"><div><div style="font-size:12px;font-weight:600">Martin D.</div><div style="font-size:11px;color:#aaa">CACES R489 — expire 22/05/2026</div></div><span class="pill pr">20 j</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F5F5F5"><div><div style="font-size:12px;font-weight:600">Dupont L.</div><div style="font-size:11px;color:#aaa">Habilitation élec. B1 — expire 28/05</div></div><span class="pill pr">26 j</span></div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><div><div style="font-size:12px;font-weight:600">Renard A.</div><div style="font-size:11px;color:#aaa">SST — expire 01/06/2026</div></div><span class="pill po">30 j</span></div>
-        </div>
+      <div onclick="go('plan_actions',null);openModal('action')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#378ADD';this.style.boxShadow='0 4px 12px rgba(55,138,221,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#9998;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Saisir une action</div>
+      </div>
+      <div onclick="go('accidents',null);openModal('accident')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#E63946';this.style.boxShadow='0 4px 12px rgba(230,57,70,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#128680;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">D&eacute;clarer un accident</div>
+      </div>
+      <div onclick="go('causeries',null);openModal('causerie')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#2D6A4F';this.style.boxShadow='0 4px 12px rgba(45,106,79,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#128483;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Planifier une causerie</div>
+      </div>
+      <div onclick="go('audits',null);openModal('audit')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#BA7517';this.style.boxShadow='0 4px 12px rgba(186,117,23,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#9733;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Faire un audit terrain</div>
+      </div>
+      <div onclick="go('rex',null);openModal('rex')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#7F77DD';this.style.boxShadow='0 4px 12px rgba(127,119,221,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#128203;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Saisir un REX</div>
+      </div>
+      <div onclick="go('habilitations',null);openModal('habilitation')" style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.15s" onmouseover="this.style.borderColor='#2D6A4F';this.style.boxShadow='0 4px 12px rgba(45,106,79,0.15)'" onmouseout="this.style.borderColor='#EBEBEB';this.style.boxShadow='none'">
+        <div style="font-size:22px;margin-bottom:5px">&#127941;</div>
+        <div style="font-size:10px;font-weight:600;color:#1A1A2E;line-height:1.3">Ajouter habilitation</div>
       </div>
     </div>
+
+    <!-- Onglets tableau de bord (style Qualishare) -->
+    <div style="display:flex;gap:3px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:5px;margin-bottom:16px;overflow-x:auto">
+      <div class="db-tab active" id="dbt-indicateurs" onclick="swDBTab('indicateurs',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;background:linear-gradient(135deg,#E63946,#F4A261);color:#fff;white-space:nowrap">Indicateurs SSE</div>
+      <div class="db-tab" id="dbt-accidents" onclick="swDBTab('accidents',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Accidentologie</div>
+      <div class="db-tab" id="dbt-actions" onclick="swDBTab('actions',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Plan d&apos;actions</div>
+      <div class="db-tab" id="dbt-causeries" onclick="swDBTab('causeries',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Causeries</div>
+      <div class="db-tab" id="dbt-habilitations" onclick="swDBTab('habilitations',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Habilitations</div>
+      <div class="db-tab" id="dbt-audits" onclick="swDBTab('audits',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Audits terrain</div>
+      <div class="db-tab" id="dbt-comites" onclick="swDBTab('comites',this)" style="padding:8px 18px;border-radius:9px;font-size:12px;font-weight:500;cursor:pointer;color:#888;white-space:nowrap">Comit&eacute;s &amp; Revue</div>
+    </div>
+
+    <!-- ===== ONGLET INDICATEURS ===== -->
+    <div id="dbs-indicateurs">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">TF1 &mdash; Acc. avec arr&ecirc;t</div><div class="kv" style="color:#E63946">4,2</div><div class="ks">Cible &le;5,0 &bull; N-1 : 5,1</div><span class="kt" style="background:#EAF3DE;color:#27500A">&#8600; Am&eacute;lioration</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">TF2 &mdash; Tous AT</div><div class="kv" style="color:#F4A261">4,2</div><div class="ks">Cible &le;8,0 &bull; N-1 : 8,4</div><span class="kt" style="background:#EAF3DE;color:#27500A">&#8600; Am&eacute;lioration</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">TG &mdash; Taux de gravit&eacute;</div><div class="kv" style="color:#7F77DD">1,4</div><div class="ks">Jours perdus : 12</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Suivi CPAM</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Jours sans accident</div><div class="kv" style="color:#2D6A4F">97</div><div class="ks">Depuis 27/01/2026</div><span class="kt" style="background:#EAF3DE;color:#27500A">&#128293; Record !</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+        <!-- Graphique evolution TF1 -->
+        <div class="chart-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="ct">Evolution TF1 / TF2 &mdash; 2023 &agrave; 2026</div>
+            <span style="font-size:10px;color:#aaa">Calcul auto &bull; heures saisies</span>
+          </div>
+          <div class="cw"><canvas id="c1"></canvas></div>
+          <div style="display:flex;gap:16px;margin-top:8px">
+            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><div style="width:12px;height:3px;background:#E63946;border-radius:2px"></div>TF1</div>
+            <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><div style="width:12px;height:3px;background:#F4A261;border-radius:2px"></div>TF2</div>
+          </div>
+        </div>
+
+        <!-- Pyramide de Bird -->
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:12px">Pyramide des &eacute;v&eacute;nements s&eacute;curit&eacute; 2026</div>
+          <svg viewBox="0 0 340 210" style="width:100%;max-height:180px">
+            <!-- AAA -->
+            <polygon points="170,10 230,55 110,55" fill="#E63946"/>
+            <text x="170" y="39" text-anchor="middle" fill="white" font-size="11" font-weight="700">AAA</text>
+            <text x="240" y="39" fill="#E63946" font-size="10" font-weight="600">1</text>
+            <!-- ASA -->
+            <polygon points="110,58 230,58 255,90 85,90" fill="#F4A261"/>
+            <text x="170" y="79" text-anchor="middle" fill="white" font-size="11" font-weight="700">ASA</text>
+            <text x="262" y="79" fill="#F4A261" font-size="10" font-weight="600">0</text>
+            <!-- Accidents benins -->
+            <polygon points="85,93 255,93 285,130 55,130" fill="#BA7517"/>
+            <text x="170" y="117" text-anchor="middle" fill="white" font-size="10" font-weight="700">Soins b&eacute;nins</text>
+            <text x="292" y="117" fill="#BA7517" font-size="10" font-weight="600">3</text>
+            <!-- Presqu'accidents -->
+            <polygon points="55,133 285,133 315,170 25,170" fill="#378ADD"/>
+            <text x="170" y="157" text-anchor="middle" fill="white" font-size="10" font-weight="700">Presqu&apos;accidents</text>
+            <text x="320" y="157" fill="#378ADD" font-size="10" font-weight="600">0</text>
+            <!-- SD -->
+            <polygon points="25,173 315,173 335,205 5,205" fill="#2D6A4F"/>
+            <text x="170" y="194" text-anchor="middle" fill="white" font-size="11" font-weight="700">Situations dangereuses</text>
+            <text x="335" y="194" fill="#2D6A4F" font-size="10" font-weight="600">4</text>
+          </svg>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px">
+        <!-- Evolution mensuelle activite SSE -->
+        <div class="chart-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <div class="ct">Activit&eacute; SSE mensuelle 2026</div>
+            <div style="display:flex;gap:12px">
+              <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><div style="width:10px;height:10px;border-radius:3px;background:#378ADD"></div>Causeries</div>
+              <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><div style="width:10px;height:10px;border-radius:3px;background:#BA7517"></div>Audits</div>
+              <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#555"><div style="width:10px;height:10px;border-radius:3px;background:#E63946"></div>SD</div>
+            </div>
+          </div>
+          <div class="cw"><canvas id="c3"></canvas></div>
+        </div>
+        <!-- Jours sans accident compteur -->
+        <div class="chart-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+          <div style="font-size:11px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px">Jours sans accident</div>
+          <div style="font-size:64px;font-weight:800;color:#2D6A4F;line-height:1">97</div>
+          <div style="font-size:11px;color:#aaa;margin-top:4px">Depuis le 27/01/2026</div>
+          <div style="width:80%;height:6px;background:#F0F0F0;border-radius:3px;margin:12px 0;overflow:hidden">
+            <div style="width:27%;height:100%;background:linear-gradient(90deg,#2D6A4F,#74C99A);border-radius:3px"></div>
+          </div>
+          <div style="font-size:10px;color:#aaa">Objectif 365 jours &bull; 27%</div>
+          <div style="margin-top:12px;padding:6px 14px;background:#EAF3DE;border-radius:8px;font-size:11px;color:#27500A;font-weight:500">&#128293; Continuez ainsi !</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET ACCIDENTOLOGIE ===== -->
+    <div id="dbs-accidents" style="display:none">
+      <div class="g5" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">AT avec arr&ecirc;t</div><div class="kv" style="color:#E63946">1</div><div class="ks">12 jours perdus</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">CPAM d&eacute;clar&eacute;</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">AT sans arr&ecirc;t</div><div class="kv" style="color:#F4A261">0</div><div class="ks">Objectif tenu</div><span class="kt" style="background:#EAF3DE;color:#27500A">OK ✓</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#BA7517,#EF9F27)"></div><div class="kl">Soins b&eacute;nins</div><div class="kv" style="color:#BA7517">3</div><div class="ks">Registre infirmerie</div><span class="kt" style="background:#FAEEDA;color:#633806">Tous trait&eacute;s</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">TF1</div><div class="kv" style="color:#378ADD">4,2</div><div class="ks">N-1 : 5,1</div><span class="kt" style="background:#EAF3DE;color:#27500A">&#8600; -19%</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">TG</div><div class="kv" style="color:#7F77DD">1,4</div><div class="ks">Jours perdus &times;1000/h</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Stable</span></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <!-- Silhouette corporelle -->
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:12px">Si&egrave;ge des l&eacute;sions</div>
+          <div style="display:flex;gap:20px;align-items:center;justify-content:center">
+            <svg viewBox="0 0 120 260" style="width:100px;flex-shrink:0">
+              <!-- Corps humain simplifié -->
+              <!-- Tête -->
+              <circle cx="60" cy="28" r="22" fill="#E8E8E8" stroke="#CCC" stroke-width="1.5"/>
+              <!-- Cou -->
+              <rect x="52" y="48" width="16" height="14" rx="4" fill="#E8E8E8"/>
+              <!-- Tronc -->
+              <rect x="30" y="60" width="60" height="80" rx="12" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+              <!-- Bras gauche -->
+              <rect x="5" y="62" width="22" height="60" rx="10" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+              <!-- Bras droit -->
+              <rect x="93" y="62" width="22" height="60" rx="10" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+              <!-- Jambe gauche -->
+              <rect x="32" y="142" width="24" height="90" rx="10" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+              <!-- Jambe droite -->
+              <rect x="64" y="142" width="24" height="90" rx="10" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+              <!-- Zone cheville = point rouge (AT) -->
+              <circle cx="76" cy="218" r="10" fill="#E63946" opacity="0.85"/>
+              <text x="76" y="222" text-anchor="middle" fill="white" font-size="9" font-weight="700">1</text>
+              <!-- Zone main gauche = point orange -->
+              <circle cx="16" cy="115" r="8" fill="#F4A261" opacity="0.85"/>
+              <text x="16" y="119" text-anchor="middle" fill="white" font-size="8" font-weight="700">1</text>
+              <!-- Zone oeil = point orange -->
+              <circle cx="68" cy="25" r="7" fill="#F4A261" opacity="0.85"/>
+              <text x="68" y="28" text-anchor="middle" fill="white" font-size="7" font-weight="700">1</text>
+            </svg>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+                <div style="width:12px;height:12px;border-radius:50%;background:#E63946;flex-shrink:0"></div>
+                <span><strong>Cheville droite</strong> &mdash; 1 AT</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+                <div style="width:12px;height:12px;border-radius:50%;background:#F4A261;flex-shrink:0"></div>
+                <span><strong>Main gauche</strong> &mdash; 1 SB</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+                <div style="width:12px;height:12px;border-radius:50%;background:#F4A261;flex-shrink:0"></div>
+                <span><strong>Oeil droit</strong> &mdash; 1 SB</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px">
+                <div style="width:12px;height:12px;border-radius:50%;background:#BA7517;flex-shrink:0"></div>
+                <span><strong>Doigt droit</strong> &mdash; 1 SB</span>
+              </div>
+              <div style="margin-top:8px;font-size:10px;color:#aaa">Total : 4 &eacute;v&eacute;nements &bull; 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau accidents recents -->
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:12px">Derniers &eacute;v&eacute;nements</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="padding:10px 12px;background:#FFF5F5;border-radius:8px;border-left:3px solid #E63946">
+              <div style="font-size:10px;font-weight:600;color:#E63946;margin-bottom:2px">AT AVEC ARR&Ecirc;T &bull; 15/01/2026</div>
+              <div style="font-size:12px;font-weight:500">Entorse cheville &mdash; chute plain-pied</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">BLONDEL S. &bull; Atelier d&eacute;p&ocirc;t &bull; 12 jours arr&ecirc;t</div>
+            </div>
+            <div style="padding:10px 12px;background:#FFF8F0;border-radius:8px;border-left:3px solid #F4A261">
+              <div style="font-size:10px;font-weight:600;color:#F4A261;margin-bottom:2px">SOIN B&Eacute;NIN &bull; 20/03/2026</div>
+              <div style="font-size:12px;font-weight:500">Coupure main &mdash; manipulation &eacute;lingue</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">MARTIN L. &bull; Chantier SOLVAY</div>
+            </div>
+            <div style="padding:10px 12px;background:#FFF8F0;border-radius:8px;border-left:3px solid #F4A261">
+              <div style="font-size:10px;font-weight:600;color:#F4A261;margin-bottom:2px">SOIN B&Eacute;NIN &bull; 14/02/2026</div>
+              <div style="font-size:12px;font-weight:500">Projection corps &eacute;tranger &mdash; oeil</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">DUPONT A. &bull; Atelier</div>
+            </div>
+            <div onclick="go('accidents',null)" style="text-align:center;padding:8px;color:#E63946;font-size:12px;font-weight:500;cursor:pointer">Voir tous les &eacute;v&eacute;nements &rarr;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET PLAN D'ACTIONS ===== -->
+    <div id="dbs-actions" style="display:none">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Cl&ocirc;tur&eacute;es</div><div class="kv" style="color:#2D6A4F">8</div><div class="ks">42% du total</div><span class="kt" style="background:#EAF3DE;color:#27500A">42%</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">En cours</div><div class="kv" style="color:#378ADD">9</div><div class="ks">Dans les d&eacute;lais</div><span class="kt" style="background:#E6F1FB;color:#185FA5">OK</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">En retard</div><div class="kv" style="color:#E63946">2</div><div class="ks">&Eacute;ch&eacute;ance d&eacute;pass&eacute;e</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Urgent !</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Total actions</div><div class="kv" style="color:#F4A261">19</div><div class="ks">Toutes origines</div><span class="kt" style="background:#FAEEDA;color:#633806">2026</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">R&eacute;partition par statut</div>
+          <div style="display:flex;align-items:center;gap:20px">
+            <div class="cw" style="width:160px;flex-shrink:0"><canvas id="c2"></canvas></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px"><div style="width:12px;height:12px;border-radius:3px;background:#2D6A4F;flex-shrink:0"></div><span>Cl&ocirc;tur&eacute;es : <strong>8</strong> (42%)</span></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px"><div style="width:12px;height:12px;border-radius:3px;background:#378ADD;flex-shrink:0"></div><span>En cours : <strong>9</strong> (47%)</span></div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:12px"><div style="width:12px;height:12px;border-radius:3px;background:#E63946;flex-shrink:0"></div><span>En retard : <strong>2</strong> (11%)</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">Actions urgentes &mdash; En retard</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="padding:10px 12px;background:#FFF5F5;border-radius:8px;border-left:3px solid #E63946">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-size:12px;font-weight:500;color:#1A1A2E">Renouvellement CACES R372 BLONDEL</div>
+                <span style="font-size:10px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600">Retard 35j</span>
+              </div>
+              <div style="font-size:10px;color:#aaa;margin-top:3px">Resp : AV &bull; &Eacute;ch&eacute;ance : 28/03/2026</div>
+            </div>
+            <div style="padding:10px 12px;background:#FFF5F5;border-radius:8px;border-left:3px solid #E63946">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-size:12px;font-weight:500;color:#1A1A2E">VGP nacelle &agrave; planifier</div>
+                <span style="font-size:10px;padding:2px 7px;border-radius:5px;background:#FCEBEB;color:#A32D2D;font-weight:600">Retard 23j</span>
+              </div>
+              <div style="font-size:10px;color:#aaa;margin-top:3px">Resp : TM &bull; &Eacute;ch&eacute;ance : 10/04/2026</div>
+            </div>
+            <div onclick="go('plan_actions',null)" style="text-align:center;padding:8px;color:#378ADD;font-size:12px;font-weight:500;cursor:pointer">Voir toutes les actions &rarr;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET CAUSERIES ===== -->
+    <div id="dbs-causeries" style="display:none">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">R&eacute;alis&eacute;es</div><div class="kv" style="color:#2D6A4F">11</div><div class="ks">Objectif : 12/an</div><span class="kt" style="background:#EAF3DE;color:#27500A">92%</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Participation moy.</div><div class="kv" style="color:#378ADD">5,8/6</div><div class="ks">Taux pr&eacute;sence</div><span class="kt" style="background:#E6F1FB;color:#185FA5">97%</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Prochaine</div><div class="kv" style="color:#F4A261">Mai</div><div class="ks">Th&egrave;me : RPS</div><span class="kt" style="background:#FAEEDA;color:#633806">&Agrave; planifier</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Th&egrave;mes couverts</div><div class="kv" style="color:#7F77DD">11</div><div class="ks">Levage, EPI, SD...</div><span class="kt" style="background:#EEEDFE;color:#3C3489">Vari&eacute;s ✓</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px">
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">Participation par mois &mdash; 2026</div>
+          <div class="cw"><canvas id="c-caus"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">Pr&eacute;sence par salari&eacute;</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">BLONDEL S.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:92%;height:100%;background:#2D6A4F;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#2D6A4F">92%</div></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">MARTIN L.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#2D6A4F;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#2D6A4F">100%</div></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">RENARD D.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#2D6A4F;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#2D6A4F">100%</div></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">GIRARD P.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#2D6A4F;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#2D6A4F">100%</div></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">DUPONT A.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#2D6A4F;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#2D6A4F">100%</div></div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:11px"><div style="font-weight:500;width:100px">MOREAU J.</div><div style="flex:1;height:6px;background:#F0F0F0;border-radius:3px;overflow:hidden"><div style="width:72%;height:100%;background:#378ADD;border-radius:3px"></div></div><div style="width:30px;text-align:right;font-weight:600;color:#378ADD">72%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET HABILITATIONS ===== -->
+    <div id="dbs-habilitations" style="display:none">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Expir&eacute;es</div><div class="kv" style="color:#E63946">5</div><div class="ks">Action imm&eacute;diate</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Urgent !</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Expirent &lt;30 jours</div><div class="kv" style="color:#F4A261">2</div><div class="ks">&Agrave; renouveler</div><span class="kt" style="background:#FAEEDA;color:#633806">Attention</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Valides</div><div class="kv" style="color:#2D6A4F">28</div><div class="ks">Toutes cat&eacute;gories</div><span class="kt" style="background:#EAF3DE;color:#27500A">80% ✓</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Salari&eacute;s impact&eacute;s</div><div class="kv" style="color:#378ADD">3</div><div class="ks">BLONDEL, MARTIN, RENARD</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Voir passeport</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">Alertes urgentes &mdash; &agrave; traiter maintenant</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="padding:10px 12px;background:#FFF5F5;border-radius:8px;border-left:3px solid #E63946;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:12px;font-weight:500">BLONDEL &mdash; ARI</div><div style="font-size:10px;color:#aaa">Expir&eacute;e le 28/03/2026</div></div>
+              <button onclick="go('habilitations',null)" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E63946;background:#FCEBEB;color:#A32D2D;cursor:pointer">Renouveler</button>
+            </div>
+            <div style="padding:10px 12px;background:#FFF5F5;border-radius:8px;border-left:3px solid #E63946;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:12px;font-weight:500">BLONDEL &mdash; Carte G2</div><div style="font-size:10px;color:#aaa">Expir&eacute;e le 10/04/2026</div></div>
+              <button onclick="go('habilitations',null)" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #E63946;background:#FCEBEB;color:#A32D2D;cursor:pointer">Renouveler</button>
+            </div>
+            <div style="padding:10px 12px;background:#FFF8F0;border-radius:8px;border-left:3px solid #F4A261;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:12px;font-weight:500">MARTIN &mdash; SST</div><div style="font-size:10px;color:#aaa">Expire le 01/06/2026 &bull; 29 jours</div></div>
+              <button onclick="go('formation',null)" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #F4A261;background:#FAEEDA;color:#633806;cursor:pointer">Planifier</button>
+            </div>
+            <div style="padding:10px 12px;background:#FFF8F0;border-radius:8px;border-left:3px solid #F4A261;display:flex;justify-content:space-between;align-items:center">
+              <div><div style="font-size:12px;font-weight:500">GIRARD &mdash; ATEX</div><div style="font-size:10px;color:#aaa">Expire le 15/05/2026 &bull; 12 jours</div></div>
+              <button onclick="go('formation',null)" style="font-size:10px;padding:4px 10px;border-radius:6px;border:1px solid #F4A261;background:#FAEEDA;color:#633806;cursor:pointer">Planifier</button>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="ct" style="margin-bottom:10px">Conformit&eacute; par salari&eacute;</div>
+          <div class="cw"><canvas id="c-hab"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET AUDITS ===== -->
+    <div id="dbs-audits" style="display:none">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#BA7517,#EF9F27)"></div><div class="kl">Audits r&eacute;alis&eacute;s</div><div class="kv" style="color:#BA7517">3</div><div class="ks">Objectif : 12/an</div><span class="kt" style="background:#FAEEDA;color:#633806">25%</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Score moyen</div><div class="kv" style="color:#2D6A4F">78%</div><div class="ks">Conformit&eacute; SSE</div><span class="kt" style="background:#EAF3DE;color:#27500A">+12% vs 2025</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">Non-conformit&eacute;s</div><div class="kv" style="color:#E63946">7</div><div class="ks">Dont 1 critique</div><span class="kt" style="background:#FCEBEB;color:#A32D2D">Plan d&apos;actions</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Prochain audit</div><div class="kv" style="color:#378ADD">05/05</div><div class="ks">Chantier Dupuis</div><span class="kt" style="background:#E6F1FB;color:#185FA5">Planifi&eacute;</span></div>
+      </div>
+      <div class="chart-card">
+        <div class="ct" style="margin-bottom:10px">Score de conformit&eacute; par audit &mdash; 2026</div>
+        <div class="cw"><canvas id="c-aud"></canvas></div>
+      </div>
+    </div>
+
+    <!-- ===== ONGLET COMITES & REVUE ===== -->
+    <div id="dbs-comites" style="display:none">
+      <div class="g4" style="margin-bottom:14px">
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Comit&eacute;s r&eacute;alis&eacute;s</div><div class="kv" style="color:#7F77DD">1</div><div class="ks">Sur 3 planifi&eacute;s</div><span class="kt" style="background:#EEEDFE;color:#3C3489">T1 ✓</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">Prochain comit&eacute;</div><div class="kv" style="color:#F4A261">T2</div><div class="ks">Fin juin 2026</div><span class="kt" style="background:#FAEEDA;color:#633806">&Agrave; planifier</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">Revue de direction</div><div class="kv" style="color:#7F77DD">D&eacute;c.</div><div class="ks">D&eacute;cembre 2026</div><span class="kt" style="background:#EEEDFE;color:#3C3489">&Agrave; planifier</span></div>
+        <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Actions comit&eacute;s</div><div class="kv" style="color:#2D6A4F">5</div><div class="ks">G&eacute;n&eacute;r&eacute;es</div><span class="kt" style="background:#EAF3DE;color:#27500A">Plan d&apos;actions</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-size:13px;font-weight:500;color:#1A1A2E">Comit&eacute; SSE n&deg;1 &mdash; T1 2026</div><div style="font-size:11px;color:#aaa;margin-top:2px">28/03/2026 &bull; Si&egrave;ge BMI &bull; 5 points abord&eacute;s</div></div>
+          <span style="font-size:10px;padding:3px 10px;border-radius:10px;font-weight:600;background:#EAF3DE;color:#27500A">R&eacute;alis&eacute; ✓</span>
+        </div>
+        <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-size:13px;font-weight:500;color:#1A1A2E">Comit&eacute; SSE n&deg;2 &mdash; T2 2026</div><div style="font-size:11px;color:#aaa;margin-top:2px">Fin juin 2026 &bull; &agrave; planifier</div></div>
+          <button onclick="go('comite',null);openModal('comite')" style="font-size:11px;padding:5px 12px;border-radius:7px;border:1px solid #7F77DD;background:#EEEDFE;color:#3C3489;cursor:pointer;font-weight:500">Planifier &rarr;</button>
+        </div>
+        <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-size:13px;font-weight:500;color:#1A1A2E">Comit&eacute; SSE n&deg;3 &mdash; T3 2026</div><div style="font-size:11px;color:#aaa;margin-top:2px">Fin septembre 2026 &bull; &agrave; planifier</div></div>
+          <button onclick="go('comite',null);openModal('comite')" style="font-size:11px;padding:5px 12px;border-radius:7px;border:1px solid #7F77DD;background:#EEEDFE;color:#3C3489;cursor:pointer;font-weight:500">Planifier &rarr;</button>
+        </div>
+        <div style="background:linear-gradient(135deg,#EEEDFE,#F5F4FF);border:1px solid #D8D6F8;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
+          <div><div style="font-size:13px;font-weight:500;color:#3C3489">Revue de direction &mdash; D&eacute;cembre 2026</div><div style="font-size:11px;color:#7F77DD;margin-top:2px">G&eacute;n&egrave;re la Politique SSE 2027</div></div>
+          <button onclick="go('revue',null)" style="font-size:11px;padding:5px 12px;border-radius:7px;border:none;background:linear-gradient(135deg,#7F77DD,#AFA9EC);color:#fff;cursor:pointer;font-weight:500">Pr&eacute;parer &rarr;</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- POLITIQUE -->
+<!-- POLITIQUE -->
   <div class="page" id="page-politique">
     <div style="display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fff;border:1px solid #EBEBEB;border-radius:10px;margin-bottom:14px;flex-wrap:wrap">
       <div style="font-size:11px;font-weight:600;color:#1A1A2E">Conformité MASE §1.2 :</div>
@@ -1537,23 +1968,169 @@ textarea{resize:vertical;line-height:1.5}
     </div>
     <div class="modal-body">
       <div class="modal-section" id="modal-sec-action">
-        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px"><span style="font-weight:600">R&eacute;f. auto :</span> PA-2026-020 <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 &mdash; AV</span></div>
-        <div class="fg2" style="margin-top:10px">
-          <div><div class="fl">Origine *</div><select style="width:100%"><option>-- S&eacute;lectionner --</option><option>DUER (risque fort)</option><option>Audit terrain</option><option>Situation dangereuse</option><option>REX chantier</option><option>Accident &amp; Soins</option><option>VGP expir&eacute;e</option><option>Habilitation expir&eacute;e</option><option>Causerie SSE</option><option>Autre</option></select></div>
-          <div><div class="fl">Priorit&eacute; *</div><select style="width:100%" id="modal-prior" onchange="updatePrior()"><option>-- S&eacute;lectionner --</option><option value="imm">Imm&eacute;diate &mdash; Urgence</option><option value="ct">Court terme &mdash; Ce mois</option><option value="mt">Moyen terme &mdash; Cette ann&eacute;e</option></select></div>
+
+        <!-- Référence auto -->
+        <div style="padding:8px 12px;background:#F0F4FF;border-radius:8px;font-size:11px;color:#185FA5;display:flex;align-items:center;gap:6px;margin-bottom:10px">
+          <span style="font-weight:600">R&eacute;f. auto :</span> PA-2026-020
+          <span style="margin-left:auto;font-size:10px;color:#aaa">03/05/2026 &bull; AV</span>
         </div>
-        <div style="margin-top:10px"><div class="fl">Description de l&apos;action *</div><textarea rows="3" placeholder="D&eacute;crire l&apos;action &agrave; mener..."></textarea></div>
-        <div class="fg3" style="margin-top:10px">
-          <div><div class="fl">Responsable *</div><select style="width:100%"><option>AV &mdash; Alexandra Valentin</option><option>TM &mdash; Tony Martin</option><option>SP &mdash; Sonia Poulingue</option><option>LM &mdash; Laurent Martin</option></select></div>
-          <div><div class="fl">Date limite *</div><input type="date" style="width:100%" value="2026-06-30"/></div>
-          <div><div class="fl">Avancement</div><select style="width:100%"><option value="0">0% &mdash; Non d&eacute;marr&eacute;</option><option value="25">25% &mdash; D&eacute;marr&eacute;</option><option value="50">50% &mdash; En cours</option></select></div>
+
+        <!-- SECTION 1 : Identification -->
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">1 &mdash; Identification de l&apos;action</div>
+        <div class="fg2" style="margin-bottom:10px">
+          <div>
+            <div class="fl">Type d&apos;action *</div>
+            <select style="width:100%" onchange="updateActionType(this)">
+              <option value="">-- S&eacute;lectionner --</option>
+              <option value="imm" style="color:#E63946">Action imm&eacute;diate &mdash; Dans les 24h</option>
+              <option value="cor">Action corrective &mdash; Corrige une cause</option>
+              <option value="prev">Action pr&eacute;ventive &mdash; Evite la r&eacute;currence</option>
+              <option value="dif">Action diff&eacute;r&eacute;e &mdash; Planifi&eacute;e &agrave; terme</option>
+            </select>
+            <div id="action-type-badge" style="margin-top:5px;display:none;padding:6px 10px;border-radius:7px;font-size:11px;font-weight:500"></div>
+          </div>
+          <div>
+            <div class="fl">Domaine *</div>
+            <select style="width:100%">
+              <option>S&eacute;curit&eacute;</option>
+              <option>Sant&eacute;</option>
+              <option>Environnement</option>
+              <option>Qualit&eacute;</option>
+              <option>S&eacute;curit&eacute; &amp; Sant&eacute;</option>
+              <option>S&eacute;curit&eacute; &amp; Environnement</option>
+              <option>Sant&eacute; &amp; Environnement</option>
+              <option>S&eacute;curit&eacute;, Sant&eacute; &amp; Environnement</option>
+            </select>
+          </div>
+          <div>
+            <div class="fl">Origine *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-action-origine')">
+              <option>-- S&eacute;lectionner --</option>
+              <option>DUER (risque fort)</option>
+              <option>Audit terrain</option>
+              <option>Situation dangereuse</option>
+              <option>REX chantier</option>
+              <option>Accident &amp; Soins</option>
+              <option>VGP expir&eacute;e</option>
+              <option>Habilitation expir&eacute;e</option>
+              <option>Causerie SSE</option>
+              <option>Comit&eacute; SSE</option>
+              <option>Visite m&eacute;dicale</option>
+              <option>Client / Externe</option>
+              <option>Audit MASE</option>
+              <option>Veille r&eacute;glementaire</option>
+              <option value="autre">Autre (pr&eacute;ciser)</option>
+            </select>
+            <div class="autre-field" id="autre-action-origine"><input placeholder="Pr&eacute;ciser l&apos;origine..."/></div>
+          </div>
+          <div>
+            <div class="fl">Priorit&eacute; *</div>
+            <select style="width:100%" id="modal-prior" onchange="updatePrior()">
+              <option>-- S&eacute;lectionner --</option>
+              <option value="imm">Imm&eacute;diate &mdash; Urgence</option>
+              <option value="ct">Court terme &mdash; Ce mois</option>
+              <option value="mt">Moyen terme &mdash; Cette ann&eacute;e</option>
+              <option value="lt">Long terme &mdash; Ann&eacute;e suivante</option>
+            </select>
+          </div>
         </div>
-        <div id="prior-alert" style="display:none;margin-top:10px;padding:10px 14px;border-radius:8px;font-size:11px;font-weight:500"></div>
+
+        <!-- SECTION 2 : Description -->
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">2 &mdash; Description &amp; Analyse</div>
+        <div style="margin-bottom:8px">
+          <div class="fl">Description pr&eacute;cise de l&apos;action *</div>
+          <textarea rows="2" placeholder="D&eacute;crire l&apos;action &agrave; mener de fa&ccedil;on pr&eacute;cise et actionnable..." style="width:100%"></textarea>
+        </div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div>
+            <div class="fl">Pourquoi est-ce arriv&eacute; ? (cause identifi&eacute;e)</div>
+            <textarea rows="2" placeholder="Ex: Sol mouill&eacute; non signal&eacute;, absence de proc&eacute;dure, formation insuffisante..." style="width:100%"></textarea>
+          </div>
+          <div>
+            <div class="fl">Objectif final vis&eacute;</div>
+            <textarea rows="2" placeholder="Ex: Eliminer le risque de chute, mettre en conformit&eacute; le mat&eacute;riel, former 100% du personnel..." style="width:100%"></textarea>
+          </div>
+        </div>
+
+        <!-- SECTION 3 : Ressources -->
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">3 &mdash; Ressources &amp; Moyens de mise en oeuvre</div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div>
+            <div class="fl">Facteurs de ressources *</div>
+            <select style="width:100%">
+              <option>-- S&eacute;lectionner --</option>
+              <option>Humains</option>
+              <option>Techniques</option>
+              <option>Organisationnels</option>
+              <option>Economiques / Financiers</option>
+              <option>Humains &amp; Organisationnels</option>
+              <option>Humains &amp; Techniques</option>
+              <option>Techniques &amp; Organisationnels</option>
+              <option>Techniques &amp; Economiques</option>
+              <option>Humains, Techniques &amp; Organisationnels</option>
+              <option>Tous les facteurs</option>
+            </select>
+          </div>
+          <div>
+            <div class="fl">Co&ucirc;t estim&eacute; (&euro;)</div>
+            <input type="number" placeholder="Ex: 500 &mdash; 0 si sans co&ucirc;t" style="width:100%"/>
+          </div>
+        </div>
+        <div class="fg2" style="margin-bottom:8px">
+          <div>
+            <div class="fl">&#128100; Moyens humains</div>
+            <textarea rows="2" placeholder="Ex: Alexandra Valentin HSE, chef de chantier, prestataire externe..." style="width:100%"></textarea>
+          </div>
+          <div>
+            <div class="fl">&#128295; Moyens techniques</div>
+            <textarea rows="2" placeholder="Ex: Bandes antid&eacute;rapantes, panneau signalisation, mat&eacute;riel de protection..." style="width:100%"></textarea>
+          </div>
+          <div>
+            <div class="fl">&#9881; Moyens organisationnels</div>
+            <textarea rows="2" placeholder="Ex: Mise &agrave; jour proc&eacute;dure, planification formation, r&eacute;vision DUER..." style="width:100%"></textarea>
+          </div>
+          <div>
+            <div class="fl">&#8364; Moyens &eacute;conomiques</div>
+            <textarea rows="2" placeholder="Ex: Budget SSE 2026, plan de formation, devis prestataire..." style="width:100%"></textarea>
+          </div>
+        </div>
+
+        <!-- SECTION 4 : Pilotage -->
+        <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #F0F0F0">4 &mdash; Pilotage &amp; Suivi</div>
+        <div class="fg3">
+          <div>
+            <div class="fl">Responsable *</div>
+            <select style="width:100%">
+              <option>AV &mdash; Alexandra Valentin</option>
+              <option>TM &mdash; Tony Martin</option>
+              <option>BLONDEL S.</option>
+              <option>MARTIN L.</option>
+              <option>RENARD D.</option>
+              <option>DUPONT A.</option>
+              <option>MOREAU J.</option>
+            </select>
+          </div>
+          <div>
+            <div class="fl">Date limite *</div>
+            <input type="date" style="width:100%"/>
+          </div>
+          <div>
+            <div class="fl">Avancement</div>
+            <select style="width:100%">
+              <option value="0">0% &mdash; Non d&eacute;marr&eacute;</option>
+              <option value="25">25% &mdash; D&eacute;marr&eacute;</option>
+              <option value="50">50% &mdash; En cours</option>
+              <option value="75">75% &mdash; Presque termin&eacute;</option>
+              <option value="100">100% &mdash; Cl&ocirc;tur&eacute;</option>
+            </select>
+          </div>
+        </div>
+        <div id="prior-alert" style="display:none;margin-top:8px;padding:8px 12px;border-radius:8px;font-size:11px;font-weight:500"></div>
       </div>
       <div class="modal-section" id="modal-sec-habilitation" style="display:none">
         <div class="fg2">
           <div><div class="fl">Salari&eacute; concern&eacute; *</div><select style="width:100%"><option>BLONDEL St&eacute;phane</option><option>MARTIN Laurent</option><option>RENARD David</option><option>GIRARD Pierre</option><option>DUPONT Alexis</option><option>MOREAU Julien</option></select></div>
-          <div><div class="fl">Type d&apos;habilitation *</div><select style="width:100%"><option>CACES R372</option><option>CACES R489</option><option>SST</option><option>Habilit. &eacute;lec. B1</option><option>ATEX</option><option>ARI</option><option>Travail en hauteur</option><option>Visite m&eacute;dicale</option><option>Autre</option></select></div>
+          <div><div class="fl">Type d&apos;habilitation *</div><select style="width:100%" onchange="handleAutre(this,'autre-hab-type')"><option>CACES R372 &mdash; Grue auxiliaire</option><option>CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</option><option>CACES R490 &mdash; Grues mobiles</option><option>CACES R486 &mdash; Nacelles</option><option>SST &mdash; Sauveteur Secouriste</option><option>Habilitation &eacute;lec. B1</option><option>Habilitation &eacute;lec. B2V</option><option>ATEX &mdash; Zone explosible</option><option>ARI &mdash; App. Resp. Isolant</option><option>Travail en hauteur</option><option>Permis CE &mdash; PL</option><option>Autorisation de conduite interne</option><option>Visite m&eacute;dicale</option><option>Formation levage/&eacute;lingage</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-hab-type"><input placeholder="Pr&eacute;ciser le type d&apos;habilitation..."/></div></div>
           <div><div class="fl">Date obtention *</div><input type="date" style="width:100%"/></div>
           <div><div class="fl">Date expiration *</div><input type="date" style="width:100%"/></div>
           <div><div class="fl">Organisme</div><input placeholder="APAVE, SOCOTEC..." style="width:100%"/></div>
@@ -1601,7 +2178,7 @@ textarea{resize:vertical;line-height:1.5}
       <div class="modal-section" id="modal-sec-bp" style="display:none">
         <div class="fg2">
           <div><div class="fl">Titre *</div><input placeholder="Ex: V&eacute;rification harnais avant mont&eacute;e..." style="width:100%"/></div>
-          <div><div class="fl">Domaine *</div><select style="width:100%"><option>Levage</option><option>EPI</option><option>Organisation</option><option>Environnement</option><option>Communication</option><option>Transport</option></select></div>
+          <div><div class="fl">Domaine *</div><select style="width:100%" onchange="handleAutre(this,'autre-bp-dom')"><option>Levage &amp; Manutention</option><option>EPI</option><option>Organisation chantier</option><option>Environnement</option><option>Communication</option><option>Transport &amp; Conduite</option><option>Travail en hauteur</option><option>Management SSE</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-bp-dom"><input placeholder="Pr&eacute;ciser le domaine..."/></div></div>
           <div><div class="fl">Source *</div><select style="width:100%"><option>Observation terrain</option><option>REX chantier</option><option>Audit terrain</option><option>Initiative salari&eacute;</option></select></div>
           <div><div class="fl">Identifi&eacute; par</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option></select></div>
         </div>
@@ -1650,17 +2227,27 @@ textarea{resize:vertical;line-height:1.5}
 
       <!-- OBJECTIF -->
       <div class="modal-section" id="modal-sec-objectif" style="display:none">
-        <div class="fg2">
+        <div class="fg3">
           <div><div class="fl">Axe MASE *</div><select style="width:100%"><option>Axe 1 &mdash; Direction</option><option>Axe 2 &mdash; Comp&eacute;tences</option><option>Axe 3 &mdash; Organisation</option><option>Axe 4 &mdash; Efficacit&eacute;</option><option>Axe 5 &mdash; Am&eacute;lioration</option></select></div>
           <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>S&eacute;curit&eacute;</option><option>Sant&eacute;</option><option>Environnement</option><option>Syst&egrave;me MASE</option></select></div>
+          <div><div class="fl">Responsable *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
         </div>
-        <div style="margin-top:10px"><div class="fl">Intitul&eacute; de l&apos;objectif *</div><input placeholder="Ex: R&eacute;aliser 12 causeries SSE sur l'ann&eacute;e" style="width:100%"/></div>
+        <div style="margin-top:10px"><div class="fl">Intitul&eacute; de l&apos;objectif *</div><input placeholder="Ex: R&eacute;aliser 12 causeries SSE sur l&apos;ann&eacute;e 2026" style="width:100%"/></div>
         <div style="margin-top:10px" class="fg3">
           <div><div class="fl">Valeur cible *</div><input placeholder="Ex: 12, 0, 100%" style="width:100%"/></div>
-          <div><div class="fl">Unit&eacute;</div><input placeholder="Ex: caus., AT, %" style="width:100%"/></div>
+          <div><div class="fl">Unit&eacute;</div><input placeholder="Ex: caus./an, AT, %" style="width:100%"/></div>
           <div><div class="fl">Valeur N-1</div><input placeholder="Ex: 10" style="width:100%"/></div>
         </div>
-        <div style="margin-top:10px"><div class="fl">Responsable du suivi</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+        <div style="margin-top:12px;padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;font-weight:500">
+          Moyens &agrave; mettre en oeuvre &mdash; obligatoire MASE &sect;1.3
+        </div>
+        <div style="margin-top:10px" class="fg2">
+          <div><div class="fl">&#128295; Moyens techniques</div><textarea rows="2" placeholder="Ex: Grille d&apos;audit SSE-043, logiciel SSE EMJ, kit signalisation..." style="width:100%"></textarea></div>
+          <div><div class="fl">&#128100; Moyens humains</div><textarea rows="2" placeholder="Ex: Alexandra Valentin HSE, encadrement chantier, salari&eacute;s concern&eacute;s..." style="width:100%"></textarea></div>
+          <div><div class="fl">&#9881; Moyens organisationnels</div><textarea rows="2" placeholder="Ex: Planning mensuel, proc&eacute;dure causerie, intégration aux comit&eacute;s SSE..." style="width:100%"></textarea></div>
+          <div><div class="fl">&#8364; Moyens &eacute;conomiques</div><textarea rows="2" placeholder="Ex: Budget 500&euro;, inclus dans le plan de formation, gratuit..." style="width:100%"></textarea></div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Indicateur de suivi</div><input placeholder="Ex: Nombre de causeries r&eacute;alis&eacute;es / planifi&eacute;es par mois" style="width:100%"/></div>
       </div>
 
       <!-- INDICATEURS - saisie mensuelle -->
@@ -1684,9 +2271,9 @@ textarea{resize:vertical;line-height:1.5}
           <div><div class="fl">Type *</div><select style="width:100%"><option>N&eacute;gatif &mdash; Incident / presqu&apos;accident</option><option>Positif &mdash; Bonne pratique</option><option>Neutre &mdash; Observation</option></select></div>
           <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
           <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Raffinerie" style="width:100%"/></div>
-          <div><div class="fl">Rapporteur *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
-          <div><div class="fl">Domaine</div><select style="width:100%"><option>Levage</option><option>Transport</option><option>Hauteur</option><option>EPI</option><option>Environnement</option><option>Organisation</option></select></div>
-          <div><div class="fl">Liaison</div><select style="width:100%"><option>Aucune</option><option>Depuis SD</option><option>Depuis AT</option><option>Depuis audit</option></select></div>
+          <div><div class="fl">Rapporteur *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
+          <div><div class="fl">Domaine</div><select style="width:100%" onchange="handleAutre(this,'autre-rex-dom')"><option>Levage &amp; Manutention</option><option>Transport &amp; Conduite</option><option>Travail en hauteur</option><option>EPI</option><option>Environnement</option><option>Organisation chantier</option><option>Incendie</option><option>Risque chimique</option><option>Management SSE</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-rex-dom"><input placeholder="Pr&eacute;ciser le domaine..."/></div></div>
+          <div><div class="fl">Liaison</div><select style="width:100%"><option>Aucune</option><option>Depuis SD</option><option>Depuis AT</option><option>Depuis audit terrain</option><option>Depuis causerie</option><option>Depuis comit&eacute;</option></select></div>
         </div>
         <div style="margin-top:10px"><div class="fl">Description de l&apos;&eacute;v&eacute;nement *</div><textarea rows="3" placeholder="D&eacute;crire pr&eacute;cis&eacute;ment ce qui s&apos;est pass&eacute;, les circonstances..."></textarea></div>
         <div style="margin-top:8px"><div class="fl">Causes identifi&eacute;es</div><textarea rows="2" placeholder="Cause directe, indirecte, racine..."></textarea></div>
@@ -1697,7 +2284,7 @@ textarea{resize:vertical;line-height:1.5}
       <div class="modal-section" id="modal-sec-formation" style="display:none">
         <div class="fg3">
           <div><div class="fl">Salari&eacute; concern&eacute; *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
-          <div><div class="fl">Type de formation *</div><input placeholder="Ex: Recyclage SST, CACES R490..." style="width:100%"/></div>
+          <div><div class="fl">Type de formation *</div><select style="width:100%" onchange="handleAutre(this,'autre-form-type')"><option>Recyclage SST</option><option>CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</option><option>CACES R490 &mdash; Grues mobiles</option><option>CACES R486 &mdash; Nacelles</option><option>CACES R372 &mdash; Grue auxiliaire</option><option>Habilitation &eacute;lectrique</option><option>Formation ATEX</option><option>Renouvellement ARI</option><option>Formation levage/&eacute;lingage</option><option>Formation incendie</option><option>Visite m&eacute;dicale</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-form-type"><input placeholder="Pr&eacute;ciser le type de formation..."/></div></div>
           <div><div class="fl">Organisme *</div><input placeholder="Ex: APAVE, SOCOTEC..." style="width:100%"/></div>
           <div><div class="fl">Date pr&eacute;vue *</div><input type="date" style="width:100%"/></div>
           <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 2 jours" style="width:100%"/></div>
@@ -1759,7 +2346,7 @@ textarea{resize:vertical;line-height:1.5}
           <div><div class="fl">Auditeur *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option><option>Sonia POULINGUE</option></select></div>
           <div><div class="fl">Responsable chantier</div><input placeholder="Ex: S. BLONDEL" style="width:100%"/></div>
           <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 2h" style="width:100%"/></div>
-          <div><div class="fl">Type de travaux</div><select style="width:100%"><option>Levage camion-grue</option><option>Transport PL</option><option>Manutention</option><option>Chargement</option></select></div>
+          <div><div class="fl">Type de travaux</div><select style="width:100%" onchange="handleAutre(this,'autre-aud-type')"><option>Levage camion-grue</option><option>Transport PL</option><option>Manutention</option><option>Chargement / D&eacute;chargement</option><option>Travail en hauteur &mdash; nacelle</option><option>Montage industriel</option><option>Nettoyage HP</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-aud-type"><input placeholder="Pr&eacute;ciser le type de travaux..."/></div></div>
         </div>
       </div>
     </div>
@@ -1827,6 +2414,78 @@ textarea{resize:vertical;line-height:1.5}
       <!-- REVUE SAVE - handled by JS notification -->
       <div class="modal-section" id="modal-sec-revue_save" style="display:none"></div>
 
+      <!-- EVALUATION SOUS-TRAITANT -->
+      <div class="modal-section" id="modal-sec-st_eval" style="display:none">
+        <div class="fg3">
+          <div><div class="fl">Date de l&apos;&eacute;valuation *</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Chantier / Intervention *</div><input placeholder="Ex: TOTAL Raffinerie Fos" style="width:100%"/></div>
+          <div><div class="fl">&Eacute;valuateur</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+        </div>
+        <div style="margin-top:12px;padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:10px">Note de 1 &agrave; 5 pour chaque crit&egrave;re &mdash; 1 = Non satisfaisant &bull; 5 = Excellent</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
+            <span style="font-size:12px;font-weight:500">Port des EPI</span>
+            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
+            <span style="font-size:12px;font-weight:500">Respect du mode op&eacute;ratoire</span>
+            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
+            <span style="font-size:12px;font-weight:500">Propret&eacute; du chantier</span>
+            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
+            <span style="font-size:12px;font-weight:500">Balisage et signalisation</span>
+            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
+            <span style="font-size:12px;font-weight:500">Respect des consignes SSE site</span>
+            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Observations / Commentaires</div><textarea rows="2" placeholder="Points positifs, &agrave; am&eacute;liorer, remarques..."></textarea></div>
+      </div>
+
+      <!-- DOCUMENT SOUS-TRAITANT -->
+      <div class="modal-section" id="modal-sec-st_doc" style="display:none">
+        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">
+          Ajout d&apos;un document obligatoire &mdash; &sect;3.4 MASE 2024 &bull; Sous-traitant : DUPUIS &Eacute;tanch&eacute;it&eacute;
+        </div>
+        <div class="fg2">
+          <div><div class="fl">Type de document *</div>
+            <select style="width:100%" onchange="handleAutre(this,'autre-stdoc-type')">
+              <option>Attestation URSSAF (trimestrielle)</option>
+              <option>Assurance RC Pro</option>
+              <option>Extrait KBIS (&lt; 3 mois)</option>
+              <option>Plan de pr&eacute;vention</option>
+              <option>Liste nominative du personnel</option>
+              <option>Attestations visites m&eacute;dicales</option>
+              <option>Habilitations salari&eacute;s ST</option>
+              <option>Certificat qualit&eacute; (QUALIBAT, RGE...)</option>
+              <option>Attestation d&apos;assurance d&eacute;cennale</option>
+              <option value="autre">Autre (pr&eacute;ciser)</option>
+            </select>
+            <div class="autre-field" id="autre-stdoc-type"><input placeholder="Pr&eacute;ciser le type de document..."/></div>
+          </div>
+          <div><div class="fl">Date du document</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Date d&apos;expiration</div><input type="date" style="width:100%"/></div>
+          <div><div class="fl">Statut</div>
+            <select style="width:100%">
+              <option>Valide ✓</option>
+              <option>En attente de r&eacute;ception</option>
+              <option>Expir&eacute; &mdash; &agrave; renouveler</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:10px"><div class="fl">Commentaire / Remarque</div><input placeholder="Ex: Document re&ccedil;u par email le XX/XX/XXXX..." style="width:100%"/></div>
+        <div style="margin-top:10px;padding:12px;background:#F8F9FA;border-radius:8px;border:2px dashed #E8E8E8;text-align:center;cursor:pointer" onclick="alert('Upload de fichier disponible dans la version avec sauvegarde serveur. Pour l'instant, noter le document re&ccedil;u dans le commentaire.')">
+          <div style="font-size:20px;margin-bottom:4px">&#128196;</div>
+          <div style="font-size:12px;color:#aaa;font-weight:500">Joindre le document (PDF)</div>
+          <div style="font-size:10px;color:#ccc;margin-top:2px">Upload disponible dans la version avec base de donn&eacute;es</div>
+        </div>
+      </div>
+
       <!-- RESSOURCE -->
       <div class="modal-section" id="modal-sec-ressource" style="display:none">
         <div class="fg2">
@@ -1854,6 +2513,19 @@ textarea{resize:vertical;line-height:1.5}
 
 <script>
 var currentPage = "dashboard";
+
+// Gestion champ "Autre" sur tous les selects
+function handleAutre(sel, inputId) {
+  var inp = document.getElementById(inputId);
+  if(!inp) return;
+  if(sel.value === "autre" || sel.value === "Autre") {
+    inp.style.display = "block";
+    inp.querySelector("input").focus();
+  } else {
+    inp.style.display = "none";
+  }
+}
+
 
 var pagesMeta = {
   dashboard:{t:"Tableau de bord",s:"Vue générale 2026",btn:"+ Nouvelle action SSE",modal:"action"},
@@ -1930,7 +2602,8 @@ function openModal(type) {
     st:"Nouveau sous-traitant",duer:"Nouvelle unite de travail (DUER)",
     mo:"Nouveau mode operatoire",diffusion:"Diffuser la Politique SSE",
     epi:"Ajouter EPI ou consommable",carbone:"Saisir une consommation",
-    depense:"Ajouter une depense SSE",ressource:"Ajouter un document"
+    depense:"Ajouter une depense SSE",ressource:"Ajouter un document",
+    st_doc:"Ajouter un document sous-traitant",st_eval:"Nouvelle evaluation SSE"
   };
   var subs = {
     action:"Plan d'actions - Axe 1",habilitation:"Habilitations - Axe 2",
@@ -1942,7 +2615,8 @@ function openModal(type) {
     st:"Axe 3 - Maitrise sous-traitance",duer:"Axe 3 - Document Unique",
     mo:"Axe 3 - Organisation du travail",diffusion:"Axe 1 - Communication SSE",
     epi:"Autres suivis",carbone:"Autres suivis - Empreinte carbone",
-    depense:"Autres suivis - Budget SSE",ressource:"Autres suivis - Documentation"
+    depense:"Autres suivis - Budget SSE",ressource:"Autres suivis - Documentation",
+    st_doc:"Sous-traitants - Documents obligatoires MASE §3.4",st_eval:"Sous-traitants - Evaluation SSE"
   };
   document.getElementById("modal-title").textContent = titles[type] || "Formulaire";
   document.getElementById("modal-sub").textContent = subs[type] || "";
@@ -1967,6 +2641,27 @@ function showNotif(msg, color, bg, border) {
   document.getElementById("notif-title").textContent = "Information";
   document.getElementById("notif-sub").textContent = msg;
   setTimeout(function(){n.style.display="none";}, 4000);
+}
+
+function updateActionType(sel) {
+  var badge = document.getElementById("action-type-badge");
+  if(!badge) return;
+  var configs = {
+    imm: {bg:"#FCEBEB",color:"#A32D2D",border:"#F7C1C1",text:"Action imm&eacute;diate &mdash; &agrave; r&eacute;aliser dans les 24h. Stopper le danger imm&eacute;diatement."},
+    cor: {bg:"#E6F1FB",color:"#185FA5",border:"#B5D4F4",text:"Action corrective &mdash; Corrige la cause de la d&eacute;faillance. Empêche la r&eacute;currence."},
+    prev: {bg:"#EAF3DE",color:"#27500A",border:"#C0DD97",text:"Action pr&eacute;ventive &mdash; Anticipe un risque potentiel avant qu&apos;il se r&eacute;alise."},
+    dif: {bg:"#EEEDFE",color:"#3C3489",border:"#C8C5F0",text:"Action diff&eacute;r&eacute;e &mdash; Planifi&eacute;e sur le long terme. Ne n&eacute;cessite pas d&apos;urgence."}
+  };
+  var cfg = configs[sel.value];
+  if(cfg) {
+    badge.style.display = "block";
+    badge.style.background = cfg.bg;
+    badge.style.color = cfg.color;
+    badge.style.border = "1px solid " + cfg.border;
+    badge.innerHTML = cfg.text;
+  } else {
+    badge.style.display = "none";
+  }
 }
 
 function updatePrior() {
