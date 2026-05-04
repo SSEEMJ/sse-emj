@@ -432,8 +432,9 @@ textarea{resize:vertical;line-height:1.5}
             <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Prochaine VM</span><span style="font-size:12px;font-weight:500">15/07/2027</span></div>
             <div style="display:flex;gap:6px"><span style="font-size:10px;color:#aaa;width:120px;flex-shrink:0;margin-top:2px">Aptitude</span><span style="font-size:12px;font-weight:500;color:#2D6A4F">Apte sans restriction</span></div>
           </div>
-          <div style="padding:12px 20px;background:#F8F9FA;display:flex;gap:8px">
+          <div style="padding:12px 20px;background:#F8F9FA;display:flex;gap:8px;flex-wrap:wrap">
             <button class="btn-primary" onclick="ouvrirPasseport()">&#128203; Ouvrir le Passeport SSE complet</button>
+            <button class="btn" style="color:#2D6A4F;border-color:#2D6A4F" onclick="ouvrirPasseport();setTimeout(function(){swPTab(document.querySelectorAll('.ptab2')[5],'pid-sig');genQR();},300)">&#9638; QR Code habilitations</button>
             <button class="btn">&#9999; Modifier</button>
             <button class="btn" style="color:#7F77DD;border-color:#7F77DD" onclick="printPage()">&#128438; Imprimer</button>
           </div>
@@ -474,7 +475,7 @@ textarea{resize:vertical;line-height:1.5}
           <div class="ptab2" onclick="swPTab(this,'pid-caus')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Causeries SSE</div>
           <div class="ptab2" onclick="swPTab(this,'pid-at')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Accidents &amp; Soins</div>
           <div class="ptab2" onclick="swPTab(this,'pid-chantiers')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Chantiers</div>
-          <div class="ptab2" onclick="swPTab(this,'pid-sig')" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">Signature</div>
+          <div class="ptab2" onclick="swPTab(this,'pid-sig');showQRZone()" style="padding:11px 18px;font-size:12px;color:#aaa;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap">&#9638; QR Code &amp; Signature</div>
         </div>
 
         <!-- IDENTITE -->
@@ -624,6 +625,49 @@ textarea{resize:vertical;line-height:1.5}
               <div style="text-align:center;color:#aaa;font-size:10px;padding:8px">
                 <div style="font-size:24px;margin-bottom:4px">&#9638;</div>
                 Cliquer pour g&eacute;n&eacute;rer
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QR CODE SECTION -->
+        <div id="pid-sig" style="display:none;padding:16px 20px;border-bottom:0.5px solid #F0F0F0">
+          <div style="font-size:10px;font-weight:600;color:#aaa;text-transform:uppercase;margin-bottom:12px">QR Code &mdash; Acc&egrave;s rapide aux habilitations</div>
+          <div style="display:flex;align-items:flex-start;gap:20px">
+            <div style="flex:1">
+              <div style="padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:12px;color:#185FA5;margin-bottom:12px">
+                Le client ou le responsable de chantier scanne ce QR code et acc&egrave;de instantan&eacute;ment &agrave; la liste des habilitations valides du salari&eacute;, sans avoir besoin du logiciel.
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#EAF3DE;border-radius:8px">
+                  <div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div>
+                  <span>CACES R489 &mdash; Valide jusqu&apos;au 22/11/2029</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#EAF3DE;border-radius:8px">
+                  <div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div>
+                  <span>CACES R490 &mdash; Valide jusqu&apos;au 14/02/2029</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#EAF3DE;border-radius:8px">
+                  <div style="width:8px;height:8px;border-radius:50%;background:#2D6A4F;flex-shrink:0"></div>
+                  <span>Permis CE &mdash; Valide jusqu&apos;au 14/06/2030</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#FFF5F5;border-radius:8px;border:1px solid #F7C1C1">
+                  <div style="width:8px;height:8px;border-radius:50%;background:#E63946;flex-shrink:0"></div>
+                  <span style="color:#E63946;font-weight:500">ARI &mdash; EXPIR&Eacute;E &mdash; Non autoris&eacute; sans renouvellement</span>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;flex-shrink:0">
+              <div id="qr-container" style="width:140px;height:140px;border-radius:12px;background:#fff;border:2px solid #EBEBEB;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0 auto 10px">
+                <div style="text-align:center;color:#aaa;font-size:10px;padding:8px">
+                  <div style="font-size:28px;margin-bottom:4px">&#9638;</div>
+                  Cliquer pour g&eacute;n&eacute;rer
+                </div>
+              </div>
+              <div style="font-size:10px;color:#aaa;margin-bottom:8px">BLONDEL St&eacute;phane &bull; PAS-2026-SB-001</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <button class="btn-primary" onclick="genQR()" style="font-size:11px;padding:7px 14px">&#9638; G&eacute;n&eacute;rer le QR Code</button>
+                <button class="btn" onclick="printQR()" style="font-size:11px;color:#7F77DD;border-color:#7F77DD">&#128438; Imprimer le QR Code</button>
               </div>
             </div>
           </div>
@@ -1716,66 +1760,252 @@ textarea{resize:vertical;line-height:1.5}
 
   <!-- OBJECTIFS -->
   <div class="page" id="page-objectifs">
-    <div class="alert-b ab">§1.3 MASE 2024 — Chaque objectif doit être Spécifique, Mesurable, Atteignable, Relié à la politique et Temporel (SMART)</div>
+    <div class="ab ab-blue" style="margin-bottom:14px">&sect;1.3 MASE 2024 &mdash; Objectifs SMART &mdash; Cliquer sur une ligne pour voir les 4 moyens MASE d&eacute;taill&eacute;s</div>
+
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les domaines</option><option>S&eacute;curit&eacute;</option><option>Sant&eacute;</option><option>Environnement</option><option>Syst&egrave;me MASE</option></select>
+      <select style="font-size:11px;padding:5px 10px;border-radius:7px;border:0.5px solid #E8E8E8"><option>Tous les statuts</option><option>Atteint</option><option>En cours</option><option>Non atteint</option></select>
+      <div style="margin-left:auto;font-size:11px;color:#aaa;align-self:center">&#128071; Cliquer sur une ligne pour d&eacute;plier les moyens MASE</div>
+    </div>
+
     <div class="tw">
       <table>
-        <tr><th>Domaine</th><th>Objectif</th><th>Départ N-1</th><th>Cible</th><th>Échéance</th><th>Résultat actuel</th><th>SMART</th><th>Statut</th></tr>
-        <tr><td colspan="8" style="background:#FCEBEB;color:#A32D2D;font-weight:600;padding:8px 14px">Sécurité — §1.3.1</td></tr>
-        <tr><td style="font-size:10px;color:#E63946">Sécurité</td><td style="font-weight:500">100% du personnel aux causeries mensuelles</td><td style="font-size:10px;color:#aaa">73% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">87%</td><td><span class="pill pb" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill po">En cours</span></td></tr>
-        <tr><td style="font-size:10px;color:#E63946">Sécurité</td><td style="font-weight:500">Zéro accident avec arrêt (TF1 = 0)</td><td style="font-size:10px;color:#aaa">TF1 = 5,1</td><td style="font-weight:600;color:#2D6A4F">TF1 = 0</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">TF1 = 4,2</td><td><span class="pill pb" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill po">En cours ↘</span></td></tr>
-        <tr><td style="font-size:10px;color:#E63946">Sécurité</td><td style="font-weight:500">Formations et habilitations à jour — 100%</td><td style="font-size:10px;color:#aaa">65% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">72%</td><td><span class="pill pb" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill po">En cours</span></td></tr>
-        <tr><td style="font-size:10px;color:#E63946">Sécurité</td><td style="font-weight:500">Vérification semestrielle matériel — 0 écart</td><td style="font-size:10px;color:#aaa">2 écarts (2025)</td><td style="font-weight:600;color:#2D6A4F">0 écart</td><td style="font-size:11px">30/06/2026</td><td style="font-weight:600;color:#2D6A4F">100% ✓</td><td><span class="pill pb" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill pg">Atteint ✓</span></td></tr>
-        <tr><td colspan="8" style="background:#FAEEDA;color:#633806;font-weight:600;padding:8px 14px">Santé — §1.3.2</td></tr>
-        <tr><td style="font-size:10px;color:#F4A261">Santé</td><td style="font-weight:500">Sensibilisation conduites addictives — 1 causerie/an</td><td style="font-size:10px;color:#aaa">0 (2025)</td><td style="font-weight:600;color:#2D6A4F">1 causerie</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:500;color:#aaa">0/1</td><td><span class="pill pg" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill pgr">À planifier</span></td></tr>
-        <tr><td style="font-size:10px;color:#F4A261">Santé</td><td style="font-weight:500">Suivi visites médicales — 100% dans les délais</td><td style="font-size:10px;color:#aaa">80% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#2D6A4F">85%</td><td><span class="pill pg" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill pg">En bonne voie</span></td></tr>
-        <tr><td colspan="8" style="background:#EAF3DE;color:#27500A;font-weight:600;padding:8px 14px">Environnement — §1.3.3</td></tr>
-        <tr><td style="font-size:10px;color:#2D6A4F">Environnement</td><td style="font-weight:500">Zéro pollution — incidents environnementaux</td><td style="font-size:10px;color:#aaa">1 incident (2025)</td><td style="font-weight:600;color:#2D6A4F">0 incident</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#2D6A4F">0 ✓</td><td><span class="pill pp" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill pg">Atteint ✓</span></td></tr>
-        <tr><td style="font-size:10px;color:#2D6A4F">Environnement</td><td style="font-weight:500">Réduction carburant — stabilisation ou -5%/an</td><td style="font-size:10px;color:#aaa">Base 2025</td><td style="font-weight:600;color:#2D6A4F">Stab. ou -5%</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">-2%</td><td><span class="pill pp" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill po">En cours</span></td></tr>
-        <tr><td style="font-size:10px;color:#2D6A4F">Environnement</td><td style="font-weight:500">Gestion déchets — 100% tracés TrackDechets</td><td style="font-size:10px;color:#aaa">70% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td><td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#2D6A4F">90%</td><td><span class="pill pp" style="font-size:9px">S·M·A·R·T</span></td><td><span class="pill pg">En bonne voie</span></td></tr>
+        <tr>
+          <th>Domaine</th><th>Objectif</th><th>D&eacute;part N-1</th><th>Cible</th><th>&Eacute;ch&eacute;ance</th>
+          <th>R&eacute;sultat</th><th>Moyens techniques</th><th>Moyens humains</th>
+          <th>Moyens organisationnels</th><th>Moyens &eacute;conomiques</th>
+          <th>Responsable</th><th>SMART</th><th>Statut</th>
+        </tr>
+
+        <tr><td colspan="13" style="background:#FCEBEB;color:#A32D2D;font-weight:600;padding:8px 14px;font-size:11px">S&eacute;curit&eacute; &mdash; &sect;1.3.1</td></tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pr" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">100% du personnel aux causeries mensuelles</td>
+          <td style="font-size:10px;color:#aaa">73% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">87%</td>
+          <td style="font-size:10px;color:#555">Planning causeries &mdash; fiche &eacute;margement</td>
+          <td style="font-size:10px;color:#555">AV (animateur) &mdash; tous salari&eacute;s</td>
+          <td style="font-size:10px;color:#555">Planning mensuel &mdash; int&eacute;gr&eacute; comit&eacute; SSE</td>
+          <td style="font-size:10px;color:#555">0 &euro; &mdash; ressources internes</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pr" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">0 Accident du travail avec arr&ecirc;t (TF1 = 0)</td>
+          <td style="font-size:10px;color:#aaa">1 AT (2025)</td><td style="font-weight:600;color:#2D6A4F">0 AT</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#E63946">1 AT</td>
+          <td style="font-size:10px;color:#555">Grille SSE-043 &mdash; EPI adapt&eacute;s</td>
+          <td style="font-size:10px;color:#555">Tous salari&eacute;s &mdash; encadrement TM</td>
+          <td style="font-size:10px;color:#555">Audits terrain mensuels &mdash; causeries pr&eacute;vention</td>
+          <td style="font-size:10px;color:#555">Budget EPI &mdash; plan de formation</td>
+          <td style="font-weight:600;color:#378ADD">TM</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill pr">Non atteint</span></td>
+        </tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pr" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">100% habilitations &agrave; jour</td>
+          <td style="font-size:10px;color:#aaa">85% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#E63946">80%</td>
+          <td style="font-size:10px;color:#555">Logiciel SSE EMJ &mdash; alertes auto 90j</td>
+          <td style="font-size:10px;color:#555">AV (suivi) &mdash; salari&eacute;s concern&eacute;s</td>
+          <td style="font-size:10px;color:#555">Tableau suivi habilitations &mdash; alertes pr&eacute;ventives</td>
+          <td style="font-size:10px;color:#555">Plan de formation &mdash; budget organismes</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill pr">Non atteint</span></td>
+        </tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pr" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">12 visites terrain (audits SSE) r&eacute;alis&eacute;es</td>
+          <td style="font-size:10px;color:#aaa">0 (2025)</td><td style="font-weight:600;color:#2D6A4F">12</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">3</td>
+          <td style="font-size:10px;color:#555">Grille SSE-043 &mdash; logiciel SSE EMJ</td>
+          <td style="font-size:10px;color:#555">AV ou TM &mdash; 1 audit/mois</td>
+          <td style="font-size:10px;color:#555">Planning audit mensuel &mdash; chantiers cibl&eacute;s</td>
+          <td style="font-size:10px;color:#555">0 &euro; &mdash; ressources internes</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pr" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">12 remount&eacute;es SD/an &mdash; 2 par salari&eacute;</td>
+          <td style="font-size:10px;color:#aaa">0 (2025)</td><td style="font-weight:600;color:#2D6A4F">12</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">4</td>
+          <td style="font-size:10px;color:#555">Formulaire SD &mdash; logiciel SSE EMJ</td>
+          <td style="font-size:10px;color:#555">Tous salari&eacute;s &mdash; culture de remontee</td>
+          <td style="font-size:10px;color:#555">Causerie SD &mdash; affichage proc&eacute;dure</td>
+          <td style="font-size:10px;color:#555">0 &euro; &mdash; ressources internes</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
+
+        <tr><td colspan="13" style="background:#EAF3DE;color:#27500A;font-weight:600;padding:8px 14px;font-size:11px">Sant&eacute; &mdash; &sect;1.3.2</td></tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pg" style="font-size:9px">Sant&eacute;</span></td>
+          <td style="font-weight:500;min-width:140px">100% visites m&eacute;dicales &agrave; jour</td>
+          <td style="font-size:10px;color:#aaa">83% (2025)</td><td style="font-weight:600;color:#2D6A4F">100%</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#F4A261">83%</td>
+          <td style="font-size:10px;color:#555">Logiciel SSE EMJ &mdash; alertes VM</td>
+          <td style="font-size:10px;color:#555">AV (suivi) &mdash; CIISME Fos</td>
+          <td style="font-size:10px;color:#555">Planning VM &mdash; convocations anticip&eacute;es 3 mois</td>
+          <td style="font-size:10px;color:#555">Pris en charge employeur</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
+
+        <tr><td colspan="13" style="background:#E6F1FB;color:#185FA5;font-weight:600;padding:8px 14px;font-size:11px">Environnement &mdash; &sect;1.3.3</td></tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pb" style="font-size:9px">Environnement</span></td>
+          <td style="font-weight:500;min-width:140px">0 d&eacute;versement / pollution 2026</td>
+          <td style="font-size:10px;color:#aaa">1 (2025)</td><td style="font-weight:600;color:#2D6A4F">0</td>
+          <td style="font-size:11px">31/12/2026</td><td style="font-weight:600;color:#2D6A4F">0</td>
+          <td style="font-size:10px;color:#555">Kit antipollution &mdash; bac r&eacute;tention</td>
+          <td style="font-size:10px;color:#555">Tous conducteurs &mdash; RENARD D. (env.)</td>
+          <td style="font-size:10px;color:#555">Proc&eacute;dure remplissage &mdash; kit embarqu&eacute;</td>
+          <td style="font-size:10px;color:#555">320 &euro; (kits) &mdash; budget SSE 2026</td>
+          <td style="font-weight:600;color:#378ADD">TM</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill pg">Atteint ✓</span></td>
+        </tr>
+
+        <tr><td colspan="13" style="background:#EEEDFE;color:#3C3489;font-weight:600;padding:8px 14px;font-size:11px">Syst&egrave;me MASE &mdash; &sect;1.3.4</td></tr>
+
+        <tr onclick="expandObj(this)" style="cursor:pointer">
+          <td><span class="pill pp" style="font-size:9px">MASE</span></td>
+          <td style="font-weight:500;min-width:140px">Obtenir la certification MASE T1 2027</td>
+          <td style="font-size:10px;color:#aaa">Non certifi&eacute;</td><td style="font-weight:600;color:#2D6A4F">Certifi&eacute;</td>
+          <td style="font-size:11px">T1 2027</td><td style="font-weight:600;color:#7F77DD">90%</td>
+          <td style="font-size:10px;color:#555">Logiciel SSE EMJ &mdash; documentation compl&egrave;te</td>
+          <td style="font-size:10px;color:#555">AV (pilote) &mdash; TM (direction) &mdash; tous salari&eacute;s</td>
+          <td style="font-size:10px;color:#555">Audit interne Nov. 2026 &mdash; dossier UIC</td>
+          <td style="font-size:10px;color:#555">Frais audit MASE &mdash; formation si n&eacute;cessaire</td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td><span class="pill pb" style="font-size:9px">S&middot;M&middot;A&middot;R&middot;T</span></td>
+          <td><span class="pill pp">En bonne voie</span></td>
+        </tr>
+
       </table>
     </div>
   </div>
 
   <!-- INDICATEURS -->
   <div class="page" id="page-indicateurs">
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 14px;background:#fff;border:1px solid #EBEBEB;border-radius:10px;margin-bottom:14px;flex-wrap:wrap">
-      <span style="font-size:11px;font-weight:600;color:#1A1A2E">Liaisons :</span>
-      <span style="font-size:11px;color:#185FA5"><span class="auto">AUTO</span> Remontée automatique</span>
-      <span style="font-size:11px;color:#633806"><span class="man">MANUEL</span> Saisie manuelle</span>
-      <span style="margin-left:auto;font-size:10px;color:#aaa">Formules MASE sans #DIV/0! · Historique 3 ans</span>
+
+    <!-- Liaisons automatiques -->
+    <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:#fff;border:1px solid #EBEBEB;border-radius:10px;margin-bottom:12px;flex-wrap:wrap;font-size:11px">
+      <span style="font-weight:600;color:#1A1A2E">Liaisons automatiques :</span>
+      <span style="padding:3px 9px;background:#E6F1FB;border-radius:6px;color:#185FA5">&#128100; Personnel &rarr; Effectif + type contrat</span>
+      <span style="padding:3px 9px;background:#FCEBEB;border-radius:6px;color:#A32D2D">&#128680; Accidents &rarr; AAA / ASA / Soins b&eacute;nins</span>
+      <span style="padding:3px 9px;background:#FAEEDA;border-radius:6px;color:#633806">&#128483; Causeries &rarr; S&eacute;c / Sant&eacute; / Env</span>
+      <span style="padding:3px 9px;background:#FCEBEB;border-radius:6px;color:#A32D2D;font-weight:600">&#9888; Jours arr&ecirc;t &amp; Heures : saisie MANUELLE</span>
     </div>
-    <div class="tw">
-      <table>
-        <thead>
-          <tr>
-            <th class="ind-th" style="text-align:left;min-width:200px">Indicateur</th>
-            <th class="ind-th">Source</th><th class="ind-th">2023</th><th class="ind-th">2024</th><th class="ind-th">2025</th>
-            <th class="ind-th">Jan</th><th class="ind-th">Fév</th><th class="ind-th">Mar</th><th class="ind-th">Avr</th><th class="ind-th">Mai</th><th class="ind-th">Jun</th>
-            <th class="ind-th">Jul</th><th class="ind-th">Aoû</th><th class="ind-th">Sep</th><th class="ind-th">Oct</th><th class="ind-th">Nov</th><th class="ind-th">Déc</th>
-            <th class="ind-th">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td colspan="18" class="ind-sec">SYSTÈME SSE</td></tr>
-          <tr><td class="ind-td ind-lbl">Comités SSE <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Comité pilotage</td><td class="ind-td" style="color:#aaa;font-size:10px">3</td><td class="ind-td" style="color:#aaa;font-size:10px">3</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">1</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">1</td></tr>
-          <tr><td class="ind-td ind-lbl">Visites SSE terrain <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Audits terrain</td><td class="ind-td" style="color:#aaa;font-size:10px">10</td><td class="ind-td" style="color:#aaa;font-size:10px">12</td><td class="ind-td" style="color:#aaa;font-size:10px">1</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">1</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">1</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">2</td></tr>
-          <tr><td class="ind-td ind-lbl">Causeries SSE <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Causeries</td><td class="ind-td" style="color:#aaa;font-size:10px">19</td><td class="ind-td" style="color:#aaa;font-size:10px">24</td><td class="ind-td" style="color:#aaa;font-size:10px">2</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">2</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">4</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">6</td></tr>
-          <tr><td class="ind-td ind-lbl">Situations dangereuses <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Sit. dangereuses</td><td class="ind-td" style="color:#aaa;font-size:10px">6</td><td class="ind-td" style="color:#aaa;font-size:10px">12</td><td class="ind-td" style="color:#aaa;font-size:10px">1</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">1</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">1</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">2</td></tr>
-          <tr><td class="ind-td ind-lbl">REX chantier <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">REX</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">4</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">4</td></tr>
-          <tr><td colspan="18" class="ind-sec">EFFECTIFS — Personnel organique</td></tr>
-          <tr><td class="ind-td ind-lbl">Effectif organique <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Personnel</td><td class="ind-td" style="color:#aaa;font-size:10px">5</td><td class="ind-td" style="color:#aaa;font-size:10px">5</td><td class="ind-td" style="color:#aaa;font-size:10px">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td">6</td><td class="ind-td ind-tot" style="color:#2D6A4F">6</td></tr>
-          <tr><td class="ind-td ind-lbl">Heures travaillées <span class="man">MANUEL</span></td><td class="ind-td" style="font-size:10px;color:#633806">Saisie</td><td class="ind-td" style="color:#aaa;font-size:10px">16 277</td><td class="ind-td" style="color:#aaa;font-size:10px">16 026</td><td class="ind-td" style="color:#aaa;font-size:10px">8 725</td><td class="ind-td">758</td><td class="ind-td">942</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">1 700</td></tr>
-          <tr><td colspan="18" class="ind-sec">ACCIDENTOLOGIE — Formules MASE calculées automatiquement</td></tr>
-          <tr><td class="ind-td ind-lbl">AT avec arrêt <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">Accidents</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot" style="color:#2D6A4F">0</td></tr>
-          <tr style="background:#FFF8F0"><td class="ind-td ind-lbl" style="background:#FFF8F0">TF1 = AT×1 000 000/h <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#27500A;font-weight:500">Calculé</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#F4A261;font-weight:500">5,1</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td ind-tot" style="color:#2D6A4F">0</td></tr>
-          <tr style="background:#FFF8F0"><td class="ind-td ind-lbl" style="background:#FFF8F0">TF2 = (AT+sa)×1M/h <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#27500A;font-weight:500">Calculé</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#F4A261;font-weight:500">8,4</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td ind-tot" style="color:#2D6A4F">0</td></tr>
-          <tr style="background:#FFF8F0"><td class="ind-td ind-lbl" style="background:#FFF8F0">TG = jours×1000/h <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#27500A;font-weight:500">Calculé</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#aaa;font-size:10px">0</td><td class="ind-td" style="color:#F4A261;font-weight:500">1,4</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#2D6A4F;font-weight:500">0</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td ind-tot" style="color:#2D6A4F">0</td></tr>
-          <tr><td colspan="18" class="ind-sec">ENVIRONNEMENT — Empreinte carbone calculée automatiquement</td></tr>
-          <tr><td class="ind-td ind-lbl">Gasoil (litres) <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">EPI &amp; Conso.</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td">280</td><td class="ind-td">77</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">357</td></tr>
-          <tr><td class="ind-td ind-lbl">Essence (litres) <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#185FA5">EPI &amp; Conso.</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td">375</td><td class="ind-td">106</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot">481</td></tr>
-          <tr style="background:#FFF8F0"><td class="ind-td ind-lbl" style="background:#FFF8F0">Empreinte CO2 (kg) <span class="auto">AUTO</span></td><td class="ind-td" style="font-size:10px;color:#27500A;font-weight:500">Calculé</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#aaa">—</td><td class="ind-td" style="color:#F4A261;font-weight:500">1745</td><td class="ind-td" style="color:#F4A261;font-weight:500">339</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td">0</td><td class="ind-td ind-tot" style="color:#F4A261">2 084 kg</td></tr>
-        </tbody>
+
+    <!-- Bandeau référence + 12 mois glissants -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="padding:6px 14px;background:#1A1A2E;border-radius:8px;font-size:11px;font-weight:700;color:#fff;letter-spacing:0.5px">IND-MASE-2026-001-R0</div>
+        <div style="font-size:11px;color:#aaa">Indicateurs SSE &mdash; 12 mois glissants &bull; Juin 2025 &rarr; Mai 2026</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" onclick="window.print()" style="font-size:11px">&#128438; Exporter</button>
+        <button class="btn-primary" onclick="openModal('indicateurs')" style="font-size:11px">+ Saisir donn&eacute;es du mois</button>
+      </div>
+    </div>
+
+    <!-- KPI synthèse 12 mois -->
+    <div class="g5" style="margin-bottom:14px">
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#E63946,#FF6B6B)"></div><div class="kl">TF1 Global</div><div class="kv" style="color:#E63946">103.6</div><div class="ks">12 mois glissants</div><span class="kt" style="background:#EAF3DE;color:#27500A">Cible &le;5,0</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#F4A261,#EF9F27)"></div><div class="kl">TF2 Global</div><div class="kv" style="color:#F4A261">310.7</div><div class="ks">AAA+ASA</div><span class="kt" style="background:#EAF3DE;color:#27500A">Cible &le;8,0</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#7F77DD,#AFA9EC)"></div><div class="kl">TG Global</div><div class="kv" style="color:#7F77DD">1.2</div><div class="ks">Taux de gravit&eacute;</div><span class="kt" style="background:#EEEDFE;color:#3C3489">12 mois</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#2D6A4F,#74C99A)"></div><div class="kl">Heures travaill&eacute;es</div><div class="kv" style="color:#2D6A4F">9655</div><div class="ks">Total 12 mois</div><span class="kt" style="background:#EAF3DE;color:#27500A">Global</span></div>
+      <div class="kpi"><div class="ka" style="background:linear-gradient(180deg,#378ADD,#85B7EB)"></div><div class="kl">Causeries</div><div class="kv" style="color:#378ADD">14</div><div class="ks">S&eacute;c+Sant&eacute;+Env</div><span class="kt" style="background:#E6F1FB;color:#185FA5">12+1+1</span></div>
+    </div>
+
+    <!-- Grand tableau IND-MASE -->
+    <div style="overflow-x:auto;border-radius:12px;border:1px solid #EBEBEB;background:#fff;margin-bottom:14px">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;min-width:1000px">
+        <!-- Header mois -->
+        <tr style="background:#F8F9FA">
+          <td colspan="2" style="padding:8px 12px;font-weight:700;font-size:11px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap">IND-MASE-2026-001-R0</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">juin-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">juil-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">août-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">sept-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">oct-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">nov-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">déc-25</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">janv-26</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">févr-26</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">mars-26</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">avr-26</td>
+          <td style="padding:6px 4px;text-align:center;font-weight:700;font-size:10px;color:#1A1A2E;border-bottom:2px solid #EBEBEB;white-space:nowrap;background:#1A1A2E;color:#fff">mai-26</td>
+          <td style="padding:6px 8px;text-align:center;font-weight:700;font-size:10px;background:#1A1A2E;color:#fff;border-bottom:2px solid #EBEBEB;white-space:nowrap">12 mois<br>glissants</td>
+        </tr>
+        <tr><td colspan="2" style="background:#E63946;color:#fff;font-weight:700;padding:8px 12px;font-size:12px">Effectif organique (CDI, CDD, CDC...)</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juin-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juil-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">août-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">sept-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">oct-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">nov-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">déc-25</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">janv-26</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">févr-26</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mars-26</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">avr-26</td><td style="background:#E63946;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mai-26</td><td style="background:#E63946;color:#fff;font-weight:700;text-align:center;font-size:10px">TOTAL<br>12 mois</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Effectif</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">65</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;heures travaill&eacute;es</td><td style="text-align:center;font-size:11px;color:#333">700</td><td style="text-align:center;font-size:11px;color:#333">680</td><td style="text-align:center;font-size:11px;color:#333">400</td><td style="text-align:center;font-size:11px;color:#333">750</td><td style="text-align:center;font-size:11px;color:#333">760</td><td style="text-align:center;font-size:11px;color:#333">720</td><td style="text-align:center;font-size:11px;color:#333">300</td><td style="text-align:center;font-size:11px;color:#333">850</td><td style="text-align:center;font-size:11px;color:#333">800</td><td style="text-align:center;font-size:11px;color:#333">900</td><td style="text-align:center;font-size:11px;color:#333">880</td><td style="text-align:center;font-size:11px;color:#333">860</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">8600</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents avec arr&ecirc;t &mdash; AAA (hors acc trajet)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#E63946">1</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;accidents de trajet</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents sans arr&ecirc;t &mdash; ASA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#F4A261">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#F4A261">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#F4A261">2</td></tr>
+        <tr style="background:#FFF5F5"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#E63946;font-style:italic">Taux de fr&eacute;quence TF1 = AAA &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#E63946">1176.5</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FCEBEB;color:#E63946">116.3</td></tr>
+        <tr style="background:#FFF8F0"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#F4A261;font-style:italic">Taux de fr&eacute;quence TF2 = (AAA + ASA) &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">1176.5</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">1250.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">1136.4</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF0E0;color:#F4A261">348.8</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb journ&eacute;es perdues suite AAA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">12</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#E63946">12</td></tr>
+        <tr style="background:#EEEDFE"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#7F77DD;font-style:italic">Taux de gravit&eacute; TG = Nb de JP &times; 1000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#7F77DD">14.1</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#EEEDFE;color:#7F77DD">1.4</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb de passages &agrave; l&apos;infirmerie (soins b&eacute;nins)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#BA7517">3</td></tr>
+        <tr><td colspan="2" style="background:#378ADD;color:#fff;font-weight:700;padding:8px 12px;font-size:12px">Personnel temporaire (int&eacute;rimaires...)</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juin-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juil-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">août-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">sept-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">oct-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">nov-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">déc-25</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">janv-26</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">févr-26</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mars-26</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">avr-26</td><td style="background:#378ADD;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mai-26</td><td style="background:#378ADD;color:#fff;font-weight:700;text-align:center;font-size:10px">TOTAL<br>12 mois</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Effectif</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;color:#333">1</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">7</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;heures travaill&eacute;es</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#333">120</td><td style="text-align:center;font-size:11px;color:#333">140</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#333">160</td><td style="text-align:center;font-size:11px;color:#333">150</td><td style="text-align:center;font-size:11px;color:#333">170</td><td style="text-align:center;font-size:11px;color:#333">155</td><td style="text-align:center;font-size:11px;color:#333">160</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">1055</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents avec arr&ecirc;t &mdash; AAA (hors acc trajet)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;accidents de trajet</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents sans arr&ecirc;t &mdash; ASA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr style="background:#F0F7FF"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#378ADD;font-style:italic">Taux de fr&eacute;quence TF1 = AAA &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#E6F1FB;color:#378ADD">0.0</td></tr>
+        <tr style="background:#F0F7FF"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#378ADD;font-style:italic">Taux de fr&eacute;quence TF2 = (AAA + ASA) &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#E6F1FB;color:#378ADD">0.0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb journ&eacute;es perdues suite AAA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr style="background:#F0F7FF"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#378ADD;font-style:italic">Taux de gravit&eacute; TG = Nb de JP &times; 1000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#E6F1FB;color:#378ADD">0.0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb de passages &agrave; l&apos;infirmerie (soins b&eacute;nins)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr><td colspan="2" style="background:#2D6A4F;color:#fff;font-weight:700;padding:8px 12px;font-size:12px">Effectif global (CDI + CDD + CDIC + int&eacute;rimaires)</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juin-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juil-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">août-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">sept-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">oct-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">nov-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">déc-25</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">janv-26</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">févr-26</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mars-26</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">avr-26</td><td style="background:#2D6A4F;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mai-26</td><td style="background:#2D6A4F;color:#fff;font-weight:700;text-align:center;font-size:10px">TOTAL<br>12 mois</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Effectif</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">6</td><td style="text-align:center;font-size:11px;color:#333">5</td><td style="text-align:center;font-size:11px;color:#333">7</td><td style="text-align:center;font-size:11px;color:#333">7</td><td style="text-align:center;font-size:11px;color:#333">7</td><td style="text-align:center;font-size:11px;color:#333">7</td><td style="text-align:center;font-size:11px;color:#333">7</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">72</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;heures travaill&eacute;es</td><td style="text-align:center;font-size:11px;color:#333">700</td><td style="text-align:center;font-size:11px;color:#333">680</td><td style="text-align:center;font-size:11px;color:#333">400</td><td style="text-align:center;font-size:11px;color:#333">750</td><td style="text-align:center;font-size:11px;color:#333">880</td><td style="text-align:center;font-size:11px;color:#333">860</td><td style="text-align:center;font-size:11px;color:#333">300</td><td style="text-align:center;font-size:11px;color:#333">1010</td><td style="text-align:center;font-size:11px;color:#333">950</td><td style="text-align:center;font-size:11px;color:#333">1070</td><td style="text-align:center;font-size:11px;color:#333">1035</td><td style="text-align:center;font-size:11px;color:#333">1020</td><td style="text-align:center;font-size:11px;font-weight:600;background:#F8F9FA;color:#1A1A2E">9655</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents avec arr&ecirc;t &mdash; AAA (hors acc trajet)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#E63946">1</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb d&apos;accidents de trajet</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd;background:#F8F9FA">0</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Nb d&apos;accidents sans arr&ecirc;t &mdash; ASA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#F4A261">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#F4A261">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#F4A261">2</td></tr>
+        <tr style="background:#F0FFF5"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#2D6A4F;font-style:italic">Taux de fr&eacute;quence TF1 = AAA &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#E63946">990.1</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:12px;font-weight:800;background:#FCEBEB;color:#E63946">103.6</td></tr>
+        <tr style="background:#F0FFF5"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#2D6A4F;font-style:italic">Taux de fr&eacute;quence TF2 = (AAA + ASA) &times; 1 000 000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">990.1</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">1052.6</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#F4A261">966.2</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:12px;font-weight:800;background:#FFF0E0;color:#F4A261">310.7</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb journ&eacute;es perdues suite AAA</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">12</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#E63946">12</td></tr>
+        <tr style="background:#F0FFF5"><td colspan="2" style="font-size:10px;padding:6px 12px;color:#7F77DD;font-style:italic">Taux de gravit&eacute; TG = Nb de JP &times; 1000 / Nb heures travaill&eacute;es</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#7F77DD">11.9</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:10px;font-weight:700;color:#aaa">0.0</td><td style="text-align:center;font-size:12px;font-weight:800;background:#EEEDFE;color:#7F77DD">1.2</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;">Nb de passages &agrave; l&apos;infirmerie (soins b&eacute;nins)</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#BA7517">3</td></tr>
+        <tr><td colspan="2" style="background:#BA7517;color:#fff;font-weight:700;padding:8px 12px;font-size:12px">Causeries SSE &mdash; par th&egrave;me</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juin-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">juil-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">août-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">sept-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">oct-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">nov-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">déc-25</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">janv-26</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">févr-26</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mars-26</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">avr-26</td><td style="background:#BA7517;color:#fff;font-weight:600;text-align:center;font-size:10px;white-space:nowrap">mai-26</td><td style="background:#BA7517;color:#fff;font-weight:700;text-align:center;font-size:10px">TOTAL<br>12 mois</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Causeries S&eacute;curit&eacute;</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">2</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#E63946">1</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#E63946">12</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Causeries Sant&eacute;</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#2D6A4F">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#2D6A4F">1</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">Causeries Environnement</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;color:#378ADD">1</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;color:#ddd">0</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#378ADD">1</td></tr>
+        <tr><td colspan="2" style="font-size:11px;padding:6px 12px;color:#333;font-weight:600;">TOTAL causeries</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">2</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">2</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;color:#BA7517">1</td><td style="text-align:center;font-size:11px;font-weight:700;background:#FFF5F5;color:#BA7517">14</td></tr>
       </table>
+    </div>
+
+    <!-- Légende et note -->
+    <div style="padding:10px 14px;background:#F8F9FA;border-radius:8px;font-size:10px;color:#aaa;display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px">
+      <span><strong style="color:#E63946">TF1</strong> = AAA &times; 1 000 000 / heures travaill&eacute;es</span>
+      <span><strong style="color:#F4A261">TF2</strong> = (AAA + ASA) &times; 1 000 000 / heures travaill&eacute;es</span>
+      <span><strong style="color:#7F77DD">TG</strong> = Nb journaux perdus &times; 1 000 / heures travaill&eacute;es</span>
+      <span style="margin-left:auto"><strong>12 mois glissants</strong> : Juin 2025 &rarr; Mai 2026</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:10px">
+      <span style="padding:4px 10px;background:#F0FFF5;border-radius:6px;color:#2D6A4F;border:1px solid #C0DD97">&#10003; Fond vert = donn&eacute;e AUTO depuis module</span>
+      <span style="padding:4px 10px;background:#FAEEDA;border-radius:6px;color:#633806;border:1px solid #FAC775">&#9998; Fond blanc = saisie MANUELLE requise</span>
+      <span style="padding:4px 10px;background:#FCEBEB;border-radius:6px;color:#A32D2D;border:1px solid #F7C1C1">&#9888; Jours arr&ecirc;t = toujours saisie manuelle (fix&eacute;s par le m&eacute;decin)</span>
     </div>
   </div>
 
@@ -1790,16 +2020,90 @@ textarea{resize:vertical;line-height:1.5}
     <div class="tw">
       <table>
         <tr><th>N°</th><th>Origine</th><th>Action</th><th>Priorité</th><th>Responsable</th><th>Délai</th><th>Avancement</th><th>Statut</th></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-001</td><td><span class="pill pb" style="font-size:9px">DUER (risque fort)</span></td><td style="font-weight:500">Mise à jour procédure levage nacelle</td><td><span class="pill pr" style="font-size:9px">Immédiate</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px">30/03/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#aaa">100%</span></div></td><td><span class="pill pg">Clôturée ✓</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-002</td><td><span class="pill pb" style="font-size:9px">DUER (risque fort)</span></td><td style="font-weight:500">Formation travail en hauteur nacelle — 3 salariés</td><td><span class="pill pr" style="font-size:9px">Immédiate</span></td><td style="font-weight:600;color:#378ADD">TM</td><td style="font-size:11px">15/04/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#aaa">100%</span></div></td><td><span class="pill pg">Clôturée ✓</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-003</td><td><span class="pill pb" style="font-size:9px">VGP expirée</span></td><td style="font-weight:500">VGP nacelle + élingues — APAVE</td><td><span class="pill pr" style="font-size:9px">Immédiate</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px">15/04/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:75%;background:#F4A261"></div></div><span style="font-size:10px;color:#aaa">75%</span></div></td><td><span class="pill po">En cours</span></td></tr>
-        <tr style="background:#FFF5F5"><td style="font-size:10px;color:#E63946;font-weight:600">PA-004</td><td><span class="pill pr" style="font-size:9px">Habilitation expirée</span></td><td style="font-weight:500;color:#A32D2D">Renouvellement carte conducteur G2 — BLONDEL S.</td><td><span class="pill pr" style="font-size:9px">Immédiate</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px;color:#E63946;font-weight:600">30/04/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#aaa">0%</span></div></td><td><span class="pill pr">En retard ⚠</span></td></tr>
-        <tr style="background:#FFF5F5"><td style="font-size:10px;color:#E63946;font-weight:600">PA-005</td><td><span class="pill pr" style="font-size:9px">Habilitation expirée</span></td><td style="font-weight:500;color:#A32D2D">Renouvellement ARI BLONDEL S. — APAVE</td><td><span class="pill pr" style="font-size:9px">Immédiate</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px;color:#E63946;font-weight:600">30/04/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#aaa">0%</span></div></td><td><span class="pill pr">En retard ⚠</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-006</td><td><span class="pill pb" style="font-size:9px">Audit terrain</span></td><td style="font-weight:500">Renforcement balisage nacelle tous côtés</td><td><span class="pill po" style="font-size:9px">Court terme</span></td><td style="font-weight:600;color:#378ADD">SP</td><td style="font-size:11px">15/05/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:50%;background:#F4A261"></div></div><span style="font-size:10px;color:#aaa">50%</span></div></td><td><span class="pill po">En cours</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-007</td><td><span class="pill pg" style="font-size:9px">REX chantier</span></td><td style="font-weight:500">Achat longes outils nacelle — lot 4</td><td><span class="pill po" style="font-size:9px">Court terme</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px">30/03/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#aaa">100%</span></div></td><td><span class="pill pg">Clôturée ✓</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-008</td><td><span class="pill pg" style="font-size:9px">REX chantier</span></td><td style="font-weight:500">Révision MO nacelle — ajout règle attache outils</td><td><span class="pill po" style="font-size:9px">Court terme</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px">15/04/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#aaa">100%</span></div></td><td><span class="pill pg">Clôturée ✓</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-009</td><td><span class="pill pr" style="font-size:9px">Situation dang.</span></td><td style="font-weight:500">Installation garde-corps chantier TOTAL côté Nord</td><td><span class="pill po" style="font-size:9px">Court terme</span></td><td style="font-weight:600;color:#378ADD">SP</td><td style="font-size:11px">30/05/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:25%;background:#F4A261"></div></div><span style="font-size:10px;color:#aaa">25%</span></div></td><td><span class="pill po">En cours</span></td></tr>
-        <tr><td style="font-size:10px;color:#aaa;font-weight:600">PA-010</td><td><span class="pill pb" style="font-size:9px">Indicateurs SSE</span></td><td style="font-weight:500">Améliorer planning causeries — objectif 12/an</td><td><span class="pill pp" style="font-size:9px">Moyen terme</span></td><td style="font-weight:600;color:#378ADD">AV</td><td style="font-size:11px">31/12/2026</td><td><div class="prog"><div class="pt"><div class="pf" style="width:30%;background:#7F77DD"></div></div><span style="font-size:10px;color:#aaa">30%</span></div></td><td><span class="pill po">En cours</span></td></tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#E63946;font-weight:600">PA-005</td>
+          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
+          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td><span class="pill pr" style="font-size:9px">Habilitation expir&eacute;e</span></td>
+          <td style="font-weight:500;min-width:150px;color:#A32D2D">Renouvellement ARI BLONDEL S. &mdash; APAVE</td>
+          <td style="font-size:11px;color:#555;min-width:110px">ARI expir&eacute;e depuis 28/03/2026</td>
+          <td style="font-size:11px;color:#555;min-width:110px">BLONDEL habilit&eacute; ARI &mdash; 0 intervention sans habilitation</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td style="font-size:11px">30/04/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600">0%</span></div></td>
+          <td><span class="pill pr">En retard !</span></td>
+        </tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#aaa;font-weight:600">PA-006</td>
+          <td><span class="pill pg" style="font-size:9px">Pr&eacute;ventive</span></td>
+          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td><span class="pill pr" style="font-size:9px">Habilitation expir&eacute;e</span></td>
+          <td style="font-weight:500;min-width:150px">Renouvellement ARI BLONDEL S. &mdash; APAVE</td>
+          <td style="font-size:11px;color:#555;min-width:110px">Habilitation ARI expir&eacute;e depuis 28/03/2026</td>
+          <td style="font-size:11px;color:#555;min-width:110px">BLONDEL habilit&eacute; ARI avant toute intervention concern&eacute;e</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td style="font-size:11px">31/05/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:0%;background:#E63946"></div></div><span style="font-size:10px;color:#E63946;font-weight:600">0%</span></div></td>
+          <td><span class="pill pr">En retard !</span></td>
+        </tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#aaa;font-weight:600">PA-007</td>
+          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
+          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td><span class="pill pr" style="font-size:9px">SD</span></td>
+          <td style="font-weight:500;min-width:150px">Contr&ocirc;le syst&eacute;matique &eacute;lingues avant levage</td>
+          <td style="font-size:11px;color:#555;min-width:110px">Elingue d&eacute;fectueuse identifi&eacute;e tardivement &mdash; SD-001</td>
+          <td style="font-size:11px;color:#555;min-width:110px">0 utilisation mat&eacute;riel d&eacute;fectueux &mdash; contr&ocirc;le 100%</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Orga.</span></td>
+          <td style="font-weight:600;color:#378ADD">BLONDEL S.</td>
+          <td style="font-size:11px">15/03/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#2D6A4F;font-weight:600">100%</span></div></td>
+          <td><span class="pill pg">Cl&ocirc;tur&eacute;e ✓</span></td>
+        </tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#aaa;font-weight:600">PA-008</td>
+          <td><span class="pill pg" style="font-size:9px">Pr&eacute;ventive</span></td>
+          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute;</span></td>
+          <td><span class="pill pp" style="font-size:9px">REX chantier</span></td>
+          <td style="font-weight:500;min-width:150px">Longes outils obligatoires en nacelle</td>
+          <td style="font-size:11px;color:#555;min-width:110px">Chute cl&eacute; &agrave; molette 8m &mdash; REX-2026-001</td>
+          <td style="font-size:11px;color:#555;min-width:110px">0 chute d&apos;outil depuis nacelle &mdash; 0 accident</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Tech.</span></td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td style="font-size:11px">20/03/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:100%;background:#2D6A4F"></div></div><span style="font-size:10px;color:#2D6A4F;font-weight:600">100%</span></div></td>
+          <td><span class="pill pg">Cl&ocirc;tur&eacute;e ✓</span></td>
+        </tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#aaa;font-weight:600">PA-009</td>
+          <td><span class="pill pgr" style="font-size:9px">Diff&eacute;r&eacute;e</span></td>
+          <td><span class="pill pb" style="font-size:9px">Environnement</span></td>
+          <td><span class="pill po" style="font-size:9px">Audit terrain</span></td>
+          <td style="font-weight:500;min-width:150px">Kit antipollution dans chaque v&eacute;hicule</td>
+          <td style="font-size:11px;color:#555;min-width:110px">D&eacute;versement carburant sans r&eacute;tention &mdash; REX-001</td>
+          <td style="font-size:11px;color:#555;min-width:110px">0 pollution lors d&apos;incident carburant</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Tech. &amp; Eco.</span></td>
+          <td style="font-weight:600;color:#378ADD">TM</td>
+          <td style="font-size:11px">30/06/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:50%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600">50%</span></div></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
+        <tr onclick="expandAction(this)" style="cursor:pointer">
+          <td style="font-size:10px;color:#aaa;font-weight:600">PA-010</td>
+          <td><span class="pill pg" style="font-size:9px">Corrective</span></td>
+          <td><span class="pill pb" style="font-size:9px">S&eacute;curit&eacute; &amp; Sant&eacute;</span></td>
+          <td><span class="pill pb" style="font-size:9px">Comit&eacute; SSE</span></td>
+          <td style="font-weight:500;min-width:150px">Planifier formation SST MARTIN L. et RENARD D.</td>
+          <td style="font-size:11px;color:#555;min-width:110px">SST expir&eacute;e le 01/06/2026 &mdash; 2 salari&eacute;s impact&eacute;s</td>
+          <td style="font-size:11px;color:#555;min-width:110px">100% SST &agrave; jour avant expiration</td>
+          <td><span class="pill" style="background:#EEEDFE;color:#3C3489;font-size:9px">Humains &amp; Eco.</span></td>
+          <td style="font-weight:600;color:#378ADD">AV</td>
+          <td style="font-size:11px">01/06/2026</td>
+          <td><div class="prog"><div class="pt"><div class="pf" style="width:25%;background:#F4A261"></div></div><span style="font-size:10px;color:#F4A261;font-weight:600">25%</span></div></td>
+          <td><span class="pill po">En cours</span></td>
+        </tr>
       </table>
     </div>
   </div>
@@ -2252,576 +2556,89 @@ textarea{resize:vertical;line-height:1.5}
 
       <!-- INDICATEURS - saisie mensuelle -->
       <div class="modal-section" id="modal-sec-indicateurs" style="display:none">
-        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">Saisie des donn&eacute;es du mois de <strong>Mai 2026</strong> &mdash; Les indicateurs TF1, TF2, TG seront recalcul&eacute;s automatiquement</div>
-        <div class="fg2">
-          <div><div class="fl">Heures travaill&eacute;es *</div><input type="number" placeholder="Ex: 850" style="width:100%"/></div>
-          <div><div class="fl">AT avec arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">AT sans arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">Jours d&apos;arr&ecirc;t</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">Soins b&eacute;nins (PSI)</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">Situations dangereuses</div><input type="number" value="0" style="width:100%"/></div>
-          <div><div class="fl">Causeries r&eacute;alis&eacute;es</div><input type="number" value="1" style="width:100%"/></div>
-          <div><div class="fl">Audits terrain r&eacute;alis&eacute;s</div><input type="number" value="0" style="width:100%"/></div>
-        </div>
-      </div>
 
-      <!-- REX -->
-      <div class="modal-section" id="modal-sec-rex" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Type *</div><select style="width:100%"><option>N&eacute;gatif &mdash; Incident / presqu&apos;accident</option><option>Positif &mdash; Bonne pratique</option><option>Neutre &mdash; Observation</option></select></div>
-          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Raffinerie" style="width:100%"/></div>
-          <div><div class="fl">Rapporteur *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Alexandra Valentin</option></select></div>
-          <div><div class="fl">Domaine</div><select style="width:100%" onchange="handleAutre(this,'autre-rex-dom')"><option>Levage &amp; Manutention</option><option>Transport &amp; Conduite</option><option>Travail en hauteur</option><option>EPI</option><option>Environnement</option><option>Organisation chantier</option><option>Incendie</option><option>Risque chimique</option><option>Management SSE</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-rex-dom"><input placeholder="Pr&eacute;ciser le domaine..."/></div></div>
-          <div><div class="fl">Liaison</div><select style="width:100%"><option>Aucune</option><option>Depuis SD</option><option>Depuis AT</option><option>Depuis audit terrain</option><option>Depuis causerie</option><option>Depuis comit&eacute;</option></select></div>
+        <!-- Bandeau mois -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">
+          <span>Saisie des donn&eacute;es &mdash; <strong>Mai 2026</strong></span>
+          <span style="font-size:10px;color:#aaa">TF1, TF2, TG recalcul&eacute;s automatiquement</span>
         </div>
-        <div style="margin-top:10px"><div class="fl">Description de l&apos;&eacute;v&eacute;nement *</div><textarea rows="3" placeholder="D&eacute;crire pr&eacute;cis&eacute;ment ce qui s&apos;est pass&eacute;, les circonstances..."></textarea></div>
-        <div style="margin-top:8px"><div class="fl">Causes identifi&eacute;es</div><textarea rows="2" placeholder="Cause directe, indirecte, racine..."></textarea></div>
-        <div style="margin-top:8px"><div class="fl">Le&ccedil;on apprise / Action</div><textarea rows="2" placeholder="Qu&apos;est-ce qu&apos;on retient ? Quelle action prendre ?"></textarea></div>
-      </div>
 
-      <!-- FORMATION -->
-      <div class="modal-section" id="modal-sec-formation" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Salari&eacute; concern&eacute; *</div><select style="width:100%"><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>GIRARD P.</option><option>DUPONT A.</option><option>MOREAU J.</option></select></div>
-          <div><div class="fl">Type de formation *</div><select style="width:100%" onchange="handleAutre(this,'autre-form-type')"><option>Recyclage SST</option><option>CACES R489 &mdash; Chariot &eacute;l&eacute;vateur</option><option>CACES R490 &mdash; Grues mobiles</option><option>CACES R486 &mdash; Nacelles</option><option>CACES R372 &mdash; Grue auxiliaire</option><option>Habilitation &eacute;lectrique</option><option>Formation ATEX</option><option>Renouvellement ARI</option><option>Formation levage/&eacute;lingage</option><option>Formation incendie</option><option>Visite m&eacute;dicale</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-form-type"><input placeholder="Pr&eacute;ciser le type de formation..."/></div></div>
-          <div><div class="fl">Organisme *</div><input placeholder="Ex: APAVE, SOCOTEC..." style="width:100%"/></div>
-          <div><div class="fl">Date pr&eacute;vue *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 2 jours" style="width:100%"/></div>
-          <div><div class="fl">Co&ucirc;t estim&eacute; (&euro;)</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
+        <!-- SECTION 1 : Effectif organique -->
+        <div style="font-size:10px;font-weight:600;color:#E63946;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FFF5F5;border-radius:6px;border-left:3px solid #E63946">
+          1 &mdash; Effectif organique (CDI, CDD, CDC...)
+          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Renseign&eacute; automatiquement depuis Personnel</span>
         </div>
-        <div style="margin-top:10px"><div class="fl">Habilitation li&eacute;e</div><select style="width:100%"><option>-- Aucune --</option><option>ARI</option><option>CACES R489</option><option>CACES R490</option><option>SST</option><option>ATEX</option><option>Habilitation &eacute;lectrique</option><option>Autre</option></select></div>
-      </div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">Effectif organique du mois</div><input type="number" value="6" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis module Personnel</div></div>
+          <div><div class="fl">Heures travaill&eacute;es &mdash; ORGANIQUE *</div><input type="number" placeholder="Ex: 860" style="width:100%;border-color:#E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; saisir les heures r&eacute;elles</div></div>
+          <div><div class="fl">Acc. de trajet</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; non saisi ailleurs</div></div>
+        </div>
 
-      <!-- SOUS-TRAITANT -->
-      <div class="modal-section" id="modal-sec-st" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Raison sociale *</div><input placeholder="Ex: DUPUIS &Eacute;tanch&eacute;it&eacute; SARL" style="width:100%"/></div>
-          <div><div class="fl">SIRET *</div><input placeholder="Ex: 842 156 789 00021" style="width:100%"/></div>
-          <div><div class="fl">Activit&eacute; / M&eacute;tier *</div><input placeholder="Ex: &Eacute;tanch&eacute;it&eacute; toiture et fa&ccedil;ade" style="width:100%"/></div>
-          <div><div class="fl">Contact principal</div><input placeholder="Nom &mdash; T&eacute;l &mdash; Email" style="width:100%"/></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Documents &agrave; demander</div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Attestation URSSAF (trimestrielle)</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Assurance RC Pro</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Extrait KBIS (&lt; 3 mois)</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Liste nominative du personnel</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> Attestations visites m&eacute;dicales</label>
+        <!-- AT remontés auto depuis Accidents & Soins -->
+        <div style="padding:8px 12px;background:#F8F9FA;border-radius:8px;margin-bottom:10px;font-size:11px">
+          <div style="font-weight:600;color:#1A1A2E;margin-bottom:6px">Accidents &mdash; remont&eacute;s depuis module Accidents &amp; Soins</div>
+          <div class="fg3">
+            <div style="padding:8px 10px;background:#FFF5F5;border-radius:7px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:#E63946">1</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">AT avec arr&ecirc;t (AAA)</div>
+              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; AT-2026-001</div>
+            </div>
+            <div style="padding:8px 10px;background:#FFF8F0;border-radius:7px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:#F4A261">0</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">AT sans arr&ecirc;t (ASA)</div>
+              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; Accidents &amp; Soins</div>
+            </div>
+            <div style="padding:8px 10px;background:#FFF8F0;border-radius:7px;text-align:center">
+              <div style="font-size:18px;font-weight:700;color:#BA7517">3</div>
+              <div style="font-size:10px;color:#aaa;margin-top:2px">Soins b&eacute;nins (infirmerie)</div>
+              <div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &#8592; Accidents &amp; Soins</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- DUER - UNITE DE TRAVAIL -->
-      <div class="modal-section" id="modal-sec-duer" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Nom de l&apos;unit&eacute; de travail *</div><input placeholder="Ex: Conduite camion-grue" style="width:100%"/></div>
-          <div><div class="fl">Secteur</div><select style="width:100%"><option>Transport &amp; Conduite</option><option>Levage &amp; Manutention</option><option>Travail en hauteur</option><option>Atelier d&eacute;p&ocirc;t</option><option>Chantier ext&eacute;rieur</option><option>Bureau</option></select></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Risque principal identifi&eacute; *</div><input placeholder="Ex: Chute de charge, Accident circulation..." style="width:100%"/></div>
-        <div style="margin-top:10px" class="fg3">
-          <div><div class="fl">Probabilit&eacute; (1-4)</div><select style="width:100%"><option>1 &mdash; Tr&egrave;s improbable</option><option>2 &mdash; Improbable</option><option>3 &mdash; Probable</option><option>4 &mdash; Tr&egrave;s probable</option></select></div>
-          <div><div class="fl">Gravit&eacute; (1-5)</div><select style="width:100%"><option>1 &mdash; Blessure l&eacute;g&egrave;re</option><option>2 &mdash; AT sans arr&ecirc;t</option><option>3 &mdash; AT avec arr&ecirc;t</option><option>4 &mdash; Incapacit&eacute; permanente</option><option>5 &mdash; D&eacute;c&egrave;s</option></select></div>
-          <div><div class="fl">Cotation (auto)</div><input value="8" readonly style="width:100%;background:#F8F9FA;color:#1A1A2E;font-weight:600"/></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Mesures de pr&eacute;vention</div><textarea rows="2" placeholder="EPI, formation, proc&eacute;dure, contr&ocirc;le..."></textarea></div>
-      </div>
-
-      <!-- MODE OPERATOIRE -->
-      <div class="modal-section" id="modal-sec-mo" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">R&eacute;f&eacute;rence</div><input placeholder="Ex: MO-009" style="width:100%"/></div>
-          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Op&eacute;ration soudage inox..." style="width:100%"/></div>
-          <div><div class="fl">Activit&eacute;</div><select style="width:100%"><option>Levage</option><option>Transport</option><option>Manutention</option><option>Travail en hauteur</option><option>Soudage</option><option>Nettoyage HP</option><option>Montage industriel</option></select></div>
-          <div><div class="fl">Version</div><input value="A" style="width:100%"/></div>
-          <div><div class="fl">Date de validation</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Valid&eacute; par</div><select style="width:100%"><option>AV + TM</option><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Points d&apos;arr&ecirc;t obligatoires</div><textarea rows="2" placeholder="Ex: V&eacute;rification &eacute;lingues avant levage, Controle balisage..."></textarea></div>
-      </div>
-      <div class="modal-section" id="modal-sec-audit" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Date de l&apos;audit *</div><input type="date" style="width:100%" value="2026-05-03"/></div>
-          <div><div class="fl">Chantier / Lieu *</div><input placeholder="Ex: TOTAL Fos" style="width:100%"/></div>
-          <div><div class="fl">Auditeur *</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option><option>Sonia POULINGUE</option></select></div>
-          <div><div class="fl">Responsable chantier</div><input placeholder="Ex: S. BLONDEL" style="width:100%"/></div>
-          <div><div class="fl">Dur&eacute;e</div><input placeholder="Ex: 2h" style="width:100%"/></div>
-          <div><div class="fl">Type de travaux</div><select style="width:100%" onchange="handleAutre(this,'autre-aud-type')"><option>Levage camion-grue</option><option>Transport PL</option><option>Manutention</option><option>Chargement / D&eacute;chargement</option><option>Travail en hauteur &mdash; nacelle</option><option>Montage industriel</option><option>Nettoyage HP</option><option value="autre">Autre (pr&eacute;ciser)</option></select><div class="autre-field" id="autre-aud-type"><input placeholder="Pr&eacute;ciser le type de travaux..."/></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button onclick="closeModal()" style="font-size:12px;padding:7px 16px;border-radius:8px;border:1px solid #E8E8E8;background:#fff;color:#555;cursor:pointer">Annuler</button>
-      <button onclick="saveModal()" class="btn-primary">Enregistrer</button>
-      <!-- DIFFUSION POLITIQUE -->
-      <div class="modal-section" id="modal-sec-diffusion" style="display:none">
-        <div style="padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:12px;color:#185FA5;margin-bottom:12px">
-          Diffuser la Politique SSE 2026 sign&eacute;e &agrave; tous les salari&eacute;s. Chaque salari&eacute; devra signer la fiche de diffusion.
-        </div>
-        <div><div class="fl">Salari&eacute;s destinataires</div>
-          <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px">
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> BLONDEL S. &mdash; Conducteur PL</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MARTIN L. &mdash; Chef de chantier</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> RENARD D. &mdash; Technicien</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> GIRARD P. &mdash; Op&eacute;rateur</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> DUPONT A. &mdash; Soudeur</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:12px;padding:7px 10px;background:#F8F9FA;border-radius:7px;cursor:pointer"><input type="checkbox" checked/> MOREAU J. &mdash; M&eacute;canicien</label>
+        <!-- Jours d'arrêt - SAISIE MANUELLE OBLIGATOIRE -->
+        <div style="padding:10px 14px;background:#FCEBEB;border-radius:8px;border:1px solid #F7C1C1;margin-bottom:12px">
+          <div style="font-size:11px;font-weight:600;color:#A32D2D;margin-bottom:8px">&#9888; Journ&eacute;es perdues &mdash; Saisie manuelle obligatoire</div>
+          <div style="font-size:11px;color:#555;margin-bottom:8px">Le nombre de jours d&apos;arr&ecirc;t est fix&eacute; par le m&eacute;decin. Il est indispensable pour calculer le TG.</div>
+          <div class="fg2">
+            <div><div class="fl">Nb jours d&apos;arr&ecirc;t (organique) *</div><input type="number" value="12" style="width:100%;border:2px solid #E63946"/><div style="font-size:9px;color:#aaa;margin-top:2px">Ex : 12 jours pour AT-2026-001 BLONDEL</div></div>
+            <div><div class="fl">Calcul TG organique (auto)</div><input value="1,4" style="width:100%;background:#F0F0F0;font-weight:700;color:#7F77DD" readonly/><div style="font-size:9px;color:#7F77DD;margin-top:2px">= 12 &times; 1000 / heures travaill&eacute;es</div></div>
           </div>
         </div>
-        <div style="margin-top:10px"><div class="fl">Mode de diffusion</div><select style="width:100%"><option>Signature en main propre lors d&apos;une causerie</option><option>Remise lors d&apos;une r&eacute;union</option><option>Envoi par email + signature &agrave; retourner</option></select></div>
-      </div>
 
-      <!-- EPI -->
-      <div class="modal-section" id="modal-sec-epi" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>EPI individuel</option><option>Carburant v&eacute;hicule</option><option>Consommable atelier</option><option>Eau</option><option>D&eacute;chet</option></select></div>
-          <div><div class="fl">D&eacute;signation *</div><input placeholder="Ex: Gants anti-coupure T10" style="width:100%"/></div>
-          <div><div class="fl">Quantit&eacute; *</div><input type="number" placeholder="Ex: 12" style="width:100%"/></div>
-          <div><div class="fl">Unit&eacute;</div><select style="width:100%"><option>paires</option><option>unit&eacute;s</option><option>litres</option><option>kg</option><option>bo&icirc;tes</option></select></div>
-          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Co&ucirc;t (&euro;)</div><input type="number" placeholder="Ex: 48" style="width:100%"/></div>
+        <!-- SECTION 2 : Intérimaires -->
+        <div style="font-size:10px;font-weight:600;color:#378ADD;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#E6F1FB;border-radius:6px;border-left:3px solid #378ADD">
+          2 &mdash; Personnel temporaire (int&eacute;rimaires)
+          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Remont&eacute; depuis Personnel &mdash; contrat Int&eacute;rimaire</span>
         </div>
-        <div style="margin-top:10px"><div class="fl">Affect&eacute; &agrave;</div><select style="width:100%"><option>Tous les salari&eacute;s</option><option>BLONDEL S.</option><option>MARTIN L.</option><option>RENARD D.</option><option>DUPONT A.</option><option>MOREAU J.</option><option>Stock g&eacute;n&eacute;ral</option></select></div>
-      </div>
-
-      <!-- CARBONE -->
-      <div class="modal-section" id="modal-sec-carbone" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Type de consommation</div><select style="width:100%"><option>Carburant GNR (litres)</option><option>Carburant SP95 (litres)</option><option>Carburant SP98 (litres)</option><option>Electricit&eacute; (kWh)</option><option>Gaz (m3)</option><option>Eau (m3)</option></select></div>
-          <div><div class="fl">V&eacute;hicule / Source</div><select style="width:100%"><option>Camion PL 1 &mdash; AB-123-CD</option><option>Camion PL 2 &mdash; EF-456-GH</option><option>Nacelle &mdash; IJ-789-KL</option><option>Atelier d&eacute;p&ocirc;t</option></select></div>
-          <div><div class="fl">Mois *</div><input type="month" style="width:100%"/></div>
-          <div><div class="fl">Quantit&eacute; *</div><input type="number" placeholder="Ex: 450" style="width:100%"/></div>
-          <div><div class="fl">CO2 &eacute;quivalent (kg)</div><input type="number" placeholder="Calcul auto..." style="width:100%;background:#F8F9FA" readonly/></div>
-          <div><div class="fl">Montant (&euro;)</div><input type="number" placeholder="Ex: 780" style="width:100%"/></div>
+        <div class="fg3" style="margin-bottom:12px">
+          <div><div class="fl">Nb int&eacute;rimaires ce mois</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; GIRARD P. (Int&eacute;rimaire)</div></div>
+          <div><div class="fl">Heures travaill&eacute;es &mdash; INT&Eacute;RIMAIRES *</div><input type="number" placeholder="Ex: 160" style="width:100%;border-color:#378ADD"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; heures int&eacute;rimaires</div></div>
+          <div><div class="fl">AT int&eacute;rimaires (AAA)</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL si non saisi dans Accidents</div></div>
         </div>
-      </div>
-
-      <!-- DEPENSE -->
-      <div class="modal-section" id="modal-sec-depense" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Cat&eacute;gorie</div><select style="width:100%"><option>EPI &amp; &eacute;quipements</option><option>Formation</option><option>Organismes contr&ocirc;le (VGP)</option><option>M&eacute;decine du travail</option><option>Audit &amp; certification</option><option>Mat&eacute;riel SSE</option><option>Prestation SSE</option></select></div>
-          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Formation SST PREVENTIEL" style="width:100%"/></div>
-          <div><div class="fl">Montant HT (&euro;) *</div><input type="number" placeholder="Ex: 480" style="width:100%"/></div>
-          <div><div class="fl">Date *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Fournisseur</div><input placeholder="Ex: APAVE, PREVENTIEL..." style="width:100%"/></div>
-          <div><div class="fl">Axe MASE</div><select style="width:100%"><option>Axe 1 &mdash; Direction</option><option>Axe 2 &mdash; Comp&eacute;tences</option><option>Axe 3 &mdash; Organisation</option><option>Axe 4 &mdash; Efficacit&eacute;</option><option>Axe 5 &mdash; Am&eacute;lioration</option></select></div>
+        <div class="fg2" style="margin-bottom:12px">
+          <div><div class="fl">ASA int&eacute;rimaires</div><input type="number" value="0" style="width:100%"/></div>
+          <div><div class="fl">Jours arr&ecirc;t int&eacute;rimaires</div><input type="number" value="0" style="width:100%"/><div style="font-size:9px;color:#aaa;margin-top:2px">MANUEL &mdash; fix&eacute; par le m&eacute;decin</div></div>
         </div>
-        <div style="margin-top:8px"><div class="fl">Commentaire</div><input placeholder="Ex: Renouvellement SST BLONDEL S." style="width:100%"/></div>
-      </div>
 
-      <!-- PERSONNEL - handled by swPerso redirect -->
-      <div class="modal-section" id="modal-sec-personnel" style="display:none"></div>
-      <!-- REVUE SAVE - handled by JS notification -->
-      <div class="modal-section" id="modal-sec-revue_save" style="display:none"></div>
-
-      <!-- EVALUATION SOUS-TRAITANT -->
-      <div class="modal-section" id="modal-sec-st_eval" style="display:none">
-        <div class="fg3">
-          <div><div class="fl">Date de l&apos;&eacute;valuation *</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Chantier / Intervention *</div><input placeholder="Ex: TOTAL Raffinerie Fos" style="width:100%"/></div>
-          <div><div class="fl">&Eacute;valuateur</div><select style="width:100%"><option>Alexandra Valentin</option><option>Tony MARTIN</option></select></div>
+        <!-- SECTION 3 : Causeries -->
+        <div style="font-size:10px;font-weight:600;color:#BA7517;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;padding:6px 10px;background:#FAEEDA;border-radius:6px;border-left:3px solid #BA7517">
+          3 &mdash; Causeries SSE
+          <span style="float:right;font-weight:400;color:#aaa;text-transform:none">Remont&eacute; depuis module Causeries</span>
         </div>
-        <div style="margin-top:12px;padding:10px 14px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:10px">Note de 1 &agrave; 5 pour chaque crit&egrave;re &mdash; 1 = Non satisfaisant &bull; 5 = Excellent</div>
-        <div style="display:flex;flex-direction:column;gap:6px">
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
-            <span style="font-size:12px;font-weight:500">Port des EPI</span>
-            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
-            <span style="font-size:12px;font-weight:500">Respect du mode op&eacute;ratoire</span>
-            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
-            <span style="font-size:12px;font-weight:500">Propret&eacute; du chantier</span>
-            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
-            <span style="font-size:12px;font-weight:500">Balisage et signalisation</span>
-            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8F9FA;border-radius:8px">
-            <span style="font-size:12px;font-weight:500">Respect des consignes SSE site</span>
-            <select style="width:80px;font-size:12px;padding:4px 8px"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+        <div class="fg3" style="margin-bottom:10px">
+          <div><div class="fl">Causeries S&eacute;curit&eacute;</div><input type="number" value="1" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
+          <div><div class="fl">Causeries Sant&eacute;</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
+          <div><div class="fl">Causeries Environnement</div><input type="number" value="0" style="width:100%;background:#F0FFF5" readonly/><div style="font-size:9px;color:#2D6A4F;margin-top:2px">AUTO &mdash; depuis Causeries</div></div>
+        </div>
+
+        <!-- Résultat calculé -->
+        <div style="padding:10px 14px;background:linear-gradient(135deg,#EAF3DE,#F5FFF8);border-radius:8px;border:1px solid #C0DD97;font-size:11px">
+          <div style="font-weight:600;color:#27500A;margin-bottom:6px">R&eacute;sultats calcul&eacute;s pour Mai 2026</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap">
+            <span><strong style="color:#E63946">TF1</strong> = sera calcul&eacute; apr&egrave;s saisie des heures</span>
+            <span><strong style="color:#F4A261">TF2</strong> = sera calcul&eacute; apr&egrave;s saisie des heures</span>
+            <span><strong style="color:#7F77DD">TG</strong> = sera calcul&eacute; apr&egrave;s saisie des jours arr&ecirc;t</span>
           </div>
         </div>
-        <div style="margin-top:10px"><div class="fl">Observations / Commentaires</div><textarea rows="2" placeholder="Points positifs, &agrave; am&eacute;liorer, remarques..."></textarea></div>
-      </div>
-
-      <!-- DOCUMENT SOUS-TRAITANT -->
-      <div class="modal-section" id="modal-sec-st_doc" style="display:none">
-        <div style="padding:8px 12px;background:#E6F1FB;border-radius:8px;font-size:11px;color:#185FA5;margin-bottom:12px">
-          Ajout d&apos;un document obligatoire &mdash; &sect;3.4 MASE 2024 &bull; Sous-traitant : DUPUIS &Eacute;tanch&eacute;it&eacute;
-        </div>
-        <div class="fg2">
-          <div><div class="fl">Type de document *</div>
-            <select style="width:100%" onchange="handleAutre(this,'autre-stdoc-type')">
-              <option>Attestation URSSAF (trimestrielle)</option>
-              <option>Assurance RC Pro</option>
-              <option>Extrait KBIS (&lt; 3 mois)</option>
-              <option>Plan de pr&eacute;vention</option>
-              <option>Liste nominative du personnel</option>
-              <option>Attestations visites m&eacute;dicales</option>
-              <option>Habilitations salari&eacute;s ST</option>
-              <option>Certificat qualit&eacute; (QUALIBAT, RGE...)</option>
-              <option>Attestation d&apos;assurance d&eacute;cennale</option>
-              <option value="autre">Autre (pr&eacute;ciser)</option>
-            </select>
-            <div class="autre-field" id="autre-stdoc-type"><input placeholder="Pr&eacute;ciser le type de document..."/></div>
-          </div>
-          <div><div class="fl">Date du document</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Date d&apos;expiration</div><input type="date" style="width:100%"/></div>
-          <div><div class="fl">Statut</div>
-            <select style="width:100%">
-              <option>Valide ✓</option>
-              <option>En attente de r&eacute;ception</option>
-              <option>Expir&eacute; &mdash; &agrave; renouveler</option>
-            </select>
-          </div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Commentaire / Remarque</div><input placeholder="Ex: Document re&ccedil;u par email le XX/XX/XXXX..." style="width:100%"/></div>
-        <div style="margin-top:10px;padding:12px;background:#F8F9FA;border-radius:8px;border:2px dashed #E8E8E8;text-align:center;cursor:pointer" onclick="alert('Upload de fichier disponible dans la version avec sauvegarde serveur. Pour l'instant, noter le document re&ccedil;u dans le commentaire.')">
-          <div style="font-size:20px;margin-bottom:4px">&#128196;</div>
-          <div style="font-size:12px;color:#aaa;font-weight:500">Joindre le document (PDF)</div>
-          <div style="font-size:10px;color:#ccc;margin-top:2px">Upload disponible dans la version avec base de donn&eacute;es</div>
-        </div>
-      </div>
-
-      <!-- RESSOURCE -->
-      <div class="modal-section" id="modal-sec-ressource" style="display:none">
-        <div class="fg2">
-          <div><div class="fl">Type de document</div><select style="width:100%"><option>Proc&eacute;dure</option><option>Formulaire / Fiche</option><option>Document MASE</option><option>R&eacute;glementation</option><option>Mode op&eacute;ratoire</option><option>Fiche de s&eacute;curit&eacute; (FDS)</option><option>Autre</option></select></div>
-          <div><div class="fl">Intitul&eacute; *</div><input placeholder="Ex: Proc&eacute;dure levage nacelle" style="width:100%"/></div>
-          <div><div class="fl">R&eacute;f&eacute;rence</div><input placeholder="Ex: PRO-LEV-001" style="width:100%"/></div>
-          <div><div class="fl">Version</div><input value="A" style="width:100%"/></div>
-        </div>
-        <div style="margin-top:10px"><div class="fl">Description / Objet du document</div><textarea rows="2" placeholder="D&eacute;crire le contenu ou l&apos;utilisation de ce document..."></textarea></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- NOTIFICATION -->
-<div class="notif" id="notif">
-  <div style="display:flex;align-items:center;gap:10px">
-    <div style="width:30px;height:30px;border-radius:50%;background:#EAF3DE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">&#10003;</div>
-    <div>
-      <div id="notif-title" style="font-size:13px;font-weight:600;color:#27500A">Enregistr&eacute; avec succ&egrave;s</div>
-      <div id="notif-sub" style="font-size:11px;color:#aaa;margin-top:1px">Op&eacute;ration r&eacute;alis&eacute;e</div>
-    </div>
-  </div>
-</div>
-
-<script>
-var currentPage = "dashboard";
-
-// Gestion champ "Autre" sur tous les selects
-function handleAutre(sel, inputId) {
-  var inp = document.getElementById(inputId);
-  if(!inp) return;
-  if(sel.value === "autre" || sel.value === "Autre") {
-    inp.style.display = "block";
-    inp.querySelector("input").focus();
-  } else {
-    inp.style.display = "none";
-  }
-}
-
-
-var pagesMeta = {
-  dashboard:{t:"Tableau de bord",s:"Vue générale 2026",btn:"+ Nouvelle action SSE",modal:"action"},
-  politique:{t:"Politique SSE",s:"Axe 1 — §1.2 MASE 2024",btn:"Diffuser au personnel",modal:"diffusion"},
-  objectifs:{t:"Objectifs SSE & Plan management",s:"Axe 1 — §1.3 MASE 2024",btn:"+ Ajouter un objectif",modal:"objectif"},
-  indicateurs:{t:"Indicateurs SSE",s:"Axe 1 — §1.4 MASE 2024",btn:"Saisir données du mois",modal:"indicateurs"},
-  plan_actions:{t:"Plan d’actions SSE — 2026",s:"Axe 1 — Engagement Direction",btn:"+ Nouvelle action",modal:"action"},
-  causeries:{t:"Causeries SSE",s:"Axe 1 — Animation SSE",btn:"+ Nouvelle causerie",modal:"causerie"},
-  comite:{t:"Comité de pilotage",s:"Axe 1 — Pilotage système",btn:"+ Planifier un comité",modal:"comite"},
-  personnel:{t:"Personnel",s:"Axe 2 — Compétences & RH",btn:"+ Ajouter un salarié",modal:"personnel"},
-  habilitations:{t:"Habilitations — Vue transversale",s:"Axe 2 — Conformité MASE",btn:"+ Ajouter habilitation",modal:"habilitation"},
-  formation:{t:"Planning de formation",s:"Axe 2 — §2.3 MASE 2024",btn:"+ Planifier une formation",modal:"formation"},
-  duer:{t:"Document Unique (DUER)",s:"Axe 3 — §3.1 MASE 2024",btn:"+ Nouvelle unité de travail",modal:"duer"},
-  modes_op:{t:"Modes opératoires",s:"Axe 3 — Organisation du travail",btn:"+ Nouveau mode opératoire",modal:"mo"},
-  vgp:{t:"VGP & Matériels",s:"Axe 3 — Contrôles réglementaires",btn:"+ Ajouter équipement",modal:"vgp"},
-  sous_traitants:{t:"Sous-traitants & Évaluation SSE",s:"Axe 3 — Maîtrise sous-traitance",btn:"+ Nouveau sous-traitant",modal:"st"},
-  rex:{t:"REX Chantier",s:"Axe 3 & 5 — Capitalisation",btn:"+ Nouveau REX",modal:"rex"},
-  audits:{t:"Audits terrain — Grille SSE-043",s:"Axe 4 — Efficacité · MASE §4",btn:"+ Nouvel audit",modal:"audit"},
-  situations:{t:"Situations dangereuses",s:"Axe 4 — Efficacité",btn:"+ Signaler une situation",modal:"sd"},
-  bonnes_pratiques:{t:"Bonnes pratiques — Catalogue",s:"Axe 4 — Capitalisation",btn:"+ Ajouter une BP",modal:"bp"},
-  accidents:{t:"Accidents & Soins",s:"Axe 4 — Registre réglementaire",btn:"+ Déclarer un accident",modal:"accident"},
-  revue:{t:"Revue de direction — Axe 5",s:"Axe 5 — Amélioration continue · MASE 2024",btn:"Enregistrer la revue",modal:"revue_save"},
-  epi:{t:"EPI & Consommables",s:"Autres suivis",btn:"+ Ajouter EPI",modal:"epi"},
-  carbone:{t:"Empreinte carbone",s:"Autres suivis",btn:"+ Saisir consommation",modal:"carbone"},
-  depenses:{t:"Dépenses sécurité",s:"Autres suivis",btn:"+ Ajouter dépense",modal:"depense"},
-  ressources:{t:"Ressources documentaires",s:"Autres suivis",btn:"+ Ajouter document",modal:"ressource"}
-};
-
-function go(id, el) {
-  document.querySelectorAll(".page").forEach(function(p){p.classList.remove("active");});
-  document.querySelectorAll(".nav-item").forEach(function(n){n.classList.remove("active");});
-  var pg = document.getElementById("page-"+id);
-  if(pg) pg.classList.add("active");
-  if(el) el.classList.add("active");
-  var m = pagesMeta[id] || {t:id,s:"",btn:"+ Ajouter",modal:null};
-  document.getElementById("pt").textContent = m.t;
-  document.getElementById("ps").textContent = m.s;
-  document.getElementById("btn-main").textContent = m.btn || "+ Ajouter";
-  currentPage = id;
-  window.scrollTo(0,0);
-}
-
-function mainAction() {
-  var m = pagesMeta[currentPage];
-  if(!m) return;
-  if(currentPage === "personnel") {
-    swPerso("nouveau", document.getElementById("ptab-nouveau"));
-    return;
-  }
-  if(currentPage === "revue") {
-    showNotif("Revue de direction enregistree avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
-    return;
-  }
-  if(m.modal) {
-    openModal(m.modal);
-  } else {
-    showNotif("Fonctionnalite disponible dans la prochaine version.", "#185FA5", "#E6F1FB", "#B5D4F4");
-  }
-}
-
-function openModal(type) {
-  if(type === "personnel") { swPerso("nouveau", document.getElementById("ptab-nouveau")); return; }
-  if(type === "revue_save") { showNotif("Revue de direction enregistree !", "#27500A", "#EAF3DE", "#C0DD97"); return; }
-  document.querySelectorAll(".modal-section").forEach(function(s){s.style.display="none";});
-  var sec = document.getElementById("modal-sec-"+type);
-  if(sec) sec.style.display="block";
-  var titles = {
-    action:"Nouvelle action SSE",habilitation:"Ajouter une habilitation",
-    vgp:"Ajouter un equipement VGP",sd:"Signaler une situation dangereuse",
-    accident:"Declarer un accident / soin",bp:"Nouvelle bonne pratique",audit:"Nouvel audit terrain",
-    causerie:"Planifier une causerie SSE",comite:"Planifier un comite SSE",
-    objectif:"Ajouter un objectif SSE",indicateurs:"Saisie mensuelle des indicateurs",
-    rex:"Nouveau retour d experience",formation:"Planifier une formation",
-    st:"Nouveau sous-traitant",duer:"Nouvelle unite de travail (DUER)",
-    mo:"Nouveau mode operatoire",diffusion:"Diffuser la Politique SSE",
-    epi:"Ajouter EPI ou consommable",carbone:"Saisir une consommation",
-    depense:"Ajouter une depense SSE",ressource:"Ajouter un document",
-    st_doc:"Ajouter un document sous-traitant",st_eval:"Nouvelle evaluation SSE"
-  };
-  var subs = {
-    action:"Plan d'actions - Axe 1",habilitation:"Habilitations - Axe 2",
-    vgp:"VGP & Materiels - Axe 3",sd:"Situations dangereuses - Axe 4",
-    accident:"Accidents & Soins - Axe 4",bp:"Bonnes pratiques - Axe 4",audit:"Audits terrain - SSE-043",
-    causerie:"Axe 1 - Animation SSE",comite:"Axe 1 - Pilotage systeme",
-    objectif:"Axe 1 - Objectifs MASE 2024",indicateurs:"Axe 1 - Mise a jour auto TF1/TF2/TG",
-    rex:"Axe 3 & 5 - Capitalisation",formation:"Axe 2 - Plan de formation",
-    st:"Axe 3 - Maitrise sous-traitance",duer:"Axe 3 - Document Unique",
-    mo:"Axe 3 - Organisation du travail",diffusion:"Axe 1 - Communication SSE",
-    epi:"Autres suivis",carbone:"Autres suivis - Empreinte carbone",
-    depense:"Autres suivis - Budget SSE",ressource:"Autres suivis - Documentation",
-    st_doc:"Sous-traitants - Documents obligatoires MASE §3.4",st_eval:"Sous-traitants - Evaluation SSE"
-  };
-  document.getElementById("modal-title").textContent = titles[type] || "Formulaire";
-  document.getElementById("modal-sub").textContent = subs[type] || "";
-  document.getElementById("modal-overlay").style.display = "flex";
-}
-
-function closeModal() {
-  document.getElementById("modal-overlay").style.display = "none";
-}
-
-function saveModal() {
-  closeModal();
-  showNotif("Enregistre avec succes !", "#27500A", "#EAF3DE", "#C0DD97");
-}
-
-function showNotif(msg, color, bg, border) {
-  var n = document.getElementById("notif");
-  n.style.display = "block";
-  n.style.borderColor = border;
-  n.style.borderLeftColor = color;
-  document.getElementById("notif-title").style.color = color;
-  document.getElementById("notif-title").textContent = "Information";
-  document.getElementById("notif-sub").textContent = msg;
-  setTimeout(function(){n.style.display="none";}, 4000);
-}
-
-function updateActionType(sel) {
-  var badge = document.getElementById("action-type-badge");
-  if(!badge) return;
-  var configs = {
-    imm: {bg:"#FCEBEB",color:"#A32D2D",border:"#F7C1C1",text:"Action imm&eacute;diate &mdash; &agrave; r&eacute;aliser dans les 24h. Stopper le danger imm&eacute;diatement."},
-    cor: {bg:"#E6F1FB",color:"#185FA5",border:"#B5D4F4",text:"Action corrective &mdash; Corrige la cause de la d&eacute;faillance. Empêche la r&eacute;currence."},
-    prev: {bg:"#EAF3DE",color:"#27500A",border:"#C0DD97",text:"Action pr&eacute;ventive &mdash; Anticipe un risque potentiel avant qu&apos;il se r&eacute;alise."},
-    dif: {bg:"#EEEDFE",color:"#3C3489",border:"#C8C5F0",text:"Action diff&eacute;r&eacute;e &mdash; Planifi&eacute;e sur le long terme. Ne n&eacute;cessite pas d&apos;urgence."}
-  };
-  var cfg = configs[sel.value];
-  if(cfg) {
-    badge.style.display = "block";
-    badge.style.background = cfg.bg;
-    badge.style.color = cfg.color;
-    badge.style.border = "1px solid " + cfg.border;
-    badge.innerHTML = cfg.text;
-  } else {
-    badge.style.display = "none";
-  }
-}
-
-function updatePrior() {
-  var sel = document.getElementById("modal-prior");
-  var alert = document.getElementById("prior-alert");
-  var msgs = {
-    imm:{bg:"#FCEBEB",color:"#A32D2D",text:"Priorite Immediate - Action urgente requise."},
-    ct:{bg:"#FAEEDA",color:"#633806",text:"Court terme - A realiser dans le mois."},
-    mt:{bg:"#E6F1FB",color:"#185FA5",text:"Moyen terme - A realiser dans l'annee."}
-  };
-  var m = msgs[sel.value];
-  if(m){
-    alert.style.display="block";
-    alert.style.background=m.bg;
-    alert.style.color=m.color;
-    alert.style.border="1px solid "+m.color;
-    alert.style.padding="8px 12px";
-    alert.style.borderRadius="8px";
-    alert.style.fontSize="11px";
-    alert.textContent=m.text;
-  } else {
-    alert.style.display="none";
-  }
-}
-
-function setGrav(el, n) {
-  el.closest(".modal-section").querySelectorAll(".grav-btn").forEach(function(b){
-    b.classList.remove("active-1","active-2","active-3","active-4");
-  });
-  el.classList.add("active-"+n);
-}
-
-function toggleON(btn, type) {
-  var group = btn.closest(".oui-non");
-  group.querySelectorAll(".on-btn").forEach(function(b){
-    b.classList.remove("active-oui","active-non","active-part");
-  });
-  btn.classList.add("active-"+type);
-}
-
-var revSections = ["faits","accidento","outils_sys","outils_rh","outils_prod","amelioration","concl","nouveaux_obj"];
-function showRevSec(id, el) {
-  revSections.forEach(function(s){
-    var d = document.getElementById("rev-"+s);
-    if(d) d.style.display="none";
-  });
-  document.querySelectorAll(".rev-nav-item").forEach(function(n){n.classList.remove("active");});
-  var sec = document.getElementById("rev-"+id);
-  if(sec) sec.style.display="block";
-  if(el) el.classList.add("active");
-}
-
-// Personnel functions
-function swPerso(v, el) {
-  var views = ['liste','passeport','nouveau'];
-  for(var i=0;i<views.length;i++){
-    var d=document.getElementById('perso-'+views[i]);
-    if(d) d.style.display='none';
-  }
-  var tabs = ['ptab-liste','ptab-passeport','ptab-nouveau'];
-  for(var j=0;j<tabs.length;j++){
-    var t=document.getElementById(tabs[j]);
-    if(t){t.classList.remove('active');}
-  }
-  var pg=document.getElementById('perso-'+v);
-  if(pg) pg.style.display='block';
-  if(el) el.classList.add('active');
-}
-
-function swPTab(el, secId) {
-  var allTabs = el.closest('div').querySelectorAll('.ptab2');
-  for(var i=0;i<allTabs.length;i++){
-    allTabs[i].style.color='#aaa';
-    allTabs[i].style.borderBottomColor='transparent';
-    allTabs[i].style.fontWeight='normal';
-  }
-  el.style.color='#E63946';
-  el.style.borderBottomColor='#E63946';
-  el.style.fontWeight='500';
-  var allSecs = ['pid-identite','pid-hab','pid-caus','pid-at','pid-chantiers','pid-sig'];
-  for(var j=0;j<allSecs.length;j++){
-    var s=document.getElementById(allSecs[j]);
-    if(s) s.style.display='none';
-  }
-  var sec=document.getElementById(secId);
-  if(sec) sec.style.display='block';
-}
-
-function selSalarie(el, initials, nom, prenom, fn, contrat, bg, color, statut, statutClass) {
-  // Si deja selectionne, ouvrir le passeport
-  if(el.classList.contains('sal-selected')) {
-    ouvrirPasseport();
-    return;
-  }
-  var items = document.querySelectorAll('.sal-li');
-  items.forEach(function(i){ i.classList.remove('sal-selected'); });
-  el.classList.add('sal-selected');
-  var items2 = document.querySelectorAll('.sal-li > div');
-  for(var i=0;i<items2.length;i++){
-    items2[i].style.background='';
-    items2[i].style.borderLeftColor='transparent';
-  }
-  el.querySelector('div').style.background = bg.replace(')',',0.15)').replace('rgb','rgba') || '#FFF5F5';
-  el.querySelector('div').style.borderLeftColor = color;
-  document.getElementById('pav-circle').textContent = initials;
-  document.getElementById('pav-circle').style.background = bg;
-  document.getElementById('pav-circle').style.color = color;
-  document.getElementById('pav-name').textContent = nom + ' ' + prenom;
-  document.getElementById('pav-fn').textContent = fn + ' • ' + contrat;
-}
-
-function genQR() {
-  var container = document.getElementById('qr-container');
-  container.innerHTML = '';
-  try {
-    new QRCode(container, {
-      text: 'SSE-EMJ-PASSEPORT-PAS-2026-SB-001-BLONDEL-STEPHANE-CDI-12032021',
-      width: 116,
-      height: 116,
-      colorDark: '#1A1A2E',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  } catch(e) {
-    container.innerHTML = '<div style="text-align:center;color:#aaa;font-size:10px;padding:8px">QR Code genere</div>';
-  }
-}
-
-function printQR() {
-  var qr = document.getElementById('qr-container');
-  var canvas = qr.querySelector('canvas');
-  if(!canvas) { genQR(); setTimeout(printQR, 500); return; }
-  var win = window.open('', '_blank');
-  win.document.write('<html><head><title>QR Code Passeport SSE - BLONDEL Stephane</title><style>body{font-family:Arial,sans-serif;text-align:center;padding:40px} .info{margin-top:20px;font-size:14px;color:#333} .ref{font-size:11px;color:#aaa;margin-top:8px}</style></head><body>');
-  win.document.write('<h2 style="color:#1A1A2E;margin-bottom:4px">Passeport SSE</h2>');
-  win.document.write('<p style="color:#aaa;font-size:13px;margin-bottom:20px">Berre Maintenance Industrielle &mdash; SSE EMJ</p>');
-  win.document.write('<img src="'+canvas.toDataURL()+'" style="width:200px;height:200px;border:2px solid #1A1A2E;border-radius:8px"/>');
-  win.document.write('<div class="info"><strong>BLONDEL Stephane</strong><br>Conducteur PL &mdash; Levageur &mdash; CDI</div>');
-  win.document.write('<div class="ref">Ref. PAS-2026-SB-001 &bull; Embauche le 12/03/2021</div>');
-  win.document.write('<div class="ref" style="margin-top:16px;font-size:10px;color:#ccc">Scannez ce QR code pour acceder au passeport SSE numerique</div>');
-  win.document.write('</body></html>');
-  win.document.close();
-  win.print();
-}
-
-function ouvrirPasseport() {
-  swPerso('passeport', document.getElementById('ptab-passeport'));
-}
-
-// Charts
-
-window.addEventListener("load", function(){
-  var co = {plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,scales:{x:{grid:{display:false},ticks:{font:{size:10}}},y:{grid:{color:"rgba(0,0,0,0.04)"},ticks:{font:{size:10}},beginAtZero:true}}};
-  var c1 = document.getElementById("c1");
-  if(c1) new Chart(c1,{type:"line",data:{labels:["2023","2024","2025","T1 2026"],datasets:[{label:"TF1",data:[0,6.8,5.1,4.2],borderColor:"#E63946",backgroundColor:"rgba(230,57,70,0.08)",tension:0.4,fill:true,pointRadius:5,pointBackgroundColor:"#E63946"},{label:"TF2",data:[0,10.2,8.4,7.1],borderColor:"#F4A261",tension:0.4,fill:false,pointRadius:4,pointBackgroundColor:"#F4A261"}]},options:co});
-  var c2 = document.getElementById("c2");
-  if(c2) new Chart(c2,{type:"doughnut",data:{labels:["Cloturees","En cours","En retard"],datasets:[{data:[8,9,2],backgroundColor:["#2D6A4F","#F4A261","#E63946"],borderWidth:3,borderColor:"#fff"}]},options:{plugins:{legend:{display:false}},responsive:true,maintainAspectRatio:false,cutout:"65%"}});
-  var c3 = document.getElementById("c3");
-  if(c3) new Chart(c3,{type:"bar",data:{labels:["Jan","Fev","Mar","Avr","Mai","Jun","Jul","Aou","Sep","Oct","Nov","Dec"],datasets:[{label:"Causeries",data:[2,4,0,0,0,0,0,0,0,0,0,0],backgroundColor:"#378ADD",borderRadius:4},{label:"Visites",data:[1,1,0,0,0,0,0,0,0,0,0,0],backgroundColor:"#BA7517",borderRadius:4},{label:"SD",data:[1,1,0,0,0,0,0,0,0,0,0,0],backgroundColor:"#E63946",borderRadius:4}]},options:co});
-});
-</script>
-</body>
-</html>
+      >
